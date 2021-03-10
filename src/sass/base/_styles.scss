@@ -1,0 +1,27 @@
+@import "./colors";
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+body {
+  margin: 0;
+  background-color: $body-color;
+  color: $primary-text-color;
+  line-height: 1.5;
+}
+
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+svg {
+  max-width: 100%;
+  height: auto;
+}
