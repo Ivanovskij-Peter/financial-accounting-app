@@ -1,0 +1,90 @@
+@import "../../sass/base/mixin";
+@import "../../sass/base/colors";
+
+.icon-exit-button {
+    margin: 0;
+    padding: 0;
+    border: none;
+
+    width: 16px;
+    height: 16px;
+
+    outline: none;
+}
+
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logout-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+@include for-size(tablet) {
+    .line {
+        height: 36px;
+        width: 1px;
+
+        background-color: rgba(82, 86, 95, 0.23);
+    }
+
+    .menu-box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & > span {
+            margin-right: 20px;
+        }
+
+        & > button {
+            padding: 0;
+            border: none;
+
+            background-color: $body-color;
+            color: $primary-text-color;
+
+            text-decoration: underline;
+        }
+    }
+}
+
+@include for-size(desktop) {
+    .line {
+        height: 36px;
+        width: 1px;
+
+        background-color: rgba(82, 86, 95, 0.23);
+    }
+
+    .menu-box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & > span {
+            margin-right: 20px;
+        }
+
+        & > button {
+            padding: 0;
+            border: none;
+
+            background-color: $body-color;
+            color: $primary-text-color;
+
+            text-decoration: underline;
+        }
+    }
+}
