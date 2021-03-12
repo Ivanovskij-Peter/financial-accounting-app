@@ -1,0 +1,14 @@
+@import "../../sass/base/mixin";
+
+.balance {
+}
+
+@include for-size(tablet) {
+  .balance {
+  }
+}
+
+@include for-size(desktop) {
+  .balance {
+  }
+}
