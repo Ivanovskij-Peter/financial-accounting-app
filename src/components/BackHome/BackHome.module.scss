@@ -1,0 +1,48 @@
+@import "../../sass/base/mixin";
+@import "../../sass/base/colors";
+
+
+
+.link {
+    font-family: roboto;
+    font-size: 12;
+    color:$secondary-text-color;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+
+    &:hover,
+    &:focus {
+      color: $accent-color;
+      outline: none;
+     
+    }
+}
+
+.text{
+    padding-left: 15px;
+    visibility: hidden;
+}
+
+.icon{
+    fill: $secondary-text-color;
+    }
+
+.link:hover .icon {
+    fill: $accent-color;
+}
+
+
+@include for-size(tablet) {
+    .text{
+        padding-left: 15px;
+        visibility: visible;
+    }
+}
+
+@include for-size(desktop) {
+    .text{
+        padding-left: 15px;
+        visibility: visible;
+    }
+}
