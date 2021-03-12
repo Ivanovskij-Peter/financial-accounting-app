@@ -32,6 +32,9 @@
     fill: $accent-color;
 }
 
+.link:focus .icon {
+    fill: $accent-color;
+}
 
 @include for-size(tablet) {
     .text{
