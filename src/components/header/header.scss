@@ -1,0 +1,44 @@
+@import "../../sass/base/mixin";
+
+.header {
+    padding-left: 19px;
+    padding-right: 19px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    display: flex;
+    justify-content: space-between;
+
+    & > img {
+        width: 90px;
+        height: 31px;
+    }
+}
+
+@include for-size(tablet) {
+    .header {
+        padding-left: 26px;
+        padding-right: 26px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    
+        & > img {
+            width: 90px;
+            height: 31px;
+        }
+    }
+}
+
+@include for-size(desktop) {
+    .header {
+        padding-left: 26px;
+        padding-right: 69px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    
+        & > img {
+            width: 90px;
+            height: 31px;
+        }
+    }
+}
