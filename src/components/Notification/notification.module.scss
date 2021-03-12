@@ -1,0 +1,48 @@
+.notification {
+  position: relative;
+  width: 282px;
+  height: 152px;
+  background: linear-gradient(117.84deg, #1d346a 2.84%, #031634 67.28%);
+  border-radius: 30px;
+  padding: 30px 25px 30px 25px;
+  margin: 11px 19px 131px 19px;
+}
+@media screen and (min-width: 768px) {
+  .notification {
+    width: 292px;
+    padding: 30px;
+    margin-top: 19px;
+    margin-bottom: 14px;
+    margin-right: 47px;
+  }
+}
+.notificationTextF {
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.43;
+  font-weight: 400;
+  margin: 0;
+  margin-bottom: 20px;
+}
+.notificationTextS {
+  color: #fff;
+  font-size: 12px;
+  line-height: 1.33;
+  font-weight: 400;
+  margin: 0;
+}
+.triangleUp {
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: -11px;
+  left: 70px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 12px solid #1d346a;
+}
+@media screen and (min-width: 768px) {
+  .triangleUp {
+    left: 55px;
+  }
+}
