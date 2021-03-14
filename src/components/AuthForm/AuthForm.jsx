@@ -24,6 +24,17 @@ const RegistrationSchema = Yup.object().shape({
     .max(30, "Превышен лимит символов"),
 });
 
+const SignInSchema = Yup.object().shape({
+  email: Yup.string()
+    .min(2, "Некорректная длинна поля")
+    .max(30, "Превышен лимит символов")
+    .required("это обязательное поле"),
+  password: Yup.string()
+    .required("это обязательное поле")
+    .min(8, "Минимальная длина 8 символов")
+    .max(30, "Превышен лимит символов"),
+});
+
 const AuthForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -65,7 +76,7 @@ const AuthForm = () => {
       <Formik
         initialValues={{ name: "", email: "", password: "" }}
         validationSchema={
-          location.pathname === "/register" ? RegistrationSchema : null
+          location.pathname === "/register" ? RegistrationSchema : SignInSchema
         }
         onSubmit={(values) => {
           handleSubmit(values);

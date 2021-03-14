@@ -11,9 +11,13 @@ const register = (credentials, history) => (dispatch) => {
       dispatch(authActions.registerSuccess(data.registrationResp));
     })
     .then(() => history.push("/login"))
-    .catch(({ response: { data } }) =>
-      dispatch(authActions.registerError(data.message)),
-    );
+    .catch((data) => {
+      if (!data.response) {
+        dispatch(authActions.loginError(data.message));
+        return;
+      }
+      dispatch(authActions.registerError(data?.response?.data?.message));
+    });
 };
 
 const login = (credentials) => (dispatch) => {
@@ -22,12 +26,15 @@ const login = (credentials) => (dispatch) => {
   api
     .login(credentials)
     .then(({ data }) => {
-      console.log(data);
       api.setToken(data.token);
       dispatch(authActions.loginSuccess(data));
     })
-    .catch(({ response: { data } }) => {
-      dispatch(authActions.loginError(data.message));
+    .catch((data) => {
+      if (!data.response) {
+        dispatch(authActions.loginError(data.message));
+        return;
+      }
+      dispatch(authActions.loginError(data?.response?.data?.message));
     });
 };
 
