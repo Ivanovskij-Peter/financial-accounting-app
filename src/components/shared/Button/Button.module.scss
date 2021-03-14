@@ -1,0 +1,39 @@
+@import "../../../sass/base/colors";
+
+.Button {
+  padding: 12px 0;
+  width: 125px;
+  border: 0;
+  border-radius: 16px;
+
+  text-align: center;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.167;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  &--primary {
+    @extend .Button;
+    margin-right: 15px;
+    color: $primary-white-color;
+    background-color: $accent-color;
+    transition: all 300ms ease;
+    &:hover,
+    &:focus {
+      background-color: $accent-color-hover;
+    }
+  }
+
+  &--secondary {
+    @extend .Button;
+    color: $secondary-text-color;
+    background-color: $body-color;
+    border: 2px solid #f6f7fc;
+    transition: all 300ms ease;
+    &:hover,
+    &:focus {
+      background-color: $secondary-button-hover;
+    }
+  }
+}
