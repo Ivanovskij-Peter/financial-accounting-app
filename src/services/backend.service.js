@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //TODO поменять на нормальный урл, когда зальём бэк на хостинг
-const url = "http://localhost:3001/";
+const url = "http://localhost:8080/";
 axios.defaults.baseURL = url;
 
 class PhonebookService {
