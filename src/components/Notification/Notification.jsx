@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "../Notification/notification.module.scss";
-import PropTypes from "prop-types";
 
 const Notification = () => {
   return (
@@ -16,10 +15,6 @@ const Notification = () => {
       </div>
     </div>
   );
-};
-
-Notification.propTypes = {
-  message: PropTypes.string,
 };
 
 export default Notification;
