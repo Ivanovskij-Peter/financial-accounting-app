@@ -8,11 +8,14 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
-}
-body {
   margin: 0;
+  padding: 0;
+}
+
+body {
   background-color: $body-color;
   color: $primary-text-color;
+  font-family: "Roboto", sans-serif;
   line-height: 1.5;
 }
 
@@ -21,7 +24,21 @@ img {
   height: auto;
   max-width: 100%;
 }
+
 svg {
   max-width: 100%;
   height: auto;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  font-style: normal;
+}
+
+button {
+  cursor: pointer;
 }

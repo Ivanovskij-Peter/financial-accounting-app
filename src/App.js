@@ -1,7 +1,11 @@
 
-import { CSSTransition } from 'react-transition-group';
-import Notification from './components/Notification/Notification';
-import notificationStyles from './components/Notification/notification.module.scss';
+import { Suspense } from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
+
+import Notification from "./components/Notification/Notification";
+import notificationStyles from "./components/Notification/notification.module.scss";
+import AuthForm from "./components/AuthForm";
 
 
 // import Modal from './components/shared/Modal/Modal';
@@ -9,15 +13,30 @@ import Header from './components/header';
 
 
 function App() {
-  return (
-    <div>
+  //TODO переделать мапинг раутов с учётом приватных и публичных раутов
+  // const routesMap = routes.map(route => {
+  //   return route.privated ? (
+  //     <PrivateRoute key={route.path} {...route} />
+  //   ) : (
+  //     <PublicRoute key={route.path} {...route} />
+  //   );
+  // });
 
-      {/* <Modal /> */}
-      <Notification />
+  return (
+    <>
+      {/* //TODO поменять на нормальный лоадер */}
+     <Notification />
 
       <Header isLogged={true}/>
-      <h1>Go to work guys!</h1>
-    </div>
+      <Suspense fallback={<p>Loading...</p>}>
+        <Switch>
+          <Route exact path="/register" component={AuthForm} />
+          <Route exact path="/login" component={AuthForm} />
+          <Route exact path="/" component={AuthForm} />
+          <Redirect to="/" />
+        </Switch>
+      </Suspense>
+    </>
   );
 }
 

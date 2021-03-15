@@ -28,16 +28,19 @@ const middleware = [
   }),
   logger,
 ];
+
 const authPersistConfig = {
   key: "auth",
   storage,
   whitelist: ["token"],
 };
+
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
   balance,
   error: errorReducer,
 });
+
 const store = configureStore({
   reducer: rootReducer,
   middleware,
