@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './userInfo.scss';
 
-import exit from '../../images/logout.svg';
+import sprite from '../../images/sprite.svg';
 
 export default class UserInfo extends Component {
     static defaultProps = {
@@ -19,7 +19,9 @@ export default class UserInfo extends Component {
                 <div className='menu-box'>
                     {mobile ?
                     <button className='icon-exit-button' type='button'>
-                        <img src={exit} className='logout-icon' alt="exit-icon"/>
+                        <svg width="16px" height="16px" className='logout-icon'>
+                            <use href={sprite +"#logout"} />
+                        </svg>
                     </button> : 
                     <>
                     <span className='user-name'>{userName}</span>

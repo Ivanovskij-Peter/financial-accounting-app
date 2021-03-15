@@ -2,14 +2,19 @@ import { CSSTransition } from 'react-transition-group';
 import Notification from './components/Notification/Notification';
 import notificationStyles from './components/Notification/notification.module.scss';
 
+
 // import Modal from './components/shared/Modal/Modal';
+import Header from './components/header';
+
 
 function App() {
   return (
     <div>
+
       {/* <Modal /> */}
       <Notification />
 
+      <Header isLogged={true}/>
       <h1>Go to work guys!</h1>
     </div>
   );
