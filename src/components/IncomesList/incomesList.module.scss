@@ -1,0 +1,78 @@
+@import "../../sass/base/colors";
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid $body-color;
+
+  width: 282px;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+}
+
+.secondary {
+  font-weight: normal;
+  font-size: 8px;
+  line-height: 9px;
+  letter-spacing: 0.04em;
+
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
+}
+
+.amountCost {
+  color: #e7192e;
+
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+}
+
+.amountIncome {
+  color: #407946;
+
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+}
+
+.right {
+  display: flex;
+  flex-direction: row;
+
+  & button {
+    display: flex;
+    align-items: center;
+
+    border: none;
+    outline: none;
+    transition: all 250ms linear;
+
+    background-color: transparent;
+  }
+
+  & button:focus {
+    transform: scale(1.5);
+    fill: $accent-color;
+  }
+
+  & span:not(:last-child) {
+    margin-right: 20px;
+  }
+}
