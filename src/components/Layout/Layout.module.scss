@@ -1,0 +1,57 @@
+@import "../../sass/base/colors";
+@import "../../sass/base/mixin";
+
+.primaryTheme::after {
+  position: absolute;
+  content: "";
+
+  top: 51px;
+  left: 0;
+  height: 342px;
+  width: 100%;
+
+  background: $body-color;
+  border-bottom-left-radius: 100px;
+  background-image: 
+  url("../../images/bg-kapusta-mobile-up.png"), 
+  url("../../images/kapusta.png");
+  
+  background-repeat: no-repeat, no-repeat;
+  background-position: top 104px right -32px, top 92px left 49px;
+  background-size: auto, 183px 63px;
+  z-index: -1;
+
+  @include for-size(tablet) {
+    height: 582px;
+    background-image:
+    url("../../images/kapusta.png"),
+    url("../../images/kapustaup.png");
+  
+    background-repeat: no-repeat, no-repeat;
+    background-position: top 90px left 171px, top 28px left 10px;
+    background-size: 306px 100px, auto;
+  }
+  @include for-size(desktop) {
+    background-repeat: no-repeat, no-repeat;
+    background-position: bottom 79px left 230px, top 28px left 10px;
+    background-size: 377px 139px, 100% auto;
+  }
+}
+
+.primaryTheme {
+  background: transparent;
+  height: 100vh;
+
+  background-image: url("../../images/bg-kapusta-mobile.png");
+  background-repeat: no-repeat;
+  background-position: bottom left 35px;
+
+  @include for-size(tablet) {
+    background-image: url("../../images/bg-kapusta-tablet.png");
+    background-position: bottom 56px left 103px;
+  }
+  @include for-size(desktop) {
+    background-position: bottom 50px left 230px;
+  }
+}
+

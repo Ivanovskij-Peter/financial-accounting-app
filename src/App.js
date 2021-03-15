@@ -6,9 +6,9 @@ import Notification from "./components/Notification/Notification";
 import notificationStyles from "./components/Notification/notification.module.scss";
 import AuthForm from "./components/AuthForm";
 
-
+import Layout from './components/Layout/Layout';
 // import Modal from './components/shared/Modal/Modal';
-import Header from './components/header';
+// import Header from './components/header';
 
 function App() {
   //TODO переделать мапинг раутов с учётом приватных и публичных раутов
@@ -38,17 +38,18 @@ function App() {
 
 
       {/* //TODO поменять на нормальный лоадер */}
-     <Notification />
-
-      <Header isLogged={true}/>
+     {/* <Notification /> */}
+<Layout>
+      {/* <Header isLogged={true}/> */}
       <Suspense fallback={<p>Loading...</p>}>
-        <Switch>
+        {/* <Switch>
           <Route exact path="/register" component={AuthForm} />
           <Route exact path="/login" component={AuthForm} />
           <Route exact path="/" component={AuthForm} />
           <Redirect to="/" />
-        </Switch>
+        </Switch> */}
       </Suspense>
+</Layout>
     </>
   );
 }
