@@ -3,27 +3,28 @@
 
 .summary {
   width: 230px;
+  height: 270px;
   background-color: $body-color;
   border: 2px solid #ffffff;
   border-radius: 20px 20px 20px 0;
-  // margin-left: 81px;
-  // margin-top: 40px;
-  // margin-bottom: 57px;
+  margin-left: 81px;
+  margin-top: 40px;
+  margin-bottom: 57px;
 }
-// @media screen and (max-width: 767px) {
-//   .summary {
-//     display: none;
-//   }
-// }
+@media screen and (max-width: 767px) {
+  .summary {
+    display: none;
+  }
+}
 
-// @media screen and (min-width: 1024px) {
-//   .summary {
-//     margin-right: 20px;
-//     margin-left: 30px;
-//     margin-top: 60px;
-//     margin-bottom: 165px;
-//   }
-// }
+@media screen and (min-width: 1024px) {
+  .summary {
+    margin-right: 20px;
+    margin-left: 30px;
+    margin-top: 60px;
+    margin-bottom: 165px;
+  }
+}
 
 .summary_title {
   height: 38px;

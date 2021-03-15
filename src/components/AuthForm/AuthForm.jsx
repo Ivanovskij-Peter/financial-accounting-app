@@ -4,7 +4,11 @@ import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 
+<<<<<<< HEAD
 import Button from "../shared/Button";
+=======
+import Button from "../shared/Button/Button";
+>>>>>>> afd910ddef8a449e4ba0ec36994be1f698f02cc9
 import authOperations from "../../redux/auth/auth-operations";
 
 import styles from "./AuthForm.module.scss";
@@ -44,7 +48,7 @@ const AuthForm = () => {
     location.pathname === "/register"
       ? dispatch(authOperations.register({ name, email, password }, history))
       : //TODO попросить ребят поправить бек, где в запросе на логин непонятно зачем требуется поле нейм
-        dispatch(authOperations.login({ email, password }));
+        dispatch(authOperations.logIn({ email, password }));
   };
 
   const handleClick = () => {
