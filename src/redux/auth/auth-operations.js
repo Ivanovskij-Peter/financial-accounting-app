@@ -8,7 +8,7 @@ const register = (credentials, history) => (dispatch) => {
     .register(credentials)
     .then(({ data }) => {
       // TODO надо нормальный ответ давать, а не registrationResp
-      dispatch(authActions.registerSuccess(data.registrationResp));
+      dispatch(authActions.registerSuccess(data));
     })
     .then(() => history.push("/login"))
     .catch((data) => {

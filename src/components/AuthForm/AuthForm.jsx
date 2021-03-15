@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 
-import Button from "../shared/Button";
+import Button from "../shared/button/Button";
 import authOperations from "../../redux/auth/auth-operations";
 
 import styles from "./AuthForm.module.scss";
@@ -21,7 +21,7 @@ const RegistrationSchema = Yup.object().shape({
   password: Yup.string()
     .required("это обязательное поле")
     .min(8, "Минимальная длина 8 символов")
-    .max(30, "Превышен лимит символов"),
+    .max(16, "Превышен лимит символов"),
 });
 
 const SignInSchema = Yup.object().shape({
@@ -32,7 +32,7 @@ const SignInSchema = Yup.object().shape({
   password: Yup.string()
     .required("это обязательное поле")
     .min(8, "Минимальная длина 8 символов")
-    .max(30, "Превышен лимит символов"),
+    .max(16, "Превышен лимит символов"),
 });
 
 const AuthForm = () => {
@@ -44,9 +44,7 @@ const AuthForm = () => {
     location.pathname === "/register"
       ? dispatch(authOperations.register({ name, email, password }, history))
       : //TODO попросить ребят поправить бек, где в запросе на логин непонятно зачем требуется поле нейм
-        dispatch(
-          authOperations.login({ name: "надо фиксить бэк", email, password }),
-        );
+        dispatch(authOperations.login({ email, password }));
   };
 
   const handleClick = () => {
