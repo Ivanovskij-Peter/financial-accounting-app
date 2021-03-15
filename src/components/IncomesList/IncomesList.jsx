@@ -25,9 +25,10 @@ export default class IncomesList extends Component {
   };
 
   render() {
+    const mobile = window.innerWidth < 768;
     const { data, type } = this.props;
 
-    return (
+    return mobile ? (
       <ul className={styles.list}>
         {data.map((el) => {
           return (
@@ -35,7 +36,9 @@ export default class IncomesList extends Component {
               <div className={styles.left}>
                 <p className={styles.description}>{el.description}</p>
                 <div>
-                  <span className={styles.secondary}>{el.date}</span>
+                  <span className={styles.secondary}>
+                    {el.date.split("-").reverse().join(".")}
+                  </span>
                   <span className={styles.secondary}>{el.category}</span>
                 </div>
               </div>
@@ -59,6 +62,41 @@ export default class IncomesList extends Component {
           );
         })}
       </ul>
+    ) : (
+      <table className={styles.incomesTable}>
+        <thead>
+          <tr>
+            <td className={styles.leftCol}>ДАТА</td>
+            <td className={styles.leftCol}>ОПИСАНИЕ</td>
+            <td className={styles.centerCol}>КАТЕГОРИЯ</td>
+            <td className={styles.rightCol}>СУММА</td>
+            <td className={styles.clean}></td>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((el) => (
+            <tr key={el.id}>
+              <td className={styles.leftCol}>
+                {el.date.split("-").reverse().join(".")}
+              </td>
+              <td className={styles.leftCol}>{el.description}</td>
+              <td className={styles.rightCol}>{el.category}</td>
+              {type === "incomes" ? (
+                <td className={styles.amountCost}>{`- ${el.amount} грн.`}</td>
+              ) : (
+                <td className={styles.amountIncome}>{`  ${el.amount} грн.`}</td>
+              )}
+              <td className={styles.tdButton}>
+              <button>
+                  <svg width="18px" height="18px">
+                    <use href={sprite + "#delete-icon"} />
+                  </svg>
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     );
   }
 }

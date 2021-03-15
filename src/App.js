@@ -11,6 +11,8 @@ import AuthForm from "./components/AuthForm";
 import Header from "./components/header";
 import PublicRoute from "./components/PublicRoute";
 
+import IncomesList from "./components/IncomesList";
+
 
 function App() {
   //TODO переделать мапинг раутов с учётом приватных и публичных раутов
@@ -46,7 +48,7 @@ function App() {
       <Header />
       <Suspense fallback={<p>Loading...</p>}>
         <Switch>
-          <PublicRoute exact path="/" component={AuthForm} />
+          <PublicRoute exact path="/" component={IncomesList} />
           <PublicRoute exact path="/register" component={AuthForm} />
           <PublicRoute exact path="/login" component={AuthForm} />
           {/* <Route exact path="/register" component={AuthForm} /> */}

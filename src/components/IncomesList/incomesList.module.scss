@@ -1,4 +1,5 @@
 @import "../../sass/base/colors";
+@import "../../sass/base/mixin";
 
 .list {
   display: flex;
@@ -75,4 +76,123 @@
   & span:not(:last-child) {
     margin-right: 20px;
   }
+}
+
+@include for-size(tablet) {
+  .incomesTable {
+    width: 605px;
+    border-spacing: 0;
+
+    td:first-child {
+      padding-left: 21px;
+    }
+
+    & thead {
+      width: 100%;
+      
+
+      & td {
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 0.02em;
+        color: #000000;
+
+        background-color: $primary-text-color;
+
+        &:first-child {
+          border-top-left-radius: 20px;
+        }
+
+        &:last-child {
+          border-top-right-radius: 20px;
+        }
+      }
+    }
+
+    & tbody td {
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 14px;
+      letter-spacing: 0.04em;
+      color: #52555f;
+
+      border-bottom: 2px solid $primary-text-color;
+
+      &:first-child {
+        border-left: 2px solid $primary-text-color;
+      }
+
+      &:last-child {
+        border-right: 4px solid $primary-text-color;
+      }
+
+      &.rightCol {
+        text-align: center;
+      }
+
+      &.amountCost {
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 0.04em;
+        color: #e7192e;
+        text-align: right;
+      }
+
+      &.amountIncome {
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 0.04em;
+        color: #407946;
+        text-align: right;
+      }
+    }
+  }
+
+  .centerCol {
+    text-align: center;
+  }
+
+  .leftCol {
+    text-align: left;
+  }
+
+  .rightCol {
+    text-align: right;
+  }
+
+  td > button {
+    display: flex;
+    align-items: center;
+
+    border: none;
+    outline: none;
+    transition: all 250ms linear;
+
+    background-color: transparent;
+
+    &:focus {
+      transform: scale(1.5);
+      fill: $accent-color;
+    }
+  }
+
+  .tdButton {
+    width: 60px;
+    display: flex;
+    justify-content: center;
+  }
+
+  td {
+    height: 38px;
+  }
+
+  .clean {
+    width: 60px;
+  }
+}
+
+@include for-size(desktop) {
 }
