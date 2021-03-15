@@ -1,0 +1,124 @@
+@import "../../sass/base/colors";
+@import "../../sass/base/mixin";
+
+.Auth {
+  display: flex;
+  flex-direction: column;
+
+  margin: 0 auto;
+  padding-top: 40px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 53px;
+  width: 300px;
+
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+
+  color: $secondary-text-color;
+  background-color: $primary-white-color;
+  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+  border-radius: 30px;
+
+  @include for-size(tablet) {
+    width: 436px;
+    padding-top: 50px;
+    padding-left: 85px;
+    padding-right: 85px;
+
+    font-size: 12px;
+    line-height: 1.167;
+  }
+
+  &__title {
+    margin: 0 auto;
+    width: 222px;
+    margin-bottom: 24px;
+    text-align: center;
+
+    @include for-size(tablet) {
+      margin-bottom: 20px;
+      text-align: left;
+      margin-left: 0;
+      width: 100%;
+    }
+  }
+  //TODO дописать стили для кнопки гугл-авторизации
+  &__googleBtn {
+    margin: 0 auto;
+    width: 122px;
+    margin-bottom: 30px;
+  }
+
+  &__description {
+    margin-bottom: 24px;
+
+    @include for-size(tablet) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__label {
+    color: $primary-black-color;
+    margin-bottom: 12px;
+
+    &--is-invalid {
+      color: $red-color;
+    }
+
+    @include for-size(tablet) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__inputWrapper {
+    position: relative;
+  }
+
+  &__input {
+    padding: 17px 20px;
+    background: $input-color;
+    border-radius: 30px;
+    border: 0;
+    margin-bottom: 30px;
+    font-size: 14px;
+    line-height: 1.143;
+    color: $input-text-color;
+
+    &--last {
+      @extend .Auth__input;
+      margin-bottom: 40px;
+    }
+
+    &--is-invalid {
+      background-color: rgba(228, 161, 161, 0.1);
+      border: 1px solid $red-color;
+
+      &::placeholder {
+        color: $red-color;
+      }
+    }
+  }
+
+  &__errorMessage {
+    color: $red-color;
+    position: absolute;
+    top: 55px;
+    left: 0px;
+  }
+
+  &__button--register {
+    filter: drop-shadow(1px 3px 5px rgba(255, 107, 8, 0.35));
+  }
+
+  &__button--enter {
+    filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
+    border: 0;
+  }
+}

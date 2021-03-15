@@ -1,11 +1,9 @@
-import React from 'react';
-import styles from '../Notification/notification.module.scss';
-import PropTypes from 'prop-types';
+import React from "react";
+import styles from "../Notification/notification.module.scss";
 
 const Notification = () => {
   return (
     <div className={styles.notificationWrapper}>
-      {' '}
       <div className={styles.notification}>
         <div className={styles.triangleUp}></div>
         <p className={styles.notificationTextF}>
@@ -17,10 +15,6 @@ const Notification = () => {
       </div>
     </div>
   );
-};
-
-Notification.propTypes = {
-  message: PropTypes.string,
 };
 
 export default Notification;
