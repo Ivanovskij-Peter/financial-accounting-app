@@ -1,53 +1,55 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { useEffect } from "react";
+
 import styles from "./Modal.module.scss";
+import Button from "../Button/Button";
 
-class Modal extends Component {
-  componentDidMount() {
-    window.addEventListener("keydown", this.handleCloseModal);
-    window.addEventListener("click", this.handleCloseModal);
-  }
+const Modal = ({ onClick, title, onAgree }) => {
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.code === "Escape") {
+        onClick();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
 
-  componentWillUnmount() {
-    window.removeEventListener("keydown", this.handleCloseModal);
-    window.removeEventListener("click", this.handleCloseModal);
-  }
-  handleCloseModal = (e) => {
-    if (
-      e.code === "Escape" ||
-      e.target.id === "disAgree" ||
-      e.target.id === "agree" ||
-      e.target.id === "close"
-    ) {
-      this.props.onClick();
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClick]);
+
+  const handleCloseClick = (e) => {
+    console.log(e.target.nodeName);
+    if (e.target.id === "disAgree" || e.target.id === "close") {
+      onClick();
     }
   };
 
-  render() {
-    return (
+  return (
+    <>
       <div className={styles.Backdrop}>
         <div className={styles.Modal}>
-          <p className={styles.modalTitle}>{this.props.children}</p>
+          <p className={styles.modalTitle}>{title}</p>
           <button
             id="close"
             className={styles.closeButton}
-            onClose={this.handleCloseModal}
+            onClick={handleCloseClick}
           ></button>
 
-          <button id="agree" className={styles.buttonPrimary} type="button">
+          <Button onClick={onAgree} btnType="primary" id="agree" type="button">
             Да
-          </button>
-          <button
+          </Button>
+          <Button
+            btnType="secondary"
             id="disAgree"
-            className={styles.buttonSecondary}
             type="button"
+            onClick={handleCloseClick}
           >
             Нет
-          </button>
+          </Button>
         </div>
       </div>
-    );
-  }
-}
+    </>
+  );
+};
 
 export default Modal;
