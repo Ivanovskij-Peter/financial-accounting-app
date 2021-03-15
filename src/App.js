@@ -1,10 +1,7 @@
 
 import { Suspense } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { CSSTransition } from "react-transition-group";
 
-import Notification from "./components/Notification/Notification";
-import notificationStyles from "./components/Notification/notification.module.scss";
 import AuthForm from "./components/AuthForm";
 
 
@@ -25,7 +22,6 @@ function App() {
   return (
     <>
       {/* //TODO поменять на нормальный лоадер */}
-     <Notification />
 
       <Header isLogged={true}/>
       <Suspense fallback={<p>Loading...</p>}>
