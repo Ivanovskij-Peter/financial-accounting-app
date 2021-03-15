@@ -10,17 +10,22 @@
     height: 16px;
 
     outline: none;
+    color: $secondary-text-color;
+}
+
+.logout-icon {
+    fill: currentColor;
+    transition: all 250ms ease;
+}
+
+.icon-exit-button:focus {
+    color: $accent-color;
 }
 
 .user-info {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.logout-icon {
-    width: 16px;
-    height: 16px;
 }
 
 .avatar {
