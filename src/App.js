@@ -1,3 +1,4 @@
+
 import { CSSTransition } from 'react-transition-group';
 import Notification from './components/Notification/Notification';
 import notificationStyles from './components/Notification/notification.module.scss';
