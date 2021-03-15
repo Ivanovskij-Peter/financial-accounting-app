@@ -37,8 +37,8 @@ function App() {
     )} */}
 
       {/* //TODO поменять на нормальный лоадер */}
-
-      {/* <Notification /> */}
+      {/* 
+      <Notification /> */}
 
       <Header />
       <Suspense fallback={<p>Loading...</p>}>
