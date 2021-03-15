@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 const Notification = () => {
   return (
     <div className={styles.notificationWrapper}>
-      {" "}
       <div className={styles.notification}>
         <div className={styles.triangleUp}></div>
         <p className={styles.notificationTextF}>
