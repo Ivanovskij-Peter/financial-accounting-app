@@ -1,10 +1,8 @@
 import axios from "axios";
 import authActions from "./auth-actions";
 import api from "../../services/backend.service";
-// import { useHistory } from "react-router";
 
 axios.defaults.baseURL = "http://localhost:8080/";
-
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -14,69 +12,47 @@ const token = {
   },
 };
 
-const register = (credentials) => async (dispatch) => {
+const register = (credentials, history) => (dispatch) => {
   dispatch(authActions.registerRequest());
-  try {
-    const response = await axios.post("/auth/register", credentials);
-    dispatch(authActions.registerSuccess(response.data));
-  } catch (error) {
-    dispatch(authActions.registerError(error.message));
-  }
+  api
+    .register(credentials)
+    .then(({ data }) => {
+      // TODO надо нормальный ответ давать, а не registrationResp
+      dispatch(authActions.registerSuccess(data));
+    })
+    .then(() => history.push("/login"))
+    .catch((data) => {
+      if (!data.response) {
+        dispatch(authActions.loginError(data.message));
+        return;
+      }
+      dispatch(authActions.registerError(data?.response?.data?.message));
+    });
 };
-// const register = (credentials, history) => (dispatch) => {
-//   dispatch(authActions.registerRequest());
 
-//   api
-//     .register(credentials)
-//     .then(({ data }) => {
-//       // TODO надо нормальный ответ давать, а не registrationResp
-//       dispatch(authActions.registerSuccess(data));
-//     })
-//     .then(() => history.push("/login"))
-//     .catch((data) => {
-//       if (!data.response) {
-//         dispatch(authActions.loginError(data.message));
-//         return;
-//       }
-//       dispatch(authActions.registerError(data?.response?.data?.message));
-//     });
-// };
-
-// const login = (credentials) => (dispatch) => {
-//   dispatch(authActions.loginRequest());
-
-//   api
-//     .login(credentials)
-//     .then(({ data }) => {
-//       api.setToken(data.token);
-//       dispatch(authActions.loginSuccess(data));
-//     })
-//     .catch((data) => {
-//       if (!data.response) {
-//         dispatch(authActions.loginError(data.message));
-//         return;
-//       }
-//       dispatch(authActions.loginError(data?.response?.data?.message));
-//     });
-// };
-const logIn = (credentials) => async (dispatch) => {
+const logIn = (credentials) => (dispatch) => {
   dispatch(authActions.loginRequest());
-
-  try {
-    const response = await axios.post("/auth/login", credentials);
-    token.set(response.data.token);
-    dispatch(authActions.loginSuccess(response.data));
-  } catch (error) {
-    dispatch(authActions.loginError(error.message));
-  }
+  api
+    .login(credentials)
+    .then(({ data }) => {
+      api.setToken(data.token);
+      dispatch(authActions.loginSuccess(data));
+    })
+    .catch((data) => {
+      if (!data.response) {
+        dispatch(authActions.loginError(data.message));
+        return;
+      }
+      dispatch(authActions.loginError(data?.response?.data?.message));
+    });
 };
 
 const logOut = () => async (dispatch) => {
   dispatch(authActions.logOutRequest());
   try {
     await axios.post("/auth/logout");
-    api.unsetToken();
-    dispatch(authActions.logOutSucces());
+    token.unset();
+    dispatch(authActions.logOutSuccess());
   } catch (error) {
     dispatch(authActions.logOutError(error.message));
   }
