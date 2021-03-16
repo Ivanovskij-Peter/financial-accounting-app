@@ -3,14 +3,13 @@ import { Suspense } from "react";
 
 // import Notification from "./components/Notification/Notification";
 // import notificationStyles from "./components/Notification/notification.module.scss";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import AuthForm from "./components/AuthForm";
 
 // import Modal from './components/shared/Modal/Modal';
 
 import Header from "./components/header";
 import PublicRoute from "./components/PublicRoute";
-
 
 function App() {
   //TODO переделать мапинг раутов с учётом приватных и публичных раутов
@@ -22,26 +21,24 @@ function App() {
   //   );
   // });
 
+  // Modal test!!! /////////////
+  //   const [ showModal, setShowModal ] = useState(false)
+  // const toggleModal = () => {
+  //   setShowModal(!showModal)
+  // }
 
-// Modal test!!! /////////////
-//   const [ showModal, setShowModal ] = useState(false)
-// const toggleModal = () => {
-//   setShowModal(!showModal)
-// }
-
-// ///////////////////////
+  // ///////////////////////
 
   return (
     <>
-    {/* <button type='button' onClick={toggleModal}>OpenModal</button>
+      {/* <button type='button' onClick={toggleModal}>OpenModal</button>
     {showModal && (
     <Modal title="Вы уверены?" onClick={toggleModal}/>
     )} */}
 
-
       {/* //TODO поменять на нормальный лоадер */}
-
-      {/* <Notification /> */}
+      {/* 
+      <Notification /> */}
 
       <Header />
       <Suspense fallback={<p>Loading...</p>}>
@@ -91,4 +88,3 @@ export default App;
 //     }
 //   }
 //   export default App;
-
