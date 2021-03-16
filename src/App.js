@@ -3,13 +3,15 @@ import { Suspense } from "react";
 
 // import Notification from "./components/Notification/Notification";
 // import notificationStyles from "./components/Notification/notification.module.scss";
-import { Switch } from "react-router-dom";
+import { Switch, Redirect } from "react-router-dom";
 import AuthForm from "./components/AuthForm";
 
 // import Modal from './components/shared/Modal/Modal';
 
 import Header from "./components/header";
 import PublicRoute from "./components/PublicRoute";
+
+import Calendar from './components/Calendar';
 
 function App() {
   //TODO переделать мапинг раутов с учётом приватных и публичных раутов
@@ -43,7 +45,7 @@ function App() {
       <Header />
       <Suspense fallback={<p>Loading...</p>}>
         <Switch>
-          <PublicRoute exact path="/" component={IncomesList} />
+          <PublicRoute exact path="/" component={Calendar} />
           <PublicRoute exact path="/register" component={AuthForm} />
           <PublicRoute exact path="/login" component={AuthForm} />
           {/* <Route exact path="/register" component={AuthForm} /> */}

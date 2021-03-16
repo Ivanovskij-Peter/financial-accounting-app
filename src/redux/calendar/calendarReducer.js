@@ -12,7 +12,7 @@ const getCurrentDate = function () {
     month = `0${month}`;
   }
 
-  return `${date.getFullYear()}.${month}.${date.getDate()}`;
+  return `${date.getDate()}.${month}.${date.getFullYear()}`;
 };
 
 const dateReducer = createReducer(getCurrentDate(), {
