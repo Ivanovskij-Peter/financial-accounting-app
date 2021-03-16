@@ -122,10 +122,6 @@
         border-left: 2px solid $primary-text-color;
       }
 
-      &:last-child {
-        border-right: 4px solid $primary-text-color;
-      }
-
       &.rightCol {
         text-align: center;
       }
@@ -195,11 +191,35 @@
 
 @media (min-width: 1200px) {
   .incomesTable {
+    display: inline-block;
     width: 760px;
+
+    & td {
+      min-width: 150px;
+    }
+
+    & tbody {
+      max-height: 382px;
+      display: inline-block;
+
+      overflow-y: scroll;
+
+      &::-webkit-scrollbar {
+        width: 6px;
+        background-color: rgba(26, 24, 47, 0.15);
+        border-radius: 5px;
+        height: 200px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: $accent-color;
+        border-radius: 2px;
+      }
+    }
   }
 
   .tdButton > button:hover {
-    transform: scale(1.5);
+    transform: scale(1.2);
     fill: $accent-color;
   }
 }

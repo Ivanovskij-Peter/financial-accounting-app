@@ -87,7 +87,7 @@ export default class IncomesList extends Component {
                 <td className={styles.amountIncome}>{`  ${el.amount} грн.`}</td>
               )}
               <td className={styles.tdButton}>
-              <button>
+                <button>
                   <svg width="18px" height="18px">
                     <use href={sprite + "#delete-icon"} />
                   </svg>
