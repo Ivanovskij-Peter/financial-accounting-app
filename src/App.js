@@ -1,4 +1,6 @@
 import { Suspense } from "react";
+// import Loader from "react-loader-spinner";
+import Loader from "./components/shared/Loader/Loader"
 // import { CSSTransition } from "react-transition-group";
 
 // import Notification from "./components/Notification/Notification";
@@ -40,6 +42,8 @@ function App() {
 
 
       {/* //TODO поменять на нормальный лоадер */}
+<Loader/>
+{/* <Chart/> */}
 
       {/* <Notification /> */}
 
