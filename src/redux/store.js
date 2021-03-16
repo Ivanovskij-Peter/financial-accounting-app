@@ -1,4 +1,3 @@
-/* eslint-disable import/no-anonymous-default-export */
 import {
   combineReducers,
   configureStore,
@@ -32,7 +31,7 @@ const middleware = [
 const authPersistConfig = {
   key: "auth",
   storage,
-  whitelist: ["token"],
+  whitelist: ["token", "isAuthenticated"],
 };
 
 const rootReducer = combineReducers({
@@ -49,4 +48,5 @@ const store = configureStore({
 
 const persistor = persistStore(store);
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default { store, persistor };

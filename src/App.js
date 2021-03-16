@@ -1,4 +1,5 @@
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 // import { CSSTransition } from "react-transition-group";
 
 // import Notification from "./components/Notification/Notification";
@@ -11,8 +12,20 @@ import Layout from './components/Layout/Layout';
 
 // import Header from "./components/header";
 import PublicRoute from "./components/PublicRoute";
+import Loaders from "./components/shared/Loader/Loader";
+import { authOperations } from "./redux/auth";
 
 function App() {
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.auth.token);
+  const name = useSelector((state) => state.auth.user.name);
+  useEffect(() => {
+    if (!name) {
+      dispatch(authOperations.getCurrrentUser());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [token]);
+
   //TODO переделать мапинг раутов с учётом приватных и публичных раутов
   // const routesMap = routes.map(route => {
   //   return route.privated ? (
@@ -47,18 +60,25 @@ function App() {
       {/* 
       <Notification /> */}
 
-      {/* <Header /> */}
-<Layout>
-<Suspense fallback={<p>Loading...</p>}>
+      <Header />
+      <Suspense fallback={<Loaders />}>
         <Switch>
           <PublicRoute exact path="/" component={AuthForm} />
-          <PublicRoute exact path="/register" component={AuthForm} />
-          <PublicRoute exact path="/login" component={AuthForm} />
+          <PublicRoute
+            exact
+            path="/register"
+            component={AuthForm}
+            redirectTo=""
+          />
+          <PublicRoute
+            exact
+            path="/login"
+            component={AuthForm}
+            redirectTo="/balance"
+          />
           {/* <Route exact path="/register" component={AuthForm} /> */}
           {/* <Route exact path="/login" component={AuthForm} /> */}
           {/* <Route exact path="/" component={AuthForm} /> */}
-          
-          {/* <Redirect to="/" /> */}
         </Switch>
       </Suspense>
 </Layout>
