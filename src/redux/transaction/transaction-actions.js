@@ -1,8 +1,9 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { createAction } from "@reduxjs/toolkit";
 
-const increment = createAction("user/increment");
-const decrement = createAction("user/decrement");
+const setBalanceRequest = createAction("user/setBalanceRequest");
+const setBalanceSucces = createAction("user/setBalanceSucces");
+const setBalanceError = createAction("user/setBalanceError");
 
 const addIncomesRequest = createAction("user/addIncomesRequest");
 const addIncomesSucces = createAction("user/addIncomesSucces");
@@ -21,8 +22,9 @@ const deleteCostsSucces = createAction("user/deleteCostsSucces");
 const deleteCostsError = createAction("user/deleteCostsError");
 
 export default {
-  increment,
-  decrement,
+  setBalanceRequest,
+  setBalanceSucces,
+  setBalanceError,
   addIncomesRequest,
   addIncomesSucces,
   addIncomesError,

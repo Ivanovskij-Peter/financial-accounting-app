@@ -52,6 +52,7 @@ function App() {
           {/* <Route exact path="/register" component={AuthForm} /> */}
           {/* <Route exact path="/login" component={AuthForm} /> */}
           {/* <Route exact path="/" component={AuthForm} /> */}
+          
           <Redirect to="/" />
         </Switch>
       </Suspense>
