@@ -7,8 +7,8 @@ const Layout = ({ children }) => (
   <>
     <Header />
     <div className={styles.mainTheme}>
-      {/* <div className={styles.unloggedTheme}></div> */}
-      <div className={styles.loggedTheme}></div>
+      <div className={styles.unloggedTheme}></div>
+      {/* <div className={styles.loggedTheme}></div> */}
     {children}
     </div>
     

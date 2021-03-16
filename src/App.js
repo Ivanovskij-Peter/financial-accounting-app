@@ -1,14 +1,17 @@
 import { Suspense } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
-import { CSSTransition } from "react-transition-group";
+// import { CSSTransition } from "react-transition-group";
 
-import Notification from "./components/Notification/Notification";
-import notificationStyles from "./components/Notification/notification.module.scss";
+// import Notification from "./components/Notification/Notification";
+// import notificationStyles from "./components/Notification/notification.module.scss";
+import { Route, Switch, Redirect } from "react-router-dom";
 import AuthForm from "./components/AuthForm";
 
 import Layout from './components/Layout/Layout';
 // import Modal from './components/shared/Modal/Modal';
-// import Header from './components/header';
+
+// import Header from "./components/header";
+import PublicRoute from "./components/PublicRoute";
+
 
 function App() {
   //TODO переделать мапинг раутов с учётом приватных и публичных раутов
@@ -21,37 +24,44 @@ function App() {
   // });
 
 
-// Modal test!!! /////////////
+// Modal methods use this in your component methods!! //
 //   const [ showModal, setShowModal ] = useState(false)
 // const toggleModal = () => {
 //   setShowModal(!showModal)
 // }
 
-// ///////////////////////
+ // Use this in your component return!! //
+    /* <button type='button' onClick={toggleModal}>OpenModal</button>
+    {showModal && (
+    <Modal title="Вы уверены?" onClick={toggleModal}/>
+  )} */
 
   return (
     <>
-    {/* <button type='button' onClick={toggleModal}>OpenModal</button>
-    {showModal && (
-    <Modal title="Вы уверены?" onClick={toggleModal}/>
-    )} */}
-
 
       {/* //TODO поменять на нормальный лоадер */}
-     {/* <Notification /> */}
+
+      {/* <Notification /> */}
+
+      {/* <Header /> */}
 <Layout>
-      {/* <Header isLogged={true}/> */}
-      <Suspense fallback={<p>Loading...</p>}>
-        {/* <Switch>
-          <Route exact path="/register" component={AuthForm} />
-          <Route exact path="/login" component={AuthForm} />
-          <Route exact path="/" component={AuthForm} />
+<Suspense fallback={<p>Loading...</p>}>
+        <Switch>
+          <PublicRoute exact path="/" component={AuthForm} />
+          <PublicRoute exact path="/register" component={AuthForm} />
+          <PublicRoute exact path="/login" component={AuthForm} />
+          {/* <Route exact path="/register" component={AuthForm} /> */}
+          {/* <Route exact path="/login" component={AuthForm} /> */}
+          {/* <Route exact path="/" component={AuthForm} /> */}
+          
           <Redirect to="/" />
-        </Switch> */}
+        </Switch>
       </Suspense>
 </Layout>
+
     </>
   );
 }
 
 export default App;
+

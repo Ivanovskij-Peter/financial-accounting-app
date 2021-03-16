@@ -2,7 +2,7 @@
 @import "../../sass/base/mixin";
 
 .mainTheme {
-  // position: absolute;
+  position: absolute;
   content: "";
 
   top: 51px;
@@ -36,7 +36,7 @@ background-repeat: no-repeat;
 .unloggedTheme {
   position: relative;
   background: transparent;
-  height: 100vh;
+  min-height: 780px;
 
   background-image: url("../../images/bg-kapusta-mobile.png"),
     url("../../images/bg-kapusta-mobile-up.png"),
@@ -48,6 +48,7 @@ background-repeat: no-repeat;
   z-index: 0;
 
   @include for-size(tablet) {
+    min-height: 920px;
     background-image: url("../../images/bg-kapusta-tablet.png"),
       url("../../images/kapusta.png"), url("../../images/kapustaup.png");
     background-repeat: no-repeat, no-repeat, no-repeat;
@@ -56,6 +57,7 @@ background-repeat: no-repeat;
     background-size: auto, 306px 78px, auto;
   }
   @include for-size(desktop) {
+    min-height: 780px;
     background-position: bottom 50px left 230px, top 308px left 230px,
       top 28px left 10px;
     background-size: auto, 377px 120px, 100% auto;
