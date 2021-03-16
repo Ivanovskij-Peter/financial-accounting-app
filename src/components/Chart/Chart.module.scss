@@ -4,10 +4,15 @@
 .chart {
     background-color: #ffffff;
     height: 422px;
+    width:1060px;
     padding-top: 20px;
     padding-bottom: 20px;
     padding-left: 151px;
     padding-right: 151px;
     box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
 border-radius: 30px;
+}
+
+.bar{
+    background-color: blue;
 }
