@@ -27,6 +27,26 @@ const categoriesArr = [
     total: 888,
     name: "спорт, хобби",
   },
+  {
+    total: 140,
+    name: "прочее",
+  },
+  {
+    total: 8,
+    name: "транспорт",
+  },
+  {
+    total: 18,
+    name: "техника",
+  },
+  {
+    total: 188,
+    name: "коммуналка, связь",
+  },
+  {
+    total: 1268,
+    name: "образование",
+  },
 ];
 
 const ReportsSection = () => {

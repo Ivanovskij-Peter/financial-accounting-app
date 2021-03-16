@@ -71,6 +71,10 @@
   width: auto;
   height: 106px;
   text-align: center;
+  margin-bottom: 40px;
+  @include for-size(tablet) {
+    margin-left: 10px;
+  }
 }
 .reportSection {
   padding-left: auto;
