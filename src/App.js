@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 // import Loader from "react-loader-spinner";
-import Loader from "./components/shared/Loader/Loader"
+
 // import { CSSTransition } from "react-transition-group";
 
 // import Notification from "./components/Notification/Notification";
@@ -12,6 +12,9 @@ import AuthForm from "./components/AuthForm";
 
 import Header from "./components/header";
 import PublicRoute from "./components/PublicRoute";
+import Loader from "./components/shared/Loader/Loader";
+import Chart from "./components/Chart";
+
 
 
 function App() {
@@ -42,8 +45,8 @@ function App() {
 
 
       {/* //TODO поменять на нормальный лоадер */}
-<Loader/>
-{/* <Chart/> */}
+{/* <Loader/> */}
+<Chart/>
 
       {/* <Notification /> */}
 
