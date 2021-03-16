@@ -6,9 +6,12 @@ import styles from './Layout.module.scss';
 const Layout = ({ children }) => (
   <>
     <Header />
-    <div className={styles.primaryTheme}> 
+    <div className={styles.mainTheme}>
+      {/* <div className={styles.unloggedTheme}></div> */}
+      <div className={styles.loggedTheme}></div>
     {children}
     </div>
+    
   </>
 );
 
