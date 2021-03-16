@@ -2,6 +2,8 @@ import { Suspense } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 import AuthForm from "./components/AuthForm";
+import CurrentPeriod from "./components/CurrentPeriod/CurrentPeriod"
+
 
 
 // import Modal from './components/shared/Modal/Modal';
@@ -33,6 +35,7 @@ function App() {
     <Modal title="Вы уверены?" onClick={toggleModal}/>
     )} */}
 
+<CurrentPeriod/>
 
       {/* //TODO поменять на нормальный лоадер */}
 
