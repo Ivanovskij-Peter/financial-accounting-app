@@ -89,7 +89,6 @@
 
     & thead {
       width: 100%;
-      
 
       & td {
         font-weight: bold;
@@ -173,6 +172,13 @@
 
     background-color: transparent;
 
+    @include for-size(desktop) {
+      &:hover {
+        transform: scale(1.5);
+        fill: $accent-color;
+      }
+    }
+
     &:focus {
       transform: scale(1.5);
       fill: $accent-color;
@@ -195,4 +201,7 @@
 }
 
 @include for-size(desktop) {
+  .incomesTable {
+    width: 760px;
+  }
 }
