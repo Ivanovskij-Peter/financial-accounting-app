@@ -6,9 +6,10 @@ import { Suspense } from "react";
 import { Switch } from "react-router-dom";
 import AuthForm from "./components/AuthForm";
 
+import Layout from './components/Layout/Layout';
 // import Modal from './components/shared/Modal/Modal';
 
-import Header from "./components/header";
+// import Header from "./components/header";
 import PublicRoute from "./components/PublicRoute";
 
 function App() {
@@ -27,21 +28,28 @@ function App() {
   //   setShowModal(!showModal)
   // }
 
-  // ///////////////////////
+// Modal methods use this in your component methods!! //
+//   const [ showModal, setShowModal ] = useState(false)
+// const toggleModal = () => {
+//   setShowModal(!showModal)
+// }
+
+ // Use this in your component return!! //
+    /* <button type='button' onClick={toggleModal}>OpenModal</button>
+    {showModal && (
+    <Modal title="Вы уверены?" onClick={toggleModal}/>
+  )} */
 
   return (
     <>
-      {/* <button type='button' onClick={toggleModal}>OpenModal</button>
-    {showModal && (
-    <Modal title="Вы уверены?" onClick={toggleModal}/>
-    )} */}
 
       {/* //TODO поменять на нормальный лоадер */}
       {/* 
       <Notification /> */}
 
-      <Header />
-      <Suspense fallback={<p>Loading...</p>}>
+      {/* <Header /> */}
+<Layout>
+<Suspense fallback={<p>Loading...</p>}>
         <Switch>
           <PublicRoute exact path="/" component={AuthForm} />
           <PublicRoute exact path="/register" component={AuthForm} />
@@ -50,41 +58,14 @@ function App() {
           {/* <Route exact path="/login" component={AuthForm} /> */}
           {/* <Route exact path="/" component={AuthForm} /> */}
           
-          <Redirect to="/" />
+          {/* <Redirect to="/" /> */}
         </Switch>
       </Suspense>
+</Layout>
+
     </>
   );
 }
 
 export default App;
 
-// import React, { Component } from 'react';
-
-// class App extends Component {
-
-//     state = {
-//       showModal: false,
-//     }
-
-//     toggleModal = () => {
-//       this.setState(state => ({showModal: !state.showModal}))
-//     }
-
-//     render() {
-//       const {showModal} = this.state;
-//       return(
-//         <div>
-//           <button type='button' onClick={this.toggleModal}>Exit</button>
-
-//           {showModal && (
-//           <Modal onClick={this.toggleModal}>
-//             Вы действительно хотите выйти?
-//           </Modal>
-//           )}
-
-//         </div>
-//       )
-//     }
-//   }
-//   export default App;
