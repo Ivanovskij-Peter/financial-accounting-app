@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 
 import setDate from "../../redux/calendar/calendarAction";
 
-import style from "./calendar.module.scss";
-
+import styles from "./calendar.module.scss";
+import sprite from "../../images/sprite.svg";
 import "react-datepicker/dist/react-datepicker.css";
 
 class Calendar extends Component {
@@ -32,12 +32,17 @@ class Calendar extends Component {
 
   render() {
     return (
-      <DatePicker
-        className={style.calendar}
-        dateFormat="dd.MM.yyyy"
-        selected={this.state.date}
-        onChange={(date) => this.handleChange(date)}
-      />
+      <div className={styles.calendarWrapper}>
+        <svg width="20px" height="20px">
+          <use href={sprite + "#calendar"} />
+        </svg>
+        <DatePicker
+          className={styles.calendar}
+          dateFormat="dd.MM.yyyy"
+          selected={this.state.date}
+          onChange={(date) => this.handleChange(date)}
+        />
+      </div>
     );
   }
 }
@@ -45,9 +50,5 @@ class Calendar extends Component {
 const mapDispatchToProps = {
   setDate,
 };
-
-// const mapStateToProps = state => ({
-//     date: state.date,
-//   });
 
 export default connect(null, mapDispatchToProps)(Calendar);

@@ -1,12 +1,32 @@
+@import "../../sass/base/colors";
+@import "../../sass/base/mixin";
+
+.calendarWrapper {
+  width: 170px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: transparent;
+
+  transition: all 250ms linear;
+
+  &:hover,
+  &:focus {
+    fill: $accent-color;
+    transform: scale(1.2);
+  }
+}
+
 .calendar {
-  color: rgba(33, 33, 33, 1);
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 1.22;
-  font-family: Verdana, sans-serif;
+  color: #52555f;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
   border: none;
-  width: 138px;
-  height: 20px;
   padding: 0;
-  margin-bottom: 30px;
+
+  background-color: transparent;
 }
