@@ -2,6 +2,11 @@
 @import "../../sass/base/mixin";
 
 .Auth {
+  position: absolute;
+  top: 450px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
   display: flex;
   flex-direction: column;
 
@@ -120,5 +125,9 @@
   &__button--enter {
     filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
     border: 0;
+  }
+  @include for-size(desktop) {
+    top: 390px;
+    right: -35%;
   }
 }
