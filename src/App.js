@@ -3,7 +3,7 @@ import { Suspense } from "react";
 
 // import Notification from "./components/Notification/Notification";
 // import notificationStyles from "./components/Notification/notification.module.scss";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import AuthForm from "./components/AuthForm";
 
 import Layout from './components/Layout/Layout';
@@ -11,7 +11,6 @@ import Layout from './components/Layout/Layout';
 
 // import Header from "./components/header";
 import PublicRoute from "./components/PublicRoute";
-
 
 function App() {
   //TODO переделать мапинг раутов с учётом приватных и публичных раутов
@@ -23,6 +22,11 @@ function App() {
   //   );
   // });
 
+  // Modal test!!! /////////////
+  //   const [ showModal, setShowModal ] = useState(false)
+  // const toggleModal = () => {
+  //   setShowModal(!showModal)
+  // }
 
 // Modal methods use this in your component methods!! //
 //   const [ showModal, setShowModal ] = useState(false)
@@ -40,8 +44,8 @@ function App() {
     <>
 
       {/* //TODO поменять на нормальный лоадер */}
-
-      {/* <Notification /> */}
+      {/* 
+      <Notification /> */}
 
       {/* <Header /> */}
 <Layout>
@@ -54,7 +58,7 @@ function App() {
           {/* <Route exact path="/login" component={AuthForm} /> */}
           {/* <Route exact path="/" component={AuthForm} /> */}
           
-          <Redirect to="/" />
+          {/* <Redirect to="/" /> */}
         </Switch>
       </Suspense>
 </Layout>

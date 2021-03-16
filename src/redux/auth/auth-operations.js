@@ -18,8 +18,6 @@ const register = (credentials) => async (dispatch) => {
   dispatch(authActions.registerRequest());
   try {
     const response = await axios.post("/auth/register", credentials);
-    // const history = useHistory();
-    // history.push("/login");
     dispatch(authActions.registerSuccess(response.data));
   } catch (error) {
     dispatch(authActions.registerError(error.message));
