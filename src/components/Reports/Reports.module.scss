@@ -1,3 +1,5 @@
+@import "../../sass/base/_mixin";
+
 .arrowBtnRight {
   display: block;
   width: 5px;
@@ -34,4 +36,43 @@
   color: black;
   height: 20px;
   width: 96px;
+}
+.categoryListItem:hover,
+.categoryListItem:focus {
+  fill: #ff751d;
+}
+.circle {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  background-color: transparent;
+  top: 30%;
+  left: 20%;
+}
+.circle:hover,
+.circle:focus {
+  border-radius: 20px;
+  background-color: #ffdac0;
+  opacity: 0.5;
+}
+.categoryList {
+  display: flex;
+  flex-wrap: wrap;
+  width: 290px;
+  justify-content: space-between;
+  margin: 0 auto;
+  @include for-size(tablet) {
+    width: 613px;
+  }
+}
+.categoryListItem {
+  position: relative;
+  display: block;
+  width: auto;
+  height: 106px;
+  text-align: center;
+}
+.reportSection {
+  padding-left: auto;
+  padding-right: auto;
 }

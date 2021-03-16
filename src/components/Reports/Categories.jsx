@@ -1,28 +1,39 @@
 import React from "react";
 
 import sprite from "../../images/sprite.svg";
+import style from "./Reports.module.scss";
 
 //expected answer arr = [{category:total summ}, {category:total summ}, {...}, ....]
 
 const imgObject = {
-  продукты: `${sprite}#products.svg`,
-  алкоголь: `${sprite}#cocktail.svg`,
-  развлечение: `${sprite}#kite.svg`,
-  здоровье: `${sprite}#hands-holding-heart.svg`,
-  транспорт: `${sprite}#car.svg`,
-  "все для дома": `${sprite}#couch.svg`,
-  техника: `${sprite}#tools.svg`,
-  "коммуналка, связь": `${sprite}#invoice.svg`,
-  "спорт, хобби": `${sprite}#clay.svg`,
-  образование: `${sprite}#book.svg`,
-  прочее: `${sprite}#ufo.svg`,
+  продукты: `${sprite}#products`,
+  алкоголь: `${sprite}#cocktail`,
+  развлечение: `${sprite}#kite`,
+  здоровье: `${sprite}#hands-holding-heart`,
+  транспорт: `${sprite}#car`,
+  "все для дома": `${sprite}#couch`,
+  техника: `${sprite}#tools`,
+  "коммуналка, связь": `${sprite}#invoice`,
+  "спорт, хобби": `${sprite}#clay`,
+  образование: `${sprite}#book`,
+  прочее: `${sprite}#ufo`,
 };
 
-const CategoriesList = ({ objProduct }) => {
+const CategoriesList = ({ categoriesArr }) => {
   return (
-    <li>
-      <p></p>
-      <img src={imgObject.objProduct} alt="" />
-    </li>
+    <ul className={style.categoryList}>
+      {categoriesArr.map(({ total, name }) => (
+        <li className={style.categoryListItem}>
+          <p>{total}</p>
+          <svg className={style.categoryIcon} height="63" width="56">
+            <use href={imgObject[name]}></use>
+          </svg>
+          <div className={style.circle}></div>
+          <p>{name}</p>
+        </li>
+      ))}
+    </ul>
   );
 };
+
+export default CategoriesList;

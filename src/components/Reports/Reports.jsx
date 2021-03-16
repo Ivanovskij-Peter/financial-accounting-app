@@ -1,5 +1,33 @@
 import React, { useState } from "react";
-import style from "./Reports.module.css";
+import CategoriesList from "./Categories.jsx";
+import style from "./Reports.module.scss";
+
+const categoriesArr = [
+  {
+    total: 140,
+    name: "продукты",
+  },
+  {
+    total: 8,
+    name: "алкоголь",
+  },
+  {
+    total: 18,
+    name: "развлечение",
+  },
+  {
+    total: 188,
+    name: "здоровье",
+  },
+  {
+    total: 1268,
+    name: "все для дома",
+  },
+  {
+    total: 888,
+    name: "спорт, хобби",
+  },
+];
 
 const ReportsSection = () => {
   const [reportName, setReportName] = useState("РАСХОДЫ");
@@ -10,7 +38,7 @@ const ReportsSection = () => {
       : setReportName("РАСХОДЫ");
   };
   return (
-    <section>
+    <section className="container">
       <div className={style.reportNav}>
         <button
           onClick={onChange}
@@ -24,6 +52,7 @@ const ReportsSection = () => {
           className={style.arrowBtnRight}
         ></button>
       </div>
+      <CategoriesList categoriesArr={categoriesArr} />
     </section>
   );
 };
