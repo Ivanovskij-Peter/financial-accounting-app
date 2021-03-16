@@ -172,13 +172,6 @@
 
     background-color: transparent;
 
-    @include for-size(desktop) {
-      &:hover {
-        transform: scale(1.5);
-        fill: $accent-color;
-      }
-    }
-
     &:focus {
       transform: scale(1.5);
       fill: $accent-color;
@@ -200,8 +193,13 @@
   }
 }
 
-@include for-size(desktop) {
+@media (min-width: 1200px) {
   .incomesTable {
     width: 760px;
+  }
+
+  .tdButton > button:hover {
+    transform: scale(1.5);
+    fill: $accent-color;
   }
 }
