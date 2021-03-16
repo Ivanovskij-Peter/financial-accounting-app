@@ -23,7 +23,7 @@ const CategoriesList = ({ categoriesArr }) => {
   return (
     <ul className={style.categoryList}>
       {categoriesArr.map(({ total, name }) => (
-        <li className={style.categoryListItem}>
+        <li key={name} className={style.categoryListItem}>
           <p>{total}</p>
           <svg className={style.categoryIcon} height="63" width="56">
             <use href={imgObject[name]}></use>

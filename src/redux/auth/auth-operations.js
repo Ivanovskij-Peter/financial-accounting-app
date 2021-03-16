@@ -65,6 +65,7 @@ const logIn = (credentials) => async (dispatch) => {
   try {
     const response = await axios.post("/auth/login", credentials);
     token.set(response.data.token);
+    console.log("response.data", response.data);
     dispatch(authActions.loginSuccess(response.data));
   } catch (error) {
     dispatch(authActions.loginError(error.message));

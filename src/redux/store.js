@@ -19,6 +19,7 @@ import {
 import { authReducer } from "./auth";
 import errorReducer from "./error/error-reducer";
 import balance from "./transaction/transaction-reducer";
+import reportsReducer from "./reports/reports-reducer";
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -39,6 +40,7 @@ const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
   balance,
   error: errorReducer,
+  reports: reportsReducer,
 });
 
 const store = configureStore({

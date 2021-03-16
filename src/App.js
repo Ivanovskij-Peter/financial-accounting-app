@@ -5,8 +5,9 @@ import { Suspense } from "react";
 // import notificationStyles from "./components/Notification/notification.module.scss";
 import { Switch } from "react-router-dom";
 import AuthForm from "./components/AuthForm";
-import ReportsSection from "./components/Reports/Reports.jsx";
+// import ReportsSection from "./components/Reports/Reports.jsx";
 import Header from "./components/header";
+import Reports from "./components/Reports";
 
 import Layout from "./components/Layout/Layout";
 // import Modal from './components/shared/Modal/Modal';
@@ -43,7 +44,7 @@ function App() {
 
   return (
     <>
-      <ReportsSection />
+      {/* <ReportsSection /> */}
       {/* //TODO поменять на нормальный лоадер */}
       {/* 
       <Notification /> */}
@@ -58,7 +59,7 @@ function App() {
             {/* <Route exact path="/register" component={AuthForm} /> */}
             {/* <Route exact path="/login" component={AuthForm} /> */}
             {/* <Route exact path="/" component={AuthForm} /> */}
-
+            <PublicRoute exact path="/reports" component={Reports} />
             {/* <Redirect to="/" /> */}
           </Switch>
         </Suspense>
