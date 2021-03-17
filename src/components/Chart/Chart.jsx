@@ -3,6 +3,12 @@ import { Bar } from "react-chartjs-2";
 import styles from "./Chart.module.scss";
 import "chartjs-plugin-datalabels";
 
+
+// 
+// export default function Chart ({categoryFromQueryString}){
+
+//}
+
 let chartData = [400, 40, 80, 100, 300];
 
 class Chart extends Component {
@@ -33,7 +39,7 @@ class Chart extends Component {
             legend: {
               display: false,
             },
-            //* Почему не работает то, что внутри объекта вложенного в yAxes? Нужно убрать сетку по вертикали
+            
             scales: {
               xAxes: [
                 {
