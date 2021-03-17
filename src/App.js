@@ -5,11 +5,11 @@ import AuthForm from "./components/AuthForm";
 
 import CurrentPeriod from "./components/CurrentPeriod/CurrentPeriod"
 import Layout from './components/Layout/Layout';
-import Layout from "./components/Layout/Layout";
 import HomePage from "./components/pages/HomePage";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 import Loaders from "./components/shared/Loader/Loader";
+import Chart from "./components/Chart";
 import { authOperations } from "./redux/auth";
 
 // import { CSSTransition } from "react-transition-group";
@@ -54,6 +54,8 @@ function App() {
     // {/*
     // <Notification /> */}
     <>
+    <Chart/>
+    <>
       <Suspense fallback={<Loaders />}>
         <Layout>
           <Switch>
@@ -79,6 +81,7 @@ function App() {
           </Switch>
         </Layout>
       </Suspense>
+    </>
     </>
   );
 }
