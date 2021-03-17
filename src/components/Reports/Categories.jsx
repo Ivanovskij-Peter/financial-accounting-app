@@ -24,16 +24,21 @@ const imgObject = {
 const CategoriesList = ({ categoriesArr }) => {
   return (
     <ul className={style.categoryList}>
-      {categoriesArr.map(({ total, name }) => (
-        <li key={name} className={style.categoryListItem}>
-          <p>{total}</p>
-          <svg className={style.categoryIcon} height="63" width="56">
-            <use href={imgObject[name]}></use>
-          </svg>
-          <div className={style.circle}></div>
-          <p>{name}</p>
-        </li>
-      ))}
+      {categoriesArr.map(({ total, name }) => {
+        const currencyTotal = total
+          .toFixed(2)
+          .replace(/\d(?=(\d{3})+\.)/g, "$& ");
+        return (
+          <li key={name} className={style.categoryListItem}>
+            <p>{currencyTotal}</p>
+            <svg className={style.categoryIcon} height="63" width="56">
+              <use href={imgObject[name]}></use>
+            </svg>
+            <div className={style.circle}></div>
+            <p>{name}</p>
+          </li>
+        );
+      })}
     </ul>
   );
 };
