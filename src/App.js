@@ -54,7 +54,6 @@ function App() {
       {/* 
       <Notification /> */}
 
-      {/* <Header /> */}
       <Layout>
         <Suspense fallback={<Loaders />}>
           <Switch>
