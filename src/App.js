@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 // import Notification from "./components/Notification/Notification";
 // import notificationStyles from "./components/Notification/notification.module.scss";
-import { Switch } from "react-router-dom";
+import { Switch, Redirect } from "react-router-dom";
 import AuthForm from "./components/AuthForm";
 
 import Layout from './components/Layout/Layout';
@@ -14,6 +14,8 @@ import Layout from './components/Layout/Layout';
 import PublicRoute from "./components/PublicRoute";
 import Loaders from "./components/shared/Loader/Loader";
 import { authOperations } from "./redux/auth";
+
+import IncomesList from './components/IncomesList';
 
 function App() {
   const dispatch = useDispatch();
