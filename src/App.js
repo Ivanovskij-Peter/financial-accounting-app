@@ -59,7 +59,7 @@ function App() {
       <Suspense fallback={<Loaders />}>
         <Layout>
           <Switch>
-            <PublicRoute exact path="/" component={AddIncomeCostForm} />
+            <PublicRoute exact path="/" component={AuthForm} />
             <PublicRoute
               exact
               path="/register"
