@@ -1,3 +1,4 @@
-const getDate = (state) => state.date;
+const getQueryDate = (state) => state.date;
+const getUserReports = (state) => state.reports;
 
-export default getDate;
+export default { getQueryDate, getUserReports };

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import reportOperations from "../../redux/reports/reports-operations";
-import getReports from "../../redux/reports/reports-selectors";
+import getInfo from "../../redux/reports/reports-selectors.js";
 import CategoriesList from "./Categories.jsx";
 import style from "./Reports.module.scss";
 
@@ -55,22 +55,23 @@ const categoriesArr = [
 const Reports = () => {
   const [reportName, setReportName] = useState("РАСХОДЫ");
   const dispatch = useDispatch();
-  // const date = useSelector(getReports);
+  // const date = useSelector(getInfo.getQueryDate);
+  const userReports = useSelector(getInfo.getUserReports);
+  console.log("info", userReports);
   const date = "03-12-2021";
 
   useEffect(() => {
     dispatch(reportOperations(date));
-  }, [date]);
+  }, []);
 
   const onChange = () => {
     reportName === "РАСХОДЫ"
       ? setReportName("ДОХОДЫ")
       : setReportName("РАСХОДЫ");
   };
-  const goToReports = () => {};
+
   return (
     <section className="container">
-      <button onClick={goToReports}>Перейти к отчетам</button>
       <div className={style.reportNav}>
         <button
           onClick={onChange}
@@ -84,7 +85,17 @@ const Reports = () => {
           className={style.arrowBtnRight}
         ></button>
       </div>
-      <CategoriesList categoriesArr={categoriesArr} />
+      {userReports.hasOwnProperty("key") ? (
+        <CategoriesList
+          categoriesArr={
+            reportName === "РАСХОДЫ"
+              ? userReports.costsArr
+              : userReports.incomesArr
+          }
+        />
+      ) : (
+        ""
+      )}
     </section>
   );
 };

@@ -7,6 +7,7 @@ import HomePage from "./components/pages/HomePage";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 import Loaders from "./components/shared/Loader/Loader";
+import Reports from "./components/Reports";
 import { authOperations } from "./redux/auth";
 
 // import { CSSTransition } from "react-transition-group";
@@ -69,8 +70,14 @@ function App() {
             />
             <PrivateRoute
               exact
-              path="/"
+              path="/home"
               component={HomePage}
+              redirectTo="/login"
+            />
+            <PrivateRoute
+              exact
+              path="/reports"
+              component={Reports}
               redirectTo="/login"
             />
           </Switch>
