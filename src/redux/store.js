@@ -17,8 +17,8 @@ import {
 } from "redux-persist";
 import { authReducer } from "./auth";
 import errorReducer from "./error/error-reducer";
-import balance from "./transaction/transaction-reducer";
 import reportsReducer from "./reports/reports-reducer";
+import balanceReducer from "./transaction/transaction-reducer";
 import dateReducer from "./calendar/calendarReducer";
 
 const middleware = [
@@ -38,7 +38,7 @@ const authPersistConfig = {
 
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
-  balance,
+  balance: balanceReducer,
   date: dateReducer,
   error: errorReducer,
   reports: reportsReducer,

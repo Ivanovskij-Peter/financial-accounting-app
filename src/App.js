@@ -12,6 +12,8 @@ import Loaders from "./components/shared/Loader/Loader";
 import Reports from "./components/Reports";
 import { authOperations } from "./redux/auth";
 
+import AddIncomeCostForm from "./components/AddIncomeCostForm";
+
 // import { CSSTransition } from "react-transition-group";
 // import Notification from "./components/Notification/Notification";
 // import notificationStyles from "./components/Notification/notification.module.scss";
@@ -51,31 +53,13 @@ function App() {
   )} */
 
   return (
-    // {/*
-    // <Notification /> */}
     <>
       <Suspense fallback={<Loaders />}>
         <Layout>
           <Switch>
-            <PublicRoute exact path="/" component={AuthForm} />
-            <PublicRoute
-              exact
-              path="/register"
-              component={AuthForm}
-              redirectTo=""
-            />
-            <PublicRoute
-              exact
-              path="/login"
-              component={AuthForm}
-              redirectTo=""
-            />
-            <PrivateRoute
-              exact
-              path="/home"
-              component={HomePage}
-              redirectTo="/login"
-            />
+            <PublicRoute exact path="/register" component={AuthForm} />
+            <PublicRoute exact path="/login" component={AuthForm} />
+            <PrivateRoute exact path="/" component={HomePage} redirectTo="" />
             <PrivateRoute
               exact
               path="/reports"

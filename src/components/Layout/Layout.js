@@ -1,16 +1,13 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
-
+import { authSelectors } from "../../redux/auth/index";
 import Header from "../header";
-import isAuthenticated from "../../redux/auth/auth-selectors";
 
 import styles from "./Layout.module.scss";
+import { useSelector } from "react-redux";
 
 const Layout = ({ children }) => {
-  const isUserLogged = useSelector(isAuthenticated.getIsAuthenticated);
-  console.log(isUserLogged);
-
+  const isUserLogged = useSelector(authSelectors.getIsAuthenticated);
   return (
     <>
       <Header />
