@@ -35,12 +35,6 @@ function App() {
   //   );
   // });
 
-  // Modal test!!! /////////////
-  //   const [ showModal, setShowModal ] = useState(false)
-  // const toggleModal = () => {
-  //   setShowModal(!showModal)
-  // }
-
 // Modal methods use this in your component methods!! //
 //   const [ showModal, setShowModal ] = useState(false)
 // const toggleModal = () => {
@@ -60,7 +54,8 @@ function App() {
       {/* 
       <Notification /> */}
 
-      <Header />
+      {/* <Header /> */}
+      <Layout>
       <Suspense fallback={<Loaders />}>
         <Switch>
           <PublicRoute exact path="/" component={AuthForm} />
