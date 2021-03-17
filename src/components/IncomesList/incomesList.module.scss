@@ -1,0 +1,225 @@
+@import "../../sass/base/colors";
+@import "../../sass/base/mixin";
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid $body-color;
+
+  width: 282px;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+}
+
+.secondary {
+  font-weight: normal;
+  font-size: 8px;
+  line-height: 9px;
+  letter-spacing: 0.04em;
+
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
+}
+
+.amountCost {
+  color: #e7192e;
+
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+}
+
+.amountIncome {
+  color: #407946;
+
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+}
+
+.right {
+  display: flex;
+  flex-direction: row;
+
+  & button {
+    display: flex;
+    align-items: center;
+
+    border: none;
+    outline: none;
+    transition: all 250ms linear;
+
+    background-color: transparent;
+  }
+
+  & button:focus {
+    transform: scale(1.5);
+    fill: $accent-color;
+  }
+
+  & span:not(:last-child) {
+    margin-right: 20px;
+  }
+}
+
+@include for-size(tablet) {
+  .incomesTable {
+    width: 605px;
+    border-spacing: 0;
+
+    td:first-child {
+      padding-left: 21px;
+    }
+
+    & thead {
+      width: 100%;
+
+      & td {
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 0.02em;
+        color: #000000;
+
+        background-color: $primary-text-color;
+
+        &:first-child {
+          border-top-left-radius: 20px;
+        }
+
+        &:last-child {
+          border-top-right-radius: 20px;
+        }
+      }
+    }
+
+    & tbody td {
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 14px;
+      letter-spacing: 0.04em;
+      color: #52555f;
+
+      border-bottom: 2px solid $primary-text-color;
+
+      &:first-child {
+        border-left: 2px solid $primary-text-color;
+      }
+
+      &.rightCol {
+        text-align: center;
+      }
+
+      &.amountCost {
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 0.04em;
+        color: #e7192e;
+        text-align: right;
+      }
+
+      &.amountIncome {
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 0.04em;
+        color: #407946;
+        text-align: right;
+      }
+    }
+  }
+
+  .centerCol {
+    text-align: center;
+  }
+
+  .leftCol {
+    text-align: left;
+  }
+
+  .rightCol {
+    text-align: right;
+  }
+
+  td > button {
+    display: flex;
+    align-items: center;
+
+    border: none;
+    outline: none;
+    transition: all 250ms linear;
+
+    background-color: transparent;
+
+    &:focus {
+      transform: scale(1.5);
+      fill: $accent-color;
+    }
+  }
+
+  .tdButton {
+    width: 60px;
+    display: flex;
+    justify-content: center;
+  }
+
+  td {
+    height: 38px;
+  }
+
+  .clean {
+    width: 60px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .incomesTable {
+    display: inline-block;
+    width: 760px;
+
+    & td {
+      min-width: 150px;
+    }
+
+    & tbody {
+      max-height: 382px;
+      display: inline-block;
+
+      overflow-y: scroll;
+
+      &::-webkit-scrollbar {
+        width: 6px;
+        background-color: rgba(26, 24, 47, 0.15);
+        border-radius: 5px;
+        height: 200px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: $accent-color;
+        border-radius: 2px;
+      }
+    }
+  }
+
+  .tdButton > button:hover {
+    transform: scale(1.2);
+    fill: $accent-color;
+  }
+}

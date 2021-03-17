@@ -7,24 +7,24 @@ const initialUserState = { name: null, email: null };
 const user = createReducer(initialUserState, {
   [authActions.registerSuccess]: (_, { payload }) => payload,
   [authActions.loginSuccess]: (_, { payload }) => payload,
-  [authActions.logOutSucces]: () => initialUserState,
-  [authActions.getCurrentUserSucces]: (_, { payload }) => payload,
+  [authActions.logOutSuccess]: () => initialUserState,
+  [authActions.getCurrentUserSuccess]: (_, { payload }) => payload,
 });
 
 const token = createReducer(null, {
   [authActions.registerSuccess]: (_, { payload }) => payload.token,
   [authActions.loginSuccess]: (_, { payload }) => payload.token,
-  [authActions.logOutSucces]: () => null,
+  [authActions.logOutSuccess]: () => null,
 });
 
 const isAuthenticated = createReducer(false, {
   [authActions.registerSuccess]: () => true,
   [authActions.loginSuccess]: () => true,
-  [authActions.getCurrentUserSucces]: () => true,
+  [authActions.getCurrentUserSuccess]: () => true,
   [authActions.registerError]: () => false,
   [authActions.loginError]: () => false,
   [authActions.getCurrentUserError]: () => false,
-  [authActions.logOutSucces]: () => false,
+  [authActions.logOutSuccess]: () => false,
 });
 
 export default combineReducers({

@@ -1,23 +1,35 @@
-import { Suspense } from "react";
-// import Loader from "react-loader-spinner";
-
-// import { CSSTransition } from "react-transition-group";
-
-// import Notification from "./components/Notification/Notification";
-// import notificationStyles from "./components/Notification/notification.module.scss";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Suspense, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Switch } from "react-router-dom";
 import AuthForm from "./components/AuthForm";
 
+import CurrentPeriod from "./components/CurrentPeriod/CurrentPeriod"
+import Layout from './components/Layout/Layout';
+import Layout from "./components/Layout/Layout";
+import HomePage from "./components/pages/HomePage";
+import PrivateRoute from "./components/PrivateRoute";
+import PublicRoute from "./components/PublicRoute";
+import Loaders from "./components/shared/Loader/Loader";
+import { authOperations } from "./redux/auth";
+
+// import { CSSTransition } from "react-transition-group";
+// import Notification from "./components/Notification/Notification";
+// import notificationStyles from "./components/Notification/notification.module.scss";
 // import Modal from './components/shared/Modal/Modal';
 
-import Header from "./components/header";
-import PublicRoute from "./components/PublicRoute";
-import Loader from "./components/shared/Loader/Loader";
-import Chart from "./components/Chart";
-
-
+// import IncomesList from "./components/IncomesList";
 
 function App() {
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.auth.token);
+  const name = useSelector((state) => state.auth.user.name);
+  useEffect(() => {
+    if (!name) {
+      dispatch(authOperations.getCurrrentUser());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [token]);
+
   //TODO переделать мапинг раутов с учётом приватных и публичных раутов
   // const routesMap = routes.map(route => {
   //   return route.privated ? (
@@ -27,75 +39,48 @@ function App() {
   //   );
   // });
 
-
-// Modal test!!! /////////////
-//   const [ showModal, setShowModal ] = useState(false)
-// const toggleModal = () => {
-//   setShowModal(!showModal)
-// }
-
-// ///////////////////////
-
-  return (
-    <>
-    {/* <button type='button' onClick={toggleModal}>OpenModal</button>
+  // Modal methods use this in your component methods!! //
+  //   const [ showModal, setShowModal ] = useState(false)
+  // const toggleModal = () => {
+  //   setShowModal(!showModal)
+  // }
+  // Use this in your component return!! //
+  /* <button type='button' onClick={toggleModal}>OpenModal</button>
     {showModal && (
     <Modal title="Вы уверены?" onClick={toggleModal}/>
-    )} */}
+  )} */
 
-
-      {/* //TODO поменять на нормальный лоадер */}
-{/* <Loader/> */}
-<Chart/>
-
-      {/* <Notification /> */}
-
-      <Header />
-      <Suspense fallback={<p>Loading...</p>}>
-        <Switch>
-          <PublicRoute exact path="/" component={AuthForm} />
-          <PublicRoute exact path="/register" component={AuthForm} />
-          <PublicRoute exact path="/login" component={AuthForm} />
-          {/* <Route exact path="/register" component={AuthForm} /> */}
-          {/* <Route exact path="/login" component={AuthForm} /> */}
-          {/* <Route exact path="/" component={AuthForm} /> */}
-          
-          <Redirect to="/" />
-        </Switch>
+  return (
+    // {/*
+    // <Notification /> */}
+    <>
+      <Suspense fallback={<Loaders />}>
+        <Layout>
+          <Switch>
+            <PublicRoute exact path="/" component={AuthForm} />
+            <PublicRoute
+              exact
+              path="/register"
+              component={AuthForm}
+              redirectTo=""
+            />
+            <PublicRoute
+              exact
+              path="/login"
+              component={AuthForm}
+              redirectTo=""
+            />
+            <PrivateRoute
+              exact
+              path="/"
+              component={HomePage}
+              redirectTo="/login"
+            />
+          </Switch>
+        </Layout>
       </Suspense>
     </>
   );
 }
 
 export default App;
-
-// import React, { Component } from 'react';
-
-// class App extends Component {
-
-//     state = {
-//       showModal: false,
-//     }
-
-//     toggleModal = () => {
-//       this.setState(state => ({showModal: !state.showModal}))
-//     }
-
-//     render() {
-//       const {showModal} = this.state;
-//       return(
-//         <div>
-//           <button type='button' onClick={this.toggleModal}>Exit</button>
-
-//           {showModal && (
-//           <Modal onClick={this.toggleModal}>
-//             Вы действительно хотите выйти?
-//           </Modal>
-//           )}
-
-//         </div>
-//       )
-//     }
-//   }
-//   export default App;
-
