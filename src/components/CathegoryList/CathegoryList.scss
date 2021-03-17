@@ -1,0 +1,41 @@
+@import "../../sass/base/colors";
+@import "../../sass/base/mixin";
+
+.dropdown-menu.show {
+  width: 282px;
+  transform: translate(0, 42px) !important;
+  background: #ffffff;
+  border: 2px solid #f5f6fb;
+  box-sizing: border-box;
+  box-shadow: 0px 3px 4px rgba(170, 178, 197, 0.4);
+  border-radius: 0;
+
+  @include for-size(tablet) {
+    width: 171px;
+  }
+
+  @include for-size(desktop) {
+    width: 188px;
+  }
+}
+.dropdown-item {
+  padding: 9px 0 9px 20px !important;
+  line-height: 14px;
+}
+.dropdown.input-group-append {
+  margin: 0;
+
+  width: 282px !important;
+  height: 44px !important;
+  padding: 0 18px 0 20px !important;
+  border-bottom-right-radius: 16px !important;
+
+  @include for-size(tablet) {
+    border-radius: 0 !important;
+    width: 171px !important;
+  }
+
+  @include for-size(desktop) {
+    width: 188px !important;
+  }
+}
