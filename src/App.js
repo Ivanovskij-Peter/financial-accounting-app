@@ -36,18 +36,11 @@ function App() {
   //   );
   // });
 
-  // Modal test!!! /////////////
-  //   const [ showModal, setShowModal ] = useState(false)
-  // const toggleModal = () => {
-  //   setShowModal(!showModal)
-  // }
-
   // Modal methods use this in your component methods!! //
   //   const [ showModal, setShowModal ] = useState(false)
   // const toggleModal = () => {
   //   setShowModal(!showModal)
   // }
-
   // Use this in your component return!! //
   /* <button type='button' onClick={toggleModal}>OpenModal</button>
     {showModal && (
@@ -58,10 +51,11 @@ function App() {
     // {/*
     // <Notification /> */}
     <>
-      <Suspense fallback={<Loaders />}>
-        <Layout>
+
+      <Layout>
+        <Suspense fallback={<Loaders />}>
           <Switch>
-            {/* <PublicRoute exact path="/" component={AuthForm} /> */}
+            <PublicRoute exact path="/" component={AuthForm} />
             <PublicRoute
               exact
               path="/register"
