@@ -7,15 +7,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { Switch, Redirect } from "react-router-dom";
 import AuthForm from "./components/AuthForm";
 
-import Layout from './components/Layout/Layout';
-// import Modal from './components/shared/Modal/Modal';
+import Layout from "./components/Layout/Layout";
 
 // import Header from "./components/header";
 import PublicRoute from "./components/PublicRoute";
 import Loaders from "./components/shared/Loader/Loader";
 import { authOperations } from "./redux/auth";
 
-import IncomesList from './components/IncomesList';
+import IncomesList from "./components/IncomesList";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,52 +36,49 @@ function App() {
   //   );
   // });
 
-// Modal methods use this in your component methods!! //
-//   const [ showModal, setShowModal ] = useState(false)
-// const toggleModal = () => {
-//   setShowModal(!showModal)
-// }
+  // Modal methods use this in your component methods!! //
+  //   const [ showModal, setShowModal ] = useState(false)
+  // const toggleModal = () => {
+  //   setShowModal(!showModal)
+  // }
 
- // Use this in your component return!! //
-    /* <button type='button' onClick={toggleModal}>OpenModal</button>
+  // Use this in your component return!! //
+  /* <button type='button' onClick={toggleModal}>OpenModal</button>
     {showModal && (
     <Modal title="Вы уверены?" onClick={toggleModal}/>
   )} */
 
   return (
     <>
-
       {/* //TODO поменять на нормальный лоадер */}
       {/* 
       <Notification /> */}
 
       {/* <Header /> */}
       <Layout>
-      <Suspense fallback={<Loaders />}>
-        <Switch>
-          <PublicRoute exact path="/" component={AuthForm} />
-          <PublicRoute
-            exact
-            path="/register"
-            component={AuthForm}
-            redirectTo=""
-          />
-          <PublicRoute
-            exact
-            path="/login"
-            component={AuthForm}
-            redirectTo="/balance"
-          />
-          {/* <Route exact path="/register" component={AuthForm} /> */}
-          {/* <Route exact path="/login" component={AuthForm} /> */}
-          {/* <Route exact path="/" component={AuthForm} /> */}
-        </Switch>
-      </Suspense>
-</Layout>
-
+        <Suspense fallback={<Loaders />}>
+          <Switch>
+            <PublicRoute exact path="/" component={AuthForm} />
+            <PublicRoute
+              exact
+              path="/register"
+              component={AuthForm}
+              redirectTo=""
+            />
+            <PublicRoute
+              exact
+              path="/login"
+              component={AuthForm}
+              redirectTo="/balance"
+            />
+            {/* <Route exact path="/register" component={AuthForm} /> */}
+            {/* <Route exact path="/login" component={AuthForm} /> */}
+            {/* <Route exact path="/" component={AuthForm} /> */}
+          </Switch>
+        </Suspense>
+      </Layout>
     </>
   );
 }
 
 export default App;
-
