@@ -1,18 +1,17 @@
 import React from "react";
 import logo from "../../images/logo.png";
 import "./header.scss";
-
 import UserInfo from "../userInfo/UserInfo";
 import { useSelector } from "react-redux";
 
 function Header() {
-  const token = useSelector((state) => state.auth.user.token);
-  console.log("token:", token);
+  const token = useSelector((state) => state.auth.token);
   return (
     <div className="header">
       <a href="/">
         <img src={logo} alt="logotype" />
       </a>
+
       {token ? <UserInfo userName="User Name" /> : ""}
     </div>
   );

@@ -9,6 +9,8 @@ function UserInfo() {
   const dispatch = useDispatch();
   const name = useSelector((state) => state.auth.user.name);
   const avatar = useSelector((state) => state.auth.user.avatarURL);
+  console.log("avatar:", avatar);
+  console.log("name:", name);
 
   const handleClick = () => {
     dispatch(authOperations.logOut());
