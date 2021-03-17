@@ -1,0 +1,32 @@
+@import "../../sass/base/colors";
+@import "../../sass/base/mixin";
+
+.calendarWrapper {
+  width: 170px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: transparent;
+
+  transition: all 250ms linear;
+
+  &:hover,
+  &:focus {
+    fill: $accent-color;
+    transform: scale(1.2);
+  }
+}
+
+.calendar {
+  color: #52555f;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  border: none;
+  padding: 0;
+
+  background-color: transparent;
+}
