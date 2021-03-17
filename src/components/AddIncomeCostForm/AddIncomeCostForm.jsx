@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import styles from "./addIncomeCostForm.module.scss";
 import sprite from "../../images/sprite.svg";
 
-import Button from "../shared/Button";
+import Button from "../shared/button/Button";
 
 const mobile = window.innerWidth < 768;
 
@@ -81,8 +81,10 @@ class AddIncomeCostForm extends Component {
               </div>
             </div>
             <div className={styles.buttonWrapper}>
-            <Button type="submit">ВВОД</Button>
-            <Button btnType="secondary" type="button">ОЧИСТИТЬ</Button>
+              <Button type="submit">ВВОД</Button>
+              <Button btnType="secondary" type="button">
+                ОЧИСТИТЬ
+              </Button>
             </div>
           </Form>
         </Formik>

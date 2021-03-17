@@ -2,13 +2,16 @@
 @import "../../sass/base/mixin";
 
 .balance {
+  margin-top: 37px;
   text-align: center;
 }
-
+.balance_container {
+  margin-top: 43px;
+}
 .report {
-  margin-top: 37px;
-
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .report_link {
@@ -29,7 +32,6 @@
 }
 
 .balance_title {
-  margin: 43px 0 0 0;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.89;
@@ -37,10 +39,7 @@
 }
 
 .balance_form {
-  margin-top: 6px;
-  display: flex;
-  justify-content: baseline;
-  justify-content: center;
+  padding-top: 6px;
 }
 
 .balance_input {
@@ -70,7 +69,7 @@
   align-items: center;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: #ffffff;
+  color: rgba(82, 85, 95, 0.7);
 }
 .balance_calendar {
   margin: 40px 0 0 0;
@@ -78,23 +77,31 @@
 // ============================================================================
 @include for-size(tablet) {
   .balance {
+    margin-top: 40px;
     display: flex;
     flex-direction: row-reverse;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
+  .balance_container {
+    align-items: center;
+    margin-top: 0px;
   }
 
   .report {
-    margin: 48px 0 0 111px;
+    margin-left: 111px;
   }
 
   .balance_container {
     display: flex;
   }
   .balance_title {
-    margin: 52px 21px 0 0;
+    padding-right: 21px;
   }
 
   .balance_form {
-    margin-top: 40px;
+    padding: 0;
   }
 
   .balance_input {
@@ -118,6 +125,6 @@
 // ============================================================================
 @include for-size(desktop) {
   .report {
-    margin: 48px 0 0 205px;
+    margin: 0 0 0 205px;
   }
 }
