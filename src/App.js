@@ -9,6 +9,8 @@ import PublicRoute from "./components/PublicRoute";
 import Loaders from "./components/shared/Loader/Loader";
 import { authOperations } from "./redux/auth";
 
+import AddIncomeCostForm from "./components/AddIncomeCostForm";
+
 // import { CSSTransition } from "react-transition-group";
 // import Notification from "./components/Notification/Notification";
 // import notificationStyles from "./components/Notification/notification.module.scss";
@@ -54,7 +56,7 @@ function App() {
       <Suspense fallback={<Loaders />}>
         <Layout>
           <Switch>
-            <PublicRoute exact path="/" component={AuthForm} />
+            <PublicRoute exact path="/" component={AddIncomeCostForm} />
             <PublicRoute
               exact
               path="/register"
