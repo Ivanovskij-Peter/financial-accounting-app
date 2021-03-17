@@ -2,7 +2,7 @@ import axios from "axios";
 import authActions from "./auth-actions";
 import api from "../../services/backend.service";
 
-axios.defaults.baseURL = "https://kapusta-srv.herokuapp.com";
+axios.defaults.baseURL = "http://kapusta-srv.herokuapp.com";
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
