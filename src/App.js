@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Switch } from "react-router-dom";
 import AuthForm from "./components/AuthForm";
 
-import CurrentPeriod from "./components/CurrentPeriod/CurrentPeriod";
+// import CurrentPeriod from "./components/CurrentPeriod/CurrentPeriod";
 import Layout from "./components/Layout/Layout";
+
 import HomePage from "./components/pages/HomePage";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
@@ -12,7 +13,7 @@ import Loaders from "./components/shared/Loader/Loader";
 import Reports from "./components/Reports";
 import { authOperations } from "./redux/auth";
 
-import AddIncomeCostForm from "./components/AddIncomeCostForm";
+// import AddIncomeCostForm from "./components/AddIncomeCostForm";
 
 // import { CSSTransition } from "react-transition-group";
 // import Notification from "./components/Notification/Notification";
