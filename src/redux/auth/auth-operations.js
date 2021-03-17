@@ -36,7 +36,9 @@ const logIn = (credentials) => (dispatch) => {
     .login(credentials)
     .then(({ data }) => {
       api.setToken(data.token);
-      dispatch(authActions.loginSuccess(data));
+      const { token, name, email, avatarURL } = data;
+      dispatch(authActions.loginSuccess({ name, email, avatarURL, token }));
+      console.log("data:", data);
     })
     .catch((data) => {
       if (!data.response) {

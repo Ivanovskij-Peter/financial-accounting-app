@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import svg from "../../images/sprite.svg";
 import CurrencyInput from "react-currency-input-field";
 import transactionOperation from "../../redux/transaction/transaction-operation";
@@ -20,7 +21,9 @@ export default function Balance() {
     <div className="balance">
       <div className="report">
         <a href="" className="report_link">
-          <span className="report_link-deskription">Перейти к отчетам</span>
+          <Link to="/reports" className="report_link-deskription">
+            Перейти к отчетам
+          </Link>
         </a>
         <svg className="report_icon">
           <use href={svg + "#chart"} />

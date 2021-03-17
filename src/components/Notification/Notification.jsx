@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../Notification/Notification.module.scss";
+import styles from "./notification.module.scss";
 
 const Notification = () => {
   return (
