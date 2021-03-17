@@ -1,19 +1,17 @@
-import svg from "../../images/sprite.svg";
 import { useState } from "react";
-import CurrencyInput from "react-currency-input-field";
 import { useDispatch } from "react-redux";
+import svg from "../../images/sprite.svg";
+import CurrencyInput from "react-currency-input-field";
 import transactionOperation from "../../redux/transaction/transaction-operation";
 import "./balance.scss";
 
 export default function Balance() {
-  const dispatch = useDispatch();
-
   const [value, setValue] = useState("");
+  const dispatch = useDispatch();
 
   const handleOnValueChange = (value) => {
     setValue(value);
   };
-
   const handleClick = () => {
     dispatch(transactionOperation.setBalance(value));
   };
@@ -42,7 +40,6 @@ export default function Balance() {
             decimalScale={2}
             onValueChange={handleOnValueChange}
           />
-
           <button
             type="button"
             className="balance_button"
@@ -51,7 +48,6 @@ export default function Balance() {
             <span className="balance_botton-text">подтвердить</span>
           </button>
         </div>
-
         <p className="balance_calendar">дата</p>
       </div>
     </div>
