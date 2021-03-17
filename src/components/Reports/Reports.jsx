@@ -85,7 +85,7 @@ const Reports = () => {
           className={style.arrowBtnRight}
         ></button>
       </div>
-      {userReports.hasOwnProperty("key") ? (
+      {userReports ? (
         <CategoriesList
           categoriesArr={
             reportName === "РАСХОДЫ"

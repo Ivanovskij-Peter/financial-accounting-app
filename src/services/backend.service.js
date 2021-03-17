@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //TODO поменять на нормальный урл, когда зальём бэк на хостинг
-axios.defaults.baseURL = "https://kapusta-srv.herokuapp.com";
+axios.defaults.baseURL = "http://kapusta-srv.herokuapp.com";
 
 class PhonebookService {
   register(newUser) {
