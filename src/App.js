@@ -5,7 +5,7 @@ import AuthForm from "./components/AuthForm";
 
 import CurrentPeriod from "./components/CurrentPeriod/CurrentPeriod"
 import Layout from './components/Layout/Layout';
-import Layout from "./components/Layout/Layout";
+
 import HomePage from "./components/pages/HomePage";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
@@ -56,6 +56,7 @@ function App() {
     // {/*
     // <Notification /> */}
     <>
+    <AddIncomeCostForm />
       <Suspense fallback={<Loaders />}>
         <Layout>
           <Switch>
