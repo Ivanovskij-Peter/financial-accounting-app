@@ -17,6 +17,8 @@ const imgObject = {
   "спорт, хобби": `${sprite}#clay`,
   образование: `${sprite}#book`,
   прочее: `${sprite}#ufo`,
+  "ДОП. ДОХОД": `${sprite}#salary`,
+  ЗП: `${sprite}#money`,
 };
 
 const CategoriesList = ({ categoriesArr }) => {
