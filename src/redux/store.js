@@ -32,7 +32,7 @@ const middleware = [
 const authPersistConfig = {
   key: "auth",
   storage,
-  whitelist: ["token", "isAuthenticated"],
+  whitelist: ["token"],
 };
 
 const rootReducer = combineReducers({
