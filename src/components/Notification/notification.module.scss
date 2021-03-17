@@ -1,4 +1,7 @@
-@import "../../sass/base/mixin";
+
+@import '../../sass/base/_colors.scss';
+@import '../../sass/base/_mixin.scss';
+
 
 .notification {
   position: relative;
@@ -18,17 +21,17 @@
   }
 }
 .notificationTextF {
-  color: #fff;
+  color: $primary-white-color;
   font-size: 14px;
-  line-height: 1.43;
+  line-height: 1.14;
   font-weight: 400;
   margin: 0;
   margin-bottom: 20px;
 }
 .notificationTextS {
-  color: #fff;
+  color: $primary-white-color;
   font-size: 12px;
-  line-height: 1.33;
+  line-height: 1.17;
   font-weight: 400;
   margin: 0;
 }
