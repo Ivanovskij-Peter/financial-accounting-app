@@ -1,20 +1,20 @@
 import { Suspense, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { CSSTransition } from "react-transition-group";
-
-// import Notification from "./components/Notification/Notification";
-// import notificationStyles from "./components/Notification/notification.module.scss";
-import { Switch, Redirect } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import AuthForm from "./components/AuthForm";
-
 import Layout from "./components/Layout/Layout";
-
-// import Header from "./components/header";
+import HomePage from "./components/pages/HomePage";
+import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 import Loaders from "./components/shared/Loader/Loader";
 import { authOperations } from "./redux/auth";
 
-import IncomesList from "./components/IncomesList";
+// import { CSSTransition } from "react-transition-group";
+// import Notification from "./components/Notification/Notification";
+// import notificationStyles from "./components/Notification/notification.module.scss";
+// import Modal from './components/shared/Modal/Modal';
+
+// import IncomesList from "./components/IncomesList";
 
 function App() {
   const dispatch = useDispatch();
@@ -41,7 +41,6 @@ function App() {
   // const toggleModal = () => {
   //   setShowModal(!showModal)
   // }
-
   // Use this in your component return!! //
   /* <button type='button' onClick={toggleModal}>OpenModal</button>
     {showModal && (
@@ -49,10 +48,9 @@ function App() {
   )} */
 
   return (
+    // {/*
+    // <Notification /> */}
     <>
-      {/* //TODO поменять на нормальный лоадер */}
-      {/* 
-      <Notification /> */}
 
       <Layout>
         <Suspense fallback={<Loaders />}>
@@ -68,14 +66,17 @@ function App() {
               exact
               path="/login"
               component={AuthForm}
-              redirectTo="/balance"
+              redirectTo=""
             />
-            {/* <Route exact path="/register" component={AuthForm} /> */}
-            {/* <Route exact path="/login" component={AuthForm} /> */}
-            {/* <Route exact path="/" component={AuthForm} /> */}
+            <PrivateRoute
+              exact
+              path="/"
+              component={HomePage}
+              redirectTo="/login"
+            />
           </Switch>
-        </Suspense>
-      </Layout>
+        </Layout>
+      </Suspense>
     </>
   );
 }
