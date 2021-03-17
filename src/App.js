@@ -1,21 +1,20 @@
 import { Suspense, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { CSSTransition } from "react-transition-group";
-
-// import Notification from "./components/Notification/Notification";
-// import notificationStyles from "./components/Notification/notification.module.scss";
 import { Switch } from "react-router-dom";
 import AuthForm from "./components/AuthForm";
-// import ReportsSection from "./components/Reports/Reports.jsx";
-import Header from "./components/header";
-import Reports from "./components/Reports";
-
 import Layout from "./components/Layout/Layout";
-// import Modal from './components/shared/Modal/Modal';
-
+import HomePage from "./components/pages/HomePage";
+import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 import Loaders from "./components/shared/Loader/Loader";
 import { authOperations } from "./redux/auth";
+
+// import { CSSTransition } from "react-transition-group";
+// import Notification from "./components/Notification/Notification";
+// import notificationStyles from "./components/Notification/notification.module.scss";
+// import Modal from './components/shared/Modal/Modal';
+
+// import IncomesList from "./components/IncomesList";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,18 +36,11 @@ function App() {
   //   );
   // });
 
-  // Modal test!!! /////////////
-  //   const [ showModal, setShowModal ] = useState(false)
-  // const toggleModal = () => {
-  //   setShowModal(!showModal)
-  // }
-
   // Modal methods use this in your component methods!! //
   //   const [ showModal, setShowModal ] = useState(false)
   // const toggleModal = () => {
   //   setShowModal(!showModal)
   // }
-
   // Use this in your component return!! //
   /* <button type='button' onClick={toggleModal}>OpenModal</button>
     {showModal && (
@@ -56,33 +48,33 @@ function App() {
   )} */
 
   return (
+    // {/*
+    // <Notification /> */}
     <>
-      {/* <ReportsSection /> */}
-      {/* //TODO поменять на нормальный лоадер */}
-      {/* 
-      <Notification /> */}
-
-      <Header />
       <Suspense fallback={<Loaders />}>
-        <Switch>
-          <PublicRoute exact path="/" component={AuthForm} />
-          <PublicRoute
-            exact
-            path="/register"
-            component={AuthForm}
-            redirectTo=""
-          />
-          <PublicRoute
-            exact
-            path="/login"
-            component={AuthForm}
-            redirectTo="/balance"
-          />
-          <PublicRoute exact path="/reports" component={Reports} />
-          {/* <Route exact path="/register" component={AuthForm} /> */}
-          {/* <Route exact path="/login" component={AuthForm} /> */}
-          {/* <Route exact path="/" component={AuthForm} /> */}
-        </Switch>
+        <Layout>
+          <Switch>
+            <PublicRoute exact path="/" component={AuthForm} />
+            <PublicRoute
+              exact
+              path="/register"
+              component={AuthForm}
+              redirectTo=""
+            />
+            <PublicRoute
+              exact
+              path="/login"
+              component={AuthForm}
+              redirectTo=""
+            />
+            <PrivateRoute
+              exact
+              path="/"
+              component={HomePage}
+              redirectTo="/login"
+            />
+          </Switch>
+        </Layout>
       </Suspense>
     </>
   );
