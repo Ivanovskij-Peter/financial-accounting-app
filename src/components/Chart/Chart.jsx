@@ -9,6 +9,20 @@ import "chartjs-plugin-datalabels";
 
 //}
 
+let categories = {
+    transport: "Транспорт",
+    products: "Продукты",
+    health: "Здоровье",
+    alcohol: "Алкоголь",
+    entertainment: "Развлечения",
+    forHome: "Все для дома",
+    tech: "Техника",
+    utility: "Коммуналка, связь",
+    sportHobby: "Спорт, хобби",
+    education: "Образование",
+    other: "Прочее",
+}
+
 let chartData = [400, 40, 80, 100, 300];
 
 class Chart extends Component {
@@ -20,9 +34,9 @@ class Chart extends Component {
 
         datasets: [
           {
-            label: "Money",
             data: chartData,
-            backgroundColor: "orange"
+            backgroundColor: "orange",
+            // maxBarThickness: 38,
           }
         ],
       },
@@ -36,6 +50,8 @@ class Chart extends Component {
           data={this.state.chartData}
           className={styles.bar}
           options={{
+            cornerRadius: 20,
+            tooltips: {enabled: false},
             legend: {
               display: false,
             },
