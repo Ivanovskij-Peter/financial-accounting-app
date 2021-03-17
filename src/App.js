@@ -48,31 +48,13 @@ function App() {
   )} */
 
   return (
-    // {/*
-    // <Notification /> */}
     <>
       <Suspense fallback={<Loaders />}>
         <Layout>
           <Switch>
-            <PublicRoute exact path="/" component={AuthForm} />
-            <PublicRoute
-              exact
-              path="/register"
-              component={AuthForm}
-              redirectTo=""
-            />
-            <PublicRoute
-              exact
-              path="/login"
-              component={AuthForm}
-              redirectTo=""
-            />
-            <PrivateRoute
-              exact
-              path="/"
-              component={HomePage}
-              redirectTo="/login"
-            />
+            <PublicRoute exact path="/register" component={AuthForm} />
+            <PublicRoute exact path="/login" component={AuthForm} />
+            <PrivateRoute exact path="/" component={HomePage} redirectTo="" />
           </Switch>
         </Layout>
       </Suspense>

@@ -1,3 +1,5 @@
+@import "../../sass/base/mixin";
+
 .notification {
   position: relative;
   width: 282px;
@@ -5,15 +7,14 @@
   background: linear-gradient(117.84deg, #1d346a 2.84%, #031634 67.28%);
   border-radius: 30px;
   padding: 30px 25px 30px 25px;
-  margin: 11px 19px 131px 19px;
+  margin: -51px auto 0 auto;
 }
-@media screen and (min-width: 768px) {
+@include for-size(tablet) {
   .notification {
     width: 292px;
     padding: 30px;
-    margin-top: 19px;
-    margin-bottom: 14px;
-    margin-right: 47px;
+    top: 65px;
+    left: -80px;
   }
 }
 .notificationTextF {
@@ -41,8 +42,14 @@
   border-right: 10px solid transparent;
   border-bottom: 12px solid #1d346a;
 }
-@media screen and (min-width: 768px) {
+@include for-size(desktop) {
   .triangleUp {
     left: 55px;
+  }
+  .notification {
+    width: 292px;
+    padding: 30px;
+    top: 65px;
+    left: -125px;
   }
 }
