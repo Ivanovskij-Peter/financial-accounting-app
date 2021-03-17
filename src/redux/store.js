@@ -17,6 +17,7 @@ import {
 } from "redux-persist";
 import { authReducer } from "./auth";
 import errorReducer from "./error/error-reducer";
+import reportsReducer from "./reports/reports-reducer";
 import balanceReducer from "./transaction/transaction-reducer";
 import dateReducer from "./calendar/calendarReducer";
 
@@ -40,6 +41,7 @@ const rootReducer = combineReducers({
   balance: balanceReducer,
   date: dateReducer,
   error: errorReducer,
+  reports: reportsReducer,
 });
 
 const store = configureStore({
