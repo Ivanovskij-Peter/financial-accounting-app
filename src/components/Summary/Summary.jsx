@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../Summary/summary.module.scss";
+import styles from "../Summary/Summary.module.scss";
 
 const Summary = ({date, amount}) => {
   return (
