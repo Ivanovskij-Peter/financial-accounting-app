@@ -51,9 +51,8 @@ function App() {
     // {/*
     // <Notification /> */}
     <>
-
-      <Layout>
-        <Suspense fallback={<Loaders />}>
+      <Suspense fallback={<Loaders />}>
+        <Layout>
           <Switch>
             <PublicRoute exact path="/" component={AuthForm} />
             <PublicRoute
