@@ -1,5 +1,6 @@
 @import "../../sass/base/colors";
 @import "../../sass/base/mixin";
+@import "../../sass/base/container";
 
 .mainTheme {
   position: absolute;
@@ -18,6 +19,7 @@
     height: 526px;
   }
 }
+
 .loggedTheme {
   height: 100vh;
   @include for-size(tablet) {
