@@ -11,6 +11,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 import Loaders from "./components/shared/Loader/Loader";
 import Reports from "./components/Reports";
+import Chart from "./components/Chart";
 import { authOperations } from "./redux/auth";
 
 // import AddIncomeCostForm from "./components/AddIncomeCostForm";
@@ -55,6 +56,8 @@ function App() {
 
   return (
     <>
+    {/* <Chart/> */}
+    <>
       <Suspense fallback={<Loaders />}>
         <Layout>
           <Switch>
@@ -70,6 +73,7 @@ function App() {
           </Switch>
         </Layout>
       </Suspense>
+    </>
     </>
   );
 }
