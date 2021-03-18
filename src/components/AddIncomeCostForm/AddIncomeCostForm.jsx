@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import styles from "./addIncomeCostForm.module.scss";
 import sprite from "../../images/sprite.svg";
 
-import Button from "../shared/button/Button";
+import Button from "../shared/Button";
 
 const validationSchema = Yup.object().shape({
   description: Yup.string()
@@ -16,13 +16,33 @@ const validationSchema = Yup.object().shape({
 });
 
 class AddIncomeCostForm extends Component {
-  state = {};
+  state = {
+    isOpen: false,
+    title: ""
+  };
+  static defaultProps = {
+    cathegories: ['Транспорт', 'Продукты', 'Здоровье', 'Алкоголь', 'Развлечения', 'Все для дома', 'Техника', 'Коммуналка, связь', 'Спорт, хобби', 'Образование', 'Прочее']
+  }
 
+  handleOpenList = (e) => {
+    this.setState({
+      isOpen: !this.state.isOpen
+  })
+}
   handleSubmit = ({ description, category, amount }) => {
     console.log(description, category, amount);
   };
-
+  changeCathegory = (e) => {
+    if (e.currentTarget) {
+        this.setState({ isOpen: !this.state.isOpen });
+    }
+    if( e.target.nodeName === "LI" ){
+        this.setState({ title: e.target.textContent});
+    } 
+  }
   render() {
+    const { isOpen, title } = this.state;
+    const { cathegories } = this.props;
     return (
       <div className={styles.formContainer}>
         <Formik
@@ -46,18 +66,37 @@ class AddIncomeCostForm extends Component {
                 component="p"
               />
             </div>
-            <div className={styles.Auth__inputWrapper}>
+            <div className={styles.Auth__inputWrapper} onClick={this.handleOpenList}>
               <Field
                 name="category"
                 type="text"
                 className={styles.Auth__input}
                 placeholder="Категория товара"
+                value={title}
+                disabled
               />
               <ErrorMessage
                 className={styles.Auth__errorMessage}
                 name="category"
                 component="p"
               />
+              <button className={styles.cathegory_btn}>
+        {isOpen ?
+          (<svg width="20px" height="20" className={styles.iconUp}>
+            <use href={sprite +"#arrov-down"} />
+        </svg>)
+          :
+          (<svg width="20px" height="20" className={styles.icon}>
+            <use href={sprite +"#arrov-down"} />
+          </svg>)
+                }
+              </button>
+              {isOpen && 
+                <ul onClick={this.changeCathegory} className={styles.category_list}>
+                {cathegories.map((el) => (<li className={styles.cathegory__item}>{el}</li>))}
+              </ul>
+              }
+
             </div>
             <div className={styles.Auth__amountInputWrapper}>
               <Field
