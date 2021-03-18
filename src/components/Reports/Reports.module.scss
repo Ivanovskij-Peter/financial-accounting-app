@@ -1,5 +1,21 @@
 @import "../../sass/base/_mixin";
 
+.reportSection {
+  position: relative;
+  background-color: #ffffff;
+  padding-top: 57px;
+  @include for-size(tablet) {
+    height: 422px;
+    width: 1060px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 151px;
+    padding-right: 151px;
+    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+    border-radius: 30px;
+  }
+}
+
 .arrowBtnRight {
   display: block;
   width: 5px;
@@ -10,6 +26,7 @@
   background-position: center;
   background-color: transparent;
   border-color: transparent;
+  outline: none;
 }
 .arrowBtnLeft {
   display: block;
@@ -21,6 +38,7 @@
   background-position: center;
   background-color: transparent;
   border-color: transparent;
+  outline: none;
 }
 .reportNav {
   display: flex;
@@ -80,4 +98,32 @@
 .reportSection {
   padding-left: auto;
   padding-right: auto;
+}
+
+.totalName {
+  color: #52555f;
+  font-weight: 700;
+  font-size: 14px;
+}
+.totalCosts {
+  @extend .totalName;
+  color: #e53935;
+}
+.totalIncomes {
+  @extend .totalName;
+  color: #407946;
+}
+.totalList {
+  display: flex;
+  position: absolute;
+  justify-content: space-between;
+  width: 282px;
+  height: 85px;
+  // background-color: #471616;
+  background-color: #ffffff;
+  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+  border-radius: 20px;
+  z-index: 10;
+  top: 190px;
+  left: 18px;
 }

@@ -10,7 +10,7 @@ import HomePage from "./components/pages/HomePage";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 import Loaders from "./components/shared/Loader/Loader";
-import Reports from "./components/Reports";
+import ReportsPage from "./components/pages/ReportsPage";
 import { authOperations } from "./redux/auth";
 
 // import AddIncomeCostForm from "./components/AddIncomeCostForm";
@@ -61,12 +61,7 @@ function App() {
             <PublicRoute exact path="/register" component={AuthForm} />
             <PublicRoute exact path="/login" component={AuthForm} />
             <PrivateRoute exact path="/" component={HomePage} redirectTo="" />
-            <PrivateRoute
-              exact
-              path="/reports"
-              component={Reports}
-              redirectTo="/login"
-            />
+            <PrivateRoute exact path="/reports" component={ReportsPage} />
           </Switch>
         </Layout>
       </Suspense>

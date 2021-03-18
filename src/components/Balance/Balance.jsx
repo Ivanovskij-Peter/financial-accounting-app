@@ -20,11 +20,10 @@ export default function Balance() {
   return (
     <div className="balance">
       <div className="report">
-        <a href="" className="report_link">
-          <Link to="/reports" className="report_link-deskription">
-            Перейти к отчетам
-          </Link>
-        </a>
+        <Link to="/reports" className="report_link-deskription report_link">
+          Перейти к отчетам
+        </Link>
+
         <svg className="report_icon">
           <use href={svg + "#chart"} />
         </svg>
@@ -51,7 +50,7 @@ export default function Balance() {
             <span className="balance_botton-text">подтвердить</span>
           </button>
         </div>
-        <p className="balance_calendar">дата</p>
+        {/* <p className="balance_calendar">дата</p> */}
       </div>
     </div>
   );
