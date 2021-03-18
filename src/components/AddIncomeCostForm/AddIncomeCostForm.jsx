@@ -20,28 +20,38 @@ const validationSchema = Yup.object().shape({
 class AddIncomeCostForm extends Component {
   state = {
     isOpen: false,
-    title: ""
+    title: "",
   };
   static defaultProps = {
-    cathegories: ['Транспорт', 'Продукты', 'Здоровье', 'Алкоголь', 'Развлечения', 'Все для дома', 'Техника', 'Коммуналка, связь', 'Спорт, хобби', 'Образование', 'Прочее']
-  }
+    cathegories: [
+      "Транспорт",
+      "Продукты",
+      "Здоровье",
+      "Алкоголь",
+      "Развлечения",
+      "Все для дома",
+      "Техника",
+      "Коммуналка, связь",
+      "Спорт, хобби",
+      "Образование",
+      "Прочее",
+    ],
+  };
 
   handleOpenList = () => {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: !this.state.isOpen,
     });
-
-  }
+  };
 
   changeCathegory = (e) => {
-    if( e.target.nodeName === "LI" ){
+    if (e.target.nodeName === "LI") {
       this.setState({
         title: e.target.textContent,
-        isOpen: !this.state.isOpen 
+        isOpen: !this.state.isOpen,
       });
-
     }
-  }
+  };
 
   handleSubmit = ({ description, category, amount }) => {
     console.log(description, category, amount);
@@ -50,6 +60,7 @@ class AddIncomeCostForm extends Component {
     const { isOpen, title } = this.state;
     const { cathegories } = this.props;
     return (
+      //  <div className={styles.formPosition}>
       <div className={styles.formContainer}>
         <Formik
           initialValues={{ description: "", category: "", amount: "" }}
@@ -67,7 +78,10 @@ class AddIncomeCostForm extends Component {
                 placeholder="Описание товара"
               />
             </div>
-            <div className={styles.Auth__inputWrapper} onClick={this.handleOpenList}>
+            <div
+              className={styles.Auth__inputWrapper}
+              onClick={this.handleOpenList}
+            >
               <Field
                 name="category"
                 type="text"
@@ -77,22 +91,26 @@ class AddIncomeCostForm extends Component {
                 disabled
               />
               <button className={styles.cathegory_btn}>
-        {isOpen ?
-          (<svg width="20px" height="20" className={styles.iconUp}>
-            <use href={sprite +"#arrov-down"} />
-        </svg>)
-          :
-          (<svg width="20px" height="20" className={styles.icon}>
-            <use href={sprite +"#arrov-down"} />
-          </svg>)
-                }
+                {isOpen ? (
+                  <svg width="20px" height="20" className={styles.iconUp}>
+                    <use href={sprite + "#arrov-down"} />
+                  </svg>
+                ) : (
+                  <svg width="20px" height="20" className={styles.icon}>
+                    <use href={sprite + "#arrov-down"} />
+                  </svg>
+                )}
               </button>
-              {isOpen && 
-                <ul onClick={this.changeCathegory} className={styles.category_list}>
-                {cathegories.map((el) => (<li className={styles.cathegory__item}>{el}</li>))}
-              </ul>
-              }
-
+              {isOpen && (
+                <ul
+                  onClick={this.changeCathegory}
+                  className={styles.category_list}
+                >
+                  {cathegories.map((el) => (
+                    <li className={styles.cathegory__item}>{el}</li>
+                  ))}
+                </ul>
+              )}
             </div>
             <div className={styles.Auth__amountInputWrapper}>
               <Field
@@ -117,6 +135,7 @@ class AddIncomeCostForm extends Component {
           </Form>
         </Formik>
       </div>
+      //  </div>
     );
   }
 }

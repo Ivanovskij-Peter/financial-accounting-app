@@ -1,6 +1,10 @@
 @import "../../sass/base/colors";
 @import "../../sass/base/mixin";
 
+// .formPosition {
+//   display: flex;
+//   justify-content: center;
+// }
 .formContainer {
   width: 100%;
   display: flex;
@@ -99,6 +103,7 @@
     padding: 0px;
     align-items: flex-start;
     width: 480px;
+    margin-bottom: 48px;
   }
 
   .buttonWrapper {
@@ -193,11 +198,14 @@
 @include for-size(desktop) {
   .formContainer {
     width: 893px;
+    margin-bottom: 59px;
   }
 
   .form {
     width: 100%;
     align-items: center;
+    align-items: flex-start;
+    width: 100%;
   }
 
   .buttonWrapper {
