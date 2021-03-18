@@ -12,6 +12,7 @@ export default function Balance() {
 
   const handleOnValueChange = (value) => {
     setValue(value);
+    console.log(value);
   };
   const handleClick = () => {
     dispatch(transactionOperation.setBalance(value));
@@ -20,11 +21,11 @@ export default function Balance() {
   return (
     <div className="balance">
       <div className="report">
-        <a href="" className="report_link">
-          <Link to="/reports" className="report_link-deskription">
+        
+          <Link to="/reports" className="report_link-deskription report_link">
             Перейти к отчетам
           </Link>
-        </a>
+        
         <svg className="report_icon">
           <use href={svg + "#chart"} />
         </svg>

@@ -3,7 +3,7 @@
 
 .Auth {
   position: absolute;
-  top: 450px;
+  top: 480px;
   left: 50%;
   transform: translate(-50%, -50%);
 
@@ -27,6 +27,7 @@
   border-radius: 30px;
 
   @include for-size(tablet) {
+    top: 490px;
     width: 436px;
     padding-top: 50px;
     padding-left: 85px;
