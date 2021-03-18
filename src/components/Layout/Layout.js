@@ -11,15 +11,14 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header />
-      <div className={styles.mainTheme}>
-        {isUserLogged ? (
-          <div className={styles.loggedTheme}>
-            <div className={styles.container}>{children}</div>
-          </div>
-        ) : (
-          <div className={styles.unloggedTheme}>{children}</div>
-        )}
-      </div>
+      <div className={styles.mainTheme}></div>
+      {isUserLogged ? (
+        <div className={styles.loggedTheme}>
+          <div className={styles.container}>{children}</div>
+        </div>
+      ) : (
+        <div className={styles.unloggedTheme}>{children}</div>
+      )}
     </>
   );
 };

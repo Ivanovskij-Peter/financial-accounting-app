@@ -97,7 +97,7 @@
         letter-spacing: 0.02em;
         color: #000000;
 
-        background-color: $primary-text-color;
+        background-color: $body-color;
 
         &:first-child {
           border-top-left-radius: 20px;
@@ -116,10 +116,10 @@
       letter-spacing: 0.04em;
       color: #52555f;
 
-      border-bottom: 2px solid $primary-text-color;
+      border-bottom: 2px solid $body-color;
 
       &:first-child {
-        border-left: 2px solid $primary-text-color;
+        border-left: 2px solid $body-color;
       }
 
       &.rightCol {
@@ -189,7 +189,7 @@
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1280px) {
   .incomesTable {
     display: inline-block;
     width: 760px;
