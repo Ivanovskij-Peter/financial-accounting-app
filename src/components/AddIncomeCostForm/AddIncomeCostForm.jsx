@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import styles from "./addIncomeCostForm.module.scss";
 import sprite from "../../images/sprite.svg";
 
-import Button from "../shared/button/Button";
+import Button from "../shared/Button";
 
 const mobile = window.innerWidth < 768;
 
