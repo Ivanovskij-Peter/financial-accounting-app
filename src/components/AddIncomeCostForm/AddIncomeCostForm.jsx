@@ -26,22 +26,26 @@ class AddIncomeCostForm extends Component {
     cathegories: ['Транспорт', 'Продукты', 'Здоровье', 'Алкоголь', 'Развлечения', 'Все для дома', 'Техника', 'Коммуналка, связь', 'Спорт, хобби', 'Образование', 'Прочее']
   }
 
-  handleOpenList = (e) => {
+  handleOpenList = () => {
     this.setState({
       isOpen: !this.state.isOpen
-  })
-}
+    });
+
+  }
+
+  changeCathegory = (e) => {
+    if( e.target.nodeName === "LI" ){
+      this.setState({
+        title: e.target.textContent,
+        isOpen: !this.state.isOpen 
+      });
+
+    }
+  }
+
   handleSubmit = ({ description, category, amount }) => {
     console.log(description, category, amount);
   };
-  changeCathegory = (e) => {
-    if (e.currentTarget) {
-        this.setState({ isOpen: !this.state.isOpen });
-    }
-    if( e.target.nodeName === "LI" ){
-        this.setState({ title: e.target.textContent});
-    } 
-  }
   render() {
     const { isOpen, title } = this.state;
     const { cathegories } = this.props;
@@ -62,11 +66,6 @@ class AddIncomeCostForm extends Component {
                 className={styles.Auth__input}
                 placeholder="Описание товара"
               />
-              <ErrorMessage
-                className={styles.Auth__errorMessage}
-                name="description"
-                component="p"
-              />
             </div>
             <div className={styles.Auth__inputWrapper} onClick={this.handleOpenList}>
               <Field
@@ -76,11 +75,6 @@ class AddIncomeCostForm extends Component {
                 placeholder="Категория товара"
                 value={title}
                 disabled
-              />
-              <ErrorMessage
-                className={styles.Auth__errorMessage}
-                name="category"
-                component="p"
               />
               <button className={styles.cathegory_btn}>
         {isOpen ?
@@ -107,11 +101,6 @@ class AddIncomeCostForm extends Component {
                 type="text"
                 className={styles.Auth__amountInput}
                 placeholder="Имя"
-              />
-              <ErrorMessage
-                className={styles.Auth__errorMessage}
-                name="amount"
-                component="p"
               />
               <div>
                 <svg width="20px" height="20px">
