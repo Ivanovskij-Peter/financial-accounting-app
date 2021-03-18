@@ -3,7 +3,6 @@
 
 .formContainer {
   width: 100%;
-  height: 420px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,16 +32,17 @@
 
 .Auth__amountInputWrapper {
   position: relative;
-
+  width: 183px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
   margin-bottom: 83px;
 
   & div {
     position: absolute;
-    left: 169px;
-    top: 0px;
+    left: 118px;
+    top: -1px;
     width: 60px;
     height: 56px;
 
@@ -63,7 +63,7 @@
   font-size: 14px;
   line-height: 1.143;
   color: $input-text-color;
-  width: 282px;
+  width: 100%;
 }
 
 .Auth__amountInput {
@@ -73,7 +73,7 @@
   background: $input-color;
   border-radius: 30px;
   border: 0;
-  width: 183px;
+  width: 100%;
   font-weight: bold;
   font-size: 12px;
   line-height: 14px;
