@@ -3,7 +3,6 @@
 
 .formContainer {
   width: 100%;
-  height: 420px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,16 +29,17 @@
 
 .Auth__amountInputWrapper {
   position: relative;
-
+width: 183px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
   margin-bottom: 83px;
 
   & div {
     position: absolute;
-    left: 169px;
-    top: 0px;
+    left: 118px;
+    top: -1px;
     width: 60px;
     height: 56px;
 
@@ -60,7 +60,7 @@
   font-size: 14px;
   line-height: 1.143;
   color: $input-text-color;
-  width: 282px;
+  width: 100%;
 }
 
 .Auth__amountInput {
@@ -70,7 +70,7 @@
   background: $input-color;
   border-radius: 30px;
   border: 0;
-  width: 183px;
+  width: 100%;
   font-weight: bold;
   font-size: 12px;
   line-height: 14px;
@@ -86,7 +86,104 @@
 }
 
 .buttonWrapper {
-    width: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@include for-size(tablet) {
+  .formContainer {
+    padding: 0px;
+    align-items: flex-start;
+    width: 480px;
+  }
+
+  .buttonWrapper {
+    margin-top: 30px;
     display: flex;
-    justify-content: center;
+    width: 100%;
+    justify-content: start;
+    margin-left: 30px;
+  }
+
+  .form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .Auth__inputWrapper {
+    width: 171px;
+    margin: 0;
+    height: 44px;
+
+    &:not(:first-child) {
+      margin: 0;
+    }
+
+    &:first-child {
+      width: 192px;
+
+      border-radius: 0px;
+      border-top-left-radius: 20px;
+    }
+
+    &:not(:first-child) {
+      border-radius: 0px;
+    }
+  }
+
+  .Auth__input {
+    height: 100%;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .Auth__amountInput {
+    width: 100%;
+    border-radius: 0px;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    border: 2px solid #fff;
+    height: 100%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding-left: 30px;
+  }
+
+  .Auth__amountInputWrapper {
+    width: 104px;
+    height: 44px;
+    margin-bottom: 0px;
+
+    & div {
+      left: 47px;
+      top: -6px;
+
+      border: none;
+    }
+  }
+}
+
+@include for-size(desktop) {
+  .formContainer {
+    width: 762px;
+  }
+
+  .form {
+    width: 100%;
+    align-items: center;
+  }
+
+  .buttonWrapper {
+    width: 265px;
+    margin-top: 0;
+  }
+
+  .Auth__amountInputWrapper {
+    margin: 0;
+  }
 }

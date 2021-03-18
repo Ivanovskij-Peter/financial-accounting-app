@@ -7,6 +7,8 @@ import sprite from "../../images/sprite.svg";
 
 import Button from "../shared/Button";
 
+const mobile = window.innerWidth < 768;
+
 const validationSchema = Yup.object().shape({
   description: Yup.string()
     .max(20, "Превышен лимит символов")
@@ -32,7 +34,7 @@ class AddIncomeCostForm extends Component {
             this.handleSubmit(values);
           }}
         >
-          <Form>
+          <Form className={styles.form}>
             <div className={styles.Auth__inputWrapper}>
               <Field
                 name="description"
@@ -61,7 +63,7 @@ class AddIncomeCostForm extends Component {
             </div>
             <div className={styles.Auth__amountInputWrapper}>
               <Field
-                value={"00.00 UAH"}
+                value={mobile ? "00.00 UAH" : "0.00"}
                 name="amount"
                 type="text"
                 className={styles.Auth__amountInput}
