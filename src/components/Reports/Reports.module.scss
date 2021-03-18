@@ -116,7 +116,9 @@
 .totalList {
   display: flex;
   position: absolute;
-  justify-content: space-between;
+  padding-left: 15px;
+  justify-content: space-around;
+  align-items: center;
   width: 282px;
   height: 85px;
   // background-color: #471616;
@@ -126,4 +128,16 @@
   z-index: 10;
   top: 190px;
   left: 18px;
+}
+.totalItem {
+  text-align: center;
+  min-width: 105px;
+}
+.totalList::after {
+  content: " ";
+  background-color: #e0e5eb;
+  height: 70.5px;
+  width: 1px;
+  position: relative;
+  left: -134px;
 }

@@ -17,11 +17,11 @@ function Total() {
     : totalIncomes;
   return (
     <ul className={style.totalList}>
-      <li>
+      <li className={style.totalItem}>
         <h3 className={style.totalName}>Расходы:</h3>
         <p className={style.totalCosts}>{`- ${beautyCosts} грн.`}</p>
       </li>
-      <li>
+      <li className={style.totalItem}>
         <h3 className={style.totalName}>Доходы:</h3>
         <p className={style.totalIncomes}>{`+ ${beautyIncomes} грн.`}</p>
       </li>
