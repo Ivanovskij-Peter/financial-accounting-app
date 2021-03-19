@@ -23,24 +23,39 @@ class AddIncomeCostForm extends Component {
     title: "",
   };
   static defaultProps = {
-    cathegories: ['Транспорт', 'Продукты', 'Здоровье', 'Алкоголь', 'Развлечения', 'Все для дома', 'Техника', 'Коммуналка, связь', 'Спорт, хобби', 'Образование', 'Прочее'],
-    incomesCathegories: ['ЗП', 'Доп.доход']
-  }
+    cathegories: [
+      "Транспорт",
+      "Продукты",
+      "Здоровье",
+      "Алкоголь",
+      "Развлечения",
+      "Все для дома",
+      "Техника",
+      "Коммуналка, связь",
+      "Спорт, хобби",
+      "Образование",
+      "Прочее",
+    ],
+    incomesCathegories: ["ЗП", "Доп.доход"],
+  };
 
   handleOpenList = (e) => {
     this.setState({
       isOpen: !this.state.isOpen,
     });
-  }
+  };
 
   handleCloseList = (e) => {
-    if (e.target.nodeName === "HTML" || e.target.nodeName === "DIV" || e.target.nodeName === "TD") {
+    if (
+      e.target.nodeName === "HTML" ||
+      e.target.nodeName === "DIV" ||
+      e.target.nodeName === "TD"
+    ) {
       this.setState({
-        isOpen: false
+        isOpen: false,
       });
     }
   }
-  };
 
   changeCathegory = (e) => {
     if (e.target.nodeName === "LI") {
@@ -57,7 +72,7 @@ class AddIncomeCostForm extends Component {
   render() {
     const { isOpen, title } = this.state;
     const { cathegories, incomesCathegories } = this.props;
-    document.addEventListener('click', this.handleCloseList)
+    document.addEventListener("click", this.handleCloseList);
 
     return (
       //  <div className={styles.formPosition}>
@@ -91,22 +106,26 @@ class AddIncomeCostForm extends Component {
                 disabled
               />
               <button className={styles.cathegory_btn}>
-
-                {isOpen ?
-                  (<svg width="20px" height="20" className={styles.iconUp}>
-                    <use href={sprite +"#arrov-down"} />
-                  </svg>)
-                  :
-                  (<svg width="20px" height="20" className={styles.icon}>
-                    <use href={sprite +"#arrov-down"} />
-                  </svg>)
-                }
+                {isOpen ? (
+                  <svg width="20px" height="20" className={styles.iconUp}>
+                    <use href={sprite + "#arrov-down"} />
+                  </svg>
+                ) : (
+                  <svg width="20px" height="20" className={styles.icon}>
+                    <use href={sprite + "#arrov-down"} />
+                  </svg>
+                )}
               </button>
-              {isOpen && 
-                <ul onClick={this.changeCathegory} className={styles.category_list}>
-                {cathegories.map((el) => (<li className={styles.cathegory__item}>{el}</li>))}
+              {isOpen && (
+                <ul
+                  onClick={this.changeCathegory}
+                  className={styles.category_list}
+                >
+                  {cathegories.map((el) => (
+                    <li className={styles.cathegory__item}>{el}</li>
+                  ))}
                 </ul>
-              }
+              )}
             </div>
             {/* <div className={styles.Auth__inputWrapper} onClick={this.handleOpenList}>
               <Field

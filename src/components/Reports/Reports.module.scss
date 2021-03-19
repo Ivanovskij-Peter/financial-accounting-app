@@ -2,15 +2,17 @@
 
 .reportSection {
   position: relative;
+  padding-left: auto;
+  padding-right: auto;
   background-color: #ffffff;
   padding-top: 57px;
   @include for-size(tablet) {
     height: 422px;
-    width: 1060px;
+    // width: 1060px;
     padding-top: 20px;
     padding-bottom: 20px;
-    padding-left: 151px;
-    padding-right: 151px;
+    // padding-left: 151px;
+    // padding-right: 151px;
     box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
     border-radius: 30px;
   }
@@ -65,8 +67,8 @@
   height: 50px;
   width: 50px;
   background-color: transparent;
-  top: 30%;
-  left: 20%;
+  top: 23%;
+  left: 9%;
 }
 .circle:hover,
 .circle:focus {
@@ -95,6 +97,20 @@
     margin-left: 10px;
   }
 }
+.categoryIcon:hover,
+.categoryIcon:focus {
+  fill: #ff751d;
+}
+.productLink {
+  color: #52555f;
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.productLink:hover,
+.productLink:focus {
+  fill: #ff751d;
+}
 .reportSection {
   padding-left: auto;
   padding-right: auto;
@@ -104,11 +120,15 @@
   color: #52555f;
   font-weight: 700;
   font-size: 14px;
+  @include for-size(tablet) {
+    margin-right: 15px;
+  }
 }
 .totalCosts {
   @extend .totalName;
   color: #e53935;
 }
+
 .totalIncomes {
   @extend .totalName;
   color: #407946;
@@ -134,6 +154,8 @@
     box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
     border-radius: 30px;
     position: static;
+    justify-content: center;
+    margin-bottom: 30px;
   }
 }
 .totalItem {
@@ -143,6 +165,11 @@
     display: flex;
   }
 }
+@include for-size(tablet) {
+  .totalItem:first-child {
+    margin-right: 25px;
+  }
+}
 .totalList::after {
   content: " ";
   background-color: #e0e5eb;
@@ -150,4 +177,8 @@
   width: 1px;
   position: relative;
   left: -134px;
+  @include for-size(tablet) {
+    height: 36px;
+    left: -212px;
+  }
 }

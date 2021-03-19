@@ -26,7 +26,6 @@ export default function Balance() {
         <Link to="/reports" className="report_link-deskription report_link">
           Перейти к отчетам
         </Link>
-
         <svg className="report_icon">
           <use href={svg + "#chart"} />
         </svg>
@@ -55,7 +54,6 @@ export default function Balance() {
         </div>
 
         {/* <p className="balance_calendar">дата</p> */}
-
       </div>
     </div>
   );

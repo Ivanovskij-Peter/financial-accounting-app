@@ -65,13 +65,12 @@ function App() {
             <Switch>
               <PublicRoute exact path="/register" component={AuthForm} />
               <PublicRoute exact path="/login" component={AuthForm} />
-              <PrivateRoute exact path="/" component={HomePage} redirectTo="" />
-              <PrivateRoute exact path="/reports" component={ReportsPage} />
+              <PrivateRoute exact path="/" component={HomePage} />
+              <PrivateRoute path="/reports" component={ReportsPage} />
             </Switch>
           </Layout>
         </Suspense>
       </>
-
     </>
   );
 }
