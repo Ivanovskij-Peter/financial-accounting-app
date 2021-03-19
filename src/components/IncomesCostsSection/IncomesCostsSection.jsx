@@ -1,3 +1,4 @@
+
 import React, {Component} from 'react';
 import styles from './IncomesCostsSection.module.scss';
 import IncomesList from '../IncomesList';

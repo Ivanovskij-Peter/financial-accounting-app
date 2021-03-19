@@ -8,28 +8,6 @@
 .balance_container {
   margin-top: 43px;
 }
-.report {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.report_link {
-  text-decoration: none;
-}
-
-.report_link-deskription {
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 1.89;
-  color: $primary-text-color;
-}
-
-.report_icon {
-  padding-left: 20px;
-  width: 30px;
-  height: 14px;
-}
 
 .balance_title {
   font-weight: 500;
@@ -72,12 +50,13 @@
   color: rgba(82, 85, 95, 0.7);
 }
 .balance_calendar {
-  margin: 40px 0 0 0;
+  margin: 40px 0 42px 0;
 }
 // ============================================================================
 @include for-size(tablet) {
   .balance {
     margin-top: 40px;
+    margin-bottom: 58px;
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
@@ -87,10 +66,6 @@
   .balance_container {
     align-items: center;
     margin-top: 0px;
-  }
-
-  .report {
-    margin-left: 111px;
   }
 
   .balance_container {
@@ -122,8 +97,12 @@
     display: none;
   }
 }
+
 // ============================================================================
 @include for-size(desktop) {
+  .balance {
+    margin-bottom: 8px;
+  }
   .report {
     margin: 0 0 0 205px;
   }

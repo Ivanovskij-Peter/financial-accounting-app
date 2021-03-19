@@ -20,7 +20,7 @@ const validationSchema = Yup.object().shape({
 class AddIncomeCostForm extends Component {
   state = {
     isOpen: false,
-    title: ""
+    title: "",
   };
   static defaultProps = {
     cathegories: ['Транспорт', 'Продукты', 'Здоровье', 'Алкоголь', 'Развлечения', 'Все для дома', 'Техника', 'Коммуналка, связь', 'Спорт, хобби', 'Образование', 'Прочее'],
@@ -29,7 +29,7 @@ class AddIncomeCostForm extends Component {
 
   handleOpenList = (e) => {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: !this.state.isOpen,
     });
   }
 
@@ -40,16 +40,16 @@ class AddIncomeCostForm extends Component {
       });
     }
   }
+  };
 
   changeCathegory = (e) => {
-    if( e.target.nodeName === "LI" ){
+    if (e.target.nodeName === "LI") {
       this.setState({
         title: e.target.textContent,
-        isOpen: !this.state.isOpen 
+        isOpen: !this.state.isOpen,
       });
-      document.removeEventListener('click', this.handleCloseList);
     }
-  }
+  };
 
   handleSubmit = ({ description, category, amount }) => {
     console.log(description, category, amount);
@@ -60,6 +60,7 @@ class AddIncomeCostForm extends Component {
     document.addEventListener('click', this.handleCloseList)
 
     return (
+      //  <div className={styles.formPosition}>
       <div className={styles.formContainer}>
         <Formik
           initialValues={{ description: "", category: "", amount: "" }}
@@ -77,7 +78,10 @@ class AddIncomeCostForm extends Component {
                 placeholder="Описание товара"
               />
             </div>
-            <div className={styles.Auth__inputWrapper} onClick={this.handleOpenList}>
+            <div
+              className={styles.Auth__inputWrapper}
+              onClick={this.handleOpenList}
+            >
               <Field
                 name="category"
                 type="text"
@@ -87,6 +91,7 @@ class AddIncomeCostForm extends Component {
                 disabled
               />
               <button className={styles.cathegory_btn}>
+
                 {isOpen ?
                   (<svg width="20px" height="20" className={styles.iconUp}>
                     <use href={sprite +"#arrov-down"} />
@@ -152,6 +157,7 @@ class AddIncomeCostForm extends Component {
           </Form>
         </Formik>
       </div>
+      //  </div>
     );
   }
 }
