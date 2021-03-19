@@ -14,6 +14,7 @@ import ReportsPage from "./components/pages/ReportsPage";
 import Chart from "./components/Chart";
 import { authOperations } from "./redux/auth";
 import Summary from "./components/Summary/Summary";
+import AddIncomeCostForm from "./components/AddIncomeCostForm";
 
 // import AddIncomeCostForm from "./components/AddIncomeCostForm";
 
@@ -58,8 +59,9 @@ function App() {
 
   return (
     <>
+      <AddIncomeCostForm />
       {/* <Chart/> */}
-      <>
+      {/* <>
         <Suspense fallback={<Loaders />}>
           <Layout>
             <Switch>
@@ -70,8 +72,7 @@ function App() {
             </Switch>
           </Layout>
         </Suspense>
-      </>
-
+      </> */}
     </>
   );
 }

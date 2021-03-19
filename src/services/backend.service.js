@@ -28,6 +28,12 @@ class PhonebookService {
   unsetToken() {
     axios.defaults.headers.common.Authorization = ``;
   }
+
+  addTransaction(token, keyWord, transaction) {
+    this.setToken(token);
+
+    axios.patch(`/user/${keyWord}`, transaction);
+  }
 }
 
 export default new PhonebookService();
