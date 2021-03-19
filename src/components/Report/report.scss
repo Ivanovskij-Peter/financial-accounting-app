@@ -1,0 +1,37 @@
+@import "../../sass/base/_colors";
+@import "../../sass/base/mixin";
+
+.report {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.report_link {
+  text-decoration: none;
+}
+
+.report_link-deskription {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.89;
+  color: $primary-text-color;
+}
+
+.report_icon {
+  padding-left: 20px;
+  width: 30px;
+  height: 14px;
+}
+
+@include for-size(tablet) {
+  .report {
+    margin-left: 111px;
+  }
+}
+
+@include for-size(desktop) {
+  .report {
+    margin: 0 0 0 205px;
+  }
+}
