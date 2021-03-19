@@ -13,6 +13,7 @@ import Loaders from "./components/shared/Loader/Loader";
 import Reports from "./components/Reports";
 import Chart from "./components/Chart";
 import { authOperations } from "./redux/auth";
+import Summary from "./components/Summary/Summary";
 
 // import AddIncomeCostForm from "./components/AddIncomeCostForm";
 
