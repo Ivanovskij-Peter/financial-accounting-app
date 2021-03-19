@@ -14,7 +14,30 @@ const setBalance = (balance) => async (dispatch) => {
     dispatch(transactionsActions.setBalanceError(error.message));
   }
 };
+const setIncomes = (income) => async (dispatch)=>{
+    
+    dispatch(transactionsActions.getIncomesRequest())
+    try {
+        const response = await axios.get("/user/incomes", income)
+        dispatch(transactionsActions.getIncomesSucces(response.data))
+    } catch (error) {
+         dispatch(transactionsActions.getIncomesError(error.message));
+    }
+  }
+  const setCosts = (expenses) => async (dispatch)=>{
+    
+    dispatch(transactionsActions.getCostsRequest())
+    try {
+        const response = await axios.get("/user/costs", expenses)
+        console.log(response.data)
+        dispatch(transactionsActions.getCostsSucces(response.data))
+    } catch (error) {
+         dispatch(transactionsActions.getCostsError(error.message));
+    }
+  }
 
 export default {
   setBalance,
+  setIncomes,
+  setCosts,
 };

@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import svg from "../../images/sprite.svg";
@@ -52,7 +53,9 @@ export default function Balance() {
             <span className="balance_botton-text">подтвердить</span>
           </button>
         </div>
+
         {/* <p className="balance_calendar">дата</p> */}
+
       </div>
     </div>
   );
