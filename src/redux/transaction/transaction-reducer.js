@@ -3,8 +3,7 @@ import { combineReducers } from "redux";
 import transactionActions from "./transaction-actions";
 
 const balance = createReducer(0, {
-  [transactionActions.setBalanceSucces]: (state, { payload }) =>
-    state + payload,
+  [transactionActions.setBalanceSucces]: (_, { payload }) => payload,
 });
 const incomes = createReducer([], {
   [transactionActions.getIncomesSucces]: (_, { payload }) => payload,

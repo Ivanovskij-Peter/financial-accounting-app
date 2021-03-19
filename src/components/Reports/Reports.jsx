@@ -72,7 +72,7 @@ const Reports = () => {
   };
 
   return (
-    <section className="container">
+    <section className={style.reportSection}>
       <div className={style.reportNav}>
         <button
           onClick={onChange}

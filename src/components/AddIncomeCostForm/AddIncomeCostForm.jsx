@@ -36,12 +36,25 @@ class AddIncomeCostForm extends Component {
       "Образование",
       "Прочее",
     ],
+    incomesCathegories: ["ЗП", "Доп.доход"],
   };
 
-  handleOpenList = () => {
+  handleOpenList = (e) => {
     this.setState({
       isOpen: !this.state.isOpen,
     });
+  };
+
+  handleCloseList = (e) => {
+    if (
+      e.target.nodeName === "HTML" ||
+      e.target.nodeName === "DIV" ||
+      e.target.nodeName === "TD"
+    ) {
+      this.setState({
+        isOpen: false,
+      });
+    }
   };
 
   changeCathegory = (e) => {
@@ -58,7 +71,9 @@ class AddIncomeCostForm extends Component {
   };
   render() {
     const { isOpen, title } = this.state;
-    const { cathegories } = this.props;
+    const { cathegories, incomesCathegories } = this.props;
+    document.addEventListener("click", this.handleCloseList);
+
     return (
       //  <div className={styles.formPosition}>
       <div className={styles.formContainer}>
@@ -112,6 +127,32 @@ class AddIncomeCostForm extends Component {
                 </ul>
               )}
             </div>
+            {/* <div className={styles.Auth__inputWrapper} onClick={this.handleOpenList}>
+              <Field
+                name="category"
+                type="text"
+                className={styles.Auth__input}
+                placeholder="Категория товара"
+                value={title}
+                disabled
+              />
+              <button className={styles.cathegory_btn}>
+                {isOpen ?
+                  (<svg width="20px" height="20" className={styles.iconUp}>
+                    <use href={sprite +"#arrov-down"} />
+                  </svg>)
+                  :
+                  (<svg width="20px" height="20" className={styles.icon}>
+                    <use href={sprite +"#arrov-down"} />
+                  </svg>)
+                }
+              </button>
+              {isOpen && 
+                <ul onClick={this.changeCathegory} className={styles.category_list}>
+                {incomesCathegories.map((el) => (<li className={styles.cathegory__item}>{el}</li>))}
+                </ul>
+              }
+            </div> */}
             <div className={styles.Auth__amountInputWrapper}>
               <Field
                 value={mobile ? "00.00 UAH" : "0.00"}

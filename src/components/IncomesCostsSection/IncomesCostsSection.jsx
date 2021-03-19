@@ -1,3 +1,4 @@
+
 import React from "react";
 import styles from "./IncomesCostsSection.module.scss";
 import IncomesList from "../IncomesList/IncomesList";
