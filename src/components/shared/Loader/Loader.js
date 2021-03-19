@@ -6,9 +6,9 @@ const Loaders=()=>{
     return (
       <Loader
         type="TailSpin"
-        color="green"
-        height={100}
-        width={100}
+        color="orange"
+        height={50}
+        width={50}
         timeout={3000}
         className={styles.loader}
       />

@@ -7,6 +7,8 @@ import sprite from "../../images/sprite.svg";
 
 import Button from "../shared/Button";
 
+const mobile = window.innerWidth < 768;
+
 const validationSchema = Yup.object().shape({
   description: Yup.string()
     .max(20, "Превышен лимит символов")
@@ -16,14 +18,49 @@ const validationSchema = Yup.object().shape({
 });
 
 class AddIncomeCostForm extends Component {
-  state = {};
+  state = {
+    isOpen: false,
+    title: "",
+  };
+  static defaultProps = {
+    cathegories: [
+      "Транспорт",
+      "Продукты",
+      "Здоровье",
+      "Алкоголь",
+      "Развлечения",
+      "Все для дома",
+      "Техника",
+      "Коммуналка, связь",
+      "Спорт, хобби",
+      "Образование",
+      "Прочее",
+    ],
+  };
+
+  handleOpenList = () => {
+    this.setState({
+      isOpen: !this.state.isOpen,
+    });
+  };
+
+  changeCathegory = (e) => {
+    if (e.target.nodeName === "LI") {
+      this.setState({
+        title: e.target.textContent,
+        isOpen: !this.state.isOpen,
+      });
+    }
+  };
 
   handleSubmit = ({ description, category, amount }) => {
     console.log(description, category, amount);
   };
-
   render() {
+    const { isOpen, title } = this.state;
+    const { cathegories } = this.props;
     return (
+      //  <div className={styles.formPosition}>
       <div className={styles.formContainer}>
         <Formik
           initialValues={{ description: "", category: "", amount: "" }}
@@ -32,7 +69,7 @@ class AddIncomeCostForm extends Component {
             this.handleSubmit(values);
           }}
         >
-          <Form>
+          <Form className={styles.form}>
             <div className={styles.Auth__inputWrapper}>
               <Field
                 name="description"
@@ -40,37 +77,48 @@ class AddIncomeCostForm extends Component {
                 className={styles.Auth__input}
                 placeholder="Описание товара"
               />
-              <ErrorMessage
-                className={styles.Auth__errorMessage}
-                name="description"
-                component="p"
-              />
             </div>
-            <div className={styles.Auth__inputWrapper}>
+            <div
+              className={styles.Auth__inputWrapper}
+              onClick={this.handleOpenList}
+            >
               <Field
                 name="category"
                 type="text"
                 className={styles.Auth__input}
                 placeholder="Категория товара"
+                value={title}
+                disabled
               />
-              <ErrorMessage
-                className={styles.Auth__errorMessage}
-                name="category"
-                component="p"
-              />
+              <button className={styles.cathegory_btn}>
+                {isOpen ? (
+                  <svg width="20px" height="20" className={styles.iconUp}>
+                    <use href={sprite + "#arrov-down"} />
+                  </svg>
+                ) : (
+                  <svg width="20px" height="20" className={styles.icon}>
+                    <use href={sprite + "#arrov-down"} />
+                  </svg>
+                )}
+              </button>
+              {isOpen && (
+                <ul
+                  onClick={this.changeCathegory}
+                  className={styles.category_list}
+                >
+                  {cathegories.map((el) => (
+                    <li className={styles.cathegory__item}>{el}</li>
+                  ))}
+                </ul>
+              )}
             </div>
             <div className={styles.Auth__amountInputWrapper}>
               <Field
-                value={"00.00 UAH"}
+                value={mobile ? "00.00 UAH" : "0.00"}
                 name="amount"
                 type="text"
                 className={styles.Auth__amountInput}
                 placeholder="Имя"
-              />
-              <ErrorMessage
-                className={styles.Auth__errorMessage}
-                name="amount"
-                component="p"
               />
               <div>
                 <svg width="20px" height="20px">
@@ -87,6 +135,7 @@ class AddIncomeCostForm extends Component {
           </Form>
         </Formik>
       </div>
+      //  </div>
     );
   }
 }
