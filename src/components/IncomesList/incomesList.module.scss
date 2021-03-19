@@ -108,7 +108,21 @@
         }
       }
     }
+    & tbody {
+      overflow-y: scroll;
 
+      &::-webkit-scrollbar {
+        width: 6px;
+        background-color: rgba(26, 24, 47, 0.15);
+        border-radius: 5px;
+        height: 200px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: $accent-color;
+        border-radius: 2px;
+      }
+    }
     & tbody td {
       font-weight: normal;
       font-size: 12px;
@@ -189,7 +203,8 @@
   }
 }
 
-@media (min-width: 1280px) {
+
+@include for-size(desktop) {
   .incomesTable {
     display: inline-block;
     width: 760px;
