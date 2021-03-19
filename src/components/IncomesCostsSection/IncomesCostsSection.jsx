@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import styles from './IncomesCostsSection.module.scss';
+import IncomesList from '../IncomesList';
+import AddIncomeCostForm from "../AddIncomeCostForm";
 
 export default class IncomesCostsSection extends Component {
     state = {
@@ -15,10 +17,12 @@ export default class IncomesCostsSection extends Component {
                         <li className={styles.IncomesCostsSection__list__item}>
                             <button className={styles.IncomesCostsSection__list__button}>ДОХОД</button></li>
                     </ul>
-                    <div className={styles.IncomesCostsSection__container}>
+                <div className={styles.IncomesCostsSection__container}>
                         {/* {children} */}
+      <AddIncomeCostForm />
+      <IncomesList/>
                         
-                         <ul>
+                         {/* <ul>
                             <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
                             <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
                             <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
@@ -42,7 +46,7 @@ export default class IncomesCostsSection extends Component {
                             <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
                             <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
                             <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li> 
-                        </ul> 
+                        </ul>  */}
                     </div>
                 </div>
                 </>

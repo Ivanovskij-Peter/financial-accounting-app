@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styles from "./incomesList.module.scss";
-
 import sprite from "../../images/sprite.svg";
 
 export default class IncomesList extends Component {
@@ -27,6 +26,47 @@ export default class IncomesList extends Component {
   render() {
     const mobile = window.innerWidth < 768;
     const { data, type } = this.props;
+
+    const withoutData = function () {
+      // const { data } = this.props;
+      const withDataTable = function (el) {
+        if (el) {
+          return (
+            <tr>
+              <td className={styles.leftCol}>
+                {el.date.split("-").reverse().join(".")}
+              </td>
+              <td className={styles.leftCol}>{el.description}</td>
+              <td className={styles.rightCol}>{el.category}</td>
+              <td className={styles.amountCost}>{el.amount}</td>
+              <td className={styles.tdButton}>
+                {" "}
+                <button>
+                  <svg width="18px" height="18px">
+                    <use href={sprite + "#delete-icon"} />
+                  </svg>
+                </button>
+              </td>
+            </tr>
+          );
+        } else {
+          return (
+            <tr>
+              <td className={styles.leftCol}></td>
+              <td className={styles.leftCol}></td>
+              <td className={styles.rightCol}></td>
+              <td className={styles.amountCost}></td>
+              <td className={styles.tdButton}></td>
+            </tr>
+          );
+        }
+      };
+      let markup = [];
+      for (let i = 0; i < 9; i++) {
+        markup = [...markup, withDataTable(data[i])];
+      }
+      return markup;
+    };
 
     return mobile ? (
       <ul className={styles.list}>
@@ -74,27 +114,33 @@ export default class IncomesList extends Component {
           </tr>
         </thead>
         <tbody>
-          {data.map((el) => (
-            <tr key={el.id}>
-              <td className={styles.leftCol}>
-                {el.date.split("-").reverse().join(".")}
-              </td>
-              <td className={styles.leftCol}>{el.description}</td>
-              <td className={styles.rightCol}>{el.category}</td>
-              {type === "incomes" ? (
-                <td className={styles.amountCost}>{`- ${el.amount} грн.`}</td>
-              ) : (
-                <td className={styles.amountIncome}>{`  ${el.amount} грн.`}</td>
-              )}
-              <td className={styles.tdButton}>
-                <button>
-                  <svg width="18px" height="18px">
-                    <use href={sprite + "#delete-icon"} />
-                  </svg>
-                </button>
-              </td>
-            </tr>
-          ))}
+          {data.length <= 9
+            ? withoutData()
+            : data.map((el) => (
+                <tr key={el.id}>
+                  <td className={styles.leftCol}>
+                    {el.date.split("-").reverse().join(".")}
+                  </td>
+                  <td className={styles.leftCol}>{el.description}</td>
+                  <td className={styles.rightCol}>{el.category}</td>
+                  {type === "incomes" ? (
+                    <td
+                      className={styles.amountCost}
+                    >{`- ${el.amount} грн.`}</td>
+                  ) : (
+                    <td
+                      className={styles.amountIncome}
+                    >{`  ${el.amount} грн.`}</td>
+                  )}
+                  <td className={styles.tdButton}>
+                    <button>
+                      <svg width="18px" height="18px">
+                        <use href={sprite + "#delete-icon"} />
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+              ))}
         </tbody>
       </table>
     );
