@@ -67,10 +67,10 @@ const CategoriesList = ({ categoriesArr }) => {
           );
         })}
       </ul>
-      <Route
+      {/* <Route
         path={`${match.path}/:category`}
         render={(props) => <Chart {...props} />}
-      />
+      /> */}
     </>
   );
 };
