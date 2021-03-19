@@ -4,6 +4,7 @@
   margin: 0 auto;
   padding-left: 19px;
   padding-right: 19px;
+  padding-bottom: 64px;
   width: 320px;
   @include for-size(tablet) {
     width: 768px;
@@ -14,5 +15,6 @@
     width: 1280px;
     padding-left: 110px;
     padding-right: 110px;
+    padding-bottom: 83px;
   }
 }
