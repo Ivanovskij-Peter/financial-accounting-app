@@ -38,7 +38,7 @@ const authPersistConfig = {
 
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
-  balance: balanceReducer,
+  operations: balanceReducer,
   date: dateReducer,
   error: errorReducer,
   reports: reportsReducer,

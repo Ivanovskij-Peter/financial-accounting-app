@@ -1,25 +1,27 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import styles from "../Summary/Summary.module.scss";
-// import {getDataMonth, getCostsPerMonth, getIncomesPerMonth} from '../../redux/transaction/transaction-selectors'
-
+import {getData} from '../../redux/transaction/transaction-selectors'
+import styles from "./Summary.module.scss";
 
 const Summary = () => {
-  // const date = useSelector(getDataMonth)
-  // const incomesPerMonth = useSelector(getIncomesPerMonth)
-  // const costsPerMonth = useSelector(getCostsPerMonth)
-  // const dispatch = useDispatch();
+  const incomes = useSelector(getData);
 
-  return (
-    <div className={styles.summary}>
-      <p className={styles.summary_title}>Сводка</p>
-      <ul className={styles.summary_list}>
-        <li className={styles.summary_listItem}>
-          <span className={styles.summary_itemMonth}>НОЯБРЬ</span>
-          <span className={styles.summary_itemSum}>10 000.00</span>
-        </li>
-      </ul>
-    </div>
+return (
+    <>
+      <div className={styles.summary}>
+        <p className={styles.summary_title}>Сводка</p>
+        <ul className={styles.summary_list}>
+          {incomes.map((el) => {
+            return (
+              <li className={styles.summary_listItem}>
+                <span className={styles.summary_itemMonth}>{el.date}</span>
+                <span className={styles.summary_itemSum}>{el.amount}</span>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </>
   );
 };
 

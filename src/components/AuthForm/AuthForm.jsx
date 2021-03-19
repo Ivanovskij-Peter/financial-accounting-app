@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
-import Button from "../shared/Button/Button";
+import Button from "../shared/Button";
 import authOperations from "../../redux/auth/auth-operations";
 import styles from "./AuthForm.module.scss";
 
