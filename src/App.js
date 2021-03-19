@@ -58,7 +58,8 @@ function App() {
 
   return (
     <>
-    {/* <Chart/> */}
+    <Chart/>
+    <Reports/>
     <>
    <Summary/>
       <Suspense fallback={<Loaders />}>
