@@ -2,17 +2,17 @@ import React, { Component } from "react";
 import styles from "./incomesList.module.scss";
 import { connect } from "react-redux";
 import sprite from "../../images/sprite.svg";
-import transactionOperation from "../../redux/transaction/transaction-operation";
+// import transactionOperation from "../../redux/transaction/transaction-operation";
 // import transactionActions from "../../redux/transaction/transaction-actions";
 // import transactionOperation from "../../redux/transaction/transaction-operation";
 
 class IncomesList extends Component {
-  componentDidMount() {
-    this.props.getIncomes();
-  }
+  // componentDidMount() {
+  //   this.props.getIncomes();
+  // }
   render() {
     const mobile = window.innerWidth < 768;
-    const { data, type, deleteIncome } = this.props;
+    const { data = [], type, deleteIncome } = this.props;
 
     return mobile ? (
       <ul className={styles.list}>
@@ -86,11 +86,11 @@ class IncomesList extends Component {
     );
   }
 }
-const mapStateToProps = (state) => ({
-  data: state.auth.user.operations.incomes,
-});
-const mapDispatchToProps = (dispatch) => ({
-  getIncomes: () => dispatch(transactionOperation.getIncomes()),
-  deleteIncome: (id) => dispatch(transactionOperation.deleteIncomes(id)),
-});
-export default connect(mapStateToProps, mapDispatchToProps)(IncomesList);
+// const mapStateToProps = (state) => ({
+//   data: state.auth.user.operations.incomes,
+// });
+// const mapDispatchToProps = (dispatch) => ({
+//   getIncomes: () => dispatch(transactionOperation.getIncomes()),
+//   deleteIncome: (id) => dispatch(transactionOperation.deleteIncomes(id)),
+// });
+export default connect()(IncomesList);

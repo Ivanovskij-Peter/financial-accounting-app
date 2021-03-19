@@ -21,6 +21,7 @@ const setIncomes = (income) => async (dispatch) => {
   try {
     const response = await axios.post("/user/incomes", income);
     dispatch(transactionsActions.setIncomesSucces(response.data));
+    console.log(response.data);
   } catch (error) {
     dispatch(transactionsActions.setIncomesError(error.message));
   }
@@ -39,10 +40,10 @@ const setCosts = (expenses) => async (dispatch) => {
 const getIncomes = (credentials) => async (dispatch) => {
   dispatch(transactionsActions.getIncomesRequest());
   try {
-    const response = await axios.get("/user/operations", credentials);
-    dispatch(
-      transactionActions.getIncomesSucces(response.data.operations.incomes),
-    );
+    const response = await axios.get("/user/monthincomes", credentials);
+    const { incomes } = response.data;
+    dispatch(transactionActions.getIncomesSucces(incomes));
+    console.log("response.data:", response.data);
   } catch (error) {
     dispatch(transactionsActions.getIncomesError(error.message));
   }

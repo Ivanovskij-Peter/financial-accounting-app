@@ -1,13 +1,21 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Balance from "../Balance/Balance";
 
 import Notification from "../Notification/Notification";
 
 import IncomesCostsSection from "../IncomesCostsSection";
+import transactionOperation from "../../redux/transaction/transaction-operation";
 
 const HomePage = () => {
+  const dispatch = useDispatch();
+  const name = useSelector((state) => state.auth.user.name);
   const balance = useSelector((state) => state.auth.user.balance);
+  useEffect(() => {
+    if (name) {
+      dispatch(transactionOperation.getIncomes());
+    }
+  }, [name]);
 
   return (
     <>
