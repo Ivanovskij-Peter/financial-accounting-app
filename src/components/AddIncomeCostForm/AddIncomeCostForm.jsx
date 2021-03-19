@@ -5,7 +5,8 @@ import * as Yup from "yup";
 import styles from "./addIncomeCostForm.module.scss";
 import sprite from "../../images/sprite.svg";
 
-import Button from "../shared/button";
+import Button from "../shared/Button";
+import Calendar from '../Calendar';
 
 const mobile = window.innerWidth < 768;
 
@@ -39,7 +40,7 @@ class AddIncomeCostForm extends Component {
     incomesCathegories: ["ЗП", "Доп.доход"],
   };
 
-  handleOpenList = (e) => {
+  handleOpenList = () => {
     this.setState({
       isOpen: !this.state.isOpen,
     });
@@ -77,15 +78,19 @@ class AddIncomeCostForm extends Component {
     return (
       //  <div className={styles.formPosition}>
       <div className={styles.formContainer}>
-        <Formik
+        <Calendar/>
+
+      <Formik
           initialValues={{ description: "", category: "", amount: "" }}
           validationSchema={validationSchema}
           onSubmit={(values) => {
             this.handleSubmit(values);
           }}
         >
+
           <Form className={styles.form}>
             <div className={styles.Auth__inputWrapper}>
+
               <Field
                 name="description"
                 type="text"

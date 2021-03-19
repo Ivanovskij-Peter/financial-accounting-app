@@ -102,8 +102,13 @@
   .formContainer {
     padding: 0px;
     align-items: flex-start;
-    width: 480px;
+
+    width: 100%;
     margin-bottom: 48px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-flow: row;
+    // vertical-align: bottom;
   }
 
   .buttonWrapper {
@@ -111,7 +116,7 @@
     display: flex;
     width: 100%;
     justify-content: start;
-    margin-left: 30px;
+    margin-left: 27px;
   }
 
   .form {
@@ -119,13 +124,14 @@
     flex-wrap: wrap;
     align-items: flex-start;
     width: 100%;
+    margin-left: 33px;
   }
 
   .Auth__inputWrapper {
     width: 171px;
     margin: 0;
     height: 44px;
-
+    display: flex;
     &:not(:first-child) {
       margin: 0;
       border-radius: 0px;
@@ -199,6 +205,9 @@
   .formContainer {
     width: 893px;
     margin-bottom: 59px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 
   .form {
@@ -206,6 +215,8 @@
     align-items: center;
     align-items: flex-start;
     width: 100%;
+    margin-left: 23px;
+    flex-wrap: nowrap;
   }
 
   .buttonWrapper {
@@ -215,6 +226,10 @@
 
   .Auth__amountInputWrapper {
     margin: 0;
+    width: 126px;
+    & div {
+      left: 62px;
+    }
   }
   .Auth__inputWrapper {
     &:first-child {
@@ -238,6 +253,7 @@
   .Auth__amountInput {
     background-color: #fff;
     border: 2px solid #f5f6fb;
+    padding: 0 20px 0 45px;
   }
 }
 
@@ -267,6 +283,7 @@
 .category_list {
   position: absolute;
   z-index: 200;
+  top: 44px;
   width: 282px;
   background-color: #fff;
   border: 2px solid #f5f6fb;

@@ -15,11 +15,10 @@ class IncomesList extends Component {
     const { data = [], type, deleteIncome } = this.props;
 
     const withoutData = function () {
-      // const { data } = this.props;
       const withDataTable = function (el) {
         if (el) {
           return (
-            <tr>
+            <tr key={el.id}>
               <td className={styles.leftCol}>
                 {el.date.split("-").reverse().join(".")}
               </td>
@@ -27,7 +26,6 @@ class IncomesList extends Component {
               <td className={styles.rightCol}>{el.category}</td>
               <td className={styles.amountCost}>{el.amount}</td>
               <td className={styles.tdButton}>
-                {" "}
                 <button>
                   <svg width="18px" height="18px">
                     <use href={sprite + "#delete-icon"} />
