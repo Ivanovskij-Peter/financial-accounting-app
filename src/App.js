@@ -3,18 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { Switch } from "react-router-dom";
 import AuthForm from "./components/AuthForm";
 
-import CurrentPeriod from "./components/CurrentPeriod/CurrentPeriod"
-import Layout from './components/Layout/Layout';
 import Layout from "./components/Layout/Layout";
 import HomePage from "./components/pages/HomePage";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 import Loaders from "./components/shared/Loader/Loader";
+import Summary from "./components/Summary/Summary";
 import { authOperations } from "./redux/auth";
 
 // import { CSSTransition } from "react-transition-group";
 // import Notification from "./components/Notification/Notification";
 // import notificationStyles from "./components/Notification/notification.module.scss";
+// import CurrentPeriod from "./components/CurrentPeriod/CurrentPeriod"
 // import Modal from './components/shared/Modal/Modal';
 
 // import IncomesList from "./components/IncomesList";
@@ -53,7 +53,9 @@ function App() {
   return (
     // {/*
     // <Notification /> */}
+  
     <>
+   <Summary/>
       <Suspense fallback={<Loaders />}>
         <Layout>
           <Switch>
