@@ -53,6 +53,9 @@ export default function Balance() {
             <span className="balance_botton-text">подтвердить</span>
           </button>
         </div>
+
+        {/* <p className="balance_calendar">дата</p> */}
+
       </div>
     </div>
   );
