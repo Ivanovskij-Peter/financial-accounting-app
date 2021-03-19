@@ -50,12 +50,13 @@
   color: rgba(82, 85, 95, 0.7);
 }
 .balance_calendar {
-  margin: 40px 0 0 0;
+  margin: 40px 0 42px 0;
 }
 // ============================================================================
 @include for-size(tablet) {
   .balance {
     margin-top: 40px;
+    margin-bottom: 58px;
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
@@ -97,3 +98,12 @@
   }
 }
 
+// ============================================================================
+@include for-size(desktop) {
+  .balance {
+    margin-bottom: 8px;
+  }
+  .report {
+    margin: 0 0 0 205px;
+  }
+}
