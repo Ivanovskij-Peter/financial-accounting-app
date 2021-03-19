@@ -3,8 +3,8 @@ import authActions from "./auth-actions";
 import api from "../../services/backend.service";
 import transactionActions from "../transaction/transaction-actions";
 
-// axios.defaults.baseURL = "http://localhost:8080";
-axios.defaults.baseURL = "https://kapusta-srv.herokuapp.com";
+axios.defaults.baseURL = "http://localhost:8080";
+// axios.defaults.baseURL = "https://kapusta-srv.herokuapp.com";
 
 const token = {
   set(token) {

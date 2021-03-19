@@ -1,10 +1,11 @@
 import { useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import svg from "../../images/sprite.svg";
+
 import CurrencyInput from "react-currency-input-field";
 import transactionOperation from "../../redux/transaction/transaction-operation";
 import Notification from "../Notification/Notification";
+import Report from "../Report";
 
 import "./balance.scss";
 
@@ -25,15 +26,7 @@ export default function Balance() {
     <div className="balanceWrapper">
       {balance ? null : <Notification />}
       <div className="balance">
-        <div className="report">
-          <Link to="/reports" className="report_link-deskription report_link">
-            Перейти к отчетам
-          </Link>
-
-          <svg className="report_icon">
-            <use href={svg + "#chart"} />
-          </svg>
-        </div>
+        <Report />
         <div className="balance_container">
           <p className="balance_title">Баланс:</p>
           <div className="balance_form">
@@ -56,7 +49,6 @@ export default function Balance() {
               <span className="balance_botton-text">подтвердить</span>
             </button>
           </div>
-          <p className="balance_calendar">дата</p>
         </div>
       </div>
     </div>
