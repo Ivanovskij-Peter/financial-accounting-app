@@ -1,4 +1,3 @@
-
 import React, {Component} from 'react';
 import styles from './IncomesCostsSection.module.scss';
 import IncomesList from '../IncomesList';
@@ -20,18 +19,17 @@ export default class IncomesCostsSection extends Component {
                             <button className={styles.IncomesCostsSection__list__button}>ДОХОД</button></li>
                     </ul>
                 <div className={styles.IncomesCostsSection__container}>
-                        {/* {children} */}
                         <AddIncomeCostForm />
                         <div className={styles.lists}>
                         <IncomesList />
                         <Summary/>
-
-                        </div>
-     
-                        
+                        </div>                        
                     </div>
                 </div>
                 </>
     );
   }
 }
+
+export default IncomesCostsSection;
+

@@ -1,23 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import "./userInfo.scss";
 import sprite from "../../images/sprite.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { authOperations } from "../../redux/auth";
+import Modal from "../shared/Modal/Modal";
+import { useHistory } from "react-router";
 
 function UserInfo() {
+  const [showModal, setShowModal] = useState(false);
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
+
   const mobile = window.innerWidth < 768;
   const dispatch = useDispatch();
   const name = useSelector((state) => state.auth.user.name);
   const avatar = useSelector((state) => state.auth.user.avatarURL);
+  const history = useHistory();
 
   const handleClick = () => {
     dispatch(authOperations.logOut());
+    history.push("/login");
   };
 
   return (
     <div className="user-info">
       <img className="avatar" src={avatar} alt="avatar" />
       <div className="menu-box">
+        {showModal && (
+          <Modal
+            title="Вы действительно хотите выйти?"
+            onClick={toggleModal}
+            onAgree={handleClick}
+          />
+        )}
         {mobile ? (
           <button className="icon-exit-button" type="button">
             <svg width="16px" height="16px" className="logout-icon">
@@ -28,7 +44,12 @@ function UserInfo() {
           <>
             <span className="user-name">{name}</span>
             <span className="line"></span>
-            <button type="button" className="exit-button" onClick={handleClick}>
+            <button
+              id="one"
+              type="button"
+              className="exit-button"
+              onClick={toggleModal}
+            >
               Выйти
             </button>
           </>
