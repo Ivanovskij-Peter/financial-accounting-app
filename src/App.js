@@ -19,6 +19,7 @@ import { authOperations } from "./redux/auth";
 // import { CSSTransition } from "react-transition-group";
 // import Notification from "./components/Notification/Notification";
 // import notificationStyles from "./components/Notification/notification.module.scss";
+// import CurrentPeriod from "./components/CurrentPeriod/CurrentPeriod"
 // import Modal from './components/shared/Modal/Modal';
 
 // import IncomesList from "./components/IncomesList";
@@ -58,6 +59,7 @@ function App() {
     <>
     {/* <Chart/> */}
     <>
+   <Summary/>
       <Suspense fallback={<Loaders />}>
         <Layout>
           <Switch>

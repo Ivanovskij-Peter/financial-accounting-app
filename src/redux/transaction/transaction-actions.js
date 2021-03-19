@@ -21,6 +21,14 @@ const deleteCostsRequest = createAction("user/deleteCostsRequest");
 const deleteCostsSucces = createAction("user/deleteCostsSucces");
 const deleteCostsError = createAction("user/deleteCostsError");
 
+const getIncomesRequest = createAction("user/getIncomesRequest");
+const getIncomesSucces = createAction("user/getIncomesSucces");
+const getIncomesError = createAction("user/getIncomesError");
+
+const getCostsRequest = createAction("user/getCostsRequest");
+const getCostsSucces = createAction("user/getCostsSucces");
+const getCostsError = createAction("user/getCostsError");
+
 export default {
   setBalanceRequest,
   setBalanceSucces,
@@ -37,4 +45,10 @@ export default {
   deleteCostsRequest,
   deleteCostsSucces,
   deleteCostsError,
+  getIncomesRequest,
+  getIncomesSucces,
+  getIncomesError,
+  getCostsRequest,
+  getCostsSucces,
+  getCostsError,
 };
