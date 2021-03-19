@@ -6,7 +6,7 @@ import styles from "./addIncomeCostForm.module.scss";
 import sprite from "../../images/sprite.svg";
 
 import Button from "../shared/Button";
-import Calendar from '../Calendar';
+import Calendar from "../Calendar";
 
 const mobile = window.innerWidth < 768;
 
@@ -78,19 +78,17 @@ class AddIncomeCostForm extends Component {
     return (
       //  <div className={styles.formPosition}>
       <div className={styles.formContainer}>
-        <Calendar/>
+        <Calendar />
 
-      <Formik
+        <Formik
           initialValues={{ description: "", category: "", amount: "" }}
           validationSchema={validationSchema}
           onSubmit={(values) => {
             this.handleSubmit(values);
           }}
         >
-
           <Form className={styles.form}>
             <div className={styles.Auth__inputWrapper}>
-
               <Field
                 name="description"
                 type="text"

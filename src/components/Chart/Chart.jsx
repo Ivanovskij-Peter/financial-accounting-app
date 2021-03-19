@@ -3,10 +3,7 @@
 // import styles from "./Chart.module.scss";
 // import "chartjs-plugin-datalabels";
 
-
-
-
-// // 
+// //
 // // export default function Chart ({categoryFromQueryString}){
 //   let responce = {
 //     "costs": {
@@ -27,7 +24,6 @@
 //             "total": 12000
 //         }
 //     },
-
 
 // }
 // //}
@@ -55,7 +51,6 @@
 //       chartData: {
 //         labels: ["Мясо", "Картоха", "Овощи", "Фрукты", "Рыба"],
 
-
 //         datasets: [
 //           {
 //             data: chartData,
@@ -74,16 +69,13 @@
 // <li className = {styles.item}>
 //   <p>Money</p>
 //   <p>Category</p>
-  
+
 // </li>
 // </ul>
 //       </div>
 //     );
 //   }
 // }
-
-
-
 
 // // render() {
 // //   return (
@@ -97,7 +89,7 @@
 // //           legend: {
 // //             display: false,
 // //           },
-          
+
 // //           scales: {
 // //             xAxes: [
 // //               {
