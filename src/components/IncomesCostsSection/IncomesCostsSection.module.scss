@@ -1,6 +1,13 @@
 @import "../../sass/base/colors";
 @import "../../sass/base/mixin";
-
+.lists {
+  @include for-size(tablet) {
+    display: block;
+  }
+  @include for-size(desktop) {
+    display: flex;
+  }
+}
 .IncomesCostsSection {
   &__list {
     display: flex;

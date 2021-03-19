@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import styles from './IncomesCostsSection.module.scss';
 import IncomesList from '../IncomesList';
 import AddIncomeCostForm from "../AddIncomeCostForm";
+import Summary from '../Summary/Summary';
 
 export default class IncomesCostsSection extends Component {
     state = {
@@ -20,38 +21,17 @@ export default class IncomesCostsSection extends Component {
                     </ul>
                 <div className={styles.IncomesCostsSection__container}>
                         {/* {children} */}
-      <AddIncomeCostForm />
-      <IncomesList/>
+                        <AddIncomeCostForm />
+                        <div className={styles.lists}>
+                        <IncomesList />
+                        <Summary/>
+
+                        </div>
+     
                         
-                         {/* <ul>
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li> 
-                        </ul>  */}
                     </div>
                 </div>
                 </>
- 
     );
   }
 }
