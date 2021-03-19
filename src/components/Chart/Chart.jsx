@@ -4,6 +4,8 @@
 // import "chartjs-plugin-datalabels";
 
 
+
+
 // // 
 // // export default function Chart ({categoryFromQueryString}){
 //   let responce = {
@@ -25,6 +27,7 @@
 //             "total": 12000
 //         }
 //     },
+
 
 // }
 // //}
@@ -51,6 +54,7 @@
 //     this.state = {
 //       chartData: {
 //         labels: ["Мясо", "Картоха", "Овощи", "Фрукты", "Рыба"],
+
 
 //         datasets: [
 //           {

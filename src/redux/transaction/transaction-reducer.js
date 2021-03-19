@@ -6,6 +6,7 @@ const balance = createReducer(0, {
   [transactionActions.setBalanceSucces]: (_, { payload }) => payload,
 });
 const incomes = createReducer([], {
+  [transactionActions.getIncomesSucces]: (_, { payload }) => payload,
   [transactionActions.addIncomesSucces]: (state, { payload }) => [
     ...state,
     payload,

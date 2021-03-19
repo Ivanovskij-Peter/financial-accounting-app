@@ -1,31 +1,18 @@
 import React, { Component } from "react";
 import styles from "./incomesList.module.scss";
+import { connect } from "react-redux";
 import sprite from "../../images/sprite.svg";
+// import transactionOperation from "../../redux/transaction/transaction-operation";
+// import transactionActions from "../../redux/transaction/transaction-actions";
+// import transactionOperation from "../../redux/transaction/transaction-operation";
 
-export default class IncomesList extends Component {
-  static defaultProps = {
-    data: [
-      {
-        description: "Бананы",
-        amount: 50,
-        date: "2019-09-25",
-        category: "Продукты",
-        id: 1,
-      },
-      {
-        description: "Метро",
-        amount: 5,
-        date: "2019-09-23",
-        category: "Транспорт",
-        id: 2,
-      },
-    ],
-    type: "incomes",
-  };
-
+class IncomesList extends Component {
+  // componentDidMount() {
+  //   this.props.getIncomes();
+  // }
   render() {
     const mobile = window.innerWidth < 768;
-    const { data, type } = this.props;
+    const { data = [], type, deleteIncome } = this.props;
 
     const withoutData = function () {
       // const { data } = this.props;
@@ -114,6 +101,27 @@ export default class IncomesList extends Component {
           </tr>
         </thead>
         <tbody>
+          {data.map((el) => (
+            <tr key={el.id}>
+              <td className={styles.leftCol}>
+                {el.date.split("-").reverse().join(".")}
+              </td>
+              <td className={styles.leftCol}>{el.description}</td>
+              <td className={styles.rightCol}>{el.category}</td>
+              {type === "incomes" ? (
+                <td className={styles.amountCost}>{`- ${el.amount} грн.`}</td>
+              ) : (
+                <td className={styles.amountIncome}>{`  ${el.amount} грн.`}</td>
+              )}
+              <td className={styles.tdButton}>
+                <button onClick={() => deleteIncome(el._id)}>
+                  <svg width="18px" height="18px">
+                    <use href={sprite + "#delete-icon"} />
+                  </svg>
+                </button>
+              </td>
+            </tr>
+          ))}
           {data.length <= 9
             ? withoutData()
             : data.map((el) => (
@@ -146,3 +154,11 @@ export default class IncomesList extends Component {
     );
   }
 }
+// const mapStateToProps = (state) => ({
+//   data: state.auth.user.operations.incomes,
+// });
+// const mapDispatchToProps = (dispatch) => ({
+//   getIncomes: () => dispatch(transactionOperation.getIncomes()),
+//   deleteIncome: (id) => dispatch(transactionOperation.deleteIncomes(id)),
+// });
+export default connect()(IncomesList);

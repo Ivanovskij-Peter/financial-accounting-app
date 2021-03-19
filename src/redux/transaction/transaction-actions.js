@@ -21,6 +21,14 @@ const deleteCostsRequest = createAction("user/deleteCostsRequest");
 const deleteCostsSucces = createAction("user/deleteCostsSucces");
 const deleteCostsError = createAction("user/deleteCostsError");
 
+const setIncomesRequest = createAction("user/setIncomesRequest");
+const setIncomesSucces = createAction("user/setIncomesSucces");
+const setIncomesError = createAction("user/setIncomesError");
+
+const setCostsRequest = createAction("user/ setCostsRequest");
+const setCostsSucces = createAction("user/setCostsSucces");
+const setCostsError = createAction("user/setCostsError");
+
 const getIncomesRequest = createAction("user/getIncomesRequest");
 const getIncomesSucces = createAction("user/getIncomesSucces");
 const getIncomesError = createAction("user/getIncomesError");
@@ -45,6 +53,12 @@ export default {
   deleteCostsRequest,
   deleteCostsSucces,
   deleteCostsError,
+  setIncomesRequest,
+  setIncomesSucces,
+  setIncomesError,
+  setCostsRequest,
+  setCostsSucces,
+  setCostsError,
   getIncomesRequest,
   getIncomesSucces,
   getIncomesError,

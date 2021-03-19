@@ -60,6 +60,7 @@ function App() {
     <>
       {/* <Chart/> */}
       <>
+        <Summary />
         <Suspense fallback={<Loaders />}>
           <Layout>
             <Switch>
