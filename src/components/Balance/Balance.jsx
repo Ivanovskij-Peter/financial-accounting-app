@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import svg from "../../images/sprite.svg";
 import CurrencyInput from "react-currency-input-field";
 import transactionOperation from "../../redux/transaction/transaction-operation";
@@ -11,17 +12,20 @@ export default function Balance() {
 
   const handleOnValueChange = (value) => {
     setValue(value);
+    console.log(value);
   };
-  const handleClick = () => {
+  const handleClick = (e) => {
     dispatch(transactionOperation.setBalance(value));
   };
+  const balance = useSelector((state) => state.auth.user.balance);
 
   return (
     <div className="balance">
       <div className="report">
-        <a href="" className="report_link">
-          <span className="report_link-deskription">Перейти к отчетам</span>
-        </a>
+        <Link to="/reports" className="report_link-deskription report_link">
+          Перейти к отчетам
+        </Link>
+
         <svg className="report_icon">
           <use href={svg + "#chart"} />
         </svg>
@@ -34,7 +38,7 @@ export default function Balance() {
             id="input-example"
             name="input-name"
             value={value}
-            placeholder="00.00 UAH"
+            placeholder={`${balance} UAH`}
             suffix={" UAH"}
             decimalSeparator={"."}
             decimalScale={2}

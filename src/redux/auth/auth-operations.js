@@ -2,7 +2,9 @@ import axios from "axios";
 import authActions from "./auth-actions";
 import api from "../../services/backend.service";
 
+// axios.defaults.baseURL = "http://localhost:8080";
 axios.defaults.baseURL = "https://kapusta-srv.herokuapp.com";
+
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -36,7 +38,9 @@ const logIn = (credentials) => (dispatch) => {
     .login(credentials)
     .then(({ data }) => {
       api.setToken(data.token);
-      dispatch(authActions.loginSuccess(data));
+      const { token, name, email, avatarURL } = data;
+      dispatch(authActions.loginSuccess({ name, email, avatarURL, token }));
+      console.log("data:", data);
     })
     .catch((data) => {
       if (!data.response) {

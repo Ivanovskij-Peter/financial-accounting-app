@@ -8,7 +8,7 @@ const Summary = () => {
   // const date = useSelector(getDataMonth)
   // const incomesPerMonth = useSelector(getIncomesPerMonth)
   // const costsPerMonth = useSelector(getCostsPerMonth)
-  
+
 
   return (
     <div className={styles.summary}>
