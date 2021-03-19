@@ -8,7 +8,7 @@ const Summary = () => {
   // const date = useSelector(getDataMonth)
   // const incomesPerMonth = useSelector(getIncomesPerMonth)
   // const costsPerMonth = useSelector(getCostsPerMonth)
-
+  // const dispatch = useDispatch();
 
   return (
     <div className={styles.summary}>
@@ -16,7 +16,7 @@ const Summary = () => {
       <ul className={styles.summary_list}>
         <li className={styles.summary_listItem}>
           <span className={styles.summary_itemMonth}>НОЯБРЬ</span>
-          <span className={styles.summary_itemSum}></span>
+          <span className={styles.summary_itemSum}>10 000.00</span>
         </li>
       </ul>
     </div>
