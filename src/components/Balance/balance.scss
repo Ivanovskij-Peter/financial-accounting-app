@@ -1,6 +1,9 @@
 @import "../../sass/base/_colors";
 @import "../../sass/base/mixin";
 
+.balanceWrapper {
+  position: relative;
+}
 .balance {
   margin-top: 37px;
   text-align: center;
@@ -49,9 +52,7 @@
   text-transform: uppercase;
   color: rgba(82, 85, 95, 0.7);
 }
-.balance_calendar {
-  margin: 40px 0 42px 0;
-}
+
 // ============================================================================
 @include for-size(tablet) {
   .balance {
@@ -92,19 +93,12 @@
     border: 2px solid #ffffff;
     background-color: rgba(0, 0, 0, 0);
   }
-
-  .balance_calendar {
-    display: none;
-  }
 }
 
 // ============================================================================
 @include for-size(desktop) {
   .balance {
     margin-bottom: 8px;
-  }
-  .report {
-    margin: 0 0 0 205px;
   }
 }
 .report {

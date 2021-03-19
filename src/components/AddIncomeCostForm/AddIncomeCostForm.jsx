@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 
 import styles from "./addIncomeCostForm.module.scss";
 import sprite from "../../images/sprite.svg";
 
 import Button from "../shared/Button";
+import Calendar from "../Calendar";
 
 const mobile = window.innerWidth < 768;
 
@@ -39,7 +40,7 @@ class AddIncomeCostForm extends Component {
     incomesCathegories: ["ЗП", "Доп.доход"],
   };
 
-  handleOpenList = (e) => {
+  handleOpenList = () => {
     this.setState({
       isOpen: !this.state.isOpen,
     });
@@ -55,7 +56,7 @@ class AddIncomeCostForm extends Component {
         isOpen: false,
       });
     }
-  }
+  };
 
   changeCathegory = (e) => {
     if (e.target.nodeName === "LI") {
@@ -77,6 +78,8 @@ class AddIncomeCostForm extends Component {
     return (
       //  <div className={styles.formPosition}>
       <div className={styles.formContainer}>
+        <Calendar />
+
         <Formik
           initialValues={{ description: "", category: "", amount: "" }}
           validationSchema={validationSchema}
