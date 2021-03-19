@@ -1,6 +1,9 @@
 @import "../../sass/base/_colors";
 @import "../../sass/base/mixin";
 
+.balanceWrapper {
+  position: relative;
+}
 .balance {
   margin-top: 37px;
   text-align: center;

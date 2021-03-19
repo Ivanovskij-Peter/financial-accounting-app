@@ -56,24 +56,24 @@ function App() {
 
   return (
     <>
-    {/* <Chart/> */}
-    <>
-      <Suspense fallback={<Loaders />}>
-        <Layout>
-          <Switch>
-            <PublicRoute exact path="/register" component={AuthForm} />
-            <PublicRoute exact path="/login" component={AuthForm} />
-            <PrivateRoute exact path="/" component={HomePage} redirectTo="" />
-            <PrivateRoute
-              exact
-              path="/reports"
-              component={Reports}
-              redirectTo="/login"
-            />
-          </Switch>
-        </Layout>
-      </Suspense>
-    </>
+      {/* <Chart/> */}
+      <>
+        <Suspense fallback={<Loaders />}>
+          <Layout>
+            <Switch>
+              <PublicRoute exact path="/register" component={AuthForm} />
+              <PublicRoute exact path="/login" component={AuthForm} />
+              <PrivateRoute exact path="/" component={HomePage} redirectTo="" />
+              <PrivateRoute
+                exact
+                path="/reports"
+                component={Reports}
+                redirectTo="/login"
+              />
+            </Switch>
+          </Layout>
+        </Suspense>
+      </>
     </>
   );
 }
