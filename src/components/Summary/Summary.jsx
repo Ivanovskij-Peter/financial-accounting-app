@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import styles from "../Summary/Summary.module.scss";
+import styles from "./summary.module.scss";
 // import {getDataMonth, getCostsPerMonth, getIncomesPerMonth} from '../../redux/transaction/transaction-selectors'
 
 
