@@ -11,13 +11,13 @@
   margin-top: 40px;
   margin-bottom: 57px;
 }
-@media screen and (max-width: 767px) {
+@include for-size(mobile) {
   .summary {
     display: none;
   }
 }
 
-@media screen and (min-width: 1024px) {
+@include for-size(desktop) {
   .summary {
     margin-right: 20px;
     margin-left: 30px;
