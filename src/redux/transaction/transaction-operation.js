@@ -3,8 +3,8 @@ import transactionActions from "./transaction-actions";
 
 import transactionsActions from "./transaction-actions";
 
-// axios.defaults.baseURL = "https://kapusta-srv.herokuapp.com";
-axios.defaults.baseURL = "http://localhost:8080";
+axios.defaults.baseURL = "https://kapusta-srv.herokuapp.com";
+// axios.defaults.baseURL = "http://localhost:8080";
 
 const setBalance = (balance) => async (dispatch) => {
   dispatch(transactionsActions.setBalanceRequest());
@@ -18,6 +18,7 @@ const setBalance = (balance) => async (dispatch) => {
     dispatch(transactionsActions.setBalanceError(error.message));
   }
 };
+
 const setIncomes = (income) => async (dispatch) => {
   dispatch(transactionsActions.setIncomesRequest());
   try {
@@ -46,7 +47,6 @@ const getIncomes = (credentials) => async (dispatch) => {
     const response = await axios.get("/user/monthincomes", credentials);
     const { incomes } = response.data;
     dispatch(transactionActions.getIncomesSucces(incomes));
-    console.log("response.data:", response.data);
   } catch (error) {
     dispatch(transactionsActions.getIncomesError(error.message));
   }
@@ -69,16 +69,9 @@ const deleteIncomes = (incomeId) => async (dispatch) => {
     dispatch(transactionsActions.deleteIncomesSucces(incomeId));
   } catch (error) {
     dispatch(transactionsActions.deleteIncomesError(error.message));
-  dispatch(transactionsActions.getIncomesRequest());
   }
-  // try {
-  //   const response = await axios.get("/user/incomes", income);
-  //   dispatch(transactionsActions.getIncomesSucces(response.data));
-  // } catch (error) {
-  //   dispatch(transactionsActions.getIncomesError(error.message));
-  // }
 };
-  
+
 // const setCosts = (expenses) => async (dispatch) => {
 //   dispatch(transactionsActions.getCostsRequest());
 //   try {

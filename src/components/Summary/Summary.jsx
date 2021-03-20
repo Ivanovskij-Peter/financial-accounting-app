@@ -13,7 +13,7 @@ const Summary = () => {
         <ul className={styles.summary_list}>
           {incomes.map((el) => {
             return (
-              <li className={styles.summary_listItem}>
+              <li className={styles.summary_listItem} key={el.date}>
                 <span className={styles.summary_itemMonth}>{el.date}</span>
                 <span className={styles.summary_itemSum}>{el.amount}</span>
               </li>

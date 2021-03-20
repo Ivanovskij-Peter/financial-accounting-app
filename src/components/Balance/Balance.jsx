@@ -20,7 +20,8 @@ export default function Balance() {
   const handleClick = (e) => {
     dispatch(transactionOperation.setBalance(value));
   };
-  const balance = useSelector((state) => state.balance.balance);
+  const balance = useSelector((state) => state.operations.balance);
+  console.log("balance:", balance);
 
   return (
     <div className="balanceWrapper">

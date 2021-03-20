@@ -1,5 +1,5 @@
-@import '../../sass/base/_colors.scss';
-@import '../../sass/base/_mixin.scss';
+@import "../../sass/base/_colors.scss";
+@import "../../sass/base/_mixin.scss";
 
 .summary {
   width: 230px;
@@ -16,13 +16,14 @@
     display: none;
   }
 }
-
+@include for-size(tablet) {
+  .summary {
+    margin: 70px 0 40px 0;
+  }
+}
 @include for-size(desktop) {
   .summary {
-    margin-right: 20px;
-    margin-left: 30px;
-    margin-top: 60px;
-    margin-bottom: 165px;
+    margin: 0 0 0 30px;
   }
 }
 

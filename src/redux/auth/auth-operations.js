@@ -3,8 +3,8 @@ import authActions from "./auth-actions";
 import api from "../../services/backend.service";
 import transactionActions from "../transaction/transaction-actions";
 
-axios.defaults.baseURL = "http://localhost:8080";
-// axios.defaults.baseURL = "https://kapusta-srv.herokuapp.com";
+// axios.defaults.baseURL = "http://localhost:8080";
+axios.defaults.baseURL = "https://kapusta-srv.herokuapp.com";
 
 const token = {
   set(token) {
@@ -75,9 +75,8 @@ const getCurrrentUser = () => async (dispatch, getState) => {
   try {
     const response = await axios.get("/user");
     dispatch(authActions.getCurrentUserSuccess(response.data));
-
-    console.log("response data", response.data);
-    dispatch(transactionActions.setBalanceSucces(response.data.user.balance));
+    console.log("response.data:", response.data);
+    dispatch(transactionActions.setBalanceSucces(response.data.balance));
   } catch (error) {
     dispatch(authActions.getCurrentUserError(error.message));
   }

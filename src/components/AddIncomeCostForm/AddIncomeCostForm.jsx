@@ -39,7 +39,7 @@ class AddIncomeCostForm extends Component {
     incomesCathegories: ["ЗП", "Доп.доход"],
   };
 
-  handleOpenList = (e) => {
+  handleOpenList = () => {
     this.setState({
       isOpen: !this.state.isOpen,
     });
@@ -77,6 +77,8 @@ class AddIncomeCostForm extends Component {
     return (
       //  <div className={styles.formPosition}>
       <div className={styles.formContainer}>
+        <Calendar />
+
         <Formik
           initialValues={{ description: "", category: "", amount: "" }}
           validationSchema={validationSchema}
