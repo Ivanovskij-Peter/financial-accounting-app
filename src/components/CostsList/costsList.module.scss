@@ -22,7 +22,6 @@
   font-size: 12px;
   line-height: 14px;
   letter-spacing: 0.04em;
-  color: $secondary-text-color;
 }
 
 .secondary {
@@ -30,7 +29,6 @@
   font-size: 8px;
   line-height: 9px;
   letter-spacing: 0.04em;
-  color: $secondary-text-color;
 
   &:not(:last-child) {
     margin-right: 20px;
@@ -97,7 +95,7 @@
         font-size: 12px;
         line-height: 14px;
         letter-spacing: 0.02em;
-        color: #000000;
+        color: $primary-black-color;
 
         background-color: $body-color;
 
