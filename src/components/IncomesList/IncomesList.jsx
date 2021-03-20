@@ -10,6 +10,7 @@ class IncomesList extends Component {
   // componentDidMount() {
   //   this.props.getIncomes();
   // }
+  
   render() {
     const mobile = window.innerWidth < 768;
     const { data = [], type, deleteIncome } = this.props;
@@ -22,7 +23,7 @@ class IncomesList extends Component {
               <td className={styles.leftCol}>
                 {el.date.split("-").reverse().join(".")}
               </td>
-              <td className={styles.leftCol}>{el.description}</td>
+              <td className={styles.leftCol}>{el.description.length >= 15 ? el.description.slice(0, 15)+'...': el.description}</td>
               <td className={styles.rightCol}>{el.category}</td>
               <td className={styles.amountCost}>{el.amount}</td>
               <td className={styles.tdButton}>
@@ -59,7 +60,7 @@ class IncomesList extends Component {
           return (
             <li className={styles.listItem} key={el._id}>
               <div className={styles.left}>
-                <p className={styles.description}>{el.description}</p>
+                <p className={styles.description}>{el.description.length >= 15 ? el.description.slice(0, 15)+'...': el.description}</p>
                 <div>
                   <span className={styles.secondary}>
                     {el.date.split("-").reverse().join(".")}
@@ -99,27 +100,6 @@ class IncomesList extends Component {
           </tr>
         </thead>
         <tbody>
-          {data.map((el) => (
-            <tr key={el._id}>
-              <td className={styles.leftCol}>
-                {el.date.split("-").reverse().join(".")}
-              </td>
-              <td className={styles.leftCol}>{el.description}</td>
-              <td className={styles.rightCol}>{el.category}</td>
-              {type === "incomes" ? (
-                <td className={styles.amountCost}>{`- ${el.amount} грн.`}</td>
-              ) : (
-                <td className={styles.amountIncome}>{`  ${el.amount} грн.`}</td>
-              )}
-              <td className={styles.tdButton}>
-                <button onClick={() => deleteIncome(el._id)}>
-                  <svg width="18px" height="18px">
-                    <use href={sprite + "#delete-icon"} />
-                  </svg>
-                </button>
-              </td>
-            </tr>
-          ))}
           {data.length <= 9
             ? withoutData()
             : data.map((el) => (
@@ -127,7 +107,7 @@ class IncomesList extends Component {
                   <td className={styles.leftCol}>
                     {el.date.split("-").reverse().join(".")}
                   </td>
-                  <td className={styles.leftCol}>{el.description}</td>
+                  <td className={styles.leftCol}>{el.description.length >= 15 ? el.description.slice(0, 15)+'...': el.description}</td>
                   <td className={styles.rightCol}>{el.category}</td>
                   {type === "incomes" ? (
                     <td
@@ -138,7 +118,7 @@ class IncomesList extends Component {
                       className={styles.amountIncome}
                     >{`  ${el.amount} грн.`}</td>
                   )}
-                  <td className={styles.tdButton}>
+                <td className={styles.tdButton}>
                     <button>
                       <svg width="18px" height="18px">
                         <use href={sprite + "#delete-icon"} />

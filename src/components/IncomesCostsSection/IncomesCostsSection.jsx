@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import styles from "./IncomesCostsSection.module.scss";
+import {NavLink} from 'react-router-dom';
 import IncomesList from "../IncomesList";
 import AddIncomeCostForm from "../AddIncomeCostForm";
 import Summary from "../Summary/Summary";
+import styles from "./IncomesCostsSection.module.scss";
 
 class IncomesCostsSection extends Component {
   state = {};
@@ -11,16 +12,16 @@ class IncomesCostsSection extends Component {
       <>
         <div className={styles.IncomesCostsSection}>
           <ul className={styles.IncomesCostsSection__list}>
-            <li className={styles.IncomesCostsSection__list__item}>
+            <NavLink className={styles.IncomesCostsSection__list__item} to='/user/costs'>
               <button className={styles.IncomesCostsSection__list__button}>
                 РАСХОД
               </button>
-            </li>
-            <li className={styles.IncomesCostsSection__list__item}>
+            </NavLink>
+            <NavLink className={styles.IncomesCostsSection__list__item} to='/user/incomes'>
               <button className={styles.IncomesCostsSection__list__button}>
                 ДОХОД
               </button>
-            </li>
+            </NavLink>
           </ul>
           <div className={styles.IncomesCostsSection__container}>
             <AddIncomeCostForm />

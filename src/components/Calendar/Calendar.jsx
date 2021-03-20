@@ -32,15 +32,11 @@ class Calendar extends Component {
 
   render() {
     return (
-      <div className={styles.calendarWrapper}>
-        <svg width="20px" height="20px">
-          <use href={sprite + "#calendar"} />
-        </svg>
+      <div className={styles.calendarWrapper} onChange={(date) => this.handleChange(date)}>
         <DatePicker
           className={styles.calendar}
           dateFormat="dd.MM.yyyy"
           selected={this.state.date}
-          onChange={(date) => this.handleChange(date)}
         />
       </div>
     );
