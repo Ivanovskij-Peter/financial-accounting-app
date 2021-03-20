@@ -5,7 +5,7 @@ import sprite from "../../images/sprite.svg";
 // import transactionOperation from "../../redux/transaction/transaction-operation";
 // import transactionActions from "../../redux/transaction/transaction-actions";
 // import transactionOperation from "../../redux/transaction/transaction-operation";
-
+// Hello from Sasha
 class IncomesList extends Component {
   // componentDidMount() {
   //   this.props.getIncomes();
