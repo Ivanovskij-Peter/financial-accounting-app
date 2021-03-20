@@ -38,7 +38,7 @@ const nameObject = {
   зп: "salary",
 };
 
-const CategoriesList = ({ categoriesArr }) => {
+const CategoriesList = ({ categoriesArr, reportName }) => {
   const match = useRouteMatch("/reports");
   return (
     <>
@@ -67,10 +67,10 @@ const CategoriesList = ({ categoriesArr }) => {
           );
         })}
       </ul>
-      {/* <Route
+      <Route
         path={`${match.path}/:category`}
-        render={(props) => <Chart {...props} />}
-      /> */}
+        render={(props) => <Chart {...props} reportName = {reportName}/>}
+      />
     </>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import styles from "./Modal.module.scss";
-import Button from "../button/Button";
+import Button from "../Button/Button";
 
 const Modal = ({ onClick, title, onAgree }) => {
   useEffect(() => {

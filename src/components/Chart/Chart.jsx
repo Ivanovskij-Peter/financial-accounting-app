@@ -1,3 +1,58 @@
+import React from "react";
+import {useSelector} from "react-redux"
+import styles from "./Chart.module.scss"
+import getReports from "../../redux/reports/reports-selectors"
+
+
+
+
+export default function Chart (props) {
+//  console.log("props", props.match.params.category);
+ console.log("props", props);
+
+const transactionType = props.reportName.toLowerCase();
+const category = props.match.params.category;
+
+const report = useSelector(getReports.getUserReports)
+console.log("report", report);
+console.log("transactionType", transactionType);
+
+const currentObject = transactionType==="расходы" ? report.costs :  report.incomes;
+
+console.log("currentObject",currentObject );
+    return (
+      <div className={styles.chart}>
+<ul className= {styles.list}>
+<li className = {styles.item}>
+  <p></p>
+  <p>Category</p>
+
+</li>
+</ul>
+      </div>
+    );
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import React, { Component } from "react";
 // import { Bar } from "react-chartjs-2";
 // import styles from "./Chart.module.scss";

@@ -88,6 +88,7 @@ const Reports = () => {
       </div>
       {userReports ? (
         <CategoriesList
+          reportName={reportName}
           categoriesArr={
             reportName === "РАСХОДЫ"
               ? userReports.costsArr

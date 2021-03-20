@@ -68,10 +68,9 @@ function App() {
               <PublicRoute exact path="/login" component={AuthForm} />
               <PrivateRoute exact path="/" component={HomePage} redirectTo="" />
               <PrivateRoute
-                exact
                 path="/reports"
                 component={ReportsPage}
-                redirectTo="/login"
+                // redirectTo="/login"
               />
             </Switch>
           </Layout>
