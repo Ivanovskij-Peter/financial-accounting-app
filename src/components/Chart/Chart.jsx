@@ -24,10 +24,26 @@ console.log("currentObject",currentObject );
       <div className={styles.chart}>
 <ul className= {styles.list}>
 <li className = {styles.item}>
-  <p></p>
-  <p>Category</p>
-
+  <p className = {styles.sum}>20000 грн</p>
+  <p className = {styles.label}>Мясо</p>
 </li>
+<li className = {styles.item}>
+  <p className = {styles.sum}>1000 грн</p>
+  <p className = {styles.label}>Рыба</p>
+</li>
+<li className = {styles.item}>
+  <p className = {styles.sum}>500 грн</p>
+  <p className = {styles.label}>Овощи</p>
+</li>
+<li className = {styles.item}>
+  <p className = {styles.sum}>400 грн</p>
+  <p className = {styles.label}>Фрукты</p>
+</li>
+<li className = {styles.item}>
+  <p className = {styles.sum}>200 грн</p>
+  <p className = {styles.label}>Молоко</p>
+</li>
+
 </ul>
       </div>
     );
