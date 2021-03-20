@@ -12,7 +12,7 @@ import Loaders from "./components/shared/Loader/Loader";
 import ReportsPage from "./components/pages/ReportsPage";
 import Chart from "./components/Chart";
 import { authOperations } from "./redux/auth";
-import Summary from "./components/Summary/Summary";
+// import Summary from "./components/Summary/Summary";
 
 // import AddIncomeCostForm from "./components/AddIncomeCostForm";
 
@@ -59,7 +59,8 @@ function App() {
     <>
       {/* <Chart/> */}
       <>
-        <Summary />
+        {/* <Summary />
+        <CurrentPeriod/> */}
         <Suspense fallback={<Loaders />}>
           <Layout>
             <Switch>

@@ -1,12 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import {getData} from '../../redux/transaction/transaction-selectors'
+import getDataInfo from "../../redux/transaction/transaction-selectors";
 import styles from "./Summary.module.scss";
 
 const Summary = () => {
-  const incomes = useSelector(getData);
+  const incomes = useSelector(getDataInfo.getData);
 
-return (
+  return (
     <>
       <div className={styles.summary}>
         <p className={styles.summary_title}>Сводка</p>
