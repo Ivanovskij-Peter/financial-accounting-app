@@ -3,8 +3,8 @@ import transactionActions from "./transaction-actions";
 
 import transactionsActions from "./transaction-actions";
 
-// axios.defaults.baseURL = "https://kapusta-srv.herokuapp.com";
-axios.defaults.baseURL = "http://localhost:8080";
+axios.defaults.baseURL = "https://kapusta-srv.herokuapp.com";
+// axios.defaults.baseURL = "http://localhost:8080";
 
 const setBalance = (balance) => async (dispatch) => {
   dispatch(transactionsActions.setBalanceRequest());
@@ -18,6 +18,7 @@ const setBalance = (balance) => async (dispatch) => {
     dispatch(transactionsActions.setBalanceError(error.message));
   }
 };
+
 const setIncomes = (income) => async (dispatch) => {
   dispatch(transactionsActions.setIncomesRequest());
   try {
@@ -29,16 +30,16 @@ const setIncomes = (income) => async (dispatch) => {
   }
 };
 
-// const setCosts = (expenses) => async (dispatch) => {
-//   dispatch(transactionsActions.setCostsRequest());
-//   try {
-//     const response = await axios.post("/user/costs", expenses);
-//     console.log(response.data);
-//     dispatch(transactionsActions.setCostsSucces(response.data));
-//   } catch (error) {
-//     dispatch(transactionsActions.setCostsError(error.message));
-//   }
-// };
+const setCosts = (expenses) => async (dispatch) => {
+  dispatch(transactionsActions.setCostsRequest());
+  try {
+    const response = await axios.post("/user/costs", expenses);
+    console.log(response.data);
+    dispatch(transactionsActions.setCostsSucces(response.data));
+  } catch (error) {
+    dispatch(transactionsActions.setCostsError(error.message));
+  }
+};
 
 const getIncomes = (credentials) => async (dispatch) => {
   dispatch(transactionsActions.getIncomesRequest());
@@ -46,7 +47,6 @@ const getIncomes = (credentials) => async (dispatch) => {
     const response = await axios.get("/user/monthincomes", credentials);
     const { incomes } = response.data;
     dispatch(transactionActions.getIncomesSucces(incomes));
-    console.log("response.data:", response.data);
   } catch (error) {
     dispatch(transactionsActions.getIncomesError(error.message));
   }
@@ -62,33 +62,26 @@ const getCosts = (credentials) => async (dispatch) => {
   }
 };
 
-// const deleteIncomes = (incomeId) => async (dispatch) => {
-//   dispatch(transactionsActions.deleteIncomesRequest());
-//   try {
-//     await axios.delete(`/incomes/${incomeId}`);
-//     dispatch(transactionsActions.deleteIncomesSucces(incomeId));
-//   } catch (error) {
-//     dispatch(transactionsActions.deleteIncomesError(error.message));
-//   }
-//   dispatch(transactionsActions.getIncomesRequest());
-//   try {
-//     const response = await axios.get("/user/incomes", income);
-//     dispatch(transactionsActions.getIncomesSucces(response.data));
-//   } catch (error) {
-//     dispatch(transactionsActions.getIncomesError(error.message));
-//   }
-// };
-
-const setCosts = (expenses) => async (dispatch) => {
-  dispatch(transactionsActions.getCostsRequest());
+const deleteIncomes = (incomeId) => async (dispatch) => {
+  dispatch(transactionsActions.deleteIncomesRequest());
   try {
-    const response = await axios.get("/user/costs", expenses);
-    console.log(response.data);
-    dispatch(transactionsActions.getCostsSucces(response.data));
+    await axios.delete(`/incomes/${incomeId}`);
+    dispatch(transactionsActions.deleteIncomesSucces(incomeId));
   } catch (error) {
-    dispatch(transactionsActions.getCostsError(error.message));
+    dispatch(transactionsActions.deleteIncomesError(error.message));
   }
 };
+
+// const setCosts = (expenses) => async (dispatch) => {
+//   dispatch(transactionsActions.getCostsRequest());
+//   try {
+//     const response = await axios.get("/user/costs", expenses);
+//     console.log(response.data);
+//     dispatch(transactionsActions.getCostsSucces(response.data));
+//   } catch (error) {
+//     dispatch(transactionsActions.getCostsError(error.message));
+//   }
+// };
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
@@ -97,5 +90,5 @@ export default {
   setCosts,
   getIncomes,
   getCosts,
-  // deleteIncomes,
+  deleteIncomes,
 };

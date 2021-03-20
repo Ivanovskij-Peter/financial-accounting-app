@@ -10,7 +10,6 @@ import transactionOperation from "../../redux/transaction/transaction-operation"
 const HomePage = () => {
   const dispatch = useDispatch();
   const name = useSelector((state) => state.auth.user.name);
-  const balance = useSelector((state) => state.auth.user.balance);
   useEffect(() => {
     if (name) {
       dispatch(transactionOperation.getIncomes());

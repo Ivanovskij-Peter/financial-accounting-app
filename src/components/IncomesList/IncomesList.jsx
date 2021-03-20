@@ -18,7 +18,7 @@ class IncomesList extends Component {
       const withDataTable = function (el) {
         if (el) {
           return (
-            <tr key={el.id}>
+            <tr key={el._id}>
               <td className={styles.leftCol}>
                 {el.date.split("-").reverse().join(".")}
               </td>
@@ -57,7 +57,7 @@ class IncomesList extends Component {
       <ul className={styles.list}>
         {data.map((el) => {
           return (
-            <li className={styles.listItem} key={el.id}>
+            <li className={styles.listItem} key={el._id}>
               <div className={styles.left}>
                 <p className={styles.description}>{el.description}</p>
                 <div>
@@ -100,7 +100,7 @@ class IncomesList extends Component {
         </thead>
         <tbody>
           {data.map((el) => (
-            <tr key={el.id}>
+            <tr key={el._id}>
               <td className={styles.leftCol}>
                 {el.date.split("-").reverse().join(".")}
               </td>
@@ -123,7 +123,7 @@ class IncomesList extends Component {
           {data.length <= 9
             ? withoutData()
             : data.map((el) => (
-                <tr key={el.id}>
+                <tr key={el._id}>
                   <td className={styles.leftCol}>
                     {el.date.split("-").reverse().join(".")}
                   </td>
