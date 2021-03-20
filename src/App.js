@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Switch } from "react-router-dom";
 import AuthForm from "./components/AuthForm";
 
-// import CurrentPeriod from "./components/CurrentPeriod/CurrentPeriod";
 import Layout from "./components/Layout/Layout";
 
 import HomePage from "./components/pages/HomePage";

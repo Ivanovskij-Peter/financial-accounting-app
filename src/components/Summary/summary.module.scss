@@ -11,17 +11,17 @@
   margin-top: 40px;
   margin-bottom: 57px;
 }
-@media screen and (max-width: 767px) {
+@include for-size(mobile) {
   .summary {
     display: none;
   }
 }
-@media screen and (min-width: 767px) {
+@include for-size(tablet) {
   .summary {
     margin: 70px 0 40px 0;
   }
 }
-@media screen and (min-width: 1280px) {
+@include for-size(desktop) {
   .summary {
     margin: 0 0 0 30px;
   }

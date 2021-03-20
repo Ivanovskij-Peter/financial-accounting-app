@@ -90,5 +90,5 @@ export default {
   setCosts,
   getIncomes,
   getCosts,
-  deleteIncomes,
+  // deleteIncomes,
 };
