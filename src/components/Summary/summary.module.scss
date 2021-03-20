@@ -7,23 +7,17 @@
   background-color: $body-color;
   border: 2px solid $primary-white-color;
   border-radius: 20px 20px 20px 0;
-  margin-left: 81px;
-  margin-top: 40px;
-  margin-bottom: 57px;
-}
-@include for-size(mobile) {
-  .summary {
-    display: none;
+  display: none;
+  @include for-size(tablet) {
+    display: inline-block;
+    margin-top: 30px;
+    margin-left: 30px;
   }
-}
-@include for-size(tablet) {
-  .summary {
-    margin: 70px 0 40px 0;
-  }
-}
-@include for-size(desktop) {
-  .summary {
-    margin: 0 0 0 30px;
+  @include for-size(desktop) {
+    margin-left: 30px;
+    position: absolute;
+    top: 143px;
+    right: 20px;
   }
 }
 

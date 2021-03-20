@@ -38,6 +38,7 @@ const IncomesCostsSection = () => {
             {showTab ? <CostsList /> : <IncomesList />}
             <Summary />
           </div>
+          <Summary />
         </div>
       </div>
     </>

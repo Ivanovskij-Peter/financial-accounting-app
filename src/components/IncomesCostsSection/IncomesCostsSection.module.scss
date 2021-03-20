@@ -9,6 +9,7 @@
   }
 }
 .IncomesCostsSection {
+  position: relative;
   &__list {
     display: flex;
     max-width: 300px;
@@ -81,7 +82,6 @@
     }
   }
   &__container {
-    padding: 20px 0 10px 0;
     width: 282px;
     @include for-size(tablet) {
       width: 665px;
