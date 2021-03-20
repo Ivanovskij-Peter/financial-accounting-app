@@ -3,7 +3,7 @@ import "./userInfo.scss";
 import sprite from "../../images/sprite.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { authOperations } from "../../redux/auth";
-import Modal from "../shared/modal/Modal";
+import Modal from "../shared/Modal/Modal";
 import { useHistory } from "react-router";
 
 function UserInfo() {
@@ -35,7 +35,11 @@ function UserInfo() {
           />
         )}
         {mobile ? (
-          <button className="icon-exit-button" type="button">
+          <button
+            className="icon-exit-button"
+            type="button"
+            onClick={toggleModal}
+          >
             <svg width="16px" height="16px" className="logout-icon">
               <use href={sprite + "#logout"} />
             </svg>

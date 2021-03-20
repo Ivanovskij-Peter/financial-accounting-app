@@ -11,9 +11,7 @@
   flex-direction: column;
   align-items: center;
 
-  background-color: white;
-
-  padding-top: 54px;
+  padding-top: 40px;
 }
 
 .Auth__inputWrapper {
@@ -203,7 +201,6 @@
 
 @include for-size(desktop) {
   .formContainer {
-    width: 893px;
     margin-bottom: 59px;
     display: flex;
     flex-direction: row;

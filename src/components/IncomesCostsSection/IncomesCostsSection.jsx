@@ -26,9 +26,9 @@ class IncomesCostsSection extends Component {
             <AddIncomeCostForm />
             <div className={styles.lists}>
               <IncomesList />
-              <Summary />
             </div>
           </div>
+          <Summary />
         </div>
       </>
     );
