@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import styles from "./IncomesCostsSection.module.scss";
 import IncomesList from "../IncomesList";
 import AddIncomeCostForm from "../AddIncomeCostForm";
-import Summary from "../Summary/Summary";
+import Summary from "../Summary/Summary"
 
 class IncomesCostsSection extends Component {
   state = {};
   render() {
+
     return (
       <>
         <div className={styles.IncomesCostsSection}>
@@ -26,9 +27,9 @@ class IncomesCostsSection extends Component {
             <AddIncomeCostForm />
             <div className={styles.lists}>
               <IncomesList />
-              <Summary />
             </div>
           </div>
+           <Summary />
         </div>
       </>
     );

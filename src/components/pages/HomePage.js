@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Balance from "../Balance/Balance";
 
 // import Notification from "../Notification/Notification";
+import Summary from "../Summary/Summary"
 
 import IncomesCostsSection from "../IncomesCostsSection";
 import transactionOperation from "../../redux/transaction/transaction-operation";
@@ -15,6 +16,7 @@ const HomePage = () => {
       dispatch(transactionOperation.getIncomes());
     }
   }, [name]);
+
   return (
     <>
       <Balance />
