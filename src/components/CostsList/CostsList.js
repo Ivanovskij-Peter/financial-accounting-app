@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import styles from "./incomesList.module.scss";
 import { connect } from "react-redux";
+import styles from "./costsList.module.scss";
 import sprite from "../../images/sprite.svg";
+import transactionsActions from "../../redux/transaction/transaction-actions";
 import transactionOperation from "../../redux/transaction/transaction-operation";
 
 class IncomesList extends Component {
   componentDidMount() {
-    this.props.getIncomes();
+    this.props.getCosts();
   }
-
   render() {
     const mobile = window.innerWidth < 768;
     const { data = [], type, deleteIncome } = this.props;
@@ -18,7 +18,9 @@ class IncomesList extends Component {
         if (el) {
           return (
             <tr key={el._id}>
-              <td className={styles.leftCol}>{el.date.split("-").join(".")}</td>
+              <td className={styles.leftCol}>
+                {el.date.split("-").reverse().join(".")}
+              </td>
               <td className={styles.leftCol}>{el.description}</td>
               <td className={styles.rightCol}>{el.category}</td>
               <td className={styles.amountCost}>{el.amount}</td>
@@ -97,7 +99,9 @@ class IncomesList extends Component {
         <tbody>
           {data.map((el) => (
             <tr key={el._id}>
-              <td className={styles.leftCol}>{el.date.split("-").join(".")}</td>
+              <td className={styles.leftCol}>
+                {el.date.split("-").reverse().join(".")}
+              </td>
               <td className={styles.leftCol}>{el.description}</td>
               <td className={styles.rightCol}>{el.category}</td>
               {type === "incomes" ? (
@@ -119,7 +123,7 @@ class IncomesList extends Component {
             : data.map((el) => (
                 <tr key={el._id}>
                   <td className={styles.leftCol}>
-                    {el.date.split("-").join(".")}
+                    {el.date.split("-").reverse().join(".")}
                   </td>
                   <td className={styles.leftCol}>{el.description}</td>
                   <td className={styles.rightCol}>{el.category}</td>
@@ -133,7 +137,7 @@ class IncomesList extends Component {
                     >{`  ${el.amount} грн.`}</td>
                   )}
                   <td className={styles.tdButton}>
-                    <button onClick={() => deleteIncome(el._id)}>
+                    <button>
                       <svg width="18px" height="18px">
                         <use href={sprite + "#delete-icon"} />
                       </svg>
@@ -147,10 +151,10 @@ class IncomesList extends Component {
   }
 }
 const mapStateToProps = (state) => ({
-  data: state.operations.incomes,
+  data: state.operations.costs,
 });
 const mapDispatchToProps = (dispatch) => ({
-  getIncomes: () => dispatch(transactionOperation.getIncomes()),
-  deleteIncome: (id) => dispatch(transactionOperation.deleteIncomes(id)),
+  getCosts: () => dispatch(transactionOperation.getCosts()),
+  deleteIncome: (id) => dispatch(transactionsActions.deleteCosts(id)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(IncomesList);

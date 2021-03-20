@@ -16,7 +16,7 @@
       position: fixed;
       bottom: 0;
       right: 0;
-      background-color: $primary-white-color;
+      background-color: $body-color;
       width: 50%;
 
       &:not(:last-child) {
@@ -42,7 +42,7 @@
       width: 100%;
       height: 53px;
       color: $primary-black-color;
-      background-color: #fefefe;
+      background-color: $body-color;
       border: none;
 
       &:focus,

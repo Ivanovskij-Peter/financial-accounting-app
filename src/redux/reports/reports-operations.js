@@ -28,9 +28,8 @@ const getReports = (date) => (dispatch, getState) => {
     .get(`/user/information/${date}`)
     .then((resp) => {
       dispatch(reportsActions.getReportsSuccess(resp.data));
-      console.log("ffffffffff", resp);
     })
-    .catch((err) => dispatch(reportsActions.getReportsError(console.log(err))));
+    .catch((err) => dispatch(reportsActions.getReportsError(err.message)));
 };
 
 export default getReports;

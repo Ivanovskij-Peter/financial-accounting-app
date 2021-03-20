@@ -20,7 +20,6 @@ const Modal = ({ onClick, title, onAgree }) => {
     onAgree();
   };
   const handleCloseClick = (e) => {
-    console.log(e.target.nodeName);
     if (e.target.id === "disAgree" || e.target.id === "close") {
       onClick();
     }

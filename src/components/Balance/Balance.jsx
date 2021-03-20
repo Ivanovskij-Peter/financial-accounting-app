@@ -15,13 +15,11 @@ export default function Balance() {
 
   const handleOnValueChange = (value) => {
     setValue(value);
-    // console.log(value);
   };
   const handleClick = (e) => {
     dispatch(transactionOperation.setBalance(value));
   };
   const balance = useSelector((state) => state.operations.balance);
-  console.log("balance:", balance);
 
   return (
     <div className="balanceWrapper">
@@ -47,7 +45,7 @@ export default function Balance() {
               className="balance_button"
               onClick={handleClick}
             >
-              <span className="balance_botton-text">подтвердить</span>
+              <span className="balance_button-text">подтвердить</span>
             </button>
           </div>
         </div>

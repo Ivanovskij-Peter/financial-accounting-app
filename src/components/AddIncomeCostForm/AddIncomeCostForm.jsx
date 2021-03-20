@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-
+import { connect } from "react-redux";
 import styles from "./addIncomeCostForm.module.scss";
 import sprite from "../../images/sprite.svg";
 
 import Button from "../shared/Button";
 import Calendar from "../Calendar";
+import transactionOperation from "../../redux/transaction/transaction-operation";
 
 const mobile = window.innerWidth < 768;
 
@@ -22,6 +23,7 @@ class AddIncomeCostForm extends Component {
   state = {
     isOpen: false,
     title: "",
+    value: "",
   };
   static defaultProps = {
     cathegories: [
@@ -68,11 +70,13 @@ class AddIncomeCostForm extends Component {
   };
 
   handleSubmit = ({ description, category, amount }) => {
-    console.log(description, category, amount);
+    console.log("values:", description);
+    console.log("values:", category);
+    console.log("values:", amount);
   };
   render() {
     const { isOpen, title } = this.state;
-    const { cathegories, incomesCathegories } = this.props;
+    const { cathegories, add } = this.props;
     document.addEventListener("click", this.handleCloseList);
 
     return (
@@ -158,11 +162,11 @@ class AddIncomeCostForm extends Component {
             </div> */}
             <div className={styles.Auth__amountInputWrapper}>
               <Field
-                value={mobile ? "00.00 UAH" : "0.00"}
+                value={this.state.value}
                 name="amount"
                 type="text"
                 className={styles.Auth__amountInput}
-                placeholder="Имя"
+                placeholder={mobile ? "00.00 UAH" : "0.00"}
               />
               <div>
                 <svg width="20px" height="20px">
@@ -183,5 +187,8 @@ class AddIncomeCostForm extends Component {
     );
   }
 }
+const mapDispatchToProps = (dispatch) => ({
+  add: () => dispatch(transactionOperation.setIncomes()),
+});
 
-export default AddIncomeCostForm;
+export default connect(null, mapDispatchToProps)(AddIncomeCostForm);

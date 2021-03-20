@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import getDataInfo from "../../redux/transaction/transaction-selectors";
-import styles from "./Summary.module.scss";
+import styles from "./summary.module.scss";
 
 const Summary = () => {
   const incomes = useSelector(getDataInfo.getData);
