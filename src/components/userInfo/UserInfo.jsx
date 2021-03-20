@@ -35,7 +35,11 @@ function UserInfo() {
           />
         )}
         {mobile ? (
-          <button className="icon-exit-button" type="button">
+          <button
+            className="icon-exit-button"
+            type="button"
+            onClick={toggleModal}
+          >
             <svg width="16px" height="16px" className="logout-icon">
               <use href={sprite + "#logout"} />
             </svg>

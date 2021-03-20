@@ -1,31 +1,33 @@
 @import "../../../sass/base/colors";
+@import "../../../sass/base/mixin";
 
-.modalContainer {
-}
 .Backdrop {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 75vw;
-  height: 75vh;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(61, 59, 59, 0.9);
+  background-color: rgba(134, 134, 134, 0.9);
   z-index: 1200;
-  border-radius: 50px;
 }
 
 .Modal {
   position: relative;
   text-align: center;
   padding-top: 50px;
-  width: 380px;
+  width: 300px;
   height: 194px;
   box-shadow: 10px 10px 30px rgba(82, 85, 95, 1);
   border-radius: 30px;
   background-color: white;
+
+  @include for-size(tablet) {
+    width: 380px;
+  }
 }
 
 .Modal > .modalTitle {
@@ -59,32 +61,3 @@
 .closeButton:focus {
   background-color: $accent-color;
 }
-
-// .buttonPrimary {
-//   margin-right: 15px;
-//   width: 125px;
-//   height: 44px;
-//   border-radius: 16px;
-//   color: #ffffff;
-//   background-color: $accent-color;
-//   border-color: transparent;
-// }
-// .buttonSecondary {
-//   width: 125px;
-//   height: 44px;
-//   border-radius: 16px;
-//   border: 2px solid $body-color;
-//   color: #000000;
-//   background-color: #ffffff;
-//   border-color: transparent;
-// }
-// .buttonPrimary:focus,
-// .buttonPrimary:hover {
-//   background-color: #fff;
-//   color: #000000;
-// }
-// .buttonSecondary:focus,
-// .buttonSecondary:hover {
-//   background-color: $accent-color;
-//   color: #ffffff;
-// }
