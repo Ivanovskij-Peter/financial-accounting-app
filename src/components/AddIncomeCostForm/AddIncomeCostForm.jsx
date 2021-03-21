@@ -7,6 +7,7 @@ import sprite from "../../images/sprite.svg";
 import PhonebookService from "../../services/backend.service";
 import Button from "../shared/Button";
 import Calendar from "../Calendar";
+import transactionOperation from "../../redux/transaction/transaction-operation";
 
 const mobile = window.innerWidth < 768;
 
@@ -86,9 +87,7 @@ handleChange = (e) => {
   handleSubmit = (values) => {
     const {type, date} = this.props;
     const {title, description, amount} =this.state;
-
     const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2MDRiMmI3YjkzOWI1ODA5NzRiYmZiOGEiLCJpYXQiOjE2MTU1MzkzMjJ9.KkkwL1P1L2SmlHIQhSO8pYc7lWaQYUUg6JfzS3HcDAY";
-
     const transaction = {
       date: date,
       category: title,
@@ -196,7 +195,7 @@ handleChange = (e) => {
                 name="amount"
                 type="text"
                 className={styles.Auth__amountInput}
-                placeholder={mobile ? "00.00 UAH" : "0.00"}
+                placeholder={mobile ? "00.00 UAH" : "0,00"}
               />
               <div>
                 <svg width="20px" height="20px">
@@ -217,10 +216,14 @@ handleChange = (e) => {
     );
   }
 }
+const mapDispatchToProps = (dispatch) => ({
+  add: () => dispatch(transactionOperation.setIncomes()),
+});
 
 const mapStateToProps = (state) => ({
   date: state.date,
   token: state.auth.token
 });
 
-export default connect(mapStateToProps, null)(AddIncomeCostForm);
+export default connect(mapStateToProps, mapDispatchToProps)(AddIncomeCostForm);
+

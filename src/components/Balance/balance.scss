@@ -16,6 +16,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.89;
+  letter-spacing: 0.02em;
   color: $primary-text-color;
 }
 
@@ -24,6 +25,7 @@
 }
 
 .balance_input {
+  background-color: $body-color;
   width: 125px;
   height: 44px;
   padding-right: 17px;
@@ -31,26 +33,42 @@
   font-weight: 700;
   font-size: 12px;
   line-height: 1.89;
-  border: 2px solid #ffffff;
+  border: 2px solid $primary-white-color;
   box-sizing: border-box;
   border-radius: 22px 0px 0px 22px;
+  &::placeholder {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.89;
+    align-items: center;
+    letter-spacing: 0.02em;
+    color: $primary-black-color;
+  }
 }
 
 .balance_button {
   width: 125px;
   height: 44px;
-  background: $accent-color;
-  border: 2px solid $accent-color;
+  background: $body-color;
+  border: 2px solid $primary-white-color;
   border-radius: 0px 22px 22px 0px;
-}
-.balance_botton-text {
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 1.89;
-  align-items: center;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: rgba(82, 85, 95, 0.7);
+  &-text {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.89;
+    align-items: center;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: $primary-text-color;
+    &:hover,
+    &:focus {
+      color: $primary-white-color;
+    }
+  }
+  &:hover,
+  &:focus {
+    background-color: $accent-color;
+  }
 }
 
 // ============================================================================
@@ -66,6 +84,7 @@
   }
   .balance_container {
     align-items: center;
+    margin-left: 75px;
     margin-top: 0px;
   }
 
@@ -90,7 +109,7 @@
   .balance_button {
     margin-left: 15px;
     border-radius: 16px;
-    border: 2px solid #ffffff;
+    border: 2px solid $primary-white-color;
     background-color: rgba(0, 0, 0, 0);
   }
 }
@@ -98,7 +117,11 @@
 // ============================================================================
 @include for-size(desktop) {
   .balance {
+    margin-left: 378px;
     margin-bottom: 8px;
+  }
+  .balance_container {
+    margin-left: 0;
   }
 }
 .report {
@@ -115,6 +138,7 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 1.89;
+  letter-spacing: 0.04em;
   color: $primary-text-color;
 }
 

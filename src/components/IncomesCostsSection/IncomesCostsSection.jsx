@@ -1,39 +1,47 @@
-import React, { Component } from "react";
-import {NavLink} from 'react-router-dom';
+import React, { useState } from "react";
+import styles from "./IncomesCostsSection.module.scss";
 import IncomesList from "../IncomesList";
 import AddIncomeCostForm from "../AddIncomeCostForm";
 import Summary from "../Summary/Summary";
-import styles from "./IncomesCostsSection.module.scss";
+import CostsList from "../CostsList/CostsList";
 
-class IncomesCostsSection extends Component {
-  state = {};
-  render() {
-    return (
-      <>
-        <div className={styles.IncomesCostsSection}>
-          <ul className={styles.IncomesCostsSection__list}>
-            <NavLink className={styles.IncomesCostsSection__list__item} to='/user/costs'>
-              <button className={styles.IncomesCostsSection__list__button}>
-                РАСХОД
-              </button>
-            </NavLink>
-            <NavLink className={styles.IncomesCostsSection__list__item} to='/user/incomes'>
-              <button className={styles.IncomesCostsSection__list__button}>
-                ДОХОД
-              </button>
-            </NavLink>
-          </ul>
-          <div className={styles.IncomesCostsSection__container}>
-            <AddIncomeCostForm />
-            <div className={styles.lists}>
-              <IncomesList />
-            </div>
+const IncomesCostsSection = () => {
+  const [showTab, setshowTab] = useState(false);
+
+  const handleClick = () => {
+    setshowTab(!showTab);
+  };
+  return (
+    <>
+      <div className={styles.IncomesCostsSection}>
+        <ul className={styles.IncomesCostsSection__list}>
+          <li className={styles.IncomesCostsSection__list__item}>
+            <button
+              className={styles.IncomesCostsSection__list__button}
+              onClick={handleClick}
+            >
+              РАСХОД
+            </button>
+          </li>
+          <li className={styles.IncomesCostsSection__list__item}>
+            <button
+              className={styles.IncomesCostsSection__list__button}
+              onClick={handleClick}
+            >
+              ДОХОД
+            </button>
+          </li>
+        </ul>
+        <div className={styles.IncomesCostsSection__container}>
+          <AddIncomeCostForm />
+          <div className={styles.lists}>
+            {showTab ? <CostsList /> : <IncomesList />}
           </div>
-          <Summary />
         </div>
-      </>
-    );
-  }
-}
+        <Summary />
+      </div>
+    </>
+  );
+};
 
 export default IncomesCostsSection;
