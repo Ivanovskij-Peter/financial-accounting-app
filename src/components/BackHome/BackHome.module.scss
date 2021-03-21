@@ -1,48 +1,52 @@
 @import "../../sass/base/mixin";
 @import "../../sass/base/colors";
 
-
-
 .link {
-    font-family: roboto;
-    font-size: 12;
-    color:$secondary-text-color;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-
-    &:hover,
-    &:focus {
-      color: $accent-color;
-      outline: none;
-     
-    }
+  font-family: roboto;
+  font-size: 12;
+  color: $secondary-text-color;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #52555f;
+  margin-right: 47px;
+  margin-top: 21px;
+  &:hover,
+  &:focus {
+    color: $accent-color;
+    outline: none;
+  }
+  @include for-size(tablet) {
+    position: absolute;
+    top: 93px;
+  }
 }
 
-.text{
-    padding-left: 15px;
-    visibility: hidden;
+.text {
+  padding-left: 15px;
+  visibility: hidden;
 }
 
-.icon{
-    fill: $secondary-text-color;
-    }
-
-.link:hover .icon {
-    fill: $accent-color;
+.icon {
+  fill: $secondary-text-color;
 }
 
+.link:hover .icon,
+.link:focus .icon {
+  fill: $accent-color;
+}
 
 @include for-size(tablet) {
-    .text{
-        padding-left: 15px;
-        visibility: visible;
-    }
+  .text {
+    padding-left: 15px;
+    visibility: visible;
+  }
 }
 
 @include for-size(desktop) {
-    .text{
-        padding-left: 15px;
-        visibility: visible;
-    }
+  .text {
+    padding-left: 15px;
+    visibility: visible;
+  }
 }
