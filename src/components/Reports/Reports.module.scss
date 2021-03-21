@@ -1,10 +1,11 @@
 @import "../../sass/base/_mixin";
+@import "../../sass/base/colors";
 
 .reportSection {
   position: relative;
   padding-left: auto;
   padding-right: auto;
-  background-color: #ffffff;
+  background-color: $primary-white-color;
   padding-top: 57px;
   @include for-size(tablet) {
     height: 422px;
@@ -60,7 +61,7 @@
 }
 .categoryListItem:hover,
 .categoryListItem:focus {
-  fill: #ff751d;
+  fill: $accent-color;
 }
 .circle {
   position: absolute;
@@ -73,7 +74,7 @@
 .circle:hover,
 .circle:focus {
   border-radius: 20px;
-  background-color: #ffdac0;
+  background-color: $second-accent-color;
   opacity: 0.5;
 }
 .categoryList {
@@ -99,17 +100,17 @@
 }
 .categoryIcon:hover,
 .categoryIcon:focus {
-  fill: #ff751d;
+  fill: $accent-color;
 }
 .productLink {
-  color: #52555f;
+  color: $secondary-text-color;
   font-size: 12px;
   font-weight: 400;
   text-transform: uppercase;
 }
 .productLink:hover,
 .productLink:focus {
-  fill: #ff751d;
+  fill: $accent-color;
 }
 .reportSection {
   padding-left: auto;
@@ -117,7 +118,7 @@
 }
 
 .totalName {
-  color: #52555f;
+  color: $secondary-text-color;
   font-weight: 700;
   font-size: 14px;
   @include for-size(tablet) {
@@ -126,12 +127,12 @@
 }
 .totalCosts {
   @extend .totalName;
-  color: #e53935;
+  color: $red-color;
 }
 
 .totalIncomes {
   @extend .totalName;
-  color: #407946;
+  color: $green-color;
 }
 .totalList {
   display: flex;
@@ -142,7 +143,7 @@
   width: 282px;
   height: 85px;
   // background-color: #471616;
-  background-color: #ffffff;
+  background-color: $primary-white-color;
   box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
   border-radius: 20px;
   z-index: 10;

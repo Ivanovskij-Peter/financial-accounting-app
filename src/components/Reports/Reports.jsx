@@ -57,8 +57,7 @@ const Reports = () => {
   const dispatch = useDispatch();
   // const date = useSelector(getInfo.getQueryDate);
   const userReports = useSelector(getInfo.getUserReports);
-  console.log("info", userReports);
-  const date = "03-12-2021";
+  const date = "08-14-2021";
 
   useEffect(() => {
     dispatch(reportOperations(date));

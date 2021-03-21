@@ -40,7 +40,7 @@
   line-height: 1.143;
   letter-spacing: 0.02em;
 
-  color: #52555f;
+  color: $secondary-text-color;
 }
 
 .closeButton {
@@ -61,3 +61,32 @@
 .closeButton:focus {
   background-color: $accent-color;
 }
+
+// .buttonPrimary {
+//   margin-right: 15px;
+//   width: 125px;
+//   height: 44px;
+//   border-radius: 16px;
+//   color: $primary-white-color;
+//   background-color: $accent-color;
+//   border-color: transparent;
+// }
+// .buttonSecondary {
+//   width: 125px;
+//   height: 44px;
+//   border-radius: 16px;
+//   border: 2px solid $body-color;
+//   color: #000000;
+//   background-color: $primary-white-color;
+//   border-color: transparent;
+// }
+// .buttonPrimary:focus,
+// .buttonPrimary:hover {
+//   background-color: $primary-white-color;
+//   color: #000000;
+// }
+// .buttonSecondary:focus,
+// .buttonSecondary:hover {
+//   background-color: $accent-color;
+//   color: $primary-white-color;
+// }

@@ -13,7 +13,7 @@
   justify-content: space-between;
   border-bottom: 1px solid $body-color;
 
-  width: 100%;
+  width: 282px;
   margin-bottom: 10px;
 }
 
@@ -33,7 +33,6 @@
   font-size: 8px;
   line-height: 9px;
   letter-spacing: 0.04em;
-  color: $secondary-text-color;
 
   &:not(:last-child) {
     margin-right: 20px;
@@ -41,7 +40,7 @@
 }
 
 .amountCost {
-  color: $red-color;
+  color: #e7192e;
 
   font-weight: bold;
   font-size: 12px;
@@ -152,7 +151,7 @@
         font-size: 12px;
         line-height: 14px;
         letter-spacing: 0.04em;
-        color: $red-color;
+        color: #e7192e;
         text-align: right;
       }
 

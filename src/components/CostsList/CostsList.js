@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import styles from "./incomesList.module.scss";
 import { connect } from "react-redux";
+import styles from "./costsList.module.scss";
 import sprite from "../../images/sprite.svg";
+import transactionsActions from "../../redux/transaction/transaction-actions";
 import transactionOperation from "../../redux/transaction/transaction-operation";
 
 class IncomesList extends Component {
   componentDidMount() {
-    this.props.getIncomes();
+    this.props.getCosts();
   }
-
   render() {
     const mobile = window.innerWidth < 768;
     const { data = [], type, deleteIncome } = this.props;
@@ -18,7 +18,9 @@ class IncomesList extends Component {
         if (el) {
           return (
             <tr key={el._id}>
-              <td className={styles.leftCol}>{el.date.split("-").join(".")}</td>
+              <td className={styles.leftCol}>
+                {el.date.split("-").reverse().join(".")}
+              </td>
               <td className={styles.leftCol}>{el.description}</td>
               <td className={styles.rightCol}>{el.category}</td>
               <td className={styles.amountCost}>{el.amount}</td>
@@ -34,11 +36,11 @@ class IncomesList extends Component {
         } else {
           return (
             <tr>
-              {/* <td className={styles.leftCol}></td>
+              <td className={styles.leftCol}></td>
               <td className={styles.leftCol}></td>
               <td className={styles.rightCol}></td>
               <td className={styles.amountCost}></td>
-              <td className={styles.tdButton}></td> */}
+              <td className={styles.tdButton}></td>
             </tr>
           );
         }
@@ -51,27 +53,27 @@ class IncomesList extends Component {
     };
     return mobile ? (
       <ul className={styles.list}>
-        {data.map(({ _id, description, category, amount, date }) => {
+        {data.map((el) => {
           return (
-            <li className={styles.listItem} key={_id}>
+            <li className={styles.listItem} key={el._id}>
               <div className={styles.left}>
-                <p className={styles.description}>{description}</p>
+                <p className={styles.description}>{el.description}</p>
                 <div>
                   <span className={styles.secondary}>
-                    {date.split("-").reverse().join(".")}
+                    {el.date.split("-").reverse().join(".")}
                   </span>
-                  <span className={styles.secondary}>{category}</span>
+                  <span className={styles.secondary}>{el.category}</span>
                 </div>
               </div>
               <div className={styles.right}>
                 {type === "incomes" ? (
                   <span
                     className={styles.amountCost}
-                  >{`- ${amount} грн.`}</span>
+                  >{`- ${el.amount} грн.`}</span>
                 ) : (
                   <span
                     className={styles.amountIncome}
-                  >{`  ${amount} грн.`}</span>
+                  >{`  ${el.amount} грн.`}</span>
                 )}
                 <button>
                   <svg width="18px" height="18px">
@@ -95,18 +97,20 @@ class IncomesList extends Component {
           </tr>
         </thead>
         <tbody>
-          {data.map(({ _id, description, category, amount, date }) => (
-            <tr key={_id}>
-              <td className={styles.leftCol}>{date.split("-").join(".")}</td>
-              <td className={styles.leftCol}>{description}</td>
-              <td className={styles.rightCol}>{category}</td>
+          {data.map((el) => (
+            <tr key={el._id}>
+              <td className={styles.leftCol}>
+                {el.date.split("-").reverse().join(".")}
+              </td>
+              <td className={styles.leftCol}>{el.description}</td>
+              <td className={styles.rightCol}>{el.category}</td>
               {type === "incomes" ? (
-                <td className={styles.amountCost}>{`- ${amount} грн.`}</td>
+                <td className={styles.amountCost}>{`- ${el.amount} грн.`}</td>
               ) : (
-                <td className={styles.amountIncome}>{`  ${amount} грн.`}</td>
+                <td className={styles.amountIncome}>{`  ${el.amount} грн.`}</td>
               )}
               <td className={styles.tdButton}>
-                <button onClick={() => deleteIncome(_id)}>
+                <button onClick={() => deleteIncome(el._id)}>
                   <svg width="18px" height="18px">
                     <use href={sprite + "#delete-icon"} />
                   </svg>
@@ -116,22 +120,24 @@ class IncomesList extends Component {
           ))}
           {data.length <= 9
             ? withoutData()
-            : data.map(({ _id, description, category, amount, date }) => (
-                <tr key={_id}>
+            : data.map((el) => (
+                <tr key={el._id}>
                   <td className={styles.leftCol}>
-                    {date.split("-").join(".")}
+                    {el.date.split("-").reverse().join(".")}
                   </td>
-                  <td className={styles.leftCol}>{description}</td>
-                  <td className={styles.rightCol}>{category}</td>
+                  <td className={styles.leftCol}>{el.description}</td>
+                  <td className={styles.rightCol}>{el.category}</td>
                   {type === "incomes" ? (
-                    <td className={styles.amountCost}>{`- ${amount} грн.`}</td>
+                    <td
+                      className={styles.amountCost}
+                    >{`- ${el.amount} грн.`}</td>
                   ) : (
                     <td
                       className={styles.amountIncome}
-                    >{`  ${amount} грн.`}</td>
+                    >{`  ${el.amount} грн.`}</td>
                   )}
                   <td className={styles.tdButton}>
-                    <button onClick={() => deleteIncome(_id)}>
+                    <button>
                       <svg width="18px" height="18px">
                         <use href={sprite + "#delete-icon"} />
                       </svg>
@@ -145,10 +151,10 @@ class IncomesList extends Component {
   }
 }
 const mapStateToProps = (state) => ({
-  data: state.operations.incomes,
+  data: state.operations.costs,
 });
 const mapDispatchToProps = (dispatch) => ({
-  getIncomes: () => dispatch(transactionOperation.getIncomes()),
-  deleteIncome: (id) => dispatch(transactionOperation.deleteIncomes(id)),
+  getCosts: () => dispatch(transactionOperation.getCosts()),
+  deleteIncome: (id) => dispatch(transactionsActions.deleteCosts(id)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(IncomesList);

@@ -1,6 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { authActions } from "../auth/index";
-import transactionActions from "../transaction/transaction-actions";
+import transactionsActions from "../transaction/transaction-actions";
 
 const error = createReducer(null, {
   [authActions.registerError]: (_, { payload }) => payload,
@@ -12,9 +12,9 @@ const error = createReducer(null, {
 
   //TODO добавить очистку ошибки при реквестах
   [authActions.getCurrentUserError]: (_, { payload }) => payload,
-  [transactionActions.addIncomesError]: (_, { payload }) => payload,
-  [transactionActions.deleteCostsError]: (_, { payload }) => payload,
-  [transactionActions.addCostsError]: (_, { payload }) => payload,
+  [transactionsActions.addIncomesError]: (_, { payload }) => payload,
+  [transactionsActions.deleteCostsError]: (_, { payload }) => payload,
+  [transactionsActions.addCostsError]: (_, { payload }) => payload,
 });
 
 export default error;
