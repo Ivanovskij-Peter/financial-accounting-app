@@ -1,14 +1,12 @@
 import React from "react";
 import Reports from "../Reports";
-import Balance from "../Balance/Balance";
-import CurrentPeriod from "../CurrentPeriod/CurrentPeriod.jsx";
+import ReportBalance from "../Balance/ReportBalance";
 import Total from "../Reports/Total";
 
 const ReportsPage = () => {
   return (
     <>
-      <CurrentPeriod />
-      <Balance />
+      <ReportBalance />
       <Total />
       <Reports />
     </>
