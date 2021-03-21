@@ -3,15 +3,14 @@ import DatePicker from "react-datepicker";
 import { connect } from "react-redux";
 
 import setDate from "../../redux/calendar/calendarAction";
-
 import styles from "./calendar.module.scss";
-import sprite from "../../images/sprite.svg";
 import "react-datepicker/dist/react-datepicker.css";
 
 class Calendar extends Component {
   state = {
     date: new Date(),
   };
+
 
   handleChange = (date) => {
     this.setState({ date: date });
@@ -32,11 +31,12 @@ class Calendar extends Component {
 
   render() {
     return (
-      <div className={styles.calendarWrapper} onChange={(date) => this.handleChange(date)}>
+      <div className={styles.calendarWrapper}>
         <DatePicker
           className={styles.calendar}
           dateFormat="dd.MM.yyyy"
           selected={this.state.date}
+          onChange={(date) => this.handleChange(date)}
         />
       </div>
     );

@@ -90,11 +90,13 @@ button {
   position: absolute;
   top: 10px;
   left: 30px;
+  outline: none;
 }
 .react-datepicker__navigation.react-datepicker__navigation--next {
   position: absolute;
   top: 10px;
   left: 175px;
+  outline: none;
 }
 .react-datepicker__triangle {
   display: none;
