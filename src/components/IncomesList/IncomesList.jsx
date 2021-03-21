@@ -58,7 +58,7 @@ class IncomesList extends Component {
           return (
             <li className={styles.listItem} key={_id}>
               <div className={styles.left}>
-                <p className={styles.description}>{el.description.length >= 15 ? el.description.slice(0, 15)+'...': el.description}</p>
+                <p className={styles.description}>{description.length >= 15 ? description.slice(0, 15)+'...': description}</p>
                 <div>
                   <span className={styles.secondary}>
                     {date.split("-").reverse().join(".")}
@@ -105,8 +105,8 @@ class IncomesList extends Component {
                   <td className={styles.leftCol}>
                     {date.split("-").join(".")}
                   </td>
-                  <td className={styles.leftCol}>{el.description.length >= 15 ? el.description.slice(0, 15)+'...': el.description}</td>
-                  <td className={styles.rightCol}>{el.category}</td>
+                  <td className={styles.leftCol}>{description.length >= 15 ? description.slice(0, 15)+'...': description}</td>
+                  <td className={styles.rightCol}>{category}</td>
                   {type === "incomes" ? (
                     <td className={styles.amountCost}>{`- ${amount} грн.`}</td>
                   ) : (
