@@ -23,6 +23,7 @@
   line-height: 14px;
   letter-spacing: 0.04em;
   color: $secondary-text-color;
+
   &::first-letter {
     text-transform: capitalize;
   }
@@ -34,7 +35,16 @@
   line-height: 9px;
   letter-spacing: 0.04em;
   color: $secondary-text-color;
-
+  &_text {
+    font-weight: normal;
+    font-size: 8px;
+    line-height: 9px;
+    letter-spacing: 0.04em;
+    color: $secondary-text-color;
+    &::first-letter {
+      text-transform: capitalize;
+    }
+  }
   &:not(:last-child) {
     margin-right: 20px;
   }
@@ -181,10 +191,16 @@
   .leftCol {
     text-align: left;
     max-width: 188px;
+    &::first-letter {
+      text-transform: capitalize;
+    }
   }
 
   .rightCol {
     text-align: right;
+    &::first-letter {
+      text-transform: capitalize;
+    }
   }
 
   td > button {
