@@ -15,7 +15,9 @@ export default function ReportBalance() {
           className="balance_input"
           id="input-example"
           name="input-name"
-          placeholder={`${balance} UAH`}
+          placeholder={`${balance
+            .toFixed(2)
+            .replace(/\d(?=(\d{3})+\.)/g, "$& ")} UAH`}
           suffix={" UAH"}
           decimalSeparator={"."}
           decimalScale={2}
