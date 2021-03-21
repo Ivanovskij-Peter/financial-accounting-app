@@ -5,6 +5,7 @@ import sprite from "../../images/sprite.svg";
 import transactionOperation from "../../redux/transaction/transaction-operation";
 
 class IncomesList extends Component {
+
   componentDidMount() {
     this.props.getIncomes();
   }
@@ -18,8 +19,10 @@ class IncomesList extends Component {
         if (el) {
           return (
             <tr key={el._id}>
-              <td className={styles.leftCol}>{el.date.split("-").join(".")}</td>
-              <td className={styles.leftCol}>{el.description}</td>
+              <td className={styles.leftCol}>
+                {el.date.split("-").reverse().join(".")}
+              </td>
+              <td className={styles.leftCol}>{el.description.length >= 15 ? el.description.slice(0, 15)+'...': el.description}</td>
               <td className={styles.rightCol}>{el.category}</td>
               <td className={styles.amountCost}>{el.amount}</td>
               <td className={styles.tdButton}>
@@ -34,11 +37,11 @@ class IncomesList extends Component {
         } else {
           return (
             <tr>
-              {/* <td className={styles.leftCol}></td>
+              <td className={styles.leftCol}></td>
               <td className={styles.leftCol}></td>
               <td className={styles.rightCol}></td>
               <td className={styles.amountCost}></td>
-              <td className={styles.tdButton}></td> */}
+              <td className={styles.tdButton}></td>
             </tr>
           );
         }
@@ -55,7 +58,7 @@ class IncomesList extends Component {
           return (
             <li className={styles.listItem} key={_id}>
               <div className={styles.left}>
-                <p className={styles.description}>{description}</p>
+                <p className={styles.description}>{el.description.length >= 15 ? el.description.slice(0, 15)+'...': el.description}</p>
                 <div>
                   <span className={styles.secondary}>
                     {date.split("-").reverse().join(".")}
@@ -95,25 +98,6 @@ class IncomesList extends Component {
           </tr>
         </thead>
         <tbody>
-          {data.map(({ _id, description, category, amount, date }) => (
-            <tr key={_id}>
-              <td className={styles.leftCol}>{date.split("-").join(".")}</td>
-              <td className={styles.leftCol}>{description}</td>
-              <td className={styles.rightCol}>{category}</td>
-              {type === "incomes" ? (
-                <td className={styles.amountCost}>{`- ${amount} грн.`}</td>
-              ) : (
-                <td className={styles.amountIncome}>{`  ${amount} грн.`}</td>
-              )}
-              <td className={styles.tdButton}>
-                <button onClick={() => deleteIncome(_id)}>
-                  <svg width="18px" height="18px">
-                    <use href={sprite + "#delete-icon"} />
-                  </svg>
-                </button>
-              </td>
-            </tr>
-          ))}
           {data.length <= 9
             ? withoutData()
             : data.map(({ _id, description, category, amount, date }) => (
@@ -121,8 +105,8 @@ class IncomesList extends Component {
                   <td className={styles.leftCol}>
                     {date.split("-").join(".")}
                   </td>
-                  <td className={styles.leftCol}>{description}</td>
-                  <td className={styles.rightCol}>{category}</td>
+                  <td className={styles.leftCol}>{el.description.length >= 15 ? el.description.slice(0, 15)+'...': el.description}</td>
+                  <td className={styles.rightCol}>{el.category}</td>
                   {type === "incomes" ? (
                     <td className={styles.amountCost}>{`- ${amount} грн.`}</td>
                   ) : (

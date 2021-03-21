@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { connect } from "react-redux";
 import styles from "./addIncomeCostForm.module.scss";
 import sprite from "../../images/sprite.svg";
-
+import PhonebookService from "../../services/backend.service";
 import Button from "../shared/Button";
 import Calendar from "../Calendar";
 import transactionOperation from "../../redux/transaction/transaction-operation";
@@ -23,7 +23,9 @@ class AddIncomeCostForm extends Component {
   state = {
     isOpen: false,
     title: "",
-    value: "",
+    amount: "",
+    description: "",
+    id: ""
   };
   static defaultProps = {
     cathegories: [
@@ -69,21 +71,44 @@ class AddIncomeCostForm extends Component {
     }
   };
 
-  handleSubmit = ({ description, category, amount }) => {
-    console.log("values:", description);
-    console.log("values:", category);
-    console.log("values:", amount);
+handleChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
   };
-  render() {
-    const { isOpen, title } = this.state;
-    const { cathegories } = this.props;
-    document.addEventListener("click", this.handleCloseList);
 
+  handleClick = (e) => {
+    this.setState({
+      title: "",
+      amount: "",
+      description: "",
+    });
+  };
+
+  handleSubmit = (values) => {
+    const {type, date} = this.props;
+    const {title, description, amount} =this.state;
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2MDRiMmI3YjkzOWI1ODA5NzRiYmZiOGEiLCJpYXQiOjE2MTU1MzkzMjJ9.KkkwL1P1L2SmlHIQhSO8pYc7lWaQYUUg6JfzS3HcDAY";
+    const transaction = {
+      date: date,
+      category: title,
+      description: description,
+      amount: amount,
+      id: `${Date.now()}`,
+    };
+
+    PhonebookService.addTransaction(token, type, transaction)
+    .then(data => console.log(data))
+    .catch(data => console.log(data));
+  };
+
+  render() {
+    const { isOpen, title, amount, description } = this.state;
+    const { cathegories, incomesCathegories } = this.props;
+    document.addEventListener("click", this.handleCloseList);
     return (
       //  <div className={styles.formPosition}>
       <div className={styles.formContainer}>
         <Calendar />
-
         <Formik
           initialValues={{ description: "", category: "", amount: "" }}
           validationSchema={validationSchema}
@@ -94,6 +119,8 @@ class AddIncomeCostForm extends Component {
           <Form className={styles.form}>
             <div className={styles.Auth__inputWrapper}>
               <Field
+                value={description}
+                onChange={this.handleChange}
                 name="description"
                 type="text"
                 className={styles.Auth__input}
@@ -109,6 +136,7 @@ class AddIncomeCostForm extends Component {
                 type="text"
                 className={styles.Auth__input}
                 placeholder="Категория товара"
+                onChange={this.handleChange}
                 value={title}
                 disabled
               />
@@ -162,7 +190,8 @@ class AddIncomeCostForm extends Component {
             </div> */}
             <div className={styles.Auth__amountInputWrapper}>
               <Field
-                value={this.state.value}
+                onChange={this.handleChange}
+                value={amount}
                 name="amount"
                 type="text"
                 className={styles.Auth__amountInput}
@@ -176,7 +205,7 @@ class AddIncomeCostForm extends Component {
             </div>
             <div className={styles.buttonWrapper}>
               <Button type="submit">ВВОД</Button>
-              <Button btnType="secondary" type="button">
+              <Button btnType="secondary" type="button" onClick={this.handleClick}>
                 ОЧИСТИТЬ
               </Button>
             </div>
@@ -191,4 +220,10 @@ const mapDispatchToProps = (dispatch) => ({
   add: () => dispatch(transactionOperation.setIncomes()),
 });
 
-export default connect(null, mapDispatchToProps)(AddIncomeCostForm);
+const mapStateToProps = (state) => ({
+  date: state.date,
+  token: state.auth.token
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddIncomeCostForm);
+
