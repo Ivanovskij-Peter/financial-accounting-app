@@ -104,3 +104,7 @@ button {
 .react-datepicker__day.react-datepicker__day--selected {
   background-color: $accent-color;
 }
+.react-datepicker__day.react-datepicker__day.react-datepicker__day--keyboard-selected {
+  background-color: inherit;
+  color: black;
+}
