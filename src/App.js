@@ -77,9 +77,9 @@ function App() {
               />
               <PrivateRoute exact path="/" component={HomePage} redirectTo="" />
               <PrivateRoute
-                exact
                 path="/reports"
                 component={ReportsPage}
+                // redirectTo="/login"
                 redirectTo=""
               />
             </Switch>
