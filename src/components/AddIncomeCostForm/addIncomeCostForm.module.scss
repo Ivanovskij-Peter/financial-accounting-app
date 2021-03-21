@@ -1,16 +1,12 @@
 @import "../../sass/base/colors";
 @import "../../sass/base/mixin";
 
-// .formPosition {
-//   display: flex;
-//   justify-content: center;
-// }
 .formContainer {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  margin-bottom: 62px;
   padding-top: 40px;
 }
 
@@ -23,7 +19,6 @@
       border-top-left-radius: 20px;
     }
   }
-
   &:not(:first-child) {
     margin-bottom: 30px;
     & input {
@@ -48,7 +43,7 @@
     width: 60px;
     height: 56px;
 
-    border-left: 2px solid #fff;
+    border-left: 2px solid $primary-white-color;
 
     display: flex;
     justify-content: center;
@@ -60,11 +55,10 @@
   outline: none;
   padding: 20px 20px;
   background: $input-color;
-
-  border: 2px solid #fff;
+  font-weight: 400;
+  border: 2px solid $primary-white-color;
   font-size: 14px;
   line-height: 1.143;
-  color: $input-text-color;
   width: 100%;
 }
 
@@ -80,7 +74,7 @@
   font-size: 12px;
   line-height: 14px;
   letter-spacing: 0.02em;
-  color: #000;
+  color: $input-secontd-text-color;
 }
 
 .Auth__errorMessage {
@@ -106,7 +100,6 @@
     display: flex;
     flex-wrap: nowrap;
     flex-flow: row;
-    // vertical-align: bottom;
   }
 
   .buttonWrapper {
@@ -156,7 +149,7 @@
     font-weight: normal;
     font-size: 12px;
     line-height: 14px;
-    border: 2px solid #fff;
+    border: 2px solid $primary-white-color;
     height: 100%;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -190,12 +183,12 @@
     }
   }
   .Auth__input {
-    background-color: #fff;
-    border: 2px solid #f5f6fb;
+    background-color: $primary-white-color;
+    border: 2px solid$body-color;
   }
   .Auth__amountInput {
-    background-color: #fff;
-    border: 2px solid #f5f6fb;
+    background-color: $primary-white-color;
+    border: 2px solid $body-color;
   }
 }
 
@@ -244,12 +237,13 @@
     }
   }
   .Auth__input {
-    background-color: #fff;
-    border: 2px solid #f5f6fb;
+    fill: #c7ccdc;
+    background-color: $primary-white-color;
+    border: 2px solid $body-color;
   }
   .Auth__amountInput {
-    background-color: #fff;
-    border: 2px solid #f5f6fb;
+    background-color: $primary-white-color;
+    border: 2px solid $body-color;
     padding: 0 20px 0 45px;
   }
 }
@@ -262,7 +256,7 @@
   line-height: 1.89;
   align-items: center;
   letter-spacing: 0.02em;
-  color: #c7ccdc;
+  color: $input-secontd-text-color;
   &:hover,
   &:focus,
   &:active {
@@ -282,8 +276,8 @@
   z-index: 200;
   top: 44px;
   width: 282px;
-  background-color: #fff;
-  border: 2px solid #f5f6fb;
+  background-color: $primary-white-color;
+  border: 2px solid $body-color;
   box-shadow: 0px 3px 4px rgba(170, 178, 197, 0.4);
   @include for-size(tablet) {
     width: 171px;
