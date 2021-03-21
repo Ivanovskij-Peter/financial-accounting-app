@@ -1,6 +1,6 @@
 import React from "react";
-import { NavLink, useRouteMatch } from "react-router-dom";
-// import Chart from "../Chart";
+import { NavLink, Route, useRouteMatch } from "react-router-dom";
+import Chart from "../Chart";
 import sprite from "../../images/sprite.svg";
 import style from "./Reports.module.scss";
 
@@ -69,7 +69,7 @@ const CategoriesList = ({ categoriesArr, reportName }) => {
       </ul>
       <Route
         path={`${match.path}/:category`}
-        render={(props) => <Chart {...props} reportName = {reportName}/>}
+        render={(props) => <Chart {...props} reportName={reportName} />}
       />
     </>
   );
