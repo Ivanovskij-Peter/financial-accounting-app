@@ -61,7 +61,7 @@
 }
 .categoryListItem:hover,
 .categoryListItem:focus {
-  fill: #ff751d;
+  fill: $accent-color;
 }
 .circle {
   position: absolute;
@@ -100,7 +100,7 @@
 }
 .categoryIcon:hover,
 .categoryIcon:focus {
-  fill: #ff751d;
+  fill: $accent-color;
 }
 .productLink {
   color: $secondary-text-color;
@@ -110,7 +110,7 @@
 }
 .productLink:hover,
 .productLink:focus {
-  fill: #ff751d;
+  fill: $accent-color;
 }
 .reportSection {
   padding-left: auto;

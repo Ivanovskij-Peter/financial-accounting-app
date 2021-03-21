@@ -75,14 +75,14 @@
         &:hover,
         &:active {
           background-color: #fafbfd;
-          color: #ff751d;
+          color: $accent-color;
           outline: none;
         }
       }
     }
   }
   &__container {
-    width: 282px;
+    // width: 282px;
     @include for-size(tablet) {
       width: 665px;
       height: 625px;

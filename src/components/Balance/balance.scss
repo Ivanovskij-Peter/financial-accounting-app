@@ -59,7 +59,7 @@
     align-items: center;
     letter-spacing: 0.02em;
     text-transform: uppercase;
-    color: rgba(82, 85, 95, 0.7);
+    color: $primary-text-color;
     &:hover,
     &:focus {
       color: $primary-white-color;
@@ -84,6 +84,7 @@
   }
   .balance_container {
     align-items: center;
+    margin-left: 75px;
     margin-top: 0px;
   }
 
@@ -116,7 +117,11 @@
 // ============================================================================
 @include for-size(desktop) {
   .balance {
+    margin-left: 378px;
     margin-bottom: 8px;
+  }
+  .balance_container {
+    margin-left: 0;
   }
 }
 .report {

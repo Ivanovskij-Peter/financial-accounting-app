@@ -63,14 +63,24 @@ function App() {
         <Suspense fallback={<Loaders />}>
           <Layout>
             <Switch>
-              <PublicRoute exact path="/register" component={AuthForm} />
-              <PublicRoute exact path="/login" component={AuthForm} />
-              <PrivateRoute exact path="/" component={HomePage} />
+              <PublicRoute
+                exact
+                path="/register"
+                component={AuthForm}
+                redirectTo=""
+              />
+              <PublicRoute
+                exact
+                path="/login"
+                component={AuthForm}
+                redirectTo=""
+              />
+              <PrivateRoute exact path="/" component={HomePage} redirectTo="" />
               <PrivateRoute
                 exact
                 path="/reports"
                 component={ReportsPage}
-                // redirectTo="/login"
+                redirectTo=""
               />
             </Switch>
           </Layout>

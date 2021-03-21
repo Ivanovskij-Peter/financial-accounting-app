@@ -34,11 +34,11 @@ class IncomesList extends Component {
         } else {
           return (
             <tr>
-              <td className={styles.leftCol}></td>
+              {/* <td className={styles.leftCol}></td>
               <td className={styles.leftCol}></td>
               <td className={styles.rightCol}></td>
               <td className={styles.amountCost}></td>
-              <td className={styles.tdButton}></td>
+              <td className={styles.tdButton}></td> */}
             </tr>
           );
         }
@@ -51,27 +51,27 @@ class IncomesList extends Component {
     };
     return mobile ? (
       <ul className={styles.list}>
-        {data.map((el) => {
+        {data.map(({ _id, description, category, amount, date }) => {
           return (
-            <li className={styles.listItem} key={el._id}>
+            <li className={styles.listItem} key={_id}>
               <div className={styles.left}>
-                <p className={styles.description}>{el.description}</p>
+                <p className={styles.description}>{description}</p>
                 <div>
                   <span className={styles.secondary}>
-                    {el.date.split("-").reverse().join(".")}
+                    {date.split("-").reverse().join(".")}
                   </span>
-                  <span className={styles.secondary}>{el.category}</span>
+                  <span className={styles.secondary}>{category}</span>
                 </div>
               </div>
               <div className={styles.right}>
                 {type === "incomes" ? (
                   <span
                     className={styles.amountCost}
-                  >{`- ${el.amount} грн.`}</span>
+                  >{`- ${amount} грн.`}</span>
                 ) : (
                   <span
                     className={styles.amountIncome}
-                  >{`  ${el.amount} грн.`}</span>
+                  >{`  ${amount} грн.`}</span>
                 )}
                 <button>
                   <svg width="18px" height="18px">
@@ -95,18 +95,18 @@ class IncomesList extends Component {
           </tr>
         </thead>
         <tbody>
-          {data.map((el) => (
-            <tr key={el._id}>
-              <td className={styles.leftCol}>{el.date.split("-").join(".")}</td>
-              <td className={styles.leftCol}>{el.description}</td>
-              <td className={styles.rightCol}>{el.category}</td>
+          {data.map(({ _id, description, category, amount, date }) => (
+            <tr key={_id}>
+              <td className={styles.leftCol}>{date.split("-").join(".")}</td>
+              <td className={styles.leftCol}>{description}</td>
+              <td className={styles.rightCol}>{category}</td>
               {type === "incomes" ? (
-                <td className={styles.amountCost}>{`- ${el.amount} грн.`}</td>
+                <td className={styles.amountCost}>{`- ${amount} грн.`}</td>
               ) : (
-                <td className={styles.amountIncome}>{`  ${el.amount} грн.`}</td>
+                <td className={styles.amountIncome}>{`  ${amount} грн.`}</td>
               )}
               <td className={styles.tdButton}>
-                <button onClick={() => deleteIncome(el._id)}>
+                <button onClick={() => deleteIncome(_id)}>
                   <svg width="18px" height="18px">
                     <use href={sprite + "#delete-icon"} />
                   </svg>
@@ -116,24 +116,22 @@ class IncomesList extends Component {
           ))}
           {data.length <= 9
             ? withoutData()
-            : data.map((el) => (
-                <tr key={el._id}>
+            : data.map(({ _id, description, category, amount, date }) => (
+                <tr key={_id}>
                   <td className={styles.leftCol}>
-                    {el.date.split("-").join(".")}
+                    {date.split("-").join(".")}
                   </td>
-                  <td className={styles.leftCol}>{el.description}</td>
-                  <td className={styles.rightCol}>{el.category}</td>
+                  <td className={styles.leftCol}>{description}</td>
+                  <td className={styles.rightCol}>{category}</td>
                   {type === "incomes" ? (
-                    <td
-                      className={styles.amountCost}
-                    >{`- ${el.amount} грн.`}</td>
+                    <td className={styles.amountCost}>{`- ${amount} грн.`}</td>
                   ) : (
                     <td
                       className={styles.amountIncome}
-                    >{`  ${el.amount} грн.`}</td>
+                    >{`  ${amount} грн.`}</td>
                   )}
                   <td className={styles.tdButton}>
-                    <button onClick={() => deleteIncome(el._id)}>
+                    <button onClick={() => deleteIncome(_id)}>
                       <svg width="18px" height="18px">
                         <use href={sprite + "#delete-icon"} />
                       </svg>

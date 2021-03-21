@@ -36,10 +36,9 @@ const IncomesCostsSection = () => {
           <AddIncomeCostForm />
           <div className={styles.lists}>
             {showTab ? <CostsList /> : <IncomesList />}
-            <Summary />
           </div>
-          <Summary />
         </div>
+        <Summary />
       </div>
     </>
   );

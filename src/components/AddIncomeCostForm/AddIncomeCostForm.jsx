@@ -76,7 +76,7 @@ class AddIncomeCostForm extends Component {
   };
   render() {
     const { isOpen, title } = this.state;
-    const { cathegories, add } = this.props;
+    const { cathegories } = this.props;
     document.addEventListener("click", this.handleCloseList);
 
     return (
@@ -166,7 +166,7 @@ class AddIncomeCostForm extends Component {
                 name="amount"
                 type="text"
                 className={styles.Auth__amountInput}
-                placeholder={mobile ? "00.00 UAH" : "0.00"}
+                placeholder={mobile ? "00.00 UAH" : "0,00"}
               />
               <div>
                 <svg width="20px" height="20px">

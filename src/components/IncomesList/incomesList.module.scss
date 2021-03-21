@@ -13,7 +13,7 @@
   justify-content: space-between;
   border-bottom: 1px solid $body-color;
 
-  width: 282px;
+  width: 100%;
   margin-bottom: 10px;
 }
 
@@ -23,6 +23,9 @@
   line-height: 14px;
   letter-spacing: 0.04em;
   color: $secondary-text-color;
+  &::first-letter {
+    text-transform: capitalize;
+  }
 }
 
 .secondary {
@@ -38,7 +41,7 @@
 }
 
 .amountCost {
-  color: #e7192e;
+  color: $red-color;
 
   font-weight: bold;
   font-size: 12px;
@@ -97,7 +100,7 @@
         font-size: 12px;
         line-height: 14px;
         letter-spacing: 0.02em;
-        color: #000000;
+        color: $primary-black-color;
 
         background-color: $body-color;
 
@@ -149,7 +152,7 @@
         font-size: 12px;
         line-height: 14px;
         letter-spacing: 0.04em;
-        color: #e7192e;
+        color: $red-color;
         text-align: right;
       }
 
