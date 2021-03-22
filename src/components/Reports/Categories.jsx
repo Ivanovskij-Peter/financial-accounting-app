@@ -69,7 +69,7 @@ const CategoriesList = ({ categoriesArr, reportName }) => {
       </ul>
       <Route
         path={`${match.path}/:category`}
-        render={(props) => <Chart {...props} reportName = {reportName}/>}
+        render={(props) => <Chart {...props} reportName={reportName} />}
       />
     </>
   );

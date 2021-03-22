@@ -5,7 +5,6 @@ import sprite from "../../images/sprite.svg";
 import transactionOperation from "../../redux/transaction/transaction-operation";
 
 class IncomesList extends Component {
-
   componentDidMount() {
     this.props.getIncomes();
   }
@@ -22,7 +21,11 @@ class IncomesList extends Component {
               <td className={styles.leftCol}>
                 {el.date.split("-").reverse().join(".")}
               </td>
-              <td className={styles.leftCol}>{el.description.length >= 15 ? el.description.slice(0, 15)+'...': el.description}</td>
+              <td className={styles.leftCol}>
+                {el.description.length >= 15
+                  ? el.description.slice(0, 15) + "..."
+                  : el.description}
+              </td>
               <td className={styles.rightCol}>{el.category}</td>
               <td className={styles.amountCost}>{el.amount}</td>
               <td className={styles.tdButton}>
@@ -58,7 +61,11 @@ class IncomesList extends Component {
           return (
             <li className={styles.listItem} key={_id}>
               <div className={styles.left}>
-                <p className={styles.description}>{description.length >= 15 ? description.slice(0, 15)+'...': description}</p>
+                <p className={styles.description}>
+                  {description.length >= 15
+                    ? description.slice(0, 15) + "..."
+                    : description}
+                </p>
                 <div>
                   <span className={styles.secondary}>
                     {date.split("-").reverse().join(".")}
@@ -105,7 +112,11 @@ class IncomesList extends Component {
                   <td className={styles.leftCol}>
                     {date.split("-").join(".")}
                   </td>
-                  <td className={styles.leftCol}>{description.length >= 15 ? description.slice(0, 15)+'...': description}</td>
+                  <td className={styles.leftCol}>
+                    {description.length >= 15
+                      ? description.slice(0, 15) + "..."
+                      : description}
+                  </td>
                   <td className={styles.rightCol}>{category}</td>
                   {type === "incomes" ? (
                     <td className={styles.amountCost}>{`- ${amount} грн.`}</td>
