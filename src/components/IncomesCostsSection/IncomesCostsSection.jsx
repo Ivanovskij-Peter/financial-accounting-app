@@ -3,14 +3,15 @@ import styles from "./IncomesCostsSection.module.scss";
 import IncomesList from "../IncomesList";
 import AddIncomeCostForm from "../AddIncomeCostForm";
 import Summary from "../Summary/Summary";
-import CostsList from "../CostsList/CostsList";
+
 import CurrencyModal from "../СurrencyModal";
 
 const IncomesCostsSection = () => {
-  const [showTab, setshowTab] = useState(false);
+  const [typeTransaction, setTypeTransaction] = useState("costs");
 
-  const handleClick = () => {
-    setshowTab(!showTab);
+  const handleClick = (e) => {
+    const { name } = e.target;
+    setTypeTransaction(name);
   };
   const mobileView = window.innerWidth < 768;
   const [showModal, setShowModal] = useState(false);
@@ -48,6 +49,7 @@ const IncomesCostsSection = () => {
           <ul className={styles.IncomesCostsSection__list}>
             <li className={styles.IncomesCostsSection__list__item}>
               <button
+                name="costs"
                 className={styles.IncomesCostsSection__list__button}
                 onClick={handleClick}
               >
@@ -56,6 +58,7 @@ const IncomesCostsSection = () => {
             </li>
             <li className={styles.IncomesCostsSection__list__item}>
               <button
+                name="incomes"
                 className={styles.IncomesCostsSection__list__button}
                 onClick={handleClick}
               >
@@ -64,42 +67,14 @@ const IncomesCostsSection = () => {
             </li>
           </ul>
           <div className={styles.IncomesCostsSection__container}>
-            <AddIncomeCostForm />
+            <AddIncomeCostForm typeTransaction={typeTransaction} />
             <div className={styles.lists}>
-              {showTab ? <CostsList /> : <IncomesList />}
+              <IncomesList typeTransaction={typeTransaction} />
             </div>
           </div>
           <Summary />
         </div>
       )}
-
-      {/* <div className={styles.IncomesCostsSection}>
-        <ul className={styles.IncomesCostsSection__list}>
-          <li className={styles.IncomesCostsSection__list__item}>
-            <button
-              className={styles.IncomesCostsSection__list__button}
-              onClick={handleClick}
-            >
-              РАСХОД
-            </button>
-          </li>
-          <li className={styles.IncomesCostsSection__list__item}>
-            <button
-              className={styles.IncomesCostsSection__list__button}
-              onClick={handleClick}
-            >
-              ДОХОД
-            </button>
-          </li>
-        </ul>
-        <div className={styles.IncomesCostsSection__container}>
-          <AddIncomeCostForm />
-          <div className={styles.lists}>
-            {showTab ? <CostsList /> : <IncomesList />}
-          </div>
-        </div>
-        <Summary />
-      </div> */}
     </>
   );
 };

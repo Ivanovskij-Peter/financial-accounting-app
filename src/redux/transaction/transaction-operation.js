@@ -4,6 +4,15 @@ import transactionsActions from "./transaction-actions";
 axios.defaults.baseURL = "https://kapusta-srv.herokuapp.com";
 // axios.defaults.baseURL = "http://localhost:8080";
 
+const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = "";
+  },
+};
+
 const setBalance = (balance) => async (dispatch) => {
   dispatch(transactionsActions.setBalanceRequest());
   try {
@@ -16,33 +25,56 @@ const setBalance = (balance) => async (dispatch) => {
   }
 };
 
-const setIncomes = (date, category, description, amount) => async (
-  dispatch,
-) => {
-  const income = {
-    date,
-    category,
-    description,
-    amount,
-  };
+const addTransaction = (keyWord, transaction) => async (dispatch, getState) => {
+  const {
+    auth: { token: persistedToken },
+  } = getState();
+  if (!persistedToken) {
+    return;
+  }
+  token.set(persistedToken);
   dispatch(transactionsActions.setIncomesRequest());
+  dispatch(transactionsActions.setCostsRequest());
   try {
-    const response = await axios.post("/user/incomes", income);
-    dispatch(transactionsActions.setIncomesSucces(response.data));
+    const response = await axios.post(`/user/${keyWord}`, transaction);
+    if (keyWord === "incomes") {
+      dispatch(transactionsActions.setIncomesSucces(response.data));
+    } else if (keyWord === "costs") {
+      dispatch(transactionsActions.setCostsSucces(response.data));
+    }
   } catch (error) {
+    dispatch(transactionsActions.setCostsError(error.message));
     dispatch(transactionsActions.setIncomesError(error.message));
   }
 };
 
-const setCosts = (expenses) => async (dispatch) => {
-  dispatch(transactionsActions.setCostsRequest());
-  try {
-    const response = await axios.post("/user/costs", expenses);
-    dispatch(transactionsActions.setCostsSucces(response.data));
-  } catch (error) {
-    dispatch(transactionsActions.setCostsError(error.message));
-  }
-};
+// const setIncomes = (date, category, description, amount) => async (
+//   dispatch,
+// ) => {
+//   const income = {
+//     date,
+//     category,
+//     description,
+//     amount,
+//   };
+//   dispatch(transactionsActions.setIncomesRequest());
+//   try {
+//     const response = await axios.post("/user/incomes", income);
+//     dispatch(transactionsActions.setIncomesSucces(response.data));
+//   } catch (error) {
+//     dispatch(transactionsActions.setIncomesError(error.message));
+//   }
+// };
+
+// const setCosts = (expenses) => async (dispatch) => {
+//   dispatch(transactionsActions.setCostsRequest());
+//   try {
+//     const response = await axios.post("/user/costs", expenses);
+//     dispatch(transactionsActions.setCostsSucces(response.data));
+//   } catch (error) {
+//     dispatch(transactionsActions.setCostsError(error.message));
+//   }
+// };
 
 const getMonthIncomes = (credentials) => async (dispatch) => {
   dispatch(transactionsActions.getIncomesRequest());
@@ -113,8 +145,7 @@ const deleteCosts = (incomeId) => async (dispatch) => {
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   setBalance,
-  setIncomes,
-  setCosts,
+  addTransaction,
   getMonthIncomes,
   getMonthCosts,
   getCosts,

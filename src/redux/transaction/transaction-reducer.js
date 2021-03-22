@@ -4,21 +4,24 @@ import transactionsActions from "./transaction-actions";
 
 const balance = createReducer(0, {
   [transactionsActions.setBalanceSucces]: (_, { payload }) => payload,
+  [transactionsActions.setIncomesSucces]: (_, { payload }) => payload.balance,
+
+  [transactionsActions.setCostsSucces]: (_, { payload }) => payload.balance,
 });
 const incomes = createReducer([], {
   [transactionsActions.getIncomesSucces]: (_, { payload }) => payload,
-  [transactionsActions.addIncomesSucces]: (state, { payload }) => [
+  [transactionsActions.setIncomesSucces]: (state, { payload }) => [
     ...state,
-    payload,
+    payload.body,
   ],
   [transactionsActions.deleteIncomesSucces]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
 });
 const costs = createReducer([], {
   [transactionsActions.getCostsSucces]: (_, { payload }) => payload,
-  [transactionsActions.addCostsSucces]: (state, { payload }) => [
+  [transactionsActions.setCostsSucces]: (state, { payload }) => [
     ...state,
-    payload,
+    payload.body,
   ],
   [transactionsActions.deleteCostsSucces]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
