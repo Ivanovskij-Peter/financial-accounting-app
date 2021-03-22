@@ -1,4 +1,5 @@
 @import "./colors";
+@import "./mixin";
 
 html {
   box-sizing: border-box;
@@ -43,4 +44,79 @@ a {
 
 button {
   cursor: pointer;
+}
+
+.react-datepicker {
+  position: absolute;
+  left: 35px;
+  @include for-size(tablet) {
+    left: 0;
+  }
+}
+.react-datepicker__month-container {
+  border-radius: 10px;
+  box-shadow: 0px 3px 4px rgba(170, 178, 197, 0.4);
+  @include for-size(tablet) {
+    left: -10px;
+    top: 0;
+  }
+  position: absolute;
+  left: -100px;
+  background-color: #fff;
+  transition: all 250ms linear;
+}
+.react-datepicker__input-container {
+  transition: all 250ms linear;
+  color: #52555f;
+  &:hover,
+  &:focus {
+    transform: scale(1.2);
+    &::after {
+      content: url(../../images/calendar.svg);
+      position: absolute;
+      top: 3px;
+      left: 0;
+      width: 20px;
+    }
+  }
+  &::after {
+    content: url(../../images/calendar2.svg);
+    position: absolute;
+    top: 3px;
+    left: 0;
+    width: 20px;
+  }
+}
+.react-datepicker__header {
+  background-color: $accent-color;
+}
+.react-datepicker__navigation.react-datepicker__navigation--previous {
+  top: 10px;
+  left: -60px;
+  @include for-size(tablet) {
+    position: absolute;
+    top: 10px;
+    left: 30px;
+    outline: none;
+  }
+}
+.react-datepicker__navigation.react-datepicker__navigation--next {
+  top: 10px;
+  left: 85px;
+  @include for-size(tablet) {
+    position: absolute;
+    top: 10px;
+    left: 175px;
+    outline: none;
+  }
+}
+.react-datepicker__triangle {
+  display: none;
+}
+.react-datepicker__day.react-datepicker__day--selected {
+  background-color: $accent-color;
+}
+.react-datepicker__day.react-datepicker__day.react-datepicker__day--keyboard-selected {
+  background-color: inherit;
+  color: black;
 }

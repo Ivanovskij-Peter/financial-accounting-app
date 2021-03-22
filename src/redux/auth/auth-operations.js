@@ -1,12 +1,10 @@
 import axios from "axios";
 import authActions from "./auth-actions";
-import api from "../../services/backend.service";
 import transactionsActions from "../transaction/transaction-actions";
 
-// axios.defaults.baseURL = "http://localhost:8080";
-axios.defaults.baseURL = "https://kapusta-srv.herokuapp.com";
+axios.defaults.baseURL = "http://kapusta-srv.herokuapp.com";
 
-const token = {
+const axiosToken = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
@@ -15,66 +13,54 @@ const token = {
   },
 };
 
-const register = (credentials, history) => (dispatch) => {
+const register = (credentials) => async (dispatch) => {
   dispatch(authActions.registerRequest());
-  api
-    .register(credentials)
-    .then(({ data }) => {
-      dispatch(authActions.registerSuccess(data));
-    })
-    .then(() => history.push("/login"))
-    .catch((data) => {
-      if (!data.response) {
-        dispatch(authActions.loginError(data.message));
-        return;
-      }
-      dispatch(authActions.registerError(data?.response?.data?.message));
-    });
+  try {
+    const response = await axios.post("/auth/register", credentials);
+    dispatch(authActions.registerSuccess(response.data));
+  } catch (error) {
+    dispatch(authActions.loginError(error.message));
+  }
 };
 
-const logIn = (credentials) => (dispatch) => {
+const logIn = (credentials) => async (dispatch) => {
   dispatch(authActions.loginRequest());
-  api
-    .login(credentials)
-    .then(({ data }) => {
-      api.setToken(data.token);
-      const { token, name, email, avatarURL } = data;
-      dispatch(authActions.loginSuccess({ name, email, avatarURL, token }));
-    })
-    .catch((data) => {
-      if (!data.response) {
-        dispatch(authActions.loginError(data.message));
-        return;
-      }
-      dispatch(authActions.loginError(data?.response?.data?.message));
-    });
+  try {
+    const response = await axios.post("/auth/login", credentials);
+    const { token, user } = response.data;
+    const { name, email, avatarURL } = user;
+    axiosToken.set(token);
+    dispatch(authActions.loginSuccess({ name, email, avatarURL, token }));
+  } catch (error) {
+    dispatch(authActions.loginError(error.message));
+  }
 };
 
-const logInWithGoogle = (googleToken) => (dispatch) => {
+const logInWithGoogle = (googleToken) => async (dispatch) => {
   dispatch(authActions.loginWithGoogleRequest());
-  api
-    .loginWithGoogle(googleToken)
-    .then(({ data }) => {
-      api.setToken(data.token);
-      const { token, name, email, avatarURL } = data;
-      dispatch(
-        authActions.loginWithGoogleSuccess({ name, email, avatarURL, token }),
-      );
-    })
-    .catch((data) => {
-      if (!data.response) {
-        dispatch(authActions.loginWithGoogleError(data.message));
-        return;
-      }
-      dispatch(authActions.loginWithGoogleError(data?.response?.data?.message));
-    });
+  try {
+    const response = await axios.post("/auth/login-with-google", googleToken);
+    console.log(response);
+    const { token, user } = response.data;
+    axiosToken.set(token);
+    dispatch(
+      authActions.loginWithGoogleSuccess({
+        name: user.name,
+        email: user.email,
+        avatarURL: user.avatarURL,
+        token,
+      }),
+    );
+  } catch (error) {
+    dispatch(authActions.loginWithGoogleError(error.message));
+  }
 };
 
 const logOut = () => async (dispatch) => {
   dispatch(authActions.logOutRequest());
   try {
     await axios.post("/auth/logout");
-    token.unset();
+    axiosToken.unset();
     dispatch(authActions.logOutSuccess());
   } catch (error) {
     dispatch(authActions.logOutError(error.message));
@@ -88,7 +74,7 @@ const getCurrrentUser = () => async (dispatch, getState) => {
   if (!persistedToken) {
     return;
   }
-  token.set(persistedToken);
+  axiosToken.set(persistedToken);
   dispatch(authActions.getCurrentUserRequest());
   try {
     const response = await axios.get("/user");

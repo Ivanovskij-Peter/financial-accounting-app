@@ -6,24 +6,38 @@ import transactionOperation from "../../redux/transaction/transaction-operation"
 
 class IncomesList extends Component {
   componentDidMount() {
-    this.props.getIncomes();
+    this.props.getCosts();
   }
 
   render() {
     const mobile = window.innerWidth < 768;
-    const { data = [], type, deleteIncome } = this.props;
+    const { typeTransaction, deleteIncome, incomes, costs } = this.props;
+    let data = typeTransaction === "costs" ? costs : incomes ;
 
     const withoutData = function () {
       const withDataTable = function (el) {
         if (el) {
           return (
             <tr key={el._id}>
-              <td className={styles.leftCol}>{el.date.split("-").join(".")}</td>
-              <td className={styles.leftCol}>{el.description}</td>
+              <td className={styles.leftCol}>{el.date.split(".").slice(0, 2).reverse().join(".")+'.'+el.date.split(".")[2]}</td>
+              <td className={styles.leftCol}>
+                {el.description.length >= 15
+                  ? el.description.slice(0, 15) + "..."
+                  : el.description}
+              </td>
               <td className={styles.rightCol}>{el.category}</td>
-              <td className={styles.amountCost}>{el.amount}</td>
+              <td className={styles.amountCost}>
+                {typeTransaction === "costs" ? (
+                  <span
+                    className={styles.amountCost}
+                  >{`- ${el.amount} грн.`}</span>
+                ) : (
+                  <span
+                    className={styles.amountIncome}
+                  >{`${el.amount} грн.`}</span>
+                )}</td>
               <td className={styles.tdButton}>
-                <button>
+                <button onClick={() => deleteIncome(el._id)}>
                   <svg width="18px" height="18px">
                     <use href={sprite + "#delete-icon"} />
                   </svg>
@@ -34,11 +48,11 @@ class IncomesList extends Component {
         } else {
           return (
             <tr>
-              {/* <td className={styles.leftCol}></td>
+              <td className={styles.leftCol}></td>
               <td className={styles.leftCol}></td>
               <td className={styles.rightCol}></td>
               <td className={styles.amountCost}></td>
-              <td className={styles.tdButton}></td> */}
+              <td className={styles.tdButton}></td>
             </tr>
           );
         }
@@ -53,27 +67,31 @@ class IncomesList extends Component {
       <ul className={styles.list}>
         {data.map(({ _id, description, category, amount, date }) => {
           return (
-            <li className={styles.listItem} key={_id}>
+            <li className={styles.listItem} key={_id + 1}>
               <div className={styles.left}>
-                <p className={styles.description}>{description}</p>
+                <p className={styles.description}>
+                  {description.length >= 15
+                    ? description.slice(0, 15) + "..."
+                    : description}
+                </p>
                 <div>
                   <span className={styles.secondary}>
-                    {date.split("-").reverse().join(".")}
+                    {date.split(".").slice(0, 2).reverse().join(".")+'.'+date.split(".")[2]}
                   </span>
-                  <span className={styles.secondary}>{category}</span>
+                  <p className={styles.secondary_text}>{category}</p>
                 </div>
               </div>
               <div className={styles.right}>
-                {type === "incomes" ? (
+                {typeTransaction === "costs" ? (
                   <span
                     className={styles.amountCost}
                   >{`- ${amount} грн.`}</span>
                 ) : (
                   <span
                     className={styles.amountIncome}
-                  >{`  ${amount} грн.`}</span>
+                  >{`${amount} грн.`}</span>
                 )}
-                <button>
+                <button onClick={() => deleteIncome(_id)}>
                   <svg width="18px" height="18px">
                     <use href={sprite + "#delete-icon"} />
                   </svg>
@@ -95,35 +113,20 @@ class IncomesList extends Component {
           </tr>
         </thead>
         <tbody>
-          {data.map(({ _id, description, category, amount, date }) => (
-            <tr key={_id}>
-              <td className={styles.leftCol}>{date.split("-").join(".")}</td>
-              <td className={styles.leftCol}>{description}</td>
-              <td className={styles.rightCol}>{category}</td>
-              {type === "incomes" ? (
-                <td className={styles.amountCost}>{`- ${amount} грн.`}</td>
-              ) : (
-                <td className={styles.amountIncome}>{`  ${amount} грн.`}</td>
-              )}
-              <td className={styles.tdButton}>
-                <button onClick={() => deleteIncome(_id)}>
-                  <svg width="18px" height="18px">
-                    <use href={sprite + "#delete-icon"} />
-                  </svg>
-                </button>
-              </td>
-            </tr>
-          ))}
           {data.length <= 9
             ? withoutData()
-            : data.map(({ _id, description, category, amount, date }) => (
-                <tr key={_id}>
+            : data.map(({ _id, description, category, amount, date, inx }) => (
+                <tr key={inx}>
                   <td className={styles.leftCol}>
-                    {date.split("-").join(".")}
+                    {date.split(".").slice(0, 2).reverse().join(".")+'.'+date.split(".")[2]}
                   </td>
-                  <td className={styles.leftCol}>{description}</td>
+                  <td className={styles.leftCol}>
+                    {description.length >= 15
+                      ? description.slice(0, 15) + "..."
+                      : description}
+                  </td>
                   <td className={styles.rightCol}>{category}</td>
-                  {type === "incomes" ? (
+                  {typeTransaction === "costs" ? (
                     <td className={styles.amountCost}>{`- ${amount} грн.`}</td>
                   ) : (
                     <td
@@ -145,10 +148,13 @@ class IncomesList extends Component {
   }
 }
 const mapStateToProps = (state) => ({
-  data: state.operations.incomes,
+  incomes: state.operations.incomes,
+  costs: state.operations.costs,
+
 });
 const mapDispatchToProps = (dispatch) => ({
   getIncomes: () => dispatch(transactionOperation.getIncomes()),
+  getCosts: () => dispatch(transactionOperation.getCosts()),
   deleteIncome: (id) => dispatch(transactionOperation.deleteIncomes(id)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(IncomesList);

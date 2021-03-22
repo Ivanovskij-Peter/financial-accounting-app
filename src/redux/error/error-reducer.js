@@ -14,9 +14,9 @@ const error = createReducer(null, {
 
   //TODO добавить очистку ошибки при реквестах
   [authActions.getCurrentUserError]: (_, { payload }) => payload,
-  [transactionsActions.addIncomesError]: (_, { payload }) => payload,
+  [transactionsActions.setIncomesError]: (_, { payload }) => payload,
   [transactionsActions.deleteCostsError]: (_, { payload }) => payload,
-  [transactionsActions.addCostsError]: (_, { payload }) => payload,
+  [transactionsActions.setCostsError]: (_, { payload }) => payload,
 });
 
 export default error;
