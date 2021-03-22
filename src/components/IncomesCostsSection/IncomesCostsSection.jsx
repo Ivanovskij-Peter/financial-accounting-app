@@ -3,7 +3,6 @@ import styles from "./IncomesCostsSection.module.scss";
 import IncomesList from "../IncomesList";
 import AddIncomeCostForm from "../AddIncomeCostForm";
 import Summary from "../Summary/Summary";
-import CostsList from "../CostsList/CostsList";
 
 const IncomesCostsSection = () => {
   const [typeTransaction, setTypeTransaction] = useState("costs");
@@ -36,13 +35,9 @@ const IncomesCostsSection = () => {
           </li>
         </ul>
         <div className={styles.IncomesCostsSection__container}>
-          <AddIncomeCostForm typeTransaction={typeTransaction} />
+          <AddIncomeCostForm typeTransaction={typeTransaction}/>
           <div className={styles.lists}>
-            {typeTransaction === "costs" ? (
-              <CostsList />
-            ) : typeTransaction === "incomes" ? (
-              <IncomesList />
-            ) : null}
+            <IncomesList typeTransaction={typeTransaction} />
           </div>
         </div>
         <Summary />

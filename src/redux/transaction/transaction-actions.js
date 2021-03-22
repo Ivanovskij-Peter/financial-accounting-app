@@ -17,7 +17,7 @@ const setIncomesRequest = createAction("user/setIncomesRequest");
 const setIncomesSucces = createAction("user/setIncomesSucces");
 const setIncomesError = createAction("user/setIncomesError");
 
-const setCostsRequest = createAction("user/ setCostsRequest");
+const setCostsRequest = createAction("user/setCostsRequest");
 const setCostsSucces = createAction("user/setCostsSucces");
 const setCostsError = createAction("user/setCostsError");
 

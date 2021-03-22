@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Formik, Form, Field } from "formik";
 import { connect } from "react-redux";
-import styles from "./addIncomeCostForm.module.scss";
 import moment from "moment";
+import styles from "./addIncomeCostForm.module.scss";
 import sprite from "../../images/sprite.svg";
 import Button from "../shared/Button";
 import Calendar from "../Calendar";
@@ -20,7 +20,7 @@ class AddIncomeCostForm extends Component {
   };
 
   static defaultProps = {
-    costsCathegories: [
+    costs: [
       "Транспорт",
       "Продукты",
       "Здоровье",
@@ -33,7 +33,7 @@ class AddIncomeCostForm extends Component {
       "Образование",
       "Прочее",
     ],
-    incomesCathegories: ["ЗП", "Доп.доход"],
+    incomes: ["ЗП", "Доп.доход"],
   };
 
   handleOpenList = () => {
@@ -64,10 +64,9 @@ class AddIncomeCostForm extends Component {
   };
 
   handleChange = (e) => {
-    e.preventDefault();
     const { name, value } = e.target;
     this.setState({ [name]: value });
-    console.log(e);
+    console.log({ [name]: value });
   };
 
   handleClick = (e) => {
@@ -80,10 +79,9 @@ class AddIncomeCostForm extends Component {
   };
 
   handleSubmit = (values) => {
-    const { typeTransaction, addTransaction } = this.props;
+    const {typeTransaction, addTransaction} = this.props;
     const { title, description, amount } = this.state;
     const newDate = moment();
-
     const transaction = {
       date: newDate.format("L"),
       category: title,
@@ -91,23 +89,21 @@ class AddIncomeCostForm extends Component {
       amount: Number(amount),
     };
 
-    console.log(transaction);
+    if (transaction.date && transaction.category&& transaction.amount) {
+      addTransaction(typeTransaction, transaction);
+    } else {
+      return 
+    }
 
-    addTransaction(typeTransaction, transaction);
   };
 
   render() {
     const { isOpen } = this.state;
-    const {
-      costsCathegories,
-      incomesCathegories,
-      typeTransaction,
-    } = this.props;
-    const cathegories =
-      typeTransaction === "costs" ? costsCathegories : incomesCathegories;
+    const { incomes, costs, typeTransaction } = this.props;
+    let cathegories = typeTransaction === 'incomes' ? incomes : costs;
+
     document.addEventListener("click", this.handleCloseList);
     return (
-      //  <div className={styles.formPosition}>
       <div className={styles.formContainer}>
         <Calendar />
         <Formik
@@ -135,7 +131,7 @@ class AddIncomeCostForm extends Component {
                 name="title"
                 type="text"
                 className={styles.Auth__input}
-                placeholder="Категория товара"
+                placeholder={typeTransaction==="incomes"?"Категория дохода":"Категория товара"}
                 onChange={this.handleChange}
                 value={this.state.title}
                 disabled
@@ -164,32 +160,6 @@ class AddIncomeCostForm extends Component {
                 </ul>
               )}
             </div>
-            {/* <div className={styles.Auth__inputWrapper} onClick={this.handleOpenList}>
-              <Field
-                name="category"
-                type="text"
-                className={styles.Auth__input}
-                placeholder="Категория товара"
-                value={title}
-                disabled
-              />
-              <button className={styles.cathegory_btn}>
-                {isOpen ?
-                  (<svg width="20px" height="20" className={styles.iconUp}>
-                    <use href={sprite +"#arrov-down"} />
-                  </svg>)
-                  :
-                  (<svg width="20px" height="20" className={styles.icon}>
-                    <use href={sprite +"#arrov-down"} />
-                  </svg>)
-                }
-              </button>
-              {isOpen && 
-                <ul onClick={this.changeCathegory} className={styles.category_list}>
-                {incomesCathegories.map((el) => (<li className={styles.cathegory__item}>{el}</li>))}
-                </ul>
-              }
-            </div> */}
             <div className={styles.Auth__amountInputWrapper}>
               <Field
                 onChange={this.handleChange}
@@ -218,11 +188,9 @@ class AddIncomeCostForm extends Component {
           </Form>
         </Formik>
       </div>
-      //  </div>
     );
   }
 }
-
 const mapDispatchToProps = {
   addTransaction: transactionOperation.addTransaction,
 };
