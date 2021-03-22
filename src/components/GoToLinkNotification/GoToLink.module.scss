@@ -1,0 +1,48 @@
+@import "../../sass/base/_colors.scss";
+@import "../../sass/base/_mixin.scss";
+
+.goToLinkNotification{
+  position: absolute;
+  z-index: 1200;
+  right: 100px;
+  top: 15px;
+  max-width: 270px;
+  background: linear-gradient(117.84deg, #1d346a 2.84%, #031634 67.28%);
+  border-radius: 30px;
+  color: $primary-white-color;
+  font-size: 14px;
+  line-height: 1.43;
+  font-weight: 400;
+  text-align: center;
+  padding: 15px;
+}
+
+.enter {
+  opacity: 0;
+  transform: translateY(-100%);
+
+}
+.enterActive {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 2500ms linear;
+}
+.exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.exitActive {
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: all 2500ms linear;
+}
+
+// .appear {
+//   opacity: 0;
+//   transform: translateY(-100%);
+// }
+// .appearActive {
+//   opacity: 1;
+//   transform: translateY(0);
+//   transition: all 500ms linear;
+// }

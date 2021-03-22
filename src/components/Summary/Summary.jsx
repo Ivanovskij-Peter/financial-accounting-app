@@ -1,14 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import styles from "./summary.module.scss";
+import styles from "./Summary.module.scss";
 
 const Summary = () => {
   const incomes = useSelector((state) => state.operations.incomes);
 
-  // const date = useSelector(getDataMonth)
-  // const incomesPerMonth = useSelector(getIncomesPerMonth)
-  // const costsPerMonth = useSelector(getCostsPerMonth)
 
   return (
     <>

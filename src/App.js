@@ -1,6 +1,7 @@
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
 import AuthForm from "./components/AuthForm";
 
 // import CurrentPeriod from "./components/CurrentPeriod/CurrentPeriod";
@@ -13,7 +14,7 @@ import Loaders from "./components/shared/Loader/Loader";
 import ReportsPage from "./components/pages/ReportsPage";
 import Chart from "./components/Chart";
 import { authOperations } from "./redux/auth";
-// import Summary from "./components/Summary/Summary";
+import Summary from "./components/Summary/Summary";
 // import IncomesCostsSection from './components/IncomesCostsSection';
 
 // import AddIncomeCostForm from "./components/AddIncomeCostForm";
@@ -21,15 +22,18 @@ import { authOperations } from "./redux/auth";
 // import { CSSTransition } from "react-transition-group";
 // import Notification from "./components/Notification/Notification";
 // import notificationStyles from "./components/Notification/notification.module.scss";
-// import CurrentPeriod from "./components/CurrentPeriod/CurrentPeriod"
+import CurrentPeriod from "./components/CurrentPeriod/CurrentPeriod";
+import getData from "./redux/auth/auth-selectors";
+import GoToLink from "./components/GoToLinkNotification/GoToLink";
+import goToLinkStyles from "./components/GoToLinkNotification/GoToLink.module.scss";
 // import Modal from './components/shared/Modal/Modal';
 
 // import IncomesList from "./components/IncomesList";
 
 function App() {
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.auth.token);
-  const name = useSelector((state) => state.auth.user.name);
+  const token = useSelector(getData.getToken);
+  const name = useSelector(getData.getName);
   useEffect(() => {
     if (!name) {
       dispatch(authOperations.getCurrrentUser());
@@ -37,6 +41,12 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
 
+  // const [showNotification, setShowNotification] = useState(token);
+  // useEffect(() => {
+  //   setTimeout(() => setShowNotification(false), 2500
+  //   )
+  //   return
+  // }, [token])
   //TODO переделать мапинг раутов с учётом приватных и публичных раутов
   // const routesMap = routes.map(route => {
   //   return route.privated ? (
@@ -60,6 +70,8 @@ function App() {
   return (
     <>
       {/* <Chart/> */}
+
+      <CurrentPeriod/>
       <>
         <Suspense fallback={<Loaders />}>
           <Layout>
@@ -76,6 +88,7 @@ function App() {
             </Switch>
           </Layout>
         </Suspense>
+
         {/* <IncomesCostsSection /> */}
       </>
     </>

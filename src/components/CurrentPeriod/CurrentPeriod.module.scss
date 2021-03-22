@@ -22,14 +22,14 @@ justify-content: space-between;
 .currentMonthBtn {
 border: none;
 background-color: transparent;
-display: flex;
-justify-content: space-between;
-align-items: flex-start;
+// display: flex;
+// justify-content: space-between;
+// align-items: flex-start;
 }
 .currentTitle {
   color: $primary-text-color;
   font-size: 12px;
-  line-height: 1.17;
+  line-height: 1.33;
   font-weight: 400;
   margin-bottom: 5px;
   text-align: center;
@@ -37,8 +37,33 @@ align-items: flex-start;
 .currentMonth{
   color: $primary-black-color;
   font-size: 14px;
-  line-height: 1.14;
+  line-height: 1.43;
   font-weight: bold;
   text-transform: uppercase;
 
+}
+.arrowBtnRight {
+  display: block;
+  width: 10px;
+  height: 15px;
+  margin: 0 auto;
+  background-image: url("../../images/period-right-arrow.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  border-color: transparent;
+  outline: none;
+  
+}
+.arrowBtnLeft {
+  display: block;
+  width: 10px;
+  height: 15px;
+  margin: 0 auto;
+  background-image: url("../../images/period-back-arrow.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  border-color: transparent;
+  outline: none;
 }
