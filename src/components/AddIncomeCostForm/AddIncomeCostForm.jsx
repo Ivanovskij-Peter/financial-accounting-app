@@ -80,33 +80,23 @@ class AddIncomeCostForm extends Component {
     });
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(this.props.add);
-    this.props.add({
-      date: this.props.date,
-      category: this.state.title,
-      description: this.state.description,
-      amount: this.state.amount,
-    });
-    this.setState({
-      title: "",
-      amount: "",
-      description: "",
-    });
-    // const { type, date } = this.props;
-    // const { title, description, amount } = this.state;
-    // const token =
-    //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2MDRiMmI3YjkzOWI1ODA5NzRiYmZiOGEiLCJpYXQiOjE2MTU1MzkzMjJ9.KkkwL1P1L2SmlHIQhSO8pYc7lWaQYUUg6JfzS3HcDAY";
-    // const transaction = {
-    //   date: date,
-    //   category: title,
-    //   description: description,
-    //   amount: amount,
-    // };
-    // PhonebookService.addTransaction(token, type, transaction)
-    //   .then((data) => console.log(data))
-    //   .catch((data) => console.log(data));
+  handleSubmit = (values) => {
+    const {type, date} = this.props;
+    const {title, description, amount} =this.state;
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2MDRiMmI3YjkzOWI1ODA5NzRiYmZiOGEiLCJpYXQiOjE2MTU1MzkzMjJ9.KkkwL1P1L2SmlHIQhSO8pYc7lWaQYUUg6JfzS3HcDAY";
+    const transaction = {
+      date: date,
+      category: title,
+      description: description,
+      amount: amount,
+      id: `${Date.now()}`,
+    };
+
+    console.log(transaction)
+
+    PhonebookService.addTransaction(token, type, transaction)
+    .then(data => console.log(data))
+    .catch(data => console.log(data));
   };
 
   render() {
