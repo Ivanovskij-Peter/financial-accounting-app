@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useRouteMatch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouteMatch, useHistory } from "react-router-dom";
 
@@ -75,7 +74,6 @@ const Reports = () => {
   }, [date]);
 
   const onChange = () => {
-    console.log("match", match);
     reportName === "РАСХОДЫ"
       ? setReportName("ДОХОДЫ")
       : setReportName("РАСХОДЫ");

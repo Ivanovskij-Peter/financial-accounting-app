@@ -15,29 +15,20 @@ const categoryMap = {
   hobbies: "Спорт, хобби",
   education: "Образование",
   other: "Прочее",
-  "additional-incomes": "ДОП. ДОХОД",
+  "additional-incomes": "Доп.доход",
   salary: "ЗП",
 };
 
 export default function Chart(props) {
-  //  console.log("props", props.match.params.category);
-  console.log("props", props);
-
   const transactionType = props.reportName.toLowerCase();
   const category = props.match.params.category;
 
   const report = useSelector(getReports.getUserReports);
-  console.log("report", report);
-  console.log("transactionType", transactionType);
-  console.log("category", category);
 
   const currentObject =
     transactionType === "расходы" ? report.costs : report.incomes;
 
   const categoryRu = categoryMap[category];
-
-  console.log("currentObject", currentObject);
-  console.log("CategoryRu", currentObject[categoryRu]);
 
   const labelToValueObject = currentObject[categoryRu];
 
@@ -94,7 +85,6 @@ export default function Chart(props) {
     barWidth = maxBarWidth;
   }
 
-
   return (
     <>
       <div className={styles.chart}>
@@ -109,7 +99,13 @@ export default function Chart(props) {
                   width: barWidth + "px",
                 }}
               >
-                <p className={(value / heightCoefficient)<78? styles.sumLow:styles.sum}>{value} грн</p>
+                <p
+                  className={
+                    value / heightCoefficient < 78 ? styles.sumLow : styles.sum
+                  }
+                >
+                  {value} грн
+                </p>
                 <p className={styles.label}>{label}</p>
               </li>
             );
