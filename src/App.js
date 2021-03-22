@@ -29,6 +29,10 @@ function App() {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
   const name = useSelector((state) => state.auth.user.name);
+
+  useEffect(() => {
+    dispatch(authOperations.getCurrrentUser());
+  }, [dispatch]);
   useEffect(() => {
     if (!name) {
       dispatch(authOperations.getCurrrentUser());
@@ -68,20 +72,26 @@ function App() {
                 exact
                 path="/register"
                 component={AuthForm}
-                redirectTo=""
+                restricted
+                redirectTo="/"
               />
               <PublicRoute
                 exact
                 path="/login"
                 component={AuthForm}
-                redirectTo=""
+                restricted
+                redirectTo="/"
               />
-              <PrivateRoute exact path="/" component={HomePage} redirectTo="" />
+              <PrivateRoute
+                exact
+                path="/"
+                component={HomePage}
+                redirectTo="/login"
+              />
               <PrivateRoute
                 path="/reports"
                 component={ReportsPage}
-                // redirectTo="/login"
-                redirectTo="/reports"
+                redirectTo="/login"
               />
             </Switch>
           </Layout>
