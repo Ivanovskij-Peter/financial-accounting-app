@@ -13,6 +13,10 @@ class PhonebookService {
     return axios.post("/auth/login", userCredentials);
   }
 
+  loginWithGoogle(userCredentials) {
+    return axios.post("/auth/loginGoogle", userCredentials);
+  }
+
   logout() {
     return axios.post("/auth/logout");
   }

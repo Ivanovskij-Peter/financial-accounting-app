@@ -3,8 +3,10 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
+import { GoogleLogin } from "react-google-login";
 import Button from "../shared/Button";
 import authOperations from "../../redux/auth/auth-operations";
+import sprite from "../../images/test.svg";
 import styles from "./AuthForm.module.scss";
 
 const RegistrationSchema = Yup.object().shape({
@@ -33,6 +35,9 @@ const SignInSchema = Yup.object().shape({
     .max(16, "Превышен лимит символов"),
 });
 
+const CLIENT_ID =
+  "808016628595-3fn6i4opb25up534t8aksafg63go4asb.apps.googleusercontent.com";
+
 const AuthForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -51,13 +56,36 @@ const AuthForm = () => {
       : history.push("/register");
   };
 
+  const handleGoogleLogin = (response) => {
+    // dispatch(authOperations.logIn({ email, password }));
+  };
+
+  const handleGoogleLoginFailure = (response) => {
+    console.log(response);
+  };
+
   return (
     <div className={styles.Auth}>
       <p className={styles.Auth__title}>
         Вы можете авторизоваться с помощью Google Account:
       </p>
-      {/*//TODO поправить кнопку, когда пойму как она должна работать */}
-      <button className={styles.Auth__googleBtn}>Google(заглушка)</button>
+      <GoogleLogin
+        clientId={CLIENT_ID}
+        render={(renderProps) => (
+          <button
+            onClick={renderProps.onClick}
+            className={styles.Auth__googleBtn}
+          >
+            <svg width="18" height="18" className={styles.Auth__googleBtnIcon}>
+              <use href={sprite + "#icon-google"}></use>
+            </svg>
+            Login
+          </button>
+        )}
+        onSuccess={handleGoogleLogin}
+        onFailure={handleGoogleLoginFailure}
+        responseType="code,token"
+      />
       {location.pathname === "/register" ? (
         <p className={styles.Auth__description}>
           Или зайти с помощью e-mail и пароля, предварительно

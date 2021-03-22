@@ -20,7 +20,6 @@ const register = (credentials, history) => (dispatch) => {
   api
     .register(credentials)
     .then(({ data }) => {
-      // TODO надо нормальный ответ давать, а не registrationResp
       dispatch(authActions.registerSuccess(data));
     })
     .then(() => history.push("/login"))
@@ -48,6 +47,26 @@ const logIn = (credentials) => (dispatch) => {
         return;
       }
       dispatch(authActions.loginError(data?.response?.data?.message));
+    });
+};
+
+const logInWithGoogle = (credentials) => (dispatch) => {
+  dispatch(authActions.loginWithGoogleRequest());
+  api
+    .login(credentials)
+    .then(({ data }) => {
+      api.setToken(data.token);
+      const { token, name, email, avatarURL } = data;
+      dispatch(
+        authActions.loginWithGoogleSuccess({ name, email, avatarURL, token }),
+      );
+    })
+    .catch((data) => {
+      if (!data.response) {
+        dispatch(authActions.loginWithGoogleError(data.message));
+        return;
+      }
+      dispatch(authActions.loginWithGoogleError(data?.response?.data?.message));
     });
 };
 
@@ -80,6 +99,12 @@ const getCurrrentUser = () => async (dispatch, getState) => {
   }
 };
 
-const authOperations = { register, logOut, getCurrrentUser, logIn };
+const authOperations = {
+  register,
+  logOut,
+  getCurrrentUser,
+  logIn,
+  logInWithGoogle,
+};
 
 export default authOperations;

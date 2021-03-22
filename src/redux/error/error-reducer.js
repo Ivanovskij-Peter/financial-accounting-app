@@ -9,6 +9,8 @@ const error = createReducer(null, {
   [authActions.loginRequest]: () => null,
   [authActions.logOutError]: (_, { payload }) => payload,
   [authActions.logoutRequest]: () => null,
+  [authActions.loginWithGoogleError]: (_, { payload }) => payload,
+  [authActions.loginWithGoogleRequest]: () => null,
 
   //TODO добавить очистку ошибки при реквестах
   [authActions.getCurrentUserError]: (_, { payload }) => payload,
