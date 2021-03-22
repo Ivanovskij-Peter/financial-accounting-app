@@ -1,12 +1,12 @@
 @import "./mixin";
 
 .container {
-  margin: 0 auto;
-  padding-left: 19px;
-  padding-right: 19px;
-  width: 320px;
+  padding-left: 20px;
+  padding-right: 25px;
+  padding-bottom: 64px;
   @include for-size(tablet) {
-    width: 768px;
+    margin-left: auto;
+    margin-right: auto;
     padding-left: 51px;
     padding-right: 52px;
   }
@@ -14,5 +14,6 @@
     width: 1280px;
     padding-left: 110px;
     padding-right: 110px;
+    padding-bottom: 83px;
   }
 }

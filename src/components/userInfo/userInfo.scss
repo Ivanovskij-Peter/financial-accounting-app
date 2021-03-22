@@ -5,6 +5,7 @@
   margin: 0;
   padding: 0;
   border: none;
+  display: block;
 
   width: 16px;
   height: 16px;
@@ -15,7 +16,7 @@
 
 .logout-icon {
   fill: currentColor;
-  background-color: white;
+  background-color: $primary-white-color;
   transition: all 250ms ease;
 }
 

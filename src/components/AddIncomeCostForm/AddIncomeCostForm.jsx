@@ -8,6 +8,8 @@ import sprite from "../../images/sprite.svg";
 import PhonebookService from "../../services/backend.service";
 
 import Button from "../shared/Button";
+import Calendar from "../Calendar";
+import transactionOperation from "../../redux/transaction/transaction-operation";
 
 const mobile = window.innerWidth < 768;
 
@@ -17,6 +19,7 @@ class AddIncomeCostForm extends Component {
     title: "",
     amount: "",
     description: "",
+    id: ""
   };
 
   static defaultProps = {
@@ -37,7 +40,7 @@ class AddIncomeCostForm extends Component {
     type: "incomes",
   };
 
-  handleOpenList = (e) => {
+  handleOpenList = () => {
     this.setState({
       isOpen: !this.state.isOpen,
     });
@@ -64,7 +67,7 @@ class AddIncomeCostForm extends Component {
     }
   };
 
-  handleChange = (e) => {
+handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
@@ -80,9 +83,7 @@ class AddIncomeCostForm extends Component {
   handleSubmit = (values) => {
     const {type, date} = this.props;
     const {title, description, amount} =this.state;
-
     const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2MDRiMmI3YjkzOWI1ODA5NzRiYmZiOGEiLCJpYXQiOjE2MTU1MzkzMjJ9.KkkwL1P1L2SmlHIQhSO8pYc7lWaQYUUg6JfzS3HcDAY";
-
     const transaction = {
       date: date,
       category: title,
@@ -90,8 +91,6 @@ class AddIncomeCostForm extends Component {
       amount: amount,
       id: `${Date.now()}`,
     };
-
-    console.log(transaction)
 
     PhonebookService.addTransaction(token, type, transaction)
     .then(data => console.log(data))
@@ -102,10 +101,10 @@ class AddIncomeCostForm extends Component {
     const { isOpen, title, amount, description } = this.state;
     const { cathegories, incomesCathegories } = this.props;
     document.addEventListener("click", this.handleCloseList);
-
     return (
       //  <div className={styles.formPosition}>
       <div className={styles.formContainer}>
+        <Calendar />
         <Formik
           initialValues={{ description: "", category: "", amount: "" }}
           onSubmit={(values) => {
@@ -132,6 +131,7 @@ class AddIncomeCostForm extends Component {
                 type="text"
                 className={styles.Auth__input}
                 placeholder="Категория товара"
+                onChange={this.handleChange}
                 value={title}
                 disabled
               />
@@ -190,7 +190,7 @@ class AddIncomeCostForm extends Component {
                 name="amount"
                 type="text"
                 className={styles.Auth__amountInput}
-                placeholder={mobile ? "00.00 UAH" : "0.00"}
+                placeholder={mobile ? "00.00 UAH" : "0,00"}
               />
               <div>
                 <svg width="20px" height="20px">
@@ -200,11 +200,7 @@ class AddIncomeCostForm extends Component {
             </div>
             <div className={styles.buttonWrapper}>
               <Button type="submit">ВВОД</Button>
-              <Button
-                onClick={this.handleClick}
-                btnType="secondary"
-                type="button"
-              >
+              <Button btnType="secondary" type="button" onClick={this.handleClick}>
                 ОЧИСТИТЬ
               </Button>
             </div>
@@ -215,6 +211,16 @@ class AddIncomeCostForm extends Component {
     );
   }
 }
+const mapDispatchToProps = (dispatch) => ({
+  add: () => dispatch(transactionOperation.setIncomes()),
+});
+
+const mapStateToProps = (state) => ({
+  date: state.date,
+  token: state.auth.token
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddIncomeCostForm);
 
 const mapStateToProps = (state) => ({
   date: state.date,

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Switch } from "react-router-dom";
 import AuthForm from "./components/AuthForm";
 
-// import CurrentPeriod from "./components/CurrentPeriod/CurrentPeriod";
 import Layout from "./components/Layout/Layout";
 
 import HomePage from "./components/pages/HomePage";
@@ -11,10 +10,10 @@ import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 import Loaders from "./components/shared/Loader/Loader";
 import ReportsPage from "./components/pages/ReportsPage";
-import Chart from "./components/Chart";
+// import Chart from "./components/Chart";
 import { authOperations } from "./redux/auth";
-import Summary from "./components/Summary/Summary";
-import AddIncomeCostForm from "./components/AddIncomeCostForm";
+// import Summary from "./components/Summary/Summary";
+// import IncomesCostsSection from './components/IncomesCostsSection';
 
 // import AddIncomeCostForm from "./components/AddIncomeCostForm";
 
@@ -65,10 +64,25 @@ function App() {
         <Suspense fallback={<Loaders />}>
           <Layout>
             <Switch>
-              <PublicRoute exact path="/register" component={AuthForm} />
-              <PublicRoute exact path="/login" component={AuthForm} />
+              <PublicRoute
+                exact
+                path="/register"
+                component={AuthForm}
+                redirectTo=""
+              />
+              <PublicRoute
+                exact
+                path="/login"
+                component={AuthForm}
+                redirectTo=""
+              />
               <PrivateRoute exact path="/" component={HomePage} redirectTo="" />
-              <PrivateRoute exact path="/reports" component={ReportsPage} />
+              <PrivateRoute
+                path="/reports"
+                component={ReportsPage}
+                // redirectTo="/login"
+                redirectTo=""
+              />
             </Switch>
           </Layout>
         </Suspense>

@@ -16,13 +16,18 @@ const Modal = ({ onClick, title, onAgree }) => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [onClick]);
-
+  const handleAgree = (e) => {
+    onAgree();
+  };
   const handleCloseClick = (e) => {
-    console.log(e.target.nodeName);
     if (e.target.id === "disAgree" || e.target.id === "close") {
       onClick();
     }
   };
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => (document.body.style.overflow = "unset");
+  }, []);
 
   return (
     <>
@@ -35,7 +40,12 @@ const Modal = ({ onClick, title, onAgree }) => {
             onClick={handleCloseClick}
           ></button>
 
-          <Button onClick={onAgree} btnType="primary" id="agree" type="button">
+          <Button
+            onClick={handleAgree}
+            btnType="primary"
+            id="agree"
+            type="button"
+          >
             Да
           </Button>
           <Button

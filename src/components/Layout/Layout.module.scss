@@ -21,7 +21,7 @@
 }
 
 .loggedTheme {
-  // min-height: 860px;
+  height: fit-content;
   @include for-size(tablet) {
     background-image: url("../../images/bg-kapusta-tablet.png");
     background-position: bottom 64px right 88px;
@@ -29,7 +29,7 @@
   }
   @include for-size(desktop) {
     background-image: url("../../images/bg-kapusta-desktop.png");
-    background-position: bottom 0px left 10px;
+    background-position: bottom 0 left 10px;
     // background-repeat: repeat-x;
     background-size: 100% auto;
   }
