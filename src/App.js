@@ -2,9 +2,7 @@ import { Suspense, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Switch } from "react-router-dom";
 import AuthForm from "./components/AuthForm";
-
 import Layout from "./components/Layout/Layout";
-
 import HomePage from "./components/pages/HomePage";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
@@ -14,7 +12,6 @@ import { authOperations } from "./redux/auth";
 
 function App() {
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(authOperations.getCurrrentUser());
   }, [dispatch]);
