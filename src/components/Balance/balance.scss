@@ -22,6 +22,7 @@
 
 .balance_form {
   padding-top: 6px;
+  margin-bottom: 40px;
 }
 
 .balance_input {
@@ -114,6 +115,7 @@
 
   .balance_form {
     padding: 0;
+    margin-bottom: 0;
   }
 
   .balance_input {
@@ -163,4 +165,8 @@
   padding-left: 20px;
   width: 30px;
   height: 14px;
+}
+
+.report-balance {
+  border-radius: 22px;
 }

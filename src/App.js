@@ -64,7 +64,7 @@ function App() {
             <PrivateRoute
               path="/reports"
               component={ReportsPage}
-              redirectTo="/login"
+              redirectTo="/reports"
             />
           </Switch>
         </Layout>

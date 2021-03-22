@@ -3,6 +3,8 @@
 
 .calendarWrapper {
   position: relative;
+  margin: 0 auto;
+  margin-bottom: 62px;
   width: 107px;
   display: flex;
   align-items: center;
@@ -12,6 +14,7 @@
   background-color: transparent;
   @include for-size(tablet) {
     padding-top: 10px;
+    margin-bottom: 62px;
   }
   @include for-size(desktop) {
     padding-top: 0;

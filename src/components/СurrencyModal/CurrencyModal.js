@@ -1,18 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "../shared/Modal/Modal";
 import AddIncomeCostForm from "../AddIncomeCostForm";
 import styles from "./currencyModal.module.scss";
 import sprite from "../../images/sprite.svg";
 
-const CurrencyModal = ({ onClick }) => {
-  // const [showModal, setShowModal] = useState(false);
-  // const toggleModal = () => {
-  //   setShowModal(!showModal);
-  // };
-
+const CurrencyModal = ({ onClick, typeTransaction }) => {
   const handleBackClick = (e) => {
     onClick();
   };
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => (document.body.style.overflow = "unset");
+  }, []);
 
   return (
     <div className={styles.currencyModal}>
@@ -25,7 +24,7 @@ const CurrencyModal = ({ onClick }) => {
           <use href={sprite + "#back-arrow"} />
         </svg>
       </button>
-      <AddIncomeCostForm />
+      <AddIncomeCostForm typeTransaction={typeTransaction} />
     </div>
   );
 };

@@ -12,14 +12,19 @@ class IncomesList extends Component {
   render() {
     const mobile = window.innerWidth < 768;
     const { typeTransaction, deleteIncome, incomes, costs } = this.props;
-    let data = typeTransaction === "costs" ? costs : incomes ;
+    let data = typeTransaction === "costs" ? costs : incomes;
+    let dataMobile = costs.concat(incomes).reverse();
 
     const withoutData = function () {
       const withDataTable = function (el) {
         if (el) {
           return (
             <tr key={el._id}>
-              <td className={styles.leftCol}>{el.date.split("/").join(".")}</td>
+              <td className={styles.leftCol}>
+                {el.date.split(".").slice(0, 2).reverse().join(".") +
+                  "." +
+                  el.date.split(".")[2]}
+              </td>
               <td className={styles.leftCol}>
                 {el.description.length >= 15
                   ? el.description.slice(0, 15) + "..."
@@ -35,7 +40,8 @@ class IncomesList extends Component {
                   <span
                     className={styles.amountIncome}
                   >{`${el.amount} грн.`}</span>
-                )}</td>
+                )}
+              </td>
               <td className={styles.tdButton}>
                 <button onClick={() => deleteIncome(el._id)}>
                   <svg width="18px" height="18px">
@@ -65,7 +71,7 @@ class IncomesList extends Component {
     };
     return mobile ? (
       <ul className={styles.list}>
-        {data.map(({ _id, description, category, amount, date }) => {
+        {dataMobile.map(({ _id, description, category, amount, date }) => {
           return (
             <li className={styles.listItem} key={_id + 1}>
               <div className={styles.left}>
@@ -76,20 +82,22 @@ class IncomesList extends Component {
                 </p>
                 <div>
                   <span className={styles.secondary}>
-                    {date.split("/").reverse().join(".")}
+                    {date.split(".").slice(0, 2).reverse().join(".") +
+                      "." +
+                      date.split(".")[2]}
                   </span>
                   <p className={styles.secondary_text}>{category}</p>
                 </div>
               </div>
               <div className={styles.right}>
-                {typeTransaction === "costs" ? (
-                  <span
-                    className={styles.amountCost}
-                  >{`- ${amount} грн.`}</span>
-                ) : (
+                {category === "Доп.доход" || category === "ЗП" ? (
                   <span
                     className={styles.amountIncome}
                   >{`${amount} грн.`}</span>
+                ) : (
+                  <span
+                    className={styles.amountCost}
+                  >{`- ${amount} грн.`}</span>
                 )}
                 <button onClick={() => deleteIncome(_id)}>
                   <svg width="18px" height="18px">
@@ -118,7 +126,9 @@ class IncomesList extends Component {
             : data.map(({ _id, description, category, amount, date, inx }) => (
                 <tr key={inx}>
                   <td className={styles.leftCol}>
-                    {date.split("/").join(".")}
+                    {date.split(".").slice(0, 2).reverse().join(".") +
+                      "." +
+                      date.split(".")[2]}
                   </td>
                   <td className={styles.leftCol}>
                     {description.length >= 15
@@ -150,7 +160,6 @@ class IncomesList extends Component {
 const mapStateToProps = (state) => ({
   incomes: state.operations.incomes,
   costs: state.operations.costs,
-
 });
 const mapDispatchToProps = (dispatch) => ({
   getIncomes: () => dispatch(transactionOperation.getIncomes()),

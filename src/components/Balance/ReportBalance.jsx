@@ -12,7 +12,7 @@ export default function ReportBalance() {
       <div className="balance_form report_page_balance">
         <p className="balance_title">Баланс:</p>
         <CurrencyInput
-          className="balance_input"
+          className="balance_input report-balance"
           id="input-example"
           name="input-name"
           placeholder={`${balance

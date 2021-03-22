@@ -42,6 +42,7 @@ const CategoriesList = ({ categoriesArr, reportName }) => {
   const match = useRouteMatch("/reports");
   return (
     <>
+    <div className = {style.wrapperReport}>
       <ul className={style.categoryList}>
         {categoriesArr.map(({ total, name }) => {
           const normalName = nameObject[name.toLowerCase()];
@@ -67,6 +68,7 @@ const CategoriesList = ({ categoriesArr, reportName }) => {
           );
         })}
       </ul>
+      </div>
       <Route
         path={`${match.path}/:category`}
         render={(props) => <Chart {...props} reportName={reportName} />}
