@@ -77,7 +77,14 @@
   opacity: 0.5;
 }
 
-
+.wrapperReport{
+  width: 100%;
+  background-color: $primary-white-color;
+  @include for-size(tablet){
+  box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+    border-radius: 30px;
+  }
+}
 
 .categoryList {
   display: flex;
@@ -94,21 +101,21 @@
    background-position: 10px 40px; 
 
   @include for-size(tablet) {
-    width: 100%;
-    // width: 632px;
+    // width: 100%;
+    width: 613px;
     // width: 1060px;
     padding-top: 60px;
     padding-bottom: 20px;
     margin-bottom: 30px;
 
-    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
-    border-radius: 30px;
+    // box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+    // border-radius: 30px;
 
     background-image: none;
   }
 
   @include for-size(desktop) {
-    width: 1060px;
+    // width: 1060px;
     margin-bottom: 39px;
   }
 }
