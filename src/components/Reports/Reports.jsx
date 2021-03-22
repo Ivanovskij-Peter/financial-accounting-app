@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useRouteMatch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import reportOperations from "../../redux/reports/reports-operations";
 import getInfo from "../../redux/reports/reports-selectors.js";
@@ -55,7 +56,7 @@ import style from "./Reports.module.scss";
 const Reports = () => {
   const [reportName, setReportName] = useState("РАСХОДЫ");
   const dispatch = useDispatch();
-
+  const match = useRouteMatch("/reports");
   const date = useSelector(getInfo.getQueryDate);
   const dateArr = date.split(".");
   const normaldateArr = [dateArr[1], dateArr[0], dateArr[2]];
@@ -71,6 +72,7 @@ const Reports = () => {
   }, [date]);
 
   const onChange = () => {
+    console.log("match", match);
     reportName === "РАСХОДЫ"
       ? setReportName("ДОХОДЫ")
       : setReportName("РАСХОДЫ");

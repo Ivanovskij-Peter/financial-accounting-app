@@ -16,7 +16,7 @@ const categoryMap = {
   education: "Образование",
   other: "Прочее",
   "additional-incomes": "ДОП. ДОХОД",
-  salary: "Зп",
+  salary: "ЗП",
 };
 
 export default function Chart(props) {
