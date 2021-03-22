@@ -15,7 +15,7 @@ const incomes = createReducer([], {
     payload.body,
   ],
   [transactionsActions.deleteIncomesSucces]: (state, { payload }) =>
-    state.filter(({ id }) => id !== payload),
+    state.filter(({ id }) => id !== payload._id),
 });
 const costs = createReducer([], {
   [transactionsActions.getCostsSucces]: (_, { payload }) => payload,
@@ -24,7 +24,7 @@ const costs = createReducer([], {
     payload.body,
   ],
   [transactionsActions.deleteCostsSucces]: (state, { payload }) =>
-    state.filter(({ id }) => id !== payload),
+    state.filter(({ id }) => id !== payload._id),
 });
 const monthIncoms = createReducer([], {
   [transactionsActions.getMonthIncomesSucces]: (_, { payload }) => payload,

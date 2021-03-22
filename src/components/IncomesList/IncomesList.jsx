@@ -11,7 +11,13 @@ class IncomesList extends Component {
 
   render() {
     const mobile = window.innerWidth < 768;
-    const { typeTransaction, deleteIncome, incomes, costs } = this.props;
+    const {
+      typeTransaction,
+      deleteIncome,
+      incomes,
+      costs,
+      deleteCost,
+    } = this.props;
     let data = typeTransaction === "costs" ? costs : incomes;
     let dataMobile = costs.concat(incomes).reverse();
 
@@ -20,11 +26,7 @@ class IncomesList extends Component {
         if (el) {
           return (
             <tr key={el._id}>
-              <td className={styles.leftCol}>
-                {el.date.split(".").slice(0, 2).reverse().join(".") +
-                  "." +
-                  el.date.split(".")[2]}
-              </td>
+              <td className={styles.leftCol}>{el.date}</td>
               <td className={styles.leftCol}>
                 {el.description.length >= 15
                   ? el.description.slice(0, 15) + "..."
@@ -43,7 +45,13 @@ class IncomesList extends Component {
                 )}
               </td>
               <td className={styles.tdButton}>
-                <button onClick={() => deleteIncome(el._id)}>
+                <button
+                  onClick={
+                    typeTransaction === "costs"
+                      ? () => deleteCost(el._id)
+                      : () => deleteIncome(el._id)
+                  }
+                >
                   <svg width="18px" height="18px">
                     <use href={sprite + "#delete-icon"} />
                   </svg>
@@ -99,7 +107,13 @@ class IncomesList extends Component {
                     className={styles.amountCost}
                   >{`- ${amount} грн.`}</span>
                 )}
-                <button onClick={() => deleteIncome(_id)}>
+                <button
+                  onClick={
+                    typeTransaction === "costs"
+                      ? () => deleteCost(_id)
+                      : () => deleteIncome(_id)
+                  }
+                >
                   <svg width="18px" height="18px">
                     <use href={sprite + "#delete-icon"} />
                   </svg>
@@ -144,7 +158,13 @@ class IncomesList extends Component {
                     >{`  ${amount} грн.`}</td>
                   )}
                   <td className={styles.tdButton}>
-                    <button onClick={() => deleteIncome(_id)}>
+                    <button
+                      onClick={
+                        typeTransaction === "costs"
+                          ? () => deleteCost(_id)
+                          : () => deleteIncome(_id)
+                      }
+                    >
                       <svg width="18px" height="18px">
                         <use href={sprite + "#delete-icon"} />
                       </svg>
@@ -165,5 +185,6 @@ const mapDispatchToProps = (dispatch) => ({
   getIncomes: () => dispatch(transactionOperation.getIncomes()),
   getCosts: () => dispatch(transactionOperation.getCosts()),
   deleteIncome: (id) => dispatch(transactionOperation.deleteIncomes(id)),
+  deleteCost: (id) => dispatch(transactionOperation.deleteCosts(id)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(IncomesList);
