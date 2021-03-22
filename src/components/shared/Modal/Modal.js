@@ -16,8 +16,9 @@ const Modal = ({ onClick, title, onAgree }) => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [onClick]);
-  const handleAgree = (e) => {
+  const handleAgree = () => {
     onAgree();
+    onClick();
   };
   const handleCloseClick = (e) => {
     if (e.target.id === "disAgree" || e.target.id === "close") {

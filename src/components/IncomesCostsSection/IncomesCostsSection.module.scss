@@ -9,8 +9,8 @@
   }
 }
 .IncomesCostsSection {
-  position: relative;
-  margin: 0 auto;
+  // position: relative;
+  // margin: 0 auto;
   &__list {
     display: flex;
     max-width: 300px;
@@ -99,5 +99,8 @@
       width: 1060px;
       height: 579px;
     }
+  }
+  @include for-size(desktop) {
+    position: relative;
   }
 }
