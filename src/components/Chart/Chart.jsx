@@ -21,39 +21,39 @@ const categoryMap = {
 
 export default function Chart(props) {
   //  console.log("props", props.match.params.category);
-  console.log("props", props);
+  // console.log("props", props);
 
-  const transactionType = props.reportName.toLowerCase();
-  const category = props.match.params.category;
+  // const transactionType = props.reportName.toLowerCase();
+  // const category = props.match.params.category;
 
-  const report = useSelector(getReports.getUserReports);
-  console.log("report", report);
-  console.log("transactionType", transactionType);
-  console.log("category", category);
+  // const report = useSelector(getReports.getUserReports);
+  // console.log("report", report);
+  // console.log("transactionType", transactionType);
+  // console.log("category", category);
 
-  const currentObject =
-    transactionType === "расходы" ? report.costs : report.incomes;
+  // const currentObject =
+  //   transactionType === "расходы" ? report.costs : report.incomes;
 
-  const categoryRu = categoryMap[category];
+  // const categoryRu = categoryMap[category];
 
-  console.log("currentObject", currentObject);
-  console.log("CategoryRu", currentObject[categoryRu]);
-
-  const labelToValueObject = currentObject[categoryRu];
+  // console.log("currentObject", currentObject);
+  // console.log("CategoryRu", currentObject[categoryRu]);
+//? USE THIS
+  // const labelToValueObject = currentObject[categoryRu];
 
   // todo: remove when not required
-  // const labelToValueObject = {
-  //   Свинина: 5000,
-  //   Говядина: 4500,
-  //   Курица: 3200,
-  //   Рыба: 2100,
-  //   Панини: 1800,
-  //   Кофе: 1700,
-  //   Спагетти: 1500,
-  //   Шоколад: 800,
-  //   Маслины: 500,
-  //   Зелень: 300,
-  // };
+  const labelToValueObject = {
+    Свинина: 5000,
+    Говядина: 4500,
+    Курица: 3200,
+    Рыба: 2100,
+    Панини: 1800,
+    Кофе: 1700,
+    Спагетти: 1500,
+    Шоколад: 800,
+    Маслины: 500,
+    Зелень: 300,
+  };
 
   const labelToValueArray = [];
 
@@ -96,26 +96,47 @@ export default function Chart(props) {
 
   return (
     <>
-      <div className={styles.chart}>
-        <ul className={styles.list}>
-          {labelToValueArray.map(({ label, value }) => {
-            return (
-              <li
-                key={label}
-                className={styles.item}
-                style={{
-                  height: value / heightCoefficient + "px",
-                  width: barWidth + "px",
-                }}
-              >
-                <p className={styles.sum}>{value} грн</p>
-                <p className={styles.label}>{label}</p>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    </>
+    <div className={styles.chart}>
+      <ul className={styles.list}>
+        {labelToValueArray.map(({ label, value }) => {
+          return (
+            <li
+              key={label}
+              className={styles.item}
+              style={{
+                height: value / heightCoefficient + "px",
+                width: barWidth + "px",
+              }}
+            >
+              <p className={styles.sum}>{value} грн</p>
+              <p className={styles.label}>{label}</p>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  </>
+    // <>
+    //   <div className={styles.chart}>
+    //     <ul className={styles.list}>
+    //       {labelToValueArray.map(({ label, value }) => {
+    //         return (
+    //           <li
+    //             key={label}
+    //             className={styles.item}
+    //             style={{
+    //               height: value / heightCoefficient + "px",
+    //               width: barWidth + "px",
+    //             }}
+    //           >
+    //             <p className={styles.sum}>{value} грн</p>
+    //             <p className={styles.label}>{label}</p>
+    //           </li>
+    //         );
+    //       })}
+    //     </ul>
+    //   </div>
+    // </>
   );
 }
 

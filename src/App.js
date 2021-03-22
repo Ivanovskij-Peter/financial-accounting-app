@@ -25,6 +25,8 @@ import { authOperations } from "./redux/auth";
 
 // import IncomesList from "./components/IncomesList";
 
+import Chart from "./components/Chart"
+
 function App() {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
@@ -58,7 +60,7 @@ function App() {
 
   return (
     <>
-      {/* <Chart/> */}
+      <Chart/>
       <>
         <Suspense fallback={<Loaders />}>
           <Layout>

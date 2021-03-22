@@ -2,47 +2,199 @@
 @import "../../sass/base/mixin";
 
 .chart {
-  background-color: $primary-white-color;
-  height: 422px;
-  width: 1060px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 151px;
-  padding-right: 151px;
-  box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
-  border-radius: 30px;
+  @include for-size(tablet) {
+    transform: unset;
+
+    background-color: $primary-white-color;
+    height: 422px;
+    width: 1060px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 151px;
+    padding-right: 151px;
+    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+    border-radius: 30px;
+  }
 }
 .list {
   display: flex;
   align-items: flex-end;
+  transform: rotate(90deg) translateX(200%);
+  // @include for-size (tablet) {
+  //     transform: unset;
+  // }
 }
+// .item {
+//   position: relative;
+//   font-size: 12px;
+//   line-height: 14px;
+//   color: #52555f;
+//   height: 300px;
+//   width: 38px;
+
+//   background-color: $second-accent-color;
+//   border-radius: 10px 10px 0px 0px;
+
+//   &:not(:last-child) {
+//     margin-right: 25px;
+//   }
+
+//   &:nth-child(3n + 1) {
+//     background-color: $accent-color;
+//   }
+// }
 .item {
   position: relative;
   font-size: 12px;
   line-height: 14px;
   color: #52555f;
   height: 300px;
-  width: 38px;
+//   width: 38px;
+
+width: 10px;
+
 
   background-color: $second-accent-color;
   border-radius: 10px 10px 0px 0px;
 
   &:not(:last-child) {
     margin-right: 25px;
-   }
+  }
 
   &:nth-child(3n + 1) {
-  background-color: $accent-color;
+    background-color: $accent-color;
   }
 }
+
+
 .sum {
   position: absolute;
-  top: -20px;
+  transform: rotate(-90deg);
+  left: -100%;
+
   width: max-content;
+  // @include for-size (tablet) {
+  // transform: unset;
+  // top: -20px;
+  // }
 }
 .label {
+  writing-mode: vertical-lr;
+
+  transform: rotate(-180deg);
+  transform: translate(10px 10px);
+
   position: absolute;
-  bottom: -20px;
+  bottom: 0px;
+  left: -50%;
   width: max-content;
   text-transform: capitalize;
+//   @include for-size(tablet) {
+//     position: absolute;
+//     bottom: -20px;
+//     width: max-content;
+//     text-transform: capitalize;
+//   }
 }
+
+//?correct for mobile!!!!
+// .Chart_label__2D03m {
+//     writing-mode: vertical-lr;
+
+//     transform: rotate(
+// -180deg
+//  );
+//     transform: translate(10px 10px);
+
+//     position: absolute;
+//     bottom: 0px;
+//     left: -50%;
+//     width: max-content;
+//     text-transform: capitalize;
+// }
+
+// .list {
+//   display: flex;
+//   align-items: flex-end;
+//   transform: rotate(90deg) translateX(100%);
+//   @media tablet {
+//     transform: unset;
+
+// }
+// .item {
+//   position: relative;
+//   font-size: 12px;
+//   line-height: 14px;
+//   color: #52555f;
+//   height: 300px;
+//   width: 38px;
+
+//   background-color: $second-accent-color;
+//   border-radius: 10px 10px 0px 0px;
+
+//   &:not(:last-child) {
+//     margin-right: 25px;
+//   }
+
+//   &:nth-child(3n + 1) {
+//     background-color: $accent-color;
+//   }
+// }
+// .sum {
+//   position: absolute;
+//   top: -20px;
+//   width: max-content;
+// }
+// .label {
+//   position: absolute;
+//   bottom: -20px;
+//   width: max-content;
+//   text-transform: capitalize;
+// }
+
+// //? for desktop
+// .chart {
+//   background-color: $primary-white-color;
+//   height: 422px;
+//   width: 1060px;
+//   padding-top: 20px;
+//   padding-bottom: 20px;
+//   padding-left: 151px;
+//   padding-right: 151px;
+//   box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+//   border-radius: 30px;
+// }
+// .list {
+//   display: flex;
+//   align-items: flex-end;
+// }
+// .item {
+//   position: relative;
+//   font-size: 12px;
+//   line-height: 14px;
+//   color: #52555f;
+//   height: 300px;
+//   width: 38px;
+
+//   background-color: $second-accent-color;
+//   border-radius: 10px 10px 0px 0px;
+
+//   &:not(:last-child) {
+//     margin-right: 25px;
+//    }
+
+//   &:nth-child(3n + 1) {
+//   background-color: $accent-color;
+//   }
+// }
+// .sum {
+//   position: absolute;
+//   top: -20px;
+//   width: max-content;
+// }
+// .label {
+//   position: absolute;
+//   bottom: -20px;
+//   width: max-content;
+//   text-transform: capitalize;
+// }
