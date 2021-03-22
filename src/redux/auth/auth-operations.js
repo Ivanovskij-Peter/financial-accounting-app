@@ -1,9 +1,7 @@
 import axios from "axios";
 import authActions from "./auth-actions";
-import api from "../../services/backend.service";
 import transactionsActions from "../transaction/transaction-actions";
 
-// axios.defaults.baseURL = "http://localhost:8080";
 axios.defaults.baseURL = "https://kapusta-srv.herokuapp.com";
 
 const token = {
@@ -15,40 +13,25 @@ const token = {
   },
 };
 
-const register = (credentials, history) => (dispatch) => {
+const register = (credentials) => async (dispatch) => {
   dispatch(authActions.registerRequest());
-  api
-    .register(credentials)
-    .then(({ data }) => {
-      // TODO надо нормальный ответ давать, а не registrationResp
-      dispatch(authActions.registerSuccess(data));
-    })
-    .then(() => history.push("/login"))
-    .catch((data) => {
-      if (!data.response) {
-        dispatch(authActions.loginError(data.message));
-        return;
-      }
-      dispatch(authActions.registerError(data?.response?.data?.message));
-    });
+  try {
+    const response = await axios.post("/auth/register", credentials);
+    dispatch(authActions.registerSuccess(response.data));
+  } catch (error) {
+    dispatch(authActions.loginError(error.message));
+  }
 };
 
-const logIn = (credentials) => (dispatch) => {
+const logIn = (credentials) => async (dispatch) => {
   dispatch(authActions.loginRequest());
-  api
-    .login(credentials)
-    .then(({ data }) => {
-      api.setToken(data.token);
-      const { token, name, email, avatarURL } = data;
-      dispatch(authActions.loginSuccess({ name, email, avatarURL, token }));
-    })
-    .catch((data) => {
-      if (!data.response) {
-        dispatch(authActions.loginError(data.message));
-        return;
-      }
-      dispatch(authActions.loginError(data?.response?.data?.message));
-    });
+  try {
+    const response = await axios.post("/auth/login", credentials);
+    const { token, name, email, avatarURL } = response.data;
+    dispatch(authActions.loginSuccess({ name, email, avatarURL, token }));
+  } catch (error) {
+    dispatch(authActions.loginError(error.message));
+  }
 };
 
 const logOut = () => async (dispatch) => {
