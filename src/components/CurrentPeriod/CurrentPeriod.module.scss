@@ -1,23 +1,23 @@
-@import '../../sass/base/_colors.scss';
-@import '../../sass/base/_mixin.scss';
+@import "../../sass/base/_colors.scss";
+@import "../../sass/base/_mixin.scss";
 
 .mainWrapper {
   width: 134px;
-  margin: 49px 93px 30px 93px;
+  margin: 16px 93px 30px 75px;
 }
-.wrapper{
-display: flex;
-justify-content: space-between;
+.wrapper {
+  display: flex;
+  justify-content: space-between;
 }
-@media screen and (min-width: 768px) {
-  .mainWrapper{
-    margin: 42px 54px 33px 80px;
-    }
+@include for-size(tablet) {
+  .mainWrapper {
+    margin: 42px 0px 33px 80px;
+  }
 }
-@media screen and (min-width: 1024px) {
-  .mainWrapper{
-    margin-right: 110px;
-    }
+@include for-size(desktop) {
+  .mainWrapper {
+    margin-left: 231px;
+  }
 }
 .currentMonthBtn {
 border: none;
@@ -34,13 +34,12 @@ background-color: transparent;
   margin-bottom: 5px;
   text-align: center;
 }
-.currentMonth{
+.currentMonth {
   color: $primary-black-color;
   font-size: 14px;
   line-height: 1.43;
   font-weight: bold;
   text-transform: uppercase;
-
 }
 .arrowBtnRight {
   display: block;

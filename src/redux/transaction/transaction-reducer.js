@@ -1,30 +1,42 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import transactionActions from "./transaction-actions";
+import transactionsActions from "./transaction-actions";
 
 const balance = createReducer(0, {
-  [transactionActions.setBalanceSucces]: (_, { payload }) => payload,
+  [transactionsActions.setBalanceSucces]: (_, { payload }) => payload,
+  [transactionsActions.setIncomesSucces]: (_, { payload }) => payload.balance,
+
+  [transactionsActions.setCostsSucces]: (_, { payload }) => payload.balance,
 });
 const incomes = createReducer([], {
-  [transactionActions.getIncomesSucces]: (_, { payload }) => payload,
-  [transactionActions.addIncomesSucces]: (state, { payload }) => [
+  [transactionsActions.getIncomesSucces]: (_, { payload }) => payload,
+  [transactionsActions.setIncomesSucces]: (state, { payload }) => [
     ...state,
-    payload,
+    payload.body,
   ],
-  [transactionActions.deleteIncomesSucces]: (state, { payload }) =>
+  [transactionsActions.deleteIncomesSucces]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
 });
 const costs = createReducer([], {
-  [transactionActions.addCostsSucces]: (state, { payload }) => [
+  [transactionsActions.getCostsSucces]: (_, { payload }) => payload,
+  [transactionsActions.setCostsSucces]: (state, { payload }) => [
     ...state,
-    payload,
+    payload.body,
   ],
-  [transactionActions.deleteCostsSucces]: (state, { payload }) =>
+  [transactionsActions.deleteCostsSucces]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
+});
+const monthIncoms = createReducer([], {
+  [transactionsActions.getMonthIncomesSucces]: (_, { payload }) => payload,
+});
+const monthCosts = createReducer([], {
+  [transactionsActions.getMonthCostsSucces]: (_, { payload }) => payload,
 });
 
 export default combineReducers({
   balance,
   incomes,
   costs,
+  monthIncoms,
+  monthCosts,
 });

@@ -1,8 +1,9 @@
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch } from "react-router-dom";
-import AuthForm from "./components/AuthForm";
+import { authOperations } from "./redux/auth";
 
+import AuthForm from "./components/AuthForm";
 import Layout from "./components/Layout/Layout";
 import getData from "./redux/auth/auth-selectors";
 import HomePage from "./components/pages/HomePage";
@@ -10,8 +11,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 import Loaders from "./components/shared/Loader/Loader";
 import ReportsPage from "./components/pages/ReportsPage";
-import Chart from "./components/Chart";
-import { authOperations } from "./redux/auth";
+
 
 // import IncomesCostsSection from './components/IncomesCostsSection';
 
@@ -28,11 +28,8 @@ function App() {
   const token = useSelector(getData.getToken);
   const name = useSelector(getData.getName);
   useEffect(() => {
-    if (!name) {
-      dispatch(authOperations.getCurrrentUser());
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [token]);
+    dispatch(authOperations.getCurrrentUser());
+  }, [dispatch]);
 
   //TODO переделать мапинг раутов с учётом приватных и публичных раутов
   // const routesMap = routes.map(route => {
@@ -56,28 +53,37 @@ function App() {
 
   return (
     <>
-      {/* <Chart/> */}
-
-      {/* <CurrentPeriod/> */}
-      <>
-        <Suspense fallback={<Loaders />}>
-          <Layout>
-            <Switch>
-              <PublicRoute exact path="/register" component={AuthForm} />
-              <PublicRoute exact path="/login" component={AuthForm} />
-              <PrivateRoute exact path="/" component={HomePage} redirectTo="" />
-              <PrivateRoute
-                exact
-                path="/reports"
-                component={ReportsPage}
-                redirectTo="/login"
-              />
-            </Switch>
-          </Layout>
-        </Suspense>
-
-        {/* <IncomesCostsSection /> */}
-      </>
+      <Suspense fallback={<Loaders />}>
+        <Layout>
+          <Switch>
+            <PublicRoute
+              exact
+              path="/register"
+              component={AuthForm}
+              restricted
+              redirectTo="/"
+            />
+            <PublicRoute
+              exact
+              path="/login"
+              component={AuthForm}
+              restricted
+              redirectTo="/"
+            />
+            <PrivateRoute
+              exact
+              path="/"
+              component={HomePage}
+              redirectTo="/login"
+            />
+            <PrivateRoute
+              path="/reports"
+              component={ReportsPage}
+              redirectTo="/reports"
+            />
+          </Switch>
+        </Layout>
+      </Suspense>
     </>
   );
 }

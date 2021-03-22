@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useDispatch } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { CSSTransition } from "react-transition-group";
 import { authSelectors } from "../../redux/auth/index";

@@ -54,7 +54,8 @@ class CurrentPeriod extends Component {
   componentDidUpdate() {
     const { currentMonth, currentYear } = this.state;
     const month = currentMonth + 1;
-    const date = `${month}.01.${currentYear}`;
+    const date =
+      month > 9 ? `01.${month}.${currentYear}` : `01.0${month}.${currentYear}`;
     this.props.setDate(date);
   }
 

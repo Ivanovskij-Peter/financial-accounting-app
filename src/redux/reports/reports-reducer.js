@@ -9,6 +9,6 @@ const initialState = {
 };
 
 const reportsReducer = createReducer(initialState, {
-  [reportsActions.getReportsSuccess]: (state, { payload }) => payload,
+  [reportsActions.getReportsSuccess]: (_, { payload }) => payload,
 });
 export default reportsReducer;

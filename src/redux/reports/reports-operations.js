@@ -1,9 +1,6 @@
 import axios from "axios";
 import reportsActions from "./reports-actions";
 
-axios.defaults.baseURL = "https://kapusta-srv.herokuapp.com";
-// axios.defaults.baseURL = "http://localhost:8080";
-
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -28,9 +25,8 @@ const getReports = (date) => (dispatch, getState) => {
     .get(`/user/information/${date}`)
     .then((resp) => {
       dispatch(reportsActions.getReportsSuccess(resp.data));
-      console.log("ffffffffff", resp);
     })
-    .catch((err) => dispatch(reportsActions.getReportsError(console.log(err))));
+    .catch((err) => dispatch(reportsActions.getReportsError(err.message)));
 };
 
 export default getReports;

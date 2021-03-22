@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Balance from "../Balance/Balance";
 
 // import Notification from "../Notification/Notification";
-
 import IncomesCostsSection from "../IncomesCostsSection";
 import transactionOperation from "../../redux/transaction/transaction-operation";
 
@@ -13,7 +12,9 @@ const HomePage = () => {
   useEffect(() => {
     if (name) {
       dispatch(transactionOperation.getIncomes());
+      dispatch(transactionOperation.getMonthIncomes());
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [name]);
   return (
     <>

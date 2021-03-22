@@ -13,7 +13,7 @@
   justify-content: space-between;
   border-bottom: 1px solid $body-color;
 
-  width: 100%;
+  width: 282px;
   margin-bottom: 10px;
 }
 
@@ -23,7 +23,6 @@
   line-height: 14px;
   letter-spacing: 0.04em;
   color: $secondary-text-color;
-
   &::first-letter {
     text-transform: capitalize;
   }
@@ -34,24 +33,14 @@
   font-size: 8px;
   line-height: 9px;
   letter-spacing: 0.04em;
-  color: $secondary-text-color;
-  &_text {
-    font-weight: normal;
-    font-size: 8px;
-    line-height: 9px;
-    letter-spacing: 0.04em;
-    color: $secondary-text-color;
-    &::first-letter {
-      text-transform: capitalize;
-    }
-  }
+
   &:not(:last-child) {
     margin-right: 20px;
   }
 }
 
 .amountCost {
-  color: $red-color;
+  color: #e7192e;
 
   font-weight: bold;
   font-size: 12px;
@@ -95,18 +84,15 @@
 
 @include for-size(tablet) {
   .incomesTable {
-    min-width: 605px;
+    width: 605px;
     border-spacing: 0;
-    display: inline-block;
 
     td:first-child {
       padding-left: 21px;
     }
-    & td {
-      width: 130px;
-    }
+
     & thead {
-      min-width: 605px;
+      width: 100%;
 
       & td {
         font-weight: bold;
@@ -128,22 +114,20 @@
     }
     & tbody {
       overflow-y: scroll;
-      overflow-x: hidden;
-      max-height: 382px;
-      display: inline-block;
-      width: 605px;
-      &::-webkit-scrollbar {
-        width: 6px;
-      }
-      &::-webkit-scrollbar-track {
-        background-color: $body-color;
-      }
-      &::-webkit-scrollbar-thumb {
+      ::-webkit-scrollbar-track {
         background-color: $accent-color;
-        border-radius: 2px;
-        height: 130px;
-        width: 6px;
       }
+      // &::-webkit-scrollbar {
+      //   width: 6px;
+      //   background-color: rgba(26, 24, 47, 0.15);
+      //   border-radius: 5px;
+      //   height: 200px;
+      // }
+
+      // &::-webkit-scrollbar-thumb {
+      //   background: $accent-color;
+      //   border-radius: 2px;
+      // }
     }
     & tbody td {
       font-weight: normal;
@@ -153,9 +137,7 @@
       color: $secondary-text-color;
 
       border-bottom: 2px solid $body-color;
-      &:last-child {
-        width: 78px;
-      }
+
       &:first-child {
         border-left: 2px solid $body-color;
       }
@@ -169,7 +151,7 @@
         font-size: 12px;
         line-height: 14px;
         letter-spacing: 0.04em;
-        color: $red-color;
+        color: #e7192e;
         text-align: right;
       }
 
@@ -190,17 +172,10 @@
 
   .leftCol {
     text-align: left;
-    max-width: 188px;
-    &::first-letter {
-      text-transform: capitalize;
-    }
   }
 
   .rightCol {
     text-align: right;
-    &::first-letter {
-      text-transform: capitalize;
-    }
   }
 
   td > button {
@@ -238,22 +213,27 @@
   .incomesTable {
     display: inline-block;
     width: 760px;
-    td {
-      width: 155px;
+
+    & td {
+      min-width: 150px;
     }
-    td.tdButton {
-      width: 60px;
-      display: flex;
-      justify-content: center;
-    }
+
     & tbody {
-      width: 760px;
-      & td:last-child {
-        width: 130px;
+      max-height: 382px;
+      display: inline-block;
+
+      overflow-y: scroll;
+
+      &::-webkit-scrollbar {
+        width: 6px;
+        background-color: rgba(26, 24, 47, 0.15);
+        border-radius: 5px;
+        height: 200px;
       }
-      & td.rightCol {
-        // width: 152px;
-        text-align: center;
+
+      &::-webkit-scrollbar-thumb {
+        background: $accent-color;
+        border-radius: 2px;
       }
     }
   }

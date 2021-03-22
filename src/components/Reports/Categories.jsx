@@ -18,7 +18,7 @@ const imgObject = {
   "спорт, хобби": `${sprite}#clay`,
   образование: `${sprite}#book`,
   прочее: `${sprite}#ufo`,
-  "ДОП. ДОХОД": `${sprite}#salary`,
+  "доп.доход": `${sprite}#salary`,
   зп: `${sprite}#money`,
 };
 
@@ -34,43 +34,45 @@ const nameObject = {
   "спорт, хобби": "hobbies",
   образование: "education",
   прочее: "other",
-  "ДОП. ДОХОД": "additional-incomes",
+  "доп.доход": "additional-incomes",
   зп: "salary",
 };
 
-const CategoriesList = ({ categoriesArr }) => {
+const CategoriesList = ({ categoriesArr, reportName }) => {
   const match = useRouteMatch("/reports");
   return (
     <>
-      <ul className={style.categoryList}>
-        {categoriesArr.map(({ total, name }) => {
-          const normalName = nameObject[name.toLowerCase()];
-          const currencyTotal = total
-            .toFixed(2)
-            .replace(/\d(?=(\d{3})+\.)/g, "$& ");
-          return (
-            <li key={normalName} className={style.categoryListItem}>
-              <NavLink
-                className={style.productLink}
-                to={{
-                  pathname: `${match.url}/${normalName}`,
-                }}
-              >
-                <p>{currencyTotal}</p>
-                <svg className={style.categoryIcon} height="63" width="56">
-                  <use href={imgObject[name.toLowerCase()]}></use>
-                </svg>
-                <div className={style.circle}></div>
-                <p>{name}</p>
-              </NavLink>
-            </li>
-          );
-        })}
-      </ul>
-      {/* <Route
+      <div className={style.wrapperReport}>
+        <ul className={style.categoryList}>
+          {categoriesArr.map(({ total, name }) => {
+            const normalName = nameObject[name.toLowerCase()];
+            const currencyTotal = total
+              .toFixed(2)
+              .replace(/\d(?=(\d{3})+\.)/g, "$& ");
+            return (
+              <li key={normalName} className={style.categoryListItem}>
+                <NavLink
+                  className={style.productLink}
+                  to={{
+                    pathname: `${match.url}/${normalName}`,
+                  }}
+                >
+                  <p>{currencyTotal}</p>
+                  <svg className={style.categoryIcon} height="63" width="56">
+                    <use href={imgObject[name.toLowerCase()]}></use>
+                  </svg>
+                  <div className={style.circle}></div>
+                  <p>{name}</p>
+                </NavLink>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+      <Route
         path={`${match.path}/:category`}
-        render={(props) => <Chart {...props} />}
-      /> */}
+        render={(props) => <Chart {...props} reportName={reportName} />}
+      />
     </>
   );
 };

@@ -1,31 +1,27 @@
 @import "../../sass/base/colors";
 @import "../../sass/base/mixin";
 
-// .formPosition {
-//   display: flex;
-//   justify-content: center;
-// }
 .formContainer {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  background-color: white;
-
-  padding-top: 54px;
+  // margin-bottom: 62px;
+  // padding-top: 40px;
 }
 
 .Auth__inputWrapper {
   position: relative;
   width: 282px;
+  &::placeholder {
+    color: $input-secontd-text-color;
+  }
   &:first-child {
     & input {
       border-top-right-radius: 20px;
       border-top-left-radius: 20px;
     }
   }
-
   &:not(:first-child) {
     margin-bottom: 30px;
     & input {
@@ -39,22 +35,21 @@
   width: 183px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+
   margin: 0 auto;
   margin-bottom: 83px;
 
   & div {
     position: absolute;
-    left: 118px;
+    left: 113px;
     top: -1px;
     width: 60px;
     height: 56px;
-
     border-left: 2px solid #fff;
-
     display: flex;
-    justify-content: center;
     align-items: center;
+    padding-left: 20px;
   }
 }
 
@@ -62,18 +57,19 @@
   outline: none;
   padding: 20px 20px;
   background: $input-color;
-
-  border: 2px solid #fff;
+  font-weight: 400;
+  border: 2px solid $primary-white-color;
   font-size: 14px;
   line-height: 1.143;
-  color: $input-text-color;
   width: 100%;
+  &::placeholder {
+    color: $input-secontd-text-color;
+  }
 }
 
 .Auth__amountInput {
   outline: none;
-  padding: 20px 20px;
-  padding-left: 40px;
+  padding: 20px 40px;
   background: $input-color;
   border-radius: 30px;
   border: 0;
@@ -82,7 +78,10 @@
   font-size: 12px;
   line-height: 14px;
   letter-spacing: 0.02em;
-  color: #000;
+  color: $input-secontd-text-color;
+  &::placeholder {
+    color: $primary-black-color;
+  }
 }
 
 .Auth__errorMessage {
@@ -95,27 +94,25 @@
 .buttonWrapper {
   width: 100%;
   display: flex;
-  justify-content: center;
+  align-items: flex-start;
 }
 
 @include for-size(tablet) {
   .formContainer {
     padding: 0px;
+    display: flex;
     align-items: flex-start;
-
     width: 100%;
     margin-bottom: 48px;
-    display: flex;
     flex-wrap: nowrap;
     flex-flow: row;
-    // vertical-align: bottom;
   }
 
   .buttonWrapper {
     margin-top: 30px;
     display: flex;
     width: 100%;
-    justify-content: start;
+    align-items: flex-start;
     margin-left: 27px;
   }
 
@@ -150,19 +147,24 @@
     font-weight: normal;
     font-size: 12px;
     line-height: 14px;
+    &::placeholder {
+      color: $input-secontd-text-color;
+    }
   }
 
   .Auth__amountInput {
     width: 100%;
+    padding: 10px 30px;
     border-radius: 0px;
     font-weight: normal;
     font-size: 12px;
     line-height: 14px;
-    border: 2px solid #fff;
+    border: 2px solid $primary-white-color;
     height: 100%;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    padding-left: 30px;
+    background-color: $primary-white-color;
+    border: 2px solid $body-color;
   }
 
   .Auth__amountInputWrapper {
@@ -171,10 +173,10 @@
     margin: 0;
 
     & div {
-      left: 47px;
+      left: 62px;
       top: -6px;
-
       border: none;
+      padding-left: 0;
     }
   }
   .Auth__inputWrapper {
@@ -192,18 +194,16 @@
     }
   }
   .Auth__input {
-    background-color: #fff;
-    border: 2px solid #f5f6fb;
-  }
-  .Auth__amountInput {
-    background-color: #fff;
-    border: 2px solid #f5f6fb;
+    background-color: $primary-white-color;
+    border: 2px solid$body-color;
+    &::placeholder {
+      color: $input-secontd-text-color;
+    }
   }
 }
 
 @include for-size(desktop) {
   .formContainer {
-    width: 893px;
     margin-bottom: 59px;
     display: flex;
     flex-direction: row;
@@ -228,7 +228,7 @@
     margin: 0;
     width: 126px;
     & div {
-      left: 62px;
+      left: 82px;
     }
   }
   .Auth__inputWrapper {
@@ -247,13 +247,16 @@
     }
   }
   .Auth__input {
-    background-color: #fff;
-    border: 2px solid #f5f6fb;
+    fill: #c7ccdc;
+    background-color: $primary-white-color;
+    border: 2px solid $body-color;
+    &::placeholder {
+      color: $input-secontd-text-color;
+    }
   }
   .Auth__amountInput {
-    background-color: #fff;
-    border: 2px solid #f5f6fb;
-    padding: 0 20px 0 45px;
+    background-color: $primary-white-color;
+    border: 2px solid $body-color;
   }
 }
 
@@ -265,7 +268,7 @@
   line-height: 1.89;
   align-items: center;
   letter-spacing: 0.02em;
-  color: #c7ccdc;
+  color: $input-secontd-text-color;
   &:hover,
   &:focus,
   &:active {
@@ -285,8 +288,8 @@
   z-index: 200;
   top: 44px;
   width: 282px;
-  background-color: #fff;
-  border: 2px solid #f5f6fb;
+  background-color: $primary-white-color;
+  border: 2px solid $body-color;
   box-shadow: 0px 3px 4px rgba(170, 178, 197, 0.4);
   @include for-size(tablet) {
     width: 171px;
