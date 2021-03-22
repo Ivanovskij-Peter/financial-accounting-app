@@ -58,9 +58,9 @@ function App() {
 
   return (
     <>
-      <AddIncomeCostForm />
+      {/* <AddIncomeCostForm /> */}
       {/* <Chart/> */}
-      {/* <>
+      <>
         <Suspense fallback={<Loaders />}>
           <Layout>
             <Switch>
@@ -86,7 +86,7 @@ function App() {
             </Switch>
           </Layout>
         </Suspense>
-      </> */}
+      </>
     </>
   );
 }

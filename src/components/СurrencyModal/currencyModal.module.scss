@@ -1,0 +1,44 @@
+@import "../../sass/base/colors";
+@import "../../sass/base/mixin";
+
+.currencyModal {
+  position: absolute;
+  padding-top: 54px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+
+  background-color: $primary-white-color;
+  z-index: 100;
+  top: 53px;
+  left: 0;
+
+  &::before {
+    position: absolute;
+    content: "";
+
+    top: 0;
+    left: 0;
+    height: 313px;
+    width: 100%;
+
+    background: $body-color;
+    border-bottom-left-radius: 100px;
+    z-index: -1;
+  }
+}
+.currencyBack {
+  position: absolute;
+  background-color: transparent;
+  border: transparent;
+  fill: $accent-color;
+
+  left: 22px;
+  top: 22px;
+
+  &:hover,
+  &:focus {
+    fill: $primary-black-color;
+  }
+}
