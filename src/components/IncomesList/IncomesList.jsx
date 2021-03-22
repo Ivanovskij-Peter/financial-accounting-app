@@ -11,14 +11,13 @@ class IncomesList extends Component {
 
   render() {
     const mobile = window.innerWidth < 768;
-    const { data = [], type, deleteIncome } = this.props;
-
+    const { data, type, deleteIncome } = this.props;
     const withoutData = function () {
       const withDataTable = function (el) {
         if (el) {
           return (
             <tr key={el._id}>
-              <td className={styles.leftCol}>{el.date.split("-").join(".")}</td>
+              <td className={styles.leftCol}>{el.date.split("/").join(".")}</td>
               <td className={styles.leftCol}>
                 {el.description.length >= 15
                   ? el.description.slice(0, 15) + "..."

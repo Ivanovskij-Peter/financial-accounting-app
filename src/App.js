@@ -1,5 +1,5 @@
 import { Suspense, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Switch } from "react-router-dom";
 import AuthForm from "./components/AuthForm";
 
@@ -10,35 +10,14 @@ import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 import Loaders from "./components/shared/Loader/Loader";
 import ReportsPage from "./components/pages/ReportsPage";
-// import Chart from "./components/Chart";
 import { authOperations } from "./redux/auth";
-// import Summary from "./components/Summary/Summary";
-// import IncomesCostsSection from './components/IncomesCostsSection';
-
-import AddIncomeCostForm from "./components/AddIncomeCostForm";
-
-// import { CSSTransition } from "react-transition-group";
-// import Notification from "./components/Notification/Notification";
-// import notificationStyles from "./components/Notification/notification.module.scss";
-// import CurrentPeriod from "./components/CurrentPeriod/CurrentPeriod"
-// import Modal from './components/shared/Modal/Modal';
-
-// import IncomesList from "./components/IncomesList";
 
 function App() {
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.auth.token);
-  const name = useSelector((state) => state.auth.user.name);
 
   useEffect(() => {
     dispatch(authOperations.getCurrrentUser());
   }, [dispatch]);
-  useEffect(() => {
-    if (!name) {
-      dispatch(authOperations.getCurrrentUser());
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [token]);
 
   //TODO переделать мапинг раутов с учётом приватных и публичных раутов
   // const routesMap = routes.map(route => {
@@ -62,41 +41,37 @@ function App() {
 
   return (
     <>
-      <AddIncomeCostForm />
-      {/* <Chart/> */}
-      {/* <>
-        <Suspense fallback={<Loaders />}>
-          <Layout>
-            <Switch>
-              <PublicRoute
-                exact
-                path="/register"
-                component={AuthForm}
-                restricted
-                redirectTo="/"
-              />
-              <PublicRoute
-                exact
-                path="/login"
-                component={AuthForm}
-                restricted
-                redirectTo="/"
-              />
-              <PrivateRoute
-                exact
-                path="/"
-                component={HomePage}
-                redirectTo="/login"
-              />
-              <PrivateRoute
-                path="/reports"
-                component={ReportsPage}
-                redirectTo="/login"
-              />
-            </Switch>
-          </Layout>
-        </Suspense>
-      </> */}
+      <Suspense fallback={<Loaders />}>
+        <Layout>
+          <Switch>
+            <PublicRoute
+              exact
+              path="/register"
+              component={AuthForm}
+              restricted
+              redirectTo="/"
+            />
+            <PublicRoute
+              exact
+              path="/login"
+              component={AuthForm}
+              restricted
+              redirectTo="/"
+            />
+            <PrivateRoute
+              exact
+              path="/"
+              component={HomePage}
+              redirectTo="/login"
+            />
+            <PrivateRoute
+              path="/reports"
+              component={ReportsPage}
+              redirectTo="/login"
+            />
+          </Switch>
+        </Layout>
+      </Suspense>
     </>
   );
 }

@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import { Formik, Form, Field } from "formik";
-import * as Yup from "yup";
 import { connect } from "react-redux";
-
 import styles from "./addIncomeCostForm.module.scss";
+import moment from "moment";
 import sprite from "../../images/sprite.svg";
-import PhonebookService from "../../services/backend.service";
 import Button from "../shared/Button";
 import Calendar from "../Calendar";
 import transactionOperation from "../../redux/transaction/transaction-operation";
@@ -18,11 +16,11 @@ class AddIncomeCostForm extends Component {
     date: "",
     title: "",
     description: "",
-    amount: "",
+    amount: 0,
   };
 
   static defaultProps = {
-    cathegories: [
+    costsCathegories: [
       "Транспорт",
       "Продукты",
       "Здоровье",
@@ -36,7 +34,6 @@ class AddIncomeCostForm extends Component {
       "Прочее",
     ],
     incomesCathegories: ["ЗП", "Доп.доход"],
-    type: "incomes",
   };
 
   handleOpenList = () => {
@@ -67,12 +64,14 @@ class AddIncomeCostForm extends Component {
   };
 
   handleChange = (e) => {
+    e.preventDefault();
     const { name, value } = e.target;
     this.setState({ [name]: value });
-    console.log({ [name]: value });
+    console.log(e);
   };
 
   handleClick = (e) => {
+    e.preventDefault();
     this.setState({
       title: "",
       amount: "",
@@ -81,27 +80,31 @@ class AddIncomeCostForm extends Component {
   };
 
   handleSubmit = (values) => {
-    const {type, date} = this.props;
-    const {title, description, amount} =this.state;
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2MDRiMmI3YjkzOWI1ODA5NzRiYmZiOGEiLCJpYXQiOjE2MTU1MzkzMjJ9.KkkwL1P1L2SmlHIQhSO8pYc7lWaQYUUg6JfzS3HcDAY";
+    const { typeTransaction, addTransaction } = this.props;
+    const { title, description, amount } = this.state;
+    const newDate = moment();
+
     const transaction = {
-      date: date,
+      date: newDate.format("L"),
       category: title,
       description: description,
-      amount: amount,
-      id: `${Date.now()}`,
+      amount: Number(amount),
     };
 
-    console.log(transaction)
+    console.log(transaction);
 
-    PhonebookService.addTransaction(token, type, transaction)
-    .then(data => console.log(data))
-    .catch(data => console.log(data));
+    addTransaction(typeTransaction, transaction);
   };
 
   render() {
     const { isOpen } = this.state;
-    const { cathegories } = this.props;
+    const {
+      costsCathegories,
+      incomesCathegories,
+      typeTransaction,
+    } = this.props;
+    const cathegories =
+      typeTransaction === "costs" ? costsCathegories : incomesCathegories;
     document.addEventListener("click", this.handleCloseList);
     return (
       //  <div className={styles.formPosition}>
@@ -113,7 +116,7 @@ class AddIncomeCostForm extends Component {
             this.handleSubmit(values);
           }}
         >
-          <Form className={styles.form} onSubmit={this.handleSubmit}>
+          <Form className={styles.form}>
             <div className={styles.Auth__inputWrapper}>
               <Field
                 value={this.state.description}
@@ -219,11 +222,9 @@ class AddIncomeCostForm extends Component {
     );
   }
 }
-const mapStateToProps = (state) => ({
-  date: state.date,
-});
-const mapDispatchToProps = (dispatch) => ({
-  add: (income) => dispatch(transactionOperation.setIncomes(income)),
-});
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddIncomeCostForm);
+const mapDispatchToProps = {
+  addTransaction: transactionOperation.addTransaction,
+};
+
+export default connect(null, mapDispatchToProps)(AddIncomeCostForm);
