@@ -2,22 +2,16 @@ import React, { Component } from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { connect } from "react-redux";
+
 import styles from "./addIncomeCostForm.module.scss";
 import sprite from "../../images/sprite.svg";
 import PhonebookService from "../../services/backend.service";
+
 import Button from "../shared/Button";
 import Calendar from "../Calendar";
 import transactionOperation from "../../redux/transaction/transaction-operation";
 
 const mobile = window.innerWidth < 768;
-
-const validationSchema = Yup.object().shape({
-  description: Yup.string()
-    .max(20, "Превышен лимит символов")
-    .required("это обязательное поле"),
-  category: Yup.string().required("это обязательное поле"),
-  amount: Yup.string().required("это обязательное поле"),
-});
 
 class AddIncomeCostForm extends Component {
   state = {
@@ -27,6 +21,7 @@ class AddIncomeCostForm extends Component {
     description: "",
     id: ""
   };
+
   static defaultProps = {
     cathegories: [
       "Транспорт",
@@ -42,6 +37,7 @@ class AddIncomeCostForm extends Component {
       "Прочее",
     ],
     incomesCathegories: ["ЗП", "Доп.доход"],
+    type: "incomes",
   };
 
   handleOpenList = () => {
@@ -111,7 +107,6 @@ handleChange = (e) => {
         <Calendar />
         <Formik
           initialValues={{ description: "", category: "", amount: "" }}
-          validationSchema={validationSchema}
           onSubmit={(values) => {
             this.handleSubmit(values);
           }}
@@ -226,4 +221,3 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddIncomeCostForm);
-
