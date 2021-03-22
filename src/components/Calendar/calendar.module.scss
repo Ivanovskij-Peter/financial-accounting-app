@@ -2,6 +2,7 @@
 @import "../../sass/base/mixin";
 
 .calendarWrapper {
+  position: relative;
   width: 107px;
   display: flex;
   align-items: center;
@@ -9,25 +10,16 @@
   flex-direction: row;
   flex-wrap: nowrap;
   background-color: transparent;
-  transition: all 250ms linear;
   @include for-size(tablet) {
     padding-top: 10px;
   }
   @include for-size(desktop) {
     padding-top: 0;
   }
-  & svg {
-    max-width: 20px;
-  }
-  &:hover,
-  &:focus {
-    fill: $accent-color;
-    transform: scale(1.2);
-  }
 }
 
 .calendar {
-  margin-left: 10px;
+  margin-left: 30px;
   color: $secondary-text-color;
   font-weight: 900;
   font-size: 12px;
@@ -37,5 +29,5 @@
   padding: 0;
   width: 66px;
   background-color: transparent;
-  // margin-left: 10px;
+  outline: none;
 }
