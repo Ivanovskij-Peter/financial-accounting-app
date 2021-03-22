@@ -84,6 +84,8 @@
   &__container {
     // width: 282px;
     @include for-size(tablet) {
+      margin-left: auto;
+      margin-right: auto;
       width: 665px;
       height: 625px;
       padding: 28px 30px 50px 30px;
