@@ -8,21 +8,18 @@ class IncomesList extends Component {
   componentDidMount() {
     this.props.getCosts();
   }
-  //   componentDidUpdate() {    
-  //   this.props.type === "incomes" ? this.props.getIncomes() : this.props.getCosts();
-  // }
 
   render() {
     const mobile = window.innerWidth < 768;
-    const { type, deleteIncome, incomes, costs } = this.props;
-    let data = type === "costs" ? costs : incomes ;
+    const { typeTransaction, deleteIncome, incomes, costs } = this.props;
+    let data = typeTransaction === "costs" ? costs : incomes ;
 
     const withoutData = function () {
       const withDataTable = function (el) {
         if (el) {
           return (
             <tr key={el._id}>
-              <td className={styles.leftCol}>{el.date.split("-").join(".")}</td>
+              <td className={styles.leftCol}>{el.date.split("/").join(".")}</td>
               <td className={styles.leftCol}>
                 {el.description.length >= 15
                   ? el.description.slice(0, 15) + "..."
@@ -30,7 +27,7 @@ class IncomesList extends Component {
               </td>
               <td className={styles.rightCol}>{el.category}</td>
               <td className={styles.amountCost}>
-                {type === "costs" ? (
+                {typeTransaction === "costs" ? (
                   <span
                     className={styles.amountCost}
                   >{`- ${el.amount} грн.`}</span>
@@ -40,7 +37,7 @@ class IncomesList extends Component {
                   >{`${el.amount} грн.`}</span>
                 )}</td>
               <td className={styles.tdButton}>
-                <button>
+                <button onClick={() => deleteIncome(el._id)}>
                   <svg width="18px" height="18px">
                     <use href={sprite + "#delete-icon"} />
                   </svg>
@@ -79,13 +76,13 @@ class IncomesList extends Component {
                 </p>
                 <div>
                   <span className={styles.secondary}>
-                    {date.split("-").reverse().join(".")}
+                    {date.split("/").reverse().join(".")}
                   </span>
                   <p className={styles.secondary_text}>{category}</p>
                 </div>
               </div>
               <div className={styles.right}>
-                {type === "costs" ? (
+                {typeTransaction === "costs" ? (
                   <span
                     className={styles.amountCost}
                   >{`- ${amount} грн.`}</span>
@@ -94,7 +91,7 @@ class IncomesList extends Component {
                     className={styles.amountIncome}
                   >{`${amount} грн.`}</span>
                 )}
-                <button>
+                <button onClick={() => deleteIncome(_id)}>
                   <svg width="18px" height="18px">
                     <use href={sprite + "#delete-icon"} />
                   </svg>
@@ -121,7 +118,7 @@ class IncomesList extends Component {
             : data.map(({ _id, description, category, amount, date, inx }) => (
                 <tr key={inx}>
                   <td className={styles.leftCol}>
-                    {date.split("-").join(".")}
+                    {date.split("/").join(".")}
                   </td>
                   <td className={styles.leftCol}>
                     {description.length >= 15
@@ -129,7 +126,7 @@ class IncomesList extends Component {
                       : description}
                   </td>
                   <td className={styles.rightCol}>{category}</td>
-                  {type === "costs" ? (
+                  {typeTransaction === "costs" ? (
                     <td className={styles.amountCost}>{`- ${amount} грн.`}</td>
                   ) : (
                     <td
