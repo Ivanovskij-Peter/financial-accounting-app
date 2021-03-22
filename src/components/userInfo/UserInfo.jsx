@@ -3,7 +3,7 @@ import "./userInfo.scss";
 import sprite from "../../images/sprite.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { authOperations } from "../../redux/auth";
-import Modal from "../shared/modal/Modal";
+import Modal from "../shared/Modal/Modal";
 import { useHistory } from "react-router";
 
 function UserInfo() {

@@ -3,7 +3,7 @@
 
 .mainWrapper {
   width: 134px;
-  margin: 49px 93px 30px 93px;
+  margin: 16px 93px 30px 75px;
 }
 .wrapper {
   display: flex;
@@ -11,12 +11,12 @@
 }
 @include for-size(tablet) {
   .mainWrapper {
-    margin: 42px 54px 33px 80px;
+    margin: 42px 0px 33px 80px;
   }
 }
 @include for-size(desktop) {
   .mainWrapper {
-    margin-right: 110px;
+    margin-left: 231px;
   }
 }
 .currentMonthBtn {
