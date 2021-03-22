@@ -56,8 +56,8 @@ const AuthForm = () => {
       : history.push("/register");
   };
 
-  const handleGoogleLogin = (response) => {
-    // dispatch(authOperations.logIn({ email, password }));
+  const handleGoogleLogin = ({ tokenId }) => {
+    dispatch(authOperations.logInWithGoogle({ token: tokenId }));
   };
 
   const handleGoogleLoginFailure = (response) => {

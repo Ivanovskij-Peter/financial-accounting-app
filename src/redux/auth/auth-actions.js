@@ -8,9 +8,9 @@ const loginRequest = createAction("auth/loginRequest");
 const loginSuccess = createAction("auth/loginSuccess");
 const loginError = createAction("auth/loginError");
 
-const loginWithGoogleRequest = createAction("auth/loginRequest");
-const loginWithGoogleSuccess = createAction("auth/loginSuccess");
-const loginWithGoogleError = createAction("auth/loginError");
+const loginWithGoogleRequest = createAction("auth/loginWithGoogleRequest");
+const loginWithGoogleSuccess = createAction("auth/loginWithGoogleSuccess");
+const loginWithGoogleError = createAction("auth/loginWithGoogleError");
 
 const logOutRequest = createAction("auth/logOutRequest");
 const logOutSuccess = createAction("auth/logOutSuccess");

@@ -50,10 +50,10 @@ const logIn = (credentials) => (dispatch) => {
     });
 };
 
-const logInWithGoogle = (credentials) => (dispatch) => {
+const logInWithGoogle = (googleToken) => (dispatch) => {
   dispatch(authActions.loginWithGoogleRequest());
   api
-    .login(credentials)
+    .loginWithGoogle(googleToken)
     .then(({ data }) => {
       api.setToken(data.token);
       const { token, name, email, avatarURL } = data;
