@@ -5,14 +5,6 @@ const setBalanceRequest = createAction("user/setBalanceRequest");
 const setBalanceSucces = createAction("user/setBalanceSucces");
 const setBalanceError = createAction("user/setBalanceError");
 
-const addIncomesRequest = createAction("user/addIncomesRequest");
-const addIncomesSucces = createAction("user/addIncomesSucces");
-const addIncomesError = createAction("user/addIncomesError");
-
-const addCostsRequest = createAction("user/addCostsRequest");
-const addCostsSucces = createAction("user/addCostsSucces");
-const addCostsError = createAction("user/addCostsError");
-
 const deleteIncomesRequest = createAction("user/deleteIncomesRequest");
 const deleteIncomesSucces = createAction("user/deleteIncomesSucces");
 const deleteIncomesError = createAction("user/deleteIncomesError");
@@ -25,7 +17,7 @@ const setIncomesRequest = createAction("user/setIncomesRequest");
 const setIncomesSucces = createAction("user/setIncomesSucces");
 const setIncomesError = createAction("user/setIncomesError");
 
-const setCostsRequest = createAction("user/ setCostsRequest");
+const setCostsRequest = createAction("user/setCostsRequest");
 const setCostsSucces = createAction("user/setCostsSucces");
 const setCostsError = createAction("user/setCostsError");
 
@@ -49,15 +41,9 @@ export default {
   setBalanceRequest,
   setBalanceSucces,
   setBalanceError,
-  addIncomesRequest,
-  addIncomesSucces,
-  addIncomesError,
   deleteIncomesRequest,
   deleteIncomesSucces,
   deleteIncomesError,
-  addCostsRequest,
-  addCostsSucces,
-  addCostsError,
   deleteCostsRequest,
   deleteCostsSucces,
   deleteCostsError,

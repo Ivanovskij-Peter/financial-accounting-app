@@ -11,7 +11,6 @@ class Calendar extends Component {
     date: new Date(),
   };
 
-
   handleChange = (date) => {
     this.setState({ date: date });
 
@@ -24,7 +23,7 @@ class Calendar extends Component {
     }
 
     const result = date
-      ? `${date.getDate()}.${month}.${date.getFullYear()}`
+      ? `${month}.${date.getDate()}.${date.getFullYear()}`
       : "";
     this.props.setDate(result);
   };

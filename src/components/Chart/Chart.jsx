@@ -94,6 +94,7 @@ export default function Chart(props) {
     barWidth = maxBarWidth;
   }
 
+
   return (
     <>
       <div className={styles.chart}>
@@ -108,7 +109,7 @@ export default function Chart(props) {
                   width: barWidth + "px",
                 }}
               >
-                <p className={styles.sum}>{value} грн</p>
+                <p className={(value / heightCoefficient)<78? styles.sumLow:styles.sum}>{value} грн</p>
                 <p className={styles.label}>{label}</p>
               </li>
             );

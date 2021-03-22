@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useRouteMatch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { useRouteMatch, useHistory } from "react-router-dom";
+
 import reportOperations from "../../redux/reports/reports-operations";
 import getInfo from "../../redux/reports/reports-selectors.js";
 import CategoriesList from "./Categories.jsx";
@@ -56,7 +58,7 @@ import style from "./Reports.module.scss";
 const Reports = () => {
   const [reportName, setReportName] = useState("РАСХОДЫ");
   const dispatch = useDispatch();
-  const match = useRouteMatch("/reports");
+  const history = useHistory();
   const date = useSelector(getInfo.getQueryDate);
   const dateArr = date.split(".");
   const normaldateArr = [dateArr[1], dateArr[0], dateArr[2]];
@@ -68,6 +70,7 @@ const Reports = () => {
 
   useEffect(() => {
     dispatch(reportOperations(normalDate));
+    return dispatch(reportOperations(normalDate));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date]);
 
@@ -76,6 +79,8 @@ const Reports = () => {
     reportName === "РАСХОДЫ"
       ? setReportName("ДОХОДЫ")
       : setReportName("РАСХОДЫ");
+
+    history.push("/reports");
   };
 
   return (
@@ -108,14 +113,14 @@ const Reports = () => {
       )}
       {reportName === "РАСХОДЫ" && userReports.costsArr.length === 0 ? (
         <p className={style.noTransaction}>
-          You're not created any transaction yet
+          You have not created any transaction yet
         </p>
       ) : (
         ""
       )}
       {reportName === "ДОХОДЫ" && userReports.incomesArr.length === 0 ? (
         <p className={style.noTransaction}>
-          You're not created any transaction yet
+          You have not created any transaction yet
         </p>
       ) : (
         ""

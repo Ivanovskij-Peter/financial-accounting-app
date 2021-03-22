@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./userInfo.scss";
 import sprite from "../../images/sprite.svg";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,10 +13,15 @@ function UserInfo() {
   };
 
   const mobile = window.innerWidth < 768;
+
   const dispatch = useDispatch();
   const name = useSelector((state) => state.auth.user.name);
   const avatar = useSelector((state) => state.auth.user.avatarURL);
   const history = useHistory();
+
+  // useEffect(() => {
+  //   const mobile = window.innerWidth < 768;
+  // }, [ window.innerWidth]);
 
   const handleClick = () => {
     dispatch(authOperations.logOut());
