@@ -221,10 +221,3 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddIncomeCostForm);
-
-const mapStateToProps = (state) => ({
-  date: state.date,
-  token: state.auth.token
-});
-
-export default connect(mapStateToProps, null)(AddIncomeCostForm);
