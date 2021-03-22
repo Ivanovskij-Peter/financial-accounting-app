@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {useRouteMatch, useHistory} from "react-router-dom";
+import { useRouteMatch, useHistory } from "react-router-dom";
 
 import reportOperations from "../../redux/reports/reports-operations";
 import getInfo from "../../redux/reports/reports-selectors.js";
@@ -69,25 +69,20 @@ const Reports = () => {
 
   useEffect(() => {
     dispatch(reportOperations(normalDate));
-    return(dispatch(reportOperations(normalDate)))
+    return dispatch(reportOperations(normalDate));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date]);
-
-
- 
-  
 
   const onChange = () => {
     reportName === "РАСХОДЫ"
       ? setReportName("ДОХОДЫ")
       : setReportName("РАСХОДЫ");
 
-      history.push('/reports');
+    history.push("/reports");
   };
 
   return (
     <section className={style.reportSection}>
-    
       <div className={style.reportNav}>
         <button
           onClick={onChange}
@@ -128,7 +123,6 @@ const Reports = () => {
       ) : (
         ""
       )}
-     
     </section>
   );
 };
