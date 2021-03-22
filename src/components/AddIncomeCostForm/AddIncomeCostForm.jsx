@@ -92,6 +92,8 @@ handleChange = (e) => {
       id: `${Date.now()}`,
     };
 
+    console.log(transaction)
+
     PhonebookService.addTransaction(token, type, transaction)
     .then(data => console.log(data))
     .catch(data => console.log(data));

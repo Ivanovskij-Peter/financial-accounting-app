@@ -32,7 +32,7 @@ class PhonebookService {
   addTransaction(token, keyWord, transaction) {
     this.setToken(token);
 
-    axios.patch(`/user/${keyWord}`, transaction);
+    return axios.post(`/user/${keyWord}`, transaction);
   }
 }
 
