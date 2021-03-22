@@ -18,9 +18,7 @@ class IncomesList extends Component {
         if (el) {
           return (
             <tr key={el._id}>
-              <td className={styles.leftCol}>
-                {el.date.split("-").reverse().join(".")}
-              </td>
+              <td className={styles.leftCol}>{el.date.split("-").join(".")}</td>
               <td className={styles.leftCol}>
                 {el.description.length >= 15
                   ? el.description.slice(0, 15) + "..."
@@ -59,7 +57,7 @@ class IncomesList extends Component {
       <ul className={styles.list}>
         {data.map(({ _id, description, category, amount, date }) => {
           return (
-            <li className={styles.listItem} key={_id}>
+            <li className={styles.listItem} key={_id + 1}>
               <div className={styles.left}>
                 <p className={styles.description}>
                   {description.length >= 15
@@ -70,7 +68,7 @@ class IncomesList extends Component {
                   <span className={styles.secondary}>
                     {date.split("-").reverse().join(".")}
                   </span>
-                  <span className={styles.secondary}>{category}</span>
+                  <p className={styles.secondary_text}>{category}</p>
                 </div>
               </div>
               <div className={styles.right}>
@@ -107,8 +105,8 @@ class IncomesList extends Component {
         <tbody>
           {data.length <= 9
             ? withoutData()
-            : data.map(({ _id, description, category, amount, date }) => (
-                <tr key={_id}>
+            : data.map(({ _id, description, category, amount, date, inx }) => (
+                <tr key={inx}>
                   <td className={styles.leftCol}>
                     {date.split("-").join(".")}
                   </td>

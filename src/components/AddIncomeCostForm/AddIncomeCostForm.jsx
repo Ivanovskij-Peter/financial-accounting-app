@@ -1,32 +1,26 @@
 import React, { Component } from "react";
 import { Formik, Form, Field } from "formik";
-import * as Yup from "yup";
+// import * as Yup from "yup";
 import { connect } from "react-redux";
+
 import styles from "./addIncomeCostForm.module.scss";
 import sprite from "../../images/sprite.svg";
-import PhonebookService from "../../services/backend.service";
+// import PhonebookService from "../../services/backend.service";
 import Button from "../shared/Button";
 import Calendar from "../Calendar";
 import transactionOperation from "../../redux/transaction/transaction-operation";
 
 const mobile = window.innerWidth < 768;
 
-const validationSchema = Yup.object().shape({
-  description: Yup.string()
-    .max(20, "Превышен лимит символов")
-    .required("это обязательное поле"),
-  category: Yup.string().required("это обязательное поле"),
-  amount: Yup.string().required("это обязательное поле"),
-});
-
 class AddIncomeCostForm extends Component {
   state = {
     isOpen: false,
+    date: "",
     title: "",
-    amount: "",
     description: "",
-    id: ""
+    amount: "",
   };
+
   static defaultProps = {
     cathegories: [
       "Транспорт",
@@ -42,6 +36,7 @@ class AddIncomeCostForm extends Component {
       "Прочее",
     ],
     incomesCathegories: ["ЗП", "Доп.доход"],
+    type: "incomes",
   };
 
   handleOpenList = () => {
@@ -71,9 +66,10 @@ class AddIncomeCostForm extends Component {
     }
   };
 
-handleChange = (e) => {
+  handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
+    console.log({ [name]: value });
   };
 
   handleClick = (e) => {
@@ -96,14 +92,16 @@ handleChange = (e) => {
       id: `${Date.now()}`,
     };
 
+    console.log(transaction)
+
     PhonebookService.addTransaction(token, type, transaction)
     .then(data => console.log(data))
     .catch(data => console.log(data));
   };
 
   render() {
-    const { isOpen, title, amount, description } = this.state;
-    const { cathegories, incomesCathegories } = this.props;
+    const { isOpen } = this.state;
+    const { cathegories } = this.props;
     document.addEventListener("click", this.handleCloseList);
     return (
       //  <div className={styles.formPosition}>
@@ -111,15 +109,14 @@ handleChange = (e) => {
         <Calendar />
         <Formik
           initialValues={{ description: "", category: "", amount: "" }}
-          validationSchema={validationSchema}
           onSubmit={(values) => {
             this.handleSubmit(values);
           }}
         >
-          <Form className={styles.form}>
+          <Form className={styles.form} onSubmit={this.handleSubmit}>
             <div className={styles.Auth__inputWrapper}>
               <Field
-                value={description}
+                value={this.state.description}
                 onChange={this.handleChange}
                 name="description"
                 type="text"
@@ -132,12 +129,12 @@ handleChange = (e) => {
               onClick={this.handleOpenList}
             >
               <Field
-                name="category"
+                name="title"
                 type="text"
                 className={styles.Auth__input}
                 placeholder="Категория товара"
                 onChange={this.handleChange}
-                value={title}
+                value={this.state.title}
                 disabled
               />
               <button className={styles.cathegory_btn}>
@@ -156,8 +153,10 @@ handleChange = (e) => {
                   onClick={this.changeCathegory}
                   className={styles.category_list}
                 >
-                  {cathegories.map((el) => (
-                    <li className={styles.cathegory__item}>{el}</li>
+                  {cathegories.map((el, inx) => (
+                    <li className={styles.cathegory__item} key={inx}>
+                      {el}
+                    </li>
                   ))}
                 </ul>
               )}
@@ -191,7 +190,7 @@ handleChange = (e) => {
             <div className={styles.Auth__amountInputWrapper}>
               <Field
                 onChange={this.handleChange}
-                value={amount}
+                value={this.state.amount}
                 name="amount"
                 type="text"
                 className={styles.Auth__amountInput}
@@ -205,7 +204,11 @@ handleChange = (e) => {
             </div>
             <div className={styles.buttonWrapper}>
               <Button type="submit">ВВОД</Button>
-              <Button btnType="secondary" type="button" onClick={this.handleClick}>
+              <Button
+                btnType="secondary"
+                type="button"
+                onClick={this.handleClick}
+              >
                 ОЧИСТИТЬ
               </Button>
             </div>
@@ -216,14 +219,11 @@ handleChange = (e) => {
     );
   }
 }
-const mapDispatchToProps = (dispatch) => ({
-  add: () => dispatch(transactionOperation.setIncomes()),
-});
-
 const mapStateToProps = (state) => ({
   date: state.date,
-  token: state.auth.token
+});
+const mapDispatchToProps = (dispatch) => ({
+  add: (income) => dispatch(transactionOperation.setIncomes(income)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddIncomeCostForm);
-
