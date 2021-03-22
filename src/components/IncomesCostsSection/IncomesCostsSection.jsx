@@ -3,14 +3,12 @@ import styles from "./IncomesCostsSection.module.scss";
 import IncomesList from "../IncomesList";
 import AddIncomeCostForm from "../AddIncomeCostForm";
 import Summary from "../Summary/Summary";
-import CostsList from "../CostsList/CostsList";
 
 const IncomesCostsSection = () => {
-  const [typeTransaction, setTypeTransaction] = useState("costs");
+  const [showTab, setshowTab] = useState("costs");
 
-  const handleClick = (e) => {
-    const { name } = e.target;
-    setTypeTransaction(name);
+  const handleClick = (type) => {
+    setshowTab(type);
   };
   return (
     <>
@@ -18,31 +16,25 @@ const IncomesCostsSection = () => {
         <ul className={styles.IncomesCostsSection__list}>
           <li className={styles.IncomesCostsSection__list__item}>
             <button
-              name="costs"
               className={styles.IncomesCostsSection__list__button}
-              onClick={handleClick}
+              onClick={()=>{handleClick("costs")}}
             >
               РАСХОД
             </button>
           </li>
           <li className={styles.IncomesCostsSection__list__item}>
             <button
-              name="incomes"
               className={styles.IncomesCostsSection__list__button}
-              onClick={handleClick}
+              onClick={()=>{handleClick("incomes")}}
             >
               ДОХОД
             </button>
           </li>
         </ul>
         <div className={styles.IncomesCostsSection__container}>
-          <AddIncomeCostForm typeTransaction={typeTransaction} />
+          <AddIncomeCostForm type={showTab==="costs" ? "costs":"incomes"}/>
           <div className={styles.lists}>
-            {typeTransaction === "costs" ? (
-              <CostsList />
-            ) : typeTransaction === "incomes" ? (
-              <IncomesList />
-            ) : null}
+            <IncomesList type={showTab==="costs" ? "costs" :"incomes"} />
           </div>
         </div>
         <Summary />

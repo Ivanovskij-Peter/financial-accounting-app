@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { Formik, Form, Field } from "formik";
+// import * as Yup from "yup";
 import { connect } from "react-redux";
+
 import styles from "./addIncomeCostForm.module.scss";
-import moment from "moment";
 import sprite from "../../images/sprite.svg";
+import PhonebookService from "../../services/backend.service";
 import Button from "../shared/Button";
 import Calendar from "../Calendar";
 import transactionOperation from "../../redux/transaction/transaction-operation";
@@ -16,11 +18,11 @@ class AddIncomeCostForm extends Component {
     date: "",
     title: "",
     description: "",
-    amount: 0,
+    amount: "",
   };
 
   static defaultProps = {
-    costsCathegories: [
+    costs: [
       "Транспорт",
       "Продукты",
       "Здоровье",
@@ -33,7 +35,8 @@ class AddIncomeCostForm extends Component {
       "Образование",
       "Прочее",
     ],
-    incomesCathegories: ["ЗП", "Доп.доход"],
+    incomes: ["ЗП", "Доп.доход"],
+    type: "",
   };
 
   handleOpenList = () => {
@@ -64,14 +67,12 @@ class AddIncomeCostForm extends Component {
   };
 
   handleChange = (e) => {
-    e.preventDefault();
     const { name, value } = e.target;
     this.setState({ [name]: value });
-    console.log(e);
+    console.log({ [name]: value });
   };
 
   handleClick = (e) => {
-    e.preventDefault();
     this.setState({
       title: "",
       amount: "",
@@ -80,31 +81,32 @@ class AddIncomeCostForm extends Component {
   };
 
   handleSubmit = (values) => {
-    const { typeTransaction, addTransaction } = this.props;
-    const { title, description, amount } = this.state;
-    const newDate = moment();
-
+    const {type, date, token} = this.props;
+    const {title, description, amount} = this.state;
     const transaction = {
-      date: newDate.format("L"),
+      date: date,
       category: title,
       description: description,
-      amount: Number(amount),
+      amount: amount,
+      id: `${Date.now()}`,
     };
 
-    console.log(transaction);
+    console.log("transaction", transaction)
+if (transaction.date && transaction.category&& transaction.amount) {
+    PhonebookService.addTransaction(token, type, transaction)
+      .then(data => console.log("data1", data))
+    .catch(data => console.log("data2", data));
+} else {
+  return 
+}
 
-    addTransaction(typeTransaction, transaction);
   };
 
   render() {
     const { isOpen } = this.state;
-    const {
-      costsCathegories,
-      incomesCathegories,
-      typeTransaction,
-    } = this.props;
-    const cathegories =
-      typeTransaction === "costs" ? costsCathegories : incomesCathegories;
+    const { incomes, costs, type } = this.props;
+    let cathegories = type === 'incomes' ? incomes : costs;
+
     document.addEventListener("click", this.handleCloseList);
     return (
       //  <div className={styles.formPosition}>
@@ -135,7 +137,7 @@ class AddIncomeCostForm extends Component {
                 name="title"
                 type="text"
                 className={styles.Auth__input}
-                placeholder="Категория товара"
+                placeholder={type==="incomes"?"Категория дохода":"Категория товара"}
                 onChange={this.handleChange}
                 value={this.state.title}
                 disabled
@@ -164,32 +166,6 @@ class AddIncomeCostForm extends Component {
                 </ul>
               )}
             </div>
-            {/* <div className={styles.Auth__inputWrapper} onClick={this.handleOpenList}>
-              <Field
-                name="category"
-                type="text"
-                className={styles.Auth__input}
-                placeholder="Категория товара"
-                value={title}
-                disabled
-              />
-              <button className={styles.cathegory_btn}>
-                {isOpen ?
-                  (<svg width="20px" height="20" className={styles.iconUp}>
-                    <use href={sprite +"#arrov-down"} />
-                  </svg>)
-                  :
-                  (<svg width="20px" height="20" className={styles.icon}>
-                    <use href={sprite +"#arrov-down"} />
-                  </svg>)
-                }
-              </button>
-              {isOpen && 
-                <ul onClick={this.changeCathegory} className={styles.category_list}>
-                {incomesCathegories.map((el) => (<li className={styles.cathegory__item}>{el}</li>))}
-                </ul>
-              }
-            </div> */}
             <div className={styles.Auth__amountInputWrapper}>
               <Field
                 onChange={this.handleChange}
@@ -222,9 +198,12 @@ class AddIncomeCostForm extends Component {
     );
   }
 }
+const mapStateToProps = (state) => ({
+  date: state.date,
+  token: state.auth.token
+});
+const mapDispatchToProps = (dispatch) => ({
+  add: (income) => dispatch(transactionOperation.setIncomes(income)),
+});
 
-const mapDispatchToProps = {
-  addTransaction: transactionOperation.addTransaction,
-};
-
-export default connect(null, mapDispatchToProps)(AddIncomeCostForm);
+export default connect(mapStateToProps, mapDispatchToProps)(AddIncomeCostForm);

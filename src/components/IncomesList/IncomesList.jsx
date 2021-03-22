@@ -6,25 +6,39 @@ import transactionOperation from "../../redux/transaction/transaction-operation"
 
 class IncomesList extends Component {
   componentDidMount() {
-    this.props.getIncomes();
+    this.props.getCosts();
   }
+  //   componentDidUpdate() {    
+  //   this.props.type === "incomes" ? this.props.getIncomes() : this.props.getCosts();
+  // }
 
   render() {
     const mobile = window.innerWidth < 768;
-    const { data, type, deleteIncome } = this.props;
+    const { type, deleteIncome, incomes, costs } = this.props;
+    let data = type === "costs" ? costs : incomes ;
+
     const withoutData = function () {
       const withDataTable = function (el) {
         if (el) {
           return (
             <tr key={el._id}>
-              <td className={styles.leftCol}>{el.date.split("/").join(".")}</td>
+              <td className={styles.leftCol}>{el.date.split("-").join(".")}</td>
               <td className={styles.leftCol}>
                 {el.description.length >= 15
                   ? el.description.slice(0, 15) + "..."
                   : el.description}
               </td>
               <td className={styles.rightCol}>{el.category}</td>
-              <td className={styles.amountCost}>{el.amount}</td>
+              <td className={styles.amountCost}>
+                {type === "costs" ? (
+                  <span
+                    className={styles.amountCost}
+                  >{`- ${el.amount} грн.`}</span>
+                ) : (
+                  <span
+                    className={styles.amountIncome}
+                  >{`${el.amount} грн.`}</span>
+                )}</td>
               <td className={styles.tdButton}>
                 <button>
                   <svg width="18px" height="18px">
@@ -71,14 +85,14 @@ class IncomesList extends Component {
                 </div>
               </div>
               <div className={styles.right}>
-                {type === "incomes" ? (
+                {type === "costs" ? (
                   <span
                     className={styles.amountCost}
                   >{`- ${amount} грн.`}</span>
                 ) : (
                   <span
                     className={styles.amountIncome}
-                  >{`  ${amount} грн.`}</span>
+                  >{`${amount} грн.`}</span>
                 )}
                 <button>
                   <svg width="18px" height="18px">
@@ -115,7 +129,7 @@ class IncomesList extends Component {
                       : description}
                   </td>
                   <td className={styles.rightCol}>{category}</td>
-                  {type === "incomes" ? (
+                  {type === "costs" ? (
                     <td className={styles.amountCost}>{`- ${amount} грн.`}</td>
                   ) : (
                     <td
@@ -137,10 +151,13 @@ class IncomesList extends Component {
   }
 }
 const mapStateToProps = (state) => ({
-  data: state.operations.incomes,
+  incomes: state.operations.incomes,
+  costs: state.operations.costs,
+
 });
 const mapDispatchToProps = (dispatch) => ({
   getIncomes: () => dispatch(transactionOperation.getIncomes()),
+  getCosts: () => dispatch(transactionOperation.getCosts()),
   deleteIncome: (id) => dispatch(transactionOperation.deleteIncomes(id)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(IncomesList);
