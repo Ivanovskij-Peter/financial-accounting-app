@@ -7,6 +7,8 @@ const initialUserState = { name: null, email: null, avatarURL: "" };
 const user = createReducer(initialUserState, {
   [authActions.registerSuccess]: (_, { payload }) => payload,
   [authActions.loginSuccess]: (_, { payload: { token, ...rest } }) => rest,
+  [authActions.loginWithGoogleSuccess]: (_, { payload: { token, ...rest } }) =>
+    rest,
   [authActions.logOutSuccess]: () => initialUserState,
   [authActions.getCurrentUserSuccess]: (_, { payload }) => payload,
 });
@@ -14,12 +16,14 @@ const user = createReducer(initialUserState, {
 const token = createReducer(null, {
   [authActions.registerSuccess]: (_, { payload }) => payload.token,
   [authActions.loginSuccess]: (_, { payload }) => payload.token,
+  [authActions.loginWithGoogleSuccess]: (_, { payload }) => payload.token,
   [authActions.logOutSuccess]: () => null,
 });
 
 const isAuthenticated = createReducer(false, {
   [authActions.registerSuccess]: () => true,
   [authActions.loginSuccess]: () => true,
+  [authActions.loginWithGoogleSuccess]: () => true,
   [authActions.getCurrentUserSuccess]: () => true,
   [authActions.registerError]: () => false,
   [authActions.loginError]: () => false,
