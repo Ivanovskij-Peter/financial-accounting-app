@@ -16,7 +16,7 @@ const categoryMap = {
   education: "Образование",
   other: "Прочее",
   "additional-incomes": "ДОП. ДОХОД",
-  salary: "Зп",
+  salary: "ЗП",
 };
 
 export default function Chart(props) {
@@ -39,21 +39,21 @@ export default function Chart(props) {
   console.log("currentObject", currentObject);
   console.log("CategoryRu", currentObject[categoryRu]);
 
-  // const labelToValueObject = currentObject[categoryRu];
+  const labelToValueObject = currentObject[categoryRu];
 
   // todo: remove when not required
-  const labelToValueObject = {
-    Свинина: 5000,
-    Говядина: 4500,
-    Курица: 3200,
-    Рыба: 2100,
-    Панини: 1800,
-    Кофе: 1700,
-    Спагетти: 1500,
-    Шоколад: 800,
-    Маслины: 500,
-    Зелень: 300,
-  };
+  // const labelToValueObject = {
+  //   Свинина: 5000,
+  //   Говядина: 4500,
+  //   Курица: 3200,
+  //   Рыба: 2100,
+  //   Панини: 1800,
+  //   Кофе: 1700,
+  //   Спагетти: 1500,
+  //   Шоколад: 800,
+  //   Маслины: 500,
+  //   Зелень: 300,
+  // };
 
   const labelToValueArray = [];
 
