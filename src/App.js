@@ -81,7 +81,7 @@ function App() {
                 path="/reports"
                 component={ReportsPage}
                 // redirectTo="/login"
-                redirectTo=""
+                redirectTo="/reports"
               />
             </Switch>
           </Layout>

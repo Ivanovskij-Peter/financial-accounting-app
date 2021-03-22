@@ -19,11 +19,15 @@ function Total() {
     <ul className={style.totalList}>
       <li className={style.totalItem}>
         <h3 className={style.totalName}>Расходы:</h3>
-        <p className={style.totalCosts}>{`- ${beautyCosts} грн.`}</p>
+        <p className={style.totalCosts}>
+          {beautyCosts > 0 ? `- ${beautyCosts} грн.` : "0.00"}
+        </p>
       </li>
       <li className={style.totalItem}>
         <h3 className={style.totalName}>Доходы:</h3>
-        <p className={style.totalIncomes}>{`+ ${beautyIncomes} грн.`}</p>
+        <p className={style.totalIncomes}>
+          {beautyIncomes > 0 ? `+ ${beautyIncomes} грн.` : "0.00"}
+        </p>
       </li>
     </ul>
   );
