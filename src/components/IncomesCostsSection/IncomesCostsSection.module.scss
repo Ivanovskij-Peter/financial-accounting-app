@@ -10,9 +10,11 @@
 }
 .IncomesCostsSection {
   position: relative;
+  margin: 0 auto;
   &__list {
     display: flex;
     max-width: 300px;
+    margin-right: auto;
     &__item {
       position: fixed;
       bottom: 0;
@@ -84,8 +86,7 @@
   &__container {
     // width: 282px;
     @include for-size(tablet) {
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0 auto;
       width: 665px;
       height: 625px;
       padding: 28px 30px 50px 30px;

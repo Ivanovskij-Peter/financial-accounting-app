@@ -11,7 +11,6 @@ class Calendar extends Component {
     date: new Date(),
   };
 
-
   handleChange = (date) => {
     this.setState({ date: date });
 
@@ -34,7 +33,7 @@ class Calendar extends Component {
       <div className={styles.calendarWrapper}>
         <DatePicker
           className={styles.calendar}
-          dateFormat="dd.MM.yyyy"
+          dateFormat="MM.dd.yyyy"
           selected={this.state.date}
           onChange={(date) => this.handleChange(date)}
         />

@@ -2,7 +2,7 @@ import axios from "axios";
 import authActions from "./auth-actions";
 import transactionsActions from "../transaction/transaction-actions";
 
-axios.defaults.baseURL = "https://kapusta-srv.herokuapp.com";
+axios.defaults.baseURL = "http://kapusta-srv.herokuapp.com";
 
 const token = {
   set(token) {

@@ -5,7 +5,7 @@ import sprite from "../../images/sprite.svg";
 import transactionsActions from "../../redux/transaction/transaction-actions";
 import transactionOperation from "../../redux/transaction/transaction-operation";
 
-class IncomesList extends Component {
+class CostsList extends Component {
   componentDidMount() {
     this.props.getCosts();
   }
@@ -157,4 +157,4 @@ const mapDispatchToProps = (dispatch) => ({
   getCosts: () => dispatch(transactionOperation.getCosts()),
   deleteIncome: (id) => dispatch(transactionsActions.deleteCosts(id)),
 });
-export default connect(mapStateToProps, mapDispatchToProps)(IncomesList);
+export default connect(mapStateToProps, mapDispatchToProps)(CostsList);
