@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Formik, Form, Field } from "formik";
 import { connect } from "react-redux";
-import moment from "moment";
 import styles from "./addIncomeCostForm.module.scss";
 import sprite from "../../images/sprite.svg";
 import Button from "../shared/Button";
@@ -79,11 +78,10 @@ class AddIncomeCostForm extends Component {
   };
 
   handleSubmit = (values) => {
-    const {typeTransaction, addTransaction} = this.props;
+    const {typeTransaction, addTransaction, date} = this.props;
     const { title, description, amount } = this.state;
-    const newDate = moment();
     const transaction = {
-      date: newDate.format("L"),
+      date: date,
       category: title,
       description: description,
       amount: Number(amount),
@@ -94,14 +92,12 @@ class AddIncomeCostForm extends Component {
     } else {
       return 
     }
-
   };
 
   render() {
     const { isOpen } = this.state;
     const { incomes, costs, typeTransaction } = this.props;
     let cathegories = typeTransaction === 'incomes' ? incomes : costs;
-
     document.addEventListener("click", this.handleCloseList);
     return (
       <div className={styles.formContainer}>
@@ -191,8 +187,11 @@ class AddIncomeCostForm extends Component {
     );
   }
 }
+const mapStateToProps = (state) => ({
+  date: state.date
+});
 const mapDispatchToProps = {
   addTransaction: transactionOperation.addTransaction,
 };
 
-export default connect(null, mapDispatchToProps)(AddIncomeCostForm);
+export default connect(mapStateToProps, mapDispatchToProps)(AddIncomeCostForm);
