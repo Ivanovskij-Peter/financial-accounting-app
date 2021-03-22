@@ -1,20 +1,82 @@
 @import "../../sass/base/colors";
 @import "../../sass/base/mixin";
 
+@media screen and (max-width: 767px) and (min-width: 320px) {
+  .list {
+    transform: rotate(90deg) scaleY(0.8);
+    height: auto;
+  }
+
+  .label {
+    writing-mode: vertical-lr;
+    position: absolute;
+
+    width: max-content;
+    text-transform: capitalize;
+
+    writing-mode: vertical-lr;
+
+    transform: rotate(-180deg);
+    left: -15px;
+    bottom: 0;
+  }
+
+  .sum {
+    left: -15px;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+ 
+    top: -20px;
+  
+  }
+
+  .sumLow{
+    left: -15px;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    top: -80px;
+    
+
+  }
+}
+
 .chart {
-  background-color: $primary-white-color;
-  height: 422px;
-  width: 1060px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 151px;
-  padding-right: 151px;
-  box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
-  border-radius: 30px;
+  padding-top: 34px;
+
+  @include for-size(tablet) {
+    background-color: $primary-white-color;
+    //   height: 422px;
+    //   width: 1060px;
+    padding-top: 41px;
+    padding-bottom: 53px;
+
+    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+    border-radius: 30px;
+    padding-top: 41px;
+    padding-bottom: 53px;
+    padding-left: 29px;
+    padding-right: 32px;
+  }
+
+  @include for-size(desktop) {
+    padding-left: 151px;
+    padding-right: 151px;
+  }
 }
 .list {
   display: flex;
   align-items: flex-end;
+  
+
+  @include for-size(tablet) {
+    // width: 666px;
+    background-image: url("../../images/bg-chart.png");
+    background-position: bottom;
+    justify-content: center;
+  }
+  @include for-size(desktop) {
+    // width: 1060px;
+  }
 }
 .item {
   position: relative;
@@ -29,10 +91,10 @@
 
   &:not(:last-child) {
     margin-right: 25px;
-   }
+  }
 
   &:nth-child(3n + 1) {
-  background-color: $accent-color;
+    background-color: $accent-color;
   }
 }
 .sum {
@@ -42,7 +104,19 @@
 }
 .label {
   position: absolute;
-  bottom: -20px;
+
   width: max-content;
   text-transform: capitalize;
+  @include for-size(tablet) {
+    bottom: -20px;
+  }
+}
+
+.sumLow {
+    position: absolute;
+
+    width: max-content;
+@include for-size (tablet){
+    top: -20px;
+}
 }

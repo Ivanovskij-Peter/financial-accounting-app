@@ -78,6 +78,7 @@ const Reports = () => {
 
   return (
     <section className={style.reportSection}>
+    
       <div className={style.reportNav}>
         <button
           onClick={onChange}
@@ -118,6 +119,7 @@ const Reports = () => {
       ) : (
         ""
       )}
+     
     </section>
   );
 };
