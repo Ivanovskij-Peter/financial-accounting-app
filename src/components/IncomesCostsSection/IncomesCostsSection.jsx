@@ -58,11 +58,9 @@ const IncomesCostsSection = () => {
                 </button>
               </li>
             </ul>
-            {/* <div className={styles.IncomesCostsSection__container}> */}
             <div className={styles.lists}>
               <IncomesList typeTransaction={typeTransaction} />
             </div>
-            {/* </div> */}
           </>
         </div>
       ) : (
@@ -93,7 +91,7 @@ const IncomesCostsSection = () => {
               <IncomesList typeTransaction={typeTransaction} />
             </div>
           </div>
-          <Summary typeTransaction={typeTransaction}/>
+          <Summary typeTransaction={typeTransaction} />
         </div>
       )}
     </>

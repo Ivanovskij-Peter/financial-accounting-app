@@ -29,11 +29,11 @@ export default function ChartContainer(props) {
 
   const categoryRu = categoryMap[category];
 
-  const labelToValueObject = currentObject[categoryRu];
+  // const labelToValueObject = currentObject[categoryRu];
 
-  console.log("labelToValueObject", labelToValueObject);
-  console.log("currentObject", currentObject);
-  console.log("categoryRu", categoryRu);
+  // console.log("labelToValueObject", labelToValueObject);
+  // console.log("currentObject", currentObject);
+  // console.log("categoryRu", categoryRu);
   // todo: remove when not required
   // const labelToValueObject = {
   //   Свинина: 5000,
@@ -57,7 +57,6 @@ export default function ChartContainer(props) {
   }
 
   const currentCategory = allCategoriesObj[categoryRu];
-  console.log("currentCategory", currentCategory);
 
   const { total, ...finalObj } = currentCategory
     ? currentCategory

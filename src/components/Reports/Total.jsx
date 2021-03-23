@@ -12,12 +12,11 @@ function Total() {
     : totalCosts;
 
   const totalIncomes = useSelector(getInfo.getUserTotalIncomes);
-  
+
   const beautyIncomes = totalIncomes
     ? totalIncomes.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$& ")
     : totalIncomes;
-    
-    console.log("beauty Incomes", beautyIncomes)
+
   return (
     <ul className={style.totalList}>
       <li className={style.totalItem}>
@@ -29,7 +28,6 @@ function Total() {
       <li className={style.totalItem}>
         <h3 className={style.totalName}>Доходы:</h3>
         <p className={style.totalIncomes}>
-          {/* {`+ ${beautyIncomes} грн.`} */}
           {beautyIncomes !== 0 ? `+ ${beautyIncomes} грн.` : "0.00"}
         </p>
       </li>

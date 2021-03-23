@@ -6,7 +6,6 @@ import transactionOperation from "../../redux/transaction/transaction-operation"
 
 class IncomesList extends Component {
   componentDidMount() {
-    console.log("IncomesList");
     this.props.getCosts();
     this.props.getIncomes();
   }
@@ -15,7 +14,6 @@ class IncomesList extends Component {
       this.props.incomes.length !== prevProps.incomes.length ||
       this.props.costs.length !== prevProps.costs.length
     ) {
-      console.log("IncomesList2");
       this.props.getCosts();
       this.props.getIncomes();
     }
@@ -33,7 +31,6 @@ class IncomesList extends Component {
     } = this.props;
     let data = typeTransaction === "costs" ? costs : incomes;
     let dataMobile = costs.concat(incomes).sort(function (a, b) {
-      // console.log(a.date);
       return a.date - b.date;
     });
     const withoutData = function () {

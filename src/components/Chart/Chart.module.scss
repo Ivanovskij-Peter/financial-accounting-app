@@ -25,18 +25,15 @@
     left: -15px;
     writing-mode: vertical-lr;
     transform: rotate(180deg);
- 
+
     top: -20px;
-  
   }
 
-  .sumLow{
+  .sumLow {
     left: -15px;
     writing-mode: vertical-lr;
     transform: rotate(180deg);
     top: -80px;
-    
-
   }
 }
 
@@ -45,8 +42,6 @@
 
   @include for-size(tablet) {
     background-color: $primary-white-color;
-    //   height: 422px;
-    //   width: 1060px;
     padding-top: 41px;
     padding-bottom: 53px;
 
@@ -66,16 +61,11 @@
 .list {
   display: flex;
   align-items: flex-end;
-  
 
   @include for-size(tablet) {
-    // width: 666px;
     background-image: url("../../images/bg-chart.png");
     background-position: bottom;
     justify-content: center;
-  }
-  @include for-size(desktop) {
-    // width: 1060px;
   }
 }
 .item {
@@ -113,10 +103,10 @@
 }
 
 .sumLow {
-    position: absolute;
+  position: absolute;
 
-    width: max-content;
-@include for-size (tablet){
+  width: max-content;
+  @include for-size(tablet) {
     top: -20px;
-}
+  }
 }

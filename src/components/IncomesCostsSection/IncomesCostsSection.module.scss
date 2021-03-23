@@ -20,7 +20,6 @@
   &__list {
     display: flex;
     max-width: 665px;
-    // margin-right: auto;
     margin: 0 auto;
     @include for-size(desktop) {
       width: 100%;
@@ -32,6 +31,9 @@
       right: 0;
       background-color: $body-color;
       width: 50%;
+      &:active {
+        background-color: $accent-color;
+      }
 
       &:not(:last-child) {
         margin-right: 2px;

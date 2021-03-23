@@ -17,17 +17,3 @@ function Header() {
   );
 }
 export default Header;
-// export default class Header extends Component {
-//   render() {
-//     const { isLogged } = this.props;
-
-//     return (
-//       <div className="header">
-//         <a href="/">
-//           <img src={logo} alt="logotype" />
-//         </a>
-//         {isLogged && <UserInfo userName="User Name" />}
-//       </div>
-//     );
-//   }
-// }

@@ -2,11 +2,6 @@
 @import "../../sass/base/mixin";
 
 .Auth {
-  // position: absolute;
-  // top: 480px;
-  // left: 50%;
-  // transform: translate(-50%, -50%);
-
   display: flex;
   flex-direction: column;
 
@@ -27,12 +22,10 @@
   border-radius: 30px;
 
   @include for-size(tablet) {
-    // top: 490px;
     width: 436px;
     padding-top: 50px;
     padding-left: 85px;
     padding-right: 85px;
-
     font-size: 12px;
     line-height: 1.167;
   }
