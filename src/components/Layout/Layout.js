@@ -17,8 +17,19 @@ import kapustaTitle from "../../images/kapusta.png";
 const Layout = ({ children }) => {
   const dispatch = useDispatch();
   const isUserLogged = useSelector(authSelectors.getIsAuthenticated);
-  const error = useSelector(errorSelector.getError);
+const error = useSelector(errorSelector.getError);
   const [isError, setIsError] = useState(false);
+  const emailVerified = useSelector(authSelectors.getIsVerified);
+  const [isMailVerified, setIsMailVerified] = useState(false);
+  console.log(emailVerified)
+
+useEffect(() => {
+  if(!emailVerified) {
+    setIsMailVerified(true);
+    setTimeout(() => setIsMailVerified(false), 5000);
+  }
+}, [emailVerified])
+
 
   useEffect(() => {
     if (error?.message === "Authentification is failed") {
@@ -56,7 +67,7 @@ const Layout = ({ children }) => {
         </div>
       )}
       <CSSTransition
-        in={isError}
+        in={isMailVerified}
         timeout={2500}
         classNames={goToLinkStyles}
         unmountOnExit
