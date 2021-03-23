@@ -23,6 +23,7 @@ const routes = [
     label: "Регистация",
     path: "/register",
     exact: true,
+    redirectTo: "/login",
     component: lazy(() => import("./components/AuthForm")),
     privated: false,
     restricted: true,

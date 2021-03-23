@@ -109,6 +109,7 @@ const deleteCosts = (id) => async (dispatch) => {
   try {
     await axios.delete(`/user/costs/${id}`);
     dispatch(transactionsActions.deleteCostsSucces(id));
+    dispatch(transactionsActions.setBalanceSucces(response.data.balance));
   } catch (error) {
     dispatch(transactionsActions.deleteCostsError(error.message));
   }

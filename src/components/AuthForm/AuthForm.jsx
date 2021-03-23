@@ -79,7 +79,7 @@ const AuthForm = () => {
             <svg width="18" height="18" className={styles.Auth__googleBtnIcon}>
               <use href={sprite + "#icon-google"}></use>
             </svg>
-            Login
+            Sign In
           </button>
         )}
         onSuccess={handleGoogleLogin}
