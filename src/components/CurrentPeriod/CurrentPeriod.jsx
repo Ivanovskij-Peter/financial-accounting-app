@@ -72,27 +72,27 @@ class CurrentPeriod extends Component {
         <p className={styles.currentTitle}>Текущий период:</p>
         <div className={styles.wrapper}>
           <button onClick={this.showPrev} className={styles.currentMonthBtn}>
-            <svg
+            <svg className={styles.arrowBtnLeft}/>
+            {/* <svg
               width="10px"
               height="15px"
               fill="none"
-              className={styles.currentImg}
             >
               <use href={sprite + "#period-back-arrow"} />
-            </svg>
+            </svg> */}
           </button>
           <p className={styles.currentMonth}>
             {months[currentMonth]} {currentYear}
           </p>
           <button onClick={this.showNext} className={styles.currentMonthBtn}>
-            <svg
+          <svg className={styles.arrowBtnRight}/>
+            {/* <svg
               width="10px"
               height="15px"
               fill="none"
-              className={styles.currentImg}
             >
               <use href={sprite + "#period-right-arrow"} />
-            </svg>
+            </svg> */}
           </button>
         </div>
       </div>
