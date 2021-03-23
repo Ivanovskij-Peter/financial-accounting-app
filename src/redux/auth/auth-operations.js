@@ -2,8 +2,8 @@ import axios from "axios";
 import authActions from "./auth-actions";
 import transactionsActions from "../transaction/transaction-actions";
 
-// axios.defaults.baseURL = "http://kapusta-srv.herokuapp.com";
-axios.defaults.baseURL = "http://localhost:8080";
+axios.defaults.baseURL = "http://kapusta-srv.herokuapp.com";
+// axios.defaults.baseURL = "http://localhost:8080";
 
 const axiosToken = {
   set(token) {
@@ -14,11 +14,13 @@ const axiosToken = {
   },
 };
 
-const register = (credentials) => async (dispatch) => {
+const register = (credentials, history) => async (dispatch) => {
   dispatch(authActions.registerRequest());
   try {
     const response = await axios.post("/auth/register", credentials);
+
     dispatch(authActions.registerSuccess(response.data));
+    history.push("/login");
   } catch (error) {
     dispatch(authActions.loginError(error.message));
   }

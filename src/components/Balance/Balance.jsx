@@ -12,12 +12,12 @@ export default function Balance() {
   const [value, setValue] = useState("");
   const dispatch = useDispatch();
   const balance = useSelector((state) => state.operations.balance);
-  const mobile = window.innerWidth < 768;  
-  
+  const mobile = window.innerWidth < 768;
+
   const handleOnValueChange = (value) => {
     setValue(value);
   };
-  const handleClick = (e) => {
+  const handleClick = () => {
     dispatch(transactionOperation.setBalance(value));
   };
 

@@ -88,6 +88,7 @@ class AddIncomeCostForm extends Component {
     };
 
     if (transaction.date && transaction.category && transaction.amount) {
+      console.log("adding something ");
       addTransaction(typeTransaction, transaction);
       this.setState({
         title: "",
