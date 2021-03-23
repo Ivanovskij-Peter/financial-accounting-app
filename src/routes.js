@@ -13,7 +13,7 @@ const routes = [
   {
     label: "Отчеты",
     path: "/reports",
-    exact: true,
+    exact: false,
     redirectTo: "/login",
     component: lazy(() => import("./components/pages/ReportsPage")),
     privated: true,
