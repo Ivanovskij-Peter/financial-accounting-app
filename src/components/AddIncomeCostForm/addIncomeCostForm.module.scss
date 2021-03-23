@@ -9,6 +9,7 @@
 }
 
 .Auth__inputWrapper {
+  cursor: pointer;
   position: relative;
   width: 282px;
   &::placeholder {
@@ -52,6 +53,7 @@
 }
 
 .Auth__input {
+  cursor: pointer;
   outline: none;
   padding: 20px 20px;
   background: $input-color;
@@ -259,6 +261,7 @@
 }
 
 .cathegory__item {
+  cursor: pointer;
   padding: 5px 18px 5px 20px;
   width: 282px;
   font-weight: 400;

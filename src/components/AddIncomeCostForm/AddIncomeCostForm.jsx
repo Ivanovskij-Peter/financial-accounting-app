@@ -65,7 +65,6 @@ class AddIncomeCostForm extends Component {
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
-    console.log({ [name]: value });
   };
 
   handleClick = (e) => {
@@ -88,7 +87,6 @@ class AddIncomeCostForm extends Component {
     };
 
     if (transaction.date && transaction.category && transaction.amount) {
-      console.log("adding something ");
       addTransaction(typeTransaction, transaction);
       this.setState({
         title: "",

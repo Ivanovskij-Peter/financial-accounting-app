@@ -4,8 +4,6 @@ import Chart from "../Chart";
 import sprite from "../../images/sprite.svg";
 import style from "./Reports.module.scss";
 
-//expected answer arr = [{category:total summ}, {category:total summ}, {...}, ....]
-
 const imgObject = {
   продукты: `${sprite}#products`,
   алкоголь: `${sprite}#cocktail`,

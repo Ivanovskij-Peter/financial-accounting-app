@@ -5,9 +5,6 @@ import transactionOperation from "../../redux/transaction/transaction-operation"
 import Notification from "../Notification/Notification";
 import Report from "../Report";
 import Calendar from "../Calendar";
-// import styles from './balance.module.scss';
-
-
 import "./balance.scss";
 
 export default function Balance() {
@@ -37,7 +34,13 @@ export default function Balance() {
                 id="input-example"
                 name="input-name"
                 value={value}
-                placeholder={`${balance} UAH`}
+                placeholder={
+                  balance
+                    ? `${balance
+                        .toFixed(2)
+                        .replace(/\d(?=(\d{3})+\.)/g, "$& ")} UAH`
+                    : "0.00 UAH"
+                }
                 suffix={" UAH"}
                 decimalSeparator={"."}
                 decimalScale={2}

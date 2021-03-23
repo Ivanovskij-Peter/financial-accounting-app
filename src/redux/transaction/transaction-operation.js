@@ -2,7 +2,6 @@ import axios from "axios";
 import transactionsActions from "./transaction-actions";
 
 axios.defaults.baseURL = "https://kapusta-srv.herokuapp.com";
-// axios.defaults.baseURL = "http://localhost:8080";
 
 const token = {
   set(token) {
@@ -89,7 +88,6 @@ const getIncomes = (credentials) => async (dispatch) => {
     dispatch(
       transactionsActions.getIncomesSucces(response.data.operations.incomes),
     );
-    console.log("response.data:", response.data);
   } catch (error) {
     dispatch(transactionsActions.getIncomesError(error.message));
   }
@@ -98,8 +96,9 @@ const getIncomes = (credentials) => async (dispatch) => {
 const deleteIncomes = (id) => async (dispatch) => {
   dispatch(transactionsActions.deleteIncomesRequest());
   try {
-    await axios.delete(`/user/incomes/${id}`);
+    const response = await axios.delete(`/user/incomes/${id}`);
     dispatch(transactionsActions.deleteIncomesSucces(id));
+    dispatch(transactionsActions.setBalanceSucces(response.data.balance));
   } catch (error) {
     dispatch(transactionsActions.deleteIncomesError(error.message));
   }
