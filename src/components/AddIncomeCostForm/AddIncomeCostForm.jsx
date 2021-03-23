@@ -99,6 +99,11 @@ class AddIncomeCostForm extends Component {
 
     if (transaction.date && transaction.category && transaction.amount) {
       addTransaction(typeTransaction, transaction);
+      this.setState({
+        title: "",
+        amount: "",
+        description: "",
+      });
     } else {
       return;
     }
