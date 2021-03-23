@@ -78,7 +78,7 @@ class AddIncomeCostForm extends Component {
   };
 
   handleSubmit = (values) => {
-    const { typeTransaction, addTransaction, date, getMonthCost, getMonthIncome} = this.props;
+    const { typeTransaction, addTransaction, date } = this.props;
     const { title, description, amount } = this.state;
     const transaction = {
       date: date,
@@ -105,16 +105,23 @@ class AddIncomeCostForm extends Component {
 
   render() {
     const { isOpen } = this.state;
-    const { incomes, costs, typeTransaction } = this.props;
+
+    const {
+      incomes,
+      costs,
+      typeTransaction,
+      getMonthIncome,
+      getMonthCost,
+    } = this.props;
     let cathegories = typeTransaction === "incomes" ? incomes : costs;
     document.addEventListener("click", this.handleCloseList);
     return (
       <div className={styles.formContainer}>
-         {mobile ? null : <Calendar />}
+        {mobile ? null : <Calendar />}
         <Formik
           initialValues={{ description: "", category: "", amount: "" }}
           onSubmit={(values) => {
-            typeTransaction === 'incomes' ? getMonthIncome() : getMonthCost();
+            typeTransaction === "incomes" ? getMonthIncome() : getMonthCost();
             this.handleSubmit(values);
           }}
         >
@@ -211,7 +218,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   addTransaction: transactionOperation.addTransaction,
   getMonthCost: transactionOperation.getMonthCosts,
-  getMonthIncome: transactionOperation.getMonthIncomes
+  getMonthIncome: transactionOperation.getMonthIncomes,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddIncomeCostForm);

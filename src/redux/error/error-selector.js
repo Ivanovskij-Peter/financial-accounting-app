@@ -1,5 +1,4 @@
 const getError = (state) => state.error;
 
-
-
-export default {getError}
+// eslint-disable-next-line import/no-anonymous-default-export
+export default { getError };
