@@ -4,12 +4,12 @@ import { authSelectors } from "../redux/auth/index";
 import { useSelector } from "react-redux";
 
 const PublicRoute = ({ component: Component, redirectTo, ...routeProps }) => {
-  const isAuthenticated = useSelector(authSelectors.getIsAuthenticated);
+  const token = useSelector(authSelectors.getToken);
   return (
     <Route
       {...routeProps}
       render={(props) =>
-        isAuthenticated && routeProps.restricted ? (
+        token && routeProps.restricted ? (
           <Redirect to={redirectTo} />
         ) : (
           <Component {...props} />
