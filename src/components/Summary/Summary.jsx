@@ -1,4 +1,3 @@
-
 import React, { memo, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import transactionOperation from "../../redux/transaction/transaction-operation";
@@ -19,7 +18,6 @@ const Summary = memo((props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allIncomes.length, allCosts.length]);
 
-
   let data = typeTransaction === "costs" ? costs : incomes;
 
   return (
@@ -31,7 +29,13 @@ const Summary = memo((props) => {
             return (
               <li className={styles.summary_listItem} key={el.date}>
                 <span className={styles.summary_itemMonth}>{el.date}</span>
-                <span className={styles.summary_itemSum}>{el.amount}</span>
+                <span className={styles.summary_itemSum}>
+                  {el.amount
+                    ? `${el.amount
+                        .toFixed(2)
+                        .replace(/\d(?=(\d{3})+\.)/g, "$& ")} UAH`
+                    : ""}
+                </span>
               </li>
             );
           })}
