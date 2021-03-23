@@ -93,7 +93,7 @@ const IncomesCostsSection = () => {
               <IncomesList typeTransaction={typeTransaction} />
             </div>
           </div>
-          <Summary />
+          <Summary typeTransaction={typeTransaction}/>
         </div>
       )}
     </>

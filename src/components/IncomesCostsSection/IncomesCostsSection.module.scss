@@ -9,12 +9,23 @@
   }
 }
 .IncomesCostsSection {
-  // position: relative;
-  // margin: 0 auto;
+  position: relative;
+  margin: 0 auto;
+  @include for-size(tablet) {
+    width: 665px;
+  }
+  @include for-size(desktop) {
+    width: 100%;
+  }
   &__list {
     display: flex;
-    max-width: 300px;
-    margin-right: auto;
+    max-width: 665px;
+    // margin-right: auto;
+    margin: 0 auto;
+    @include for-size(desktop) {
+      width: 100%;
+      margin: 0;
+    }
     &__item {
       position: fixed;
       bottom: 0;
@@ -60,7 +71,7 @@
       @include for-size(tablet) {
         width: 138px;
         height: 40px;
-        background-color: $primary-white-color;
+        background-color: #fafbfd;
         border-color: transparent;
         color: $primary-black-color;
         border-radius: 20px 20px 0 0;
@@ -76,7 +87,7 @@
         &:focus,
         &:hover,
         &:active {
-          background-color: #fafbfd;
+          background-color: $primary-white-color;
           color: $accent-color;
           outline: none;
         }
@@ -99,8 +110,5 @@
       width: 1060px;
       height: 579px;
     }
-  }
-  @include for-size(desktop) {
-    position: relative;
   }
 }

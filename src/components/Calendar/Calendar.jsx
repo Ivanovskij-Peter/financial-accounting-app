@@ -23,7 +23,7 @@ class Calendar extends Component {
     }
 
     const result = date
-      ? `${date.getDate()}.${month}.${date.getFullYear()}`
+      ? `${month}.${date.getDate()}.${date.getFullYear()}`
       : date;
     this.props.setDate(result);
   };
@@ -33,7 +33,7 @@ class Calendar extends Component {
       <div className={styles.calendarWrapper}>
         <DatePicker
           className={styles.calendar}
-          dateFormat="MM.dd.yyyy"
+          dateFormat="dd.MM.yyyy"
           selected={this.state.date}
           onChange={(date) => this.handleChange(date)}
         />

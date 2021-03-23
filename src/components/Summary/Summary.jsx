@@ -1,17 +1,31 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, {useEffect} from "react";
+import { useSelector, useDispatch } from "react-redux";
+import transactionOperation from "../../redux/transaction/transaction-operation";
 import getDataInfo from "../../redux/transaction/transaction-selectors";
 import styles from "./summary.module.scss";
 
-const Summary = () => {
-  const incomes = useSelector(getDataInfo.getData);
+const Summary = (props) => {
+  const incomes = useSelector(getDataInfo.getDataIncomes);
+  const costs = useSelector(getDataInfo.getDataCosts);
+    const {
+      typeTransaction
+  } = props;
+  const dispatch = useDispatch();
+  // useEffect(() => {
+  //   typeTransaction === "costs"
+  //     ? dispatch(transactionOperation.getMonthIncomes()) :
+  //   dispatch(transactionOperation.getMonthCosts());
+  // }, [incomes, costs]);
 
+
+  let data = typeTransaction === "costs" ? costs : incomes;
+  
   return (
     <>
       <div className={styles.summary}>
         <p className={styles.summary_title}>Сводка</p>
         <ul className={styles.summary_list}>
-          {incomes.map((el) => {
+          {data.map((el) => {
             return (
               <li className={styles.summary_listItem} key={el.date}>
                 <span className={styles.summary_itemMonth}>{el.date}</span>
@@ -24,5 +38,4 @@ const Summary = () => {
     </>
   );
 };
-
 export default Summary;
