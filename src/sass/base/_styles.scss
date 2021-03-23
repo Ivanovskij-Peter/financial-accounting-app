@@ -88,7 +88,7 @@ button {
   }
 }
 .react-datepicker__header {
-  background-color: $accent-color;
+  background-color: $accent-color !important;
 }
 .react-datepicker__navigation.react-datepicker__navigation--previous {
   top: 10px;

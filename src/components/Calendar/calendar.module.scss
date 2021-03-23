@@ -12,6 +12,8 @@
   flex-direction: row;
   flex-wrap: nowrap;
   background-color: transparent;
+  cursor: pointer;
+
   @include for-size(tablet) {
     padding-top: 10px;
     margin-bottom: 0;
@@ -33,4 +35,5 @@
   width: 66px;
   background-color: transparent;
   outline: none;
+  cursor: pointer;
 }
