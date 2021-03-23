@@ -1,32 +1,17 @@
-import { Suspense, useEffect} from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { Suspense, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Switch } from "react-router-dom";
-import { authOperations } from "./redux/auth";
-
 import AuthForm from "./components/AuthForm";
 import Layout from "./components/Layout/Layout";
-import getData from "./redux/auth/auth-selectors";
 import HomePage from "./components/pages/HomePage";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 import Loaders from "./components/shared/Loader/Loader";
 import ReportsPage from "./components/pages/ReportsPage";
-
-
-// import IncomesCostsSection from './components/IncomesCostsSection';
-
-// import AddIncomeCostForm from "./components/AddIncomeCostForm";
-// import Summary from "./components/Summary/Summary";
-// import CurrentPeriod from "./components/CurrentPeriod/CurrentPeriod";
-
-// import Modal from './components/shared/Modal/Modal';
-
-// import IncomesList from "./components/IncomesList";
+import { authOperations } from "./redux/auth";
 
 function App() {
   const dispatch = useDispatch();
-  const token = useSelector(getData.getToken);
-  const name = useSelector(getData.getName);
   useEffect(() => {
     dispatch(authOperations.getCurrrentUser());
   }, [dispatch]);
