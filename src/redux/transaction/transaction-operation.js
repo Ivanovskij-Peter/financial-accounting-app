@@ -49,7 +49,7 @@ const addTransaction = (keyWord, transaction) => async (dispatch, getState) => {
 };
 
 const getMonthIncomes = (credentials) => async (dispatch) => {
-  dispatch(transactionsActions.getIncomesRequest());
+  dispatch(transactionsActions.getMonthIncomesRequest());
   try {
     const response = await axios.get("/user/monthincomes", credentials);
     const { incomes } = response.data;

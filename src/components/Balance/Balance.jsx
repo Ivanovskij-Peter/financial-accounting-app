@@ -1,27 +1,27 @@
 import { useState } from "react";
-
 import { useDispatch, useSelector } from "react-redux";
-
 import CurrencyInput from "react-currency-input-field";
 import transactionOperation from "../../redux/transaction/transaction-operation";
 import Notification from "../Notification/Notification";
 import Report from "../Report";
 import Calendar from "../Calendar";
+// import styles from './balance.module.scss';
+
 
 import "./balance.scss";
 
 export default function Balance() {
   const [value, setValue] = useState("");
   const dispatch = useDispatch();
-
+  const balance = useSelector((state) => state.operations.balance);
+  const mobile = window.innerWidth < 768;  
+  
   const handleOnValueChange = (value) => {
     setValue(value);
   };
   const handleClick = (e) => {
     dispatch(transactionOperation.setBalance(value));
   };
-  const balance = useSelector((state) => state.operations.balance);
-  const mobile = window.innerWidth < 768;
 
   return (
     <>

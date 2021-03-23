@@ -4,16 +4,12 @@ import { authSelectors } from "../redux/auth/index";
 import { useSelector } from "react-redux";
 
 const PrivateRoute = ({ component: Component, redirectTo, ...routeProps }) => {
-  const isAuthenticated = useSelector(authSelectors.getIsAuthenticated);
+  const token = useSelector(authSelectors.getToken);
   return (
     <Route
       {...routeProps}
       render={(props) =>
-        isAuthenticated ? (
-          <Component {...props} />
-        ) : (
-          <Redirect to={redirectTo} />
-        )
+        token ? <Component {...props} /> : <Redirect to={redirectTo} />
       }
     />
   );

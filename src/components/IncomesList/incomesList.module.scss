@@ -98,17 +98,11 @@
     min-width: 605px;
     border-spacing: 0;
     display: inline-block;
-
-    td:first-child {
-      padding-left: 21px;
-    }
-    & td {
-      width: 130px;
-    }
     & thead {
-      min-width: 605px;
+      width: 605px;
 
       & td {
+        width: 130px;
         font-weight: bold;
         font-size: 12px;
         line-height: 14px;
@@ -119,17 +113,20 @@
 
         &:first-child {
           border-top-left-radius: 20px;
+          padding-left: 21px;
+          width: 130px;
         }
 
         &:last-child {
           border-top-right-radius: 20px;
+          width: 85px;
         }
       }
     }
     & tbody {
       overflow-y: scroll;
       overflow-x: hidden;
-      max-height: 382px;
+      max-height: 346px;
       display: inline-block;
       width: 605px;
       &::-webkit-scrollbar {
@@ -146,6 +143,8 @@
       }
     }
     & tbody td {
+      width: 145px;
+
       font-weight: normal;
       font-size: 12px;
       line-height: 14px;
@@ -158,6 +157,8 @@
       }
       &:first-child {
         border-left: 2px solid $body-color;
+        width: 140px;
+        padding-left: 21px;
       }
 
       &.rightCol {
@@ -238,21 +239,36 @@
   .incomesTable {
     display: inline-block;
     width: 760px;
-    td {
-      width: 155px;
-    }
     td.tdButton {
       width: 60px;
       display: flex;
       justify-content: center;
     }
+    & thead {
+      & td {
+        width: 160px;
+      }
+      & td:first-child {
+        width: 140px;
+      }
+      & td:last-child {
+        width: 140px;
+      }
+    }
     & tbody {
       width: 760px;
+      height: 344px;
+      & td {
+        width: 180px;
+      }
       & td:last-child {
-        width: 130px;
+        width: 132px;
+      }
+      & td:first-child {
+        width: 140px;
       }
       & td.rightCol {
-        // width: 152px;
+        width: 120px;
         text-align: center;
       }
     }
