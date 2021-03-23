@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import transactionOperation from "../../redux/transaction/transaction-operation";
 import getDataInfo from "../../redux/transaction/transaction-selectors";
@@ -7,19 +7,17 @@ import styles from "./summary.module.scss";
 const Summary = (props) => {
   const incomes = useSelector(getDataInfo.getDataIncomes);
   const costs = useSelector(getDataInfo.getDataCosts);
-    const {
-      typeTransaction
-  } = props;
+  const { typeTransaction } = props;
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   typeTransaction === "costs"
-  //     ? dispatch(transactionOperation.getMonthIncomes()) :
-  //   dispatch(transactionOperation.getMonthCosts());
-  // }, [incomes, costs]);
-
+  useEffect(() => {
+    console.log("incomesLength:", costs.length);
+    typeTransaction === "costs"
+      ? dispatch(transactionOperation.getMonthCosts())
+      : dispatch(transactionOperation.getMonthIncomes());
+  }, [incomes.length, costs.length]);
 
   let data = typeTransaction === "costs" ? costs : incomes;
-  
+
   return (
     <>
       <div className={styles.summary}>

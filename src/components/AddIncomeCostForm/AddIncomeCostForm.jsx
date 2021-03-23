@@ -15,7 +15,7 @@ class AddIncomeCostForm extends Component {
     date: "",
     title: "",
     description: "",
-    amount: 0,
+    amount: "",
   };
 
   static defaultProps = {
@@ -86,7 +86,7 @@ class AddIncomeCostForm extends Component {
       description: description,
       amount: Number(amount),
     };
-    
+
     if (transaction.date && transaction.category && transaction.amount) {
       addTransaction(typeTransaction, transaction);
       this.setState({
@@ -94,7 +94,9 @@ class AddIncomeCostForm extends Component {
         amount: "",
         description: "",
       });
-      typeTransaction === 'costs'? transactionOperation.getMonthCosts() : transactionOperation.getMonthIncomes();
+      typeTransaction === "costs"
+        ? transactionOperation.getMonthCosts()
+        : transactionOperation.getMonthIncomes();
     } else {
       return;
     }
@@ -103,7 +105,7 @@ class AddIncomeCostForm extends Component {
   render() {
     const { isOpen } = this.state;
     const { incomes, costs, typeTransaction } = this.props;
-    let cathegories = typeTransaction === 'incomes' ? incomes : costs;
+    let cathegories = typeTransaction === "incomes" ? incomes : costs;
     document.addEventListener("click", this.handleCloseList);
     return (
       <div className={styles.formContainer}>
@@ -122,7 +124,11 @@ class AddIncomeCostForm extends Component {
                 name="description"
                 type="text"
                 className={styles.Auth__input}
-                placeholder={typeTransaction==="incomes"?"Описание дохода":"Описание товара"}
+                placeholder={
+                  typeTransaction === "incomes"
+                    ? "Описание дохода"
+                    : "Описание товара"
+                }
               />
             </div>
             <div
@@ -133,7 +139,11 @@ class AddIncomeCostForm extends Component {
                 name="title"
                 type="text"
                 className={styles.Auth__input}
-                placeholder={typeTransaction==="incomes"?"Категория дохода":"Категория товара"}
+                placeholder={
+                  typeTransaction === "incomes"
+                    ? "Категория дохода"
+                    : "Категория товара"
+                }
                 onChange={this.handleChange}
                 value={this.state.title}
                 disabled
@@ -194,7 +204,7 @@ class AddIncomeCostForm extends Component {
   }
 }
 const mapStateToProps = (state) => ({
-  date: state.date
+  date: state.date,
 });
 const mapDispatchToProps = {
   addTransaction: transactionOperation.addTransaction,

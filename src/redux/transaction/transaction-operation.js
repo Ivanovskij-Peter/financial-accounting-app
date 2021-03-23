@@ -1,8 +1,8 @@
 import axios from "axios";
 import transactionsActions from "./transaction-actions";
 
-axios.defaults.baseURL = "https://kapusta-srv.herokuapp.com";
-// axios.defaults.baseURL = "http://localhost:8080";
+// axios.defaults.baseURL = "https://kapusta-srv.herokuapp.com";
+axios.defaults.baseURL = "http://localhost:8080";
 
 const token = {
   set(token) {
@@ -112,7 +112,6 @@ const deleteCosts = (id) => async (dispatch) => {
     const response = await axios.delete(`/user/costs/${id}`);
     dispatch(transactionsActions.deleteCostsSucces(id));
     dispatch(transactionsActions.setBalanceSucces(response.data.balance));
-
   } catch (error) {
     dispatch(transactionsActions.deleteCostsError(error.message));
   }
