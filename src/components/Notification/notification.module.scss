@@ -4,13 +4,14 @@
 .notificationWrapper {
   position: absolute;
   top: 150px;
-  z-index: 10;
+  z-index: 200;
   @include for-size(tablet) {
-    top: 55px;
-    left: 80px;
+    top: 60px;
+    left: 125px;
   }
   @include for-size(desktop) {
-    left: 250px;
+    top: 62px;
+    left: 440px;
   }
 }
 .notification {
