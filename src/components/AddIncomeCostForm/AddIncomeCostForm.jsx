@@ -108,7 +108,7 @@ class AddIncomeCostForm extends Component {
     document.addEventListener("click", this.handleCloseList);
     return (
       <div className={styles.formContainer}>
-        <Calendar />
+         {mobile ? null : <Calendar />}
         <Formik
           initialValues={{ description: "", category: "", amount: "" }}
           onSubmit={(values) => {
