@@ -1,34 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import { CSSTransition } from "react-transition-group";
-import { useSelector, useDispatch } from "react-redux";
+
+import { useSelector } from "react-redux";
 import { authSelectors } from "../../redux/auth/index";
 
 import Header from "../header";
-import GoToLink from "../../components/GoToLinkNotification/GoToLink";
-import goToLinkStyles from "../../components/GoToLinkNotification/GoToLink.module.scss";
-import errorSelector from "../../redux/error/error-selector";
-import errorAction from "../../redux/error/error-action";
 import styles from "./Layout.module.scss";
 
 
 import kapustaTitle from "../../images/kapusta.png";
 
 const Layout = ({ children }) => {
-  const dispatch = useDispatch();
   const token = useSelector(authSelectors.getToken);
-  const error = useSelector(errorSelector.getError);
-  const [isError, setIsError] = useState(false);
 
-  useEffect(() => {
-    if (error?.message === "Authentification is failed") {
-      setIsError(true);
-      dispatch(errorAction.setError());
-    }
-    if (isError) {
-      setTimeout(() => setIsError(false), 5000);
-    }
-  }, [error, isError]);
 
   return (
     <>
@@ -55,14 +39,7 @@ const Layout = ({ children }) => {
           </div>
         </div>
       )}
-      <CSSTransition
-        in={isError}
-        timeout={2500}
-        classNames={goToLinkStyles}
-        unmountOnExit
-      >
-        <GoToLink />
-      </CSSTransition>
+
     </>
   );
 };

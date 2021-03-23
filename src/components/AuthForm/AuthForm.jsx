@@ -9,6 +9,9 @@ import authOperations from "../../redux/auth/auth-operations";
 import sprite from "../../images/test.svg";
 import styles from "./AuthForm.module.scss";
 
+
+
+
 const RegistrationSchema = Yup.object().shape({
   name: Yup.string()
     .min(3, "Некорректная длинна поля")
@@ -42,6 +45,7 @@ const AuthForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
+
 
   const handleSubmit = ({ name, email, password }) => {
     location.pathname === "/register"
@@ -95,6 +99,7 @@ const AuthForm = () => {
           Или зарегистрироваться с помощью e-mail и пароля:
         </p>
       )}
+ 
 
       <Formik
         initialValues={{ name: "", email: "", password: "" }}

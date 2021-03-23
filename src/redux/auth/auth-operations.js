@@ -30,9 +30,9 @@ const logIn = (credentials) => async (dispatch) => {
   try {
     const response = await axios.post("/auth/login", credentials);
     const { token, user } = response.data;
-    const { name, email, avatarURL } = user;
+    const { name, email, avatarURL, isNotVerified } = user;
     axiosToken.set(token);
-    dispatch(authActions.loginSuccess({ name, email, avatarURL, token }));
+    dispatch(authActions.loginSuccess({ name, email, avatarURL, token, isNotVerified }));
   } catch (error) {
     dispatch(authActions.loginError(error.message));
   }
