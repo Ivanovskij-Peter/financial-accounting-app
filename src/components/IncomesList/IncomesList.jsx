@@ -60,7 +60,7 @@ class IncomesList extends Component {
                       : ""
                   } `}</span>
                 ) : (
-                  <span className={styles.amountIncome}>{`- ${
+                  <span className={styles.amountIncome}>{` ${
                     el.amount
                       ? `${el.amount
                           .toFixed(2)
@@ -130,7 +130,13 @@ class IncomesList extends Component {
               </div>
               <div className={styles.right}>
                 {category === "Доп.доход" || category === "ЗП" ? (
-                  <span className={styles.amountIncome}></span>
+                  <span className={styles.amountIncome}>{`${
+                    amount
+                      ? `${amount
+                          .toFixed(2)
+                          .replace(/\d(?=(\d{3})+\.)/g, "$& ")} UAH`
+                      : ""
+                  } `}</span>
                 ) : (
                   <span className={styles.amountCost}>{`- ${
                     amount
@@ -198,7 +204,7 @@ class IncomesList extends Component {
                         : ""
                     } `}</td>
                   ) : (
-                    <td className={styles.amountIncome}>{`- ${
+                    <td className={styles.amountIncome}>{` ${
                       amount
                         ? `${amount
                             .toFixed(2)
