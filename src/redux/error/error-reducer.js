@@ -1,8 +1,9 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { authActions } from "../auth/index";
 import transactionsActions from "../transaction/transaction-actions";
+import errorActions from "../error/error-action"
 
-const initialState = {message: ''}
+const initialState = null;
 
 const error = createReducer(initialState, {
   [authActions.registerError]: (_, { payload }) => payload,
@@ -11,6 +12,7 @@ const error = createReducer(initialState, {
   [authActions.loginRequest]: () => initialState,
   [authActions.logOutError]: (_, { payload }) => payload,
   [authActions.logoutRequest]: () => initialState,
+  [errorActions.setError]: () => initialState,
 
   //TODO добавить очистку ошибки при реквестах
   [authActions.getCurrentUserError]: (_, { payload }) => payload,
