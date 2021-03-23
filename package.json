@@ -13,6 +13,8 @@
     "jquery": "^3.6.0",
     "modern-normalize": "^1.0.0",
     "moment": "^2.29.1",
+    "netlify": "^6.1.16",
+    "netlify-cli": "^3.13.7",
     "node-sass": "^5.0.0",
     "persist": "^0.2.7",
     "popper": "^1.0.1",
@@ -40,7 +42,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "netlify deploy -p"
   },
   "eslintConfig": {
     "extends": [
