@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import styles from "../CurrentPeriod/CurrentPeriod.module.scss";
 import sprite from "../../images/sprite.svg";
 import setDate from "../../redux/calendar/calendarAction";
+import createHistory from "history/createBrowserHistory";
+
+const history = createHistory();
 
 const months = [
   "ЯНВАРЬ",
@@ -36,6 +39,7 @@ class CurrentPeriod extends Component {
     } else {
       this.setState((state) => ({ currentMonth: state.currentMonth + 1 }));
     }
+    history.push("/reports");
   };
 
   showPrev = () => {
@@ -49,6 +53,7 @@ class CurrentPeriod extends Component {
     } else {
       this.setState((state) => ({ currentMonth: state.currentMonth - 1 }));
     }
+    history.push("/reports");
   };
 
   componentDidUpdate() {
