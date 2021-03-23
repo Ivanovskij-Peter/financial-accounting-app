@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useCallback} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import transactionOperation from "../../redux/transaction/transaction-operation";
 import getDataInfo from "../../redux/transaction/transaction-selectors";
@@ -10,13 +10,17 @@ const Summary = (props) => {
     const {
       typeTransaction
   } = props;
-  const dispatch = useDispatch();
-  // useEffect(() => {
-  //   typeTransaction === "costs"
+
+  // const dispatch = useDispatch();
+
+  // const fun = function () {
+  //     typeTransaction === "costs"
   //     ? dispatch(transactionOperation.getMonthIncomes()) :
   //   dispatch(transactionOperation.getMonthCosts());
+  // }
+  // useEffect(() => {
+  //   fun();
   // }, [incomes, costs]);
-
 
   let data = typeTransaction === "costs" ? costs : incomes;
   
