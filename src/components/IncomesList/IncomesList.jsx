@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styles from "./incomesList.module.scss";
 import { connect } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
 import sprite from "../../images/sprite.svg";
 import transactionOperation from "../../redux/transaction/transaction-operation";
 
@@ -54,13 +55,21 @@ class IncomesList extends Component {
               <td className={styles.rightCol}>{el.category}</td>
               <td className={styles.amountCost}>
                 {typeTransaction === "costs" ? (
-                  <span
-                    className={styles.amountCost}
-                  >{`- ${el.amount} грн.`}</span>
+                  <span className={styles.amountCost}>{`- ${
+                    el.amount
+                      ? `${el.amount
+                          .toFixed(2)
+                          .replace(/\d(?=(\d{3})+\.)/g, "$& ")} UAH`
+                      : ""
+                  } `}</span>
                 ) : (
-                  <span
-                    className={styles.amountIncome}
-                  >{`${el.amount} грн.`}</span>
+                  <span className={styles.amountIncome}>{`- ${
+                    el.amount
+                      ? `${el.amount
+                          .toFixed(2)
+                          .replace(/\d(?=(\d{3})+\.)/g, "$& ")} UAH`
+                      : ""
+                  } `}</span>
                 )}
               </td>
               <td className={styles.tdButton}>
@@ -86,7 +95,7 @@ class IncomesList extends Component {
           );
         } else {
           return (
-            <tr>
+            <tr key={uuidv4()}>
               <td className={styles.leftCol}></td>
               <td className={styles.leftCol}></td>
               <td className={styles.rightCol}></td>
@@ -124,13 +133,15 @@ class IncomesList extends Component {
               </div>
               <div className={styles.right}>
                 {category === "Доп.доход" || category === "ЗП" ? (
-                  <span
-                    className={styles.amountIncome}
-                  >{`${amount} грн.`}</span>
+                  <span className={styles.amountIncome}></span>
                 ) : (
-                  <span
-                    className={styles.amountCost}
-                  >{`- ${amount} грн.`}</span>
+                  <span className={styles.amountCost}>{`- ${
+                    amount
+                      ? `${amount
+                          .toFixed(2)
+                          .replace(/\d(?=(\d{3})+\.)/g, "$& ")} UAH`
+                      : ""
+                  } `}</span>
                 )}
                 <button
                   onClick={
@@ -182,11 +193,21 @@ class IncomesList extends Component {
                   </td>
                   <td className={styles.rightCol}>{category}</td>
                   {typeTransaction === "costs" ? (
-                    <td className={styles.amountCost}>{`- ${amount} грн.`}</td>
+                    <td className={styles.amountCost}>{`- ${
+                      amount
+                        ? `${amount
+                            .toFixed(2)
+                            .replace(/\d(?=(\d{3})+\.)/g, "$& ")} UAH`
+                        : ""
+                    } `}</td>
                   ) : (
-                    <td
-                      className={styles.amountIncome}
-                    >{`  ${amount} грн.`}</td>
+                    <td className={styles.amountIncome}>{`- ${
+                      amount
+                        ? `${amount
+                            .toFixed(2)
+                            .replace(/\d(?=(\d{3})+\.)/g, "$& ")} UAH`
+                        : ""
+                    } `}</td>
                   )}
                   <td className={styles.tdButton}>
                     <button
