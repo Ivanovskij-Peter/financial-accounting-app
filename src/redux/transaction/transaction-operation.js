@@ -97,11 +97,9 @@ const getIncomes = (credentials) => async (dispatch) => {
 
 const deleteIncomes = (id) => async (dispatch) => {
   dispatch(transactionsActions.deleteIncomesRequest());
-
   try {
-    const response = await axios.delete(`/user/incomes/${id}`);
+    await axios.delete(`/user/incomes/${id}`);
     dispatch(transactionsActions.deleteIncomesSucces(id));
-    dispatch(transactionsActions.setBalanceSucces(response.data.balance));
   } catch (error) {
     dispatch(transactionsActions.deleteIncomesError(error.message));
   }
@@ -109,7 +107,7 @@ const deleteIncomes = (id) => async (dispatch) => {
 const deleteCosts = (id) => async (dispatch) => {
   dispatch(transactionsActions.deleteCostsRequest());
   try {
-    const response = await axios.delete(`/user/costs/${id}`);
+    await axios.delete(`/user/costs/${id}`);
     dispatch(transactionsActions.deleteCostsSucces(id));
     dispatch(transactionsActions.setBalanceSucces(response.data.balance));
   } catch (error) {

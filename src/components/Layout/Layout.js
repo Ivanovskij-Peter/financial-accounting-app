@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { CSSTransition } from "react-transition-group";
 import { authSelectors } from "../../redux/auth/index";
+
 import Header from "../header";
 import GoToLink from "../../components/GoToLinkNotification/GoToLink";
 import goToLinkStyles from "../../components/GoToLinkNotification/GoToLink.module.scss";
@@ -9,6 +10,8 @@ import errorSelector from "../../redux/error/error-selector";
 
 import styles from "./Layout.module.scss";
 import { useSelector } from "react-redux";
+
+import kapustaTitle from "../../images/kapusta.png";
 
 const Layout = ({ children }) => {
   const isUserLogged = useSelector(authSelectors.getIsAuthenticated);
@@ -33,7 +36,21 @@ const Layout = ({ children }) => {
           <div className={styles.container}>{children}</div>
         </div>
       ) : (
-        <div className={styles.unloggedTheme}>{children}</div>
+        <div className={styles.unloggedTheme}>
+          <div className={styles.container}>
+            <div className={styles.unloggedGroup}>
+              <div className={styles.heroTitle}>
+                <img
+                  className={styles.kapustaTitle}
+                  src={kapustaTitle}
+                  alt="cabbige"
+                />
+                <p className={styles.smartFinance}>smart finance</p>
+              </div>
+              {children}
+            </div>
+          </div>
+        </div>
       )}
       <CSSTransition
         in={isError}

@@ -3,6 +3,9 @@ import { useSelector } from "react-redux";
 import getUserInfo from "../../redux/auth/auth-selectors.js";
 import CurrencyInput from "react-currency-input-field";
 import CurrentPeriod from "../CurrentPeriod/CurrentPeriod";
+// import moduleName from './balance.module.scss';
+import "./balance.scss";
+
 
 export default function ReportBalance() {
   const balance = useSelector(getUserInfo.getUserBalance);
@@ -15,9 +18,9 @@ export default function ReportBalance() {
           className="balance_input report-balance"
           id="input-example"
           name="input-name"
-          placeholder={`${balance
+          placeholder={balance?`${balance
             .toFixed(2)
-            .replace(/\d(?=(\d{3})+\.)/g, "$& ")} UAH`}
+            .replace(/\d(?=(\d{3})+\.)/g, "$& ")} UAH`: '0.00 UAH'}
           suffix={" UAH"}
           decimalSeparator={"."}
           decimalScale={2}

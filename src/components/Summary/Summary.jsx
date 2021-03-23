@@ -1,3 +1,4 @@
+
 import React, { memo, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import transactionOperation from "../../redux/transaction/transaction-operation";
@@ -17,6 +18,7 @@ const Summary = memo((props) => {
       : dispatch(transactionOperation.getMonthIncomes());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allIncomes.length, allCosts.length]);
+
 
   let data = typeTransaction === "costs" ? costs : incomes;
 
