@@ -15,10 +15,7 @@ const Reports = () => {
   const dateArr = date.split(".");
   const normaldateArr = [dateArr[1], dateArr[0], dateArr[2]];
   const normalDate = normaldateArr.join("-");
-  console.log("my date", normalDate);
   const userReports = useSelector(getInfo.getUserReports);
-  console.log(userReports);
-  // const date = "08-14-2021";
 
   useEffect(() => {
     dispatch(reportOperations(normalDate));

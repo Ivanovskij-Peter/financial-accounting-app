@@ -46,8 +46,7 @@ const AuthForm = () => {
   const handleSubmit = ({ name, email, password }) => {
     location.pathname === "/register"
       ? dispatch(authOperations.register({ name, email, password }, history))
-      : //TODO попросить ребят поправить бек, где в запросе на логин непонятно зачем требуется поле нейм
-        dispatch(authOperations.logIn({ email, password }));
+      : dispatch(authOperations.logIn({ email, password }));
   };
 
   const handleClick = () => {
