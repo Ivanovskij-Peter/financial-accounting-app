@@ -16,7 +16,7 @@ import kapustaTitle from "../../images/kapusta.png";
 
 const Layout = ({ children }) => {
   const dispatch = useDispatch();
-  const isUserLogged = useSelector(authSelectors.getIsAuthenticated);
+  const token = useSelector(authSelectors.getToken);
   const error = useSelector(errorSelector.getError);
   const [isError, setIsError] = useState(false);
 
@@ -34,7 +34,7 @@ const Layout = ({ children }) => {
     <>
       <Header />
       <div className={styles.mainTheme}></div>
-      {isUserLogged ? (
+      {token ? (
         <div className={styles.loggedTheme}>
           <div className={styles.container}>{children}</div>
         </div>

@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import Modal from "../shared/Modal/Modal";
+import React, { useEffect } from "react";
 import AddIncomeCostForm from "../AddIncomeCostForm";
 import styles from "./currencyModal.module.scss";
 import sprite from "../../images/sprite.svg";

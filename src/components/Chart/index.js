@@ -1,9 +1,6 @@
-
 import { useSelector } from "react-redux";
-import styles from "./Chart.module.scss";
 import getReports from "../../redux/reports/reports-selectors";
-import Chart from "./Chart"
-import ChartCanvas from "./ChartCanvas"
+import Chart from "./Chart";
 
 const categoryMap = {
   products: "Продукты",
@@ -82,10 +79,9 @@ export default function ChartContainer(props) {
     return 0;
   });
 
-
-  return (<>
-  
-  <Chart labelToValueArray = {labelToValueArray}/>
-{/* <ChartCanvas maxValue = {labelToValueArray.length?labelToValueArray[0]:0}/> */}
-  </>);
+  return (
+    <>
+      <Chart labelToValueArray={labelToValueArray} />
+    </>
+  );
 }

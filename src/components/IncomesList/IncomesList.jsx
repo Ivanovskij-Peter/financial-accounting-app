@@ -6,12 +6,16 @@ import transactionOperation from "../../redux/transaction/transaction-operation"
 
 class IncomesList extends Component {
   componentDidMount() {
+    console.log("IncomesList");
     this.props.getCosts();
     this.props.getIncomes();
-
   }
   componentDidUpdate(prevProps) {
-    if (this.props.incomes.length !== prevProps.incomes.length || this.props.costs.length !== prevProps.costs.length) {
+    if (
+      this.props.incomes.length !== prevProps.incomes.length ||
+      this.props.costs.length !== prevProps.costs.length
+    ) {
+      console.log("IncomesList2");
       this.props.getCosts();
       this.props.getIncomes();
     }
@@ -25,21 +29,23 @@ class IncomesList extends Component {
       costs,
       deleteCost,
       getCosts,
-      getIncomes
+      getIncomes,
     } = this.props;
     let data = typeTransaction === "costs" ? costs : incomes;
     let dataMobile = costs.concat(incomes).sort(function (a, b) {
       // console.log(a.date);
-      return (a.date-b.date)
+      return a.date - b.date;
     });
     const withoutData = function () {
       const withDataTable = function (el) {
         if (el) {
           return (
             <tr key={el._id}>
-              <td className={styles.leftCol}>{el.date.split(".").slice(0, 2).reverse().join(".") +
-                      "." +
-                      el.date.split(".")[2]}</td>
+              <td className={styles.leftCol}>
+                {el.date.split(".").slice(0, 2).reverse().join(".") +
+                  "." +
+                  el.date.split(".")[2]}
+              </td>
               <td className={styles.leftCol}>
                 {el.description.length >= 15
                   ? el.description.slice(0, 15) + "..."
@@ -55,19 +61,20 @@ class IncomesList extends Component {
                   <span
                     className={styles.amountIncome}
                   >{`${el.amount} грн.`}</span>
-                )}</td>
+                )}
+              </td>
               <td className={styles.tdButton}>
-              <button
+                <button
                   onClick={
                     typeTransaction === "costs"
                       ? () => {
-                        deleteCost(el._id);
-                        getCosts()
-                      }
+                          deleteCost(el._id);
+                          getCosts();
+                        }
                       : () => {
-                        deleteIncome(el._id);
-                        getIncomes()
-                      }
+                          deleteIncome(el._id);
+                          getIncomes();
+                        }
                   }
                 >
                   <svg width="18px" height="18px">
@@ -116,7 +123,7 @@ class IncomesList extends Component {
                 </div>
               </div>
               <div className={styles.right}>
-                {category === "Доп.доход"|| category ==="ЗП" ?  (
+                {category === "Доп.доход" || category === "ЗП" ? (
                   <span
                     className={styles.amountIncome}
                   >{`${amount} грн.`}</span>
@@ -125,15 +132,19 @@ class IncomesList extends Component {
                     className={styles.amountCost}
                   >{`- ${amount} грн.`}</span>
                 )}
-                <button onClick={category === "Доп.доход" || category === "ЗП" ? () => {
-                  {
-                    deleteIncome(_id);
-                    getIncomes();
+                <button
+                  onClick={
+                    category === "Доп.доход" || category === "ЗП"
+                      ? () => {
+                          deleteIncome(_id);
+                          getIncomes();
+                        }
+                      : () => {
+                          deleteCost(_id);
+                          getCosts();
+                        }
                   }
-                } : () => {
-                  deleteCost(_id);
-                  getCosts();
-                }}>
+                >
                   <svg width="18px" height="18px">
                     <use href={sprite + "#delete-icon"} />
                   </svg>
@@ -179,17 +190,17 @@ class IncomesList extends Component {
                   )}
                   <td className={styles.tdButton}>
                     <button
-                  onClick={
-                    typeTransaction === "costs"
-                      ? () => {
-                        deleteCost(_id);
-                        getCosts()
+                      onClick={
+                        typeTransaction === "costs"
+                          ? () => {
+                              deleteCost(_id);
+                              getCosts();
+                            }
+                          : () => {
+                              deleteIncome(_id);
+                              getIncomes();
+                            }
                       }
-                      : () => {
-                        deleteIncome(_id);
-                        getIncomes()
-                      }
-                  }
                     >
                       <svg width="18px" height="18px">
                         <use href={sprite + "#delete-icon"} />
@@ -206,7 +217,6 @@ class IncomesList extends Component {
 const mapStateToProps = (state) => ({
   incomes: state.operations.incomes,
   costs: state.operations.costs,
-
 });
 const mapDispatchToProps = (dispatch) => ({
   getIncomes: () => dispatch(transactionOperation.getIncomes()),
