@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import styles from "../CurrentPeriod/CurrentPeriod.module.scss";
-import sprite from "../../images/sprite.svg";
 import setDate from "../../redux/calendar/calendarAction";
 import createHistory from "history/createBrowserHistory";
 
@@ -72,7 +71,7 @@ class CurrentPeriod extends Component {
         <p className={styles.currentTitle}>Текущий период:</p>
         <div className={styles.wrapper}>
           <button onClick={this.showPrev} className={styles.currentMonthBtn}>
-            <svg className={styles.arrowBtnLeft}/>
+            <svg className={styles.arrowBtnLeft} />
             {/* <svg
               width="10px"
               height="15px"
@@ -85,7 +84,7 @@ class CurrentPeriod extends Component {
             {months[currentMonth]} {currentYear}
           </p>
           <button onClick={this.showNext} className={styles.currentMonthBtn}>
-          <svg className={styles.arrowBtnRight}/>
+            <svg className={styles.arrowBtnRight} />
             {/* <svg
               width="10px"
               height="15px"

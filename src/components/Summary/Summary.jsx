@@ -1,29 +1,27 @@
-import React, {useEffect, useCallback} from "react";
+
+import React, { memo, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import transactionOperation from "../../redux/transaction/transaction-operation";
 import getDataInfo from "../../redux/transaction/transaction-selectors";
 import styles from "./summary.module.scss";
 
-const Summary = (props) => {
+const Summary = memo((props) => {
+  const allIncomes = useSelector(getDataInfo.getAllIncomes);
+  const allCosts = useSelector(getDataInfo.getAllCosts);
   const incomes = useSelector(getDataInfo.getDataIncomes);
   const costs = useSelector(getDataInfo.getDataCosts);
-    const {
-      typeTransaction
-  } = props;
+  const { typeTransaction } = props;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    typeTransaction === "costs" && allCosts.length > 0
+      ? dispatch(transactionOperation.getMonthCosts())
+      : dispatch(transactionOperation.getMonthIncomes());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [allIncomes.length, allCosts.length]);
 
-  // const dispatch = useDispatch();
-
-  // const fun = function () {
-  //     typeTransaction === "costs"
-  //     ? dispatch(transactionOperation.getMonthIncomes()) :
-  //   dispatch(transactionOperation.getMonthCosts());
-  // }
-  // useEffect(() => {
-  //   fun();
-  // }, [incomes, costs]);
 
   let data = typeTransaction === "costs" ? costs : incomes;
-  
+
   return (
     <>
       <div className={styles.summary}>
@@ -41,5 +39,5 @@ const Summary = (props) => {
       </div>
     </>
   );
-};
+});
 export default Summary;
