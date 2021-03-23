@@ -49,7 +49,7 @@ const addTransaction = (keyWord, transaction) => async (dispatch, getState) => {
 };
 
 const getMonthIncomes = (credentials) => async (dispatch) => {
-  dispatch(transactionsActions.getIncomesRequest());
+  dispatch(transactionsActions.getMonthIncomesRequest());
   try {
     const response = await axios.get("/user/monthincomes", credentials);
     const { incomes } = response.data;
@@ -97,9 +97,11 @@ const getIncomes = (credentials) => async (dispatch) => {
 
 const deleteIncomes = (id) => async (dispatch) => {
   dispatch(transactionsActions.deleteIncomesRequest());
+
   try {
-    await axios.delete(`/user/incomes/${id}`);
+    const response = await axios.delete(`/user/incomes/${id}`);
     dispatch(transactionsActions.deleteIncomesSucces(id));
+    dispatch(transactionsActions.setBalanceSucces(response.data.balance));
   } catch (error) {
     dispatch(transactionsActions.deleteIncomesError(error.message));
   }
@@ -107,8 +109,10 @@ const deleteIncomes = (id) => async (dispatch) => {
 const deleteCosts = (id) => async (dispatch) => {
   dispatch(transactionsActions.deleteCostsRequest());
   try {
-    await axios.delete(`/user/costs/${id}`);
+    const response = await axios.delete(`/user/costs/${id}`);
     dispatch(transactionsActions.deleteCostsSucces(id));
+    dispatch(transactionsActions.setBalanceSucces(response.data.balance));
+
   } catch (error) {
     dispatch(transactionsActions.deleteCostsError(error.message));
   }
