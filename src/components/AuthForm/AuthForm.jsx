@@ -9,6 +9,9 @@ import authOperations from "../../redux/auth/auth-operations";
 import sprite from "../../images/test.svg";
 import styles from "./AuthForm.module.scss";
 
+
+
+
 const RegistrationSchema = Yup.object().shape({
   name: Yup.string()
     .min(3, "Некорректная длинна поля")
@@ -43,11 +46,11 @@ const AuthForm = () => {
   const history = useHistory();
   const location = useLocation();
 
+
   const handleSubmit = ({ name, email, password }) => {
     location.pathname === "/register"
       ? dispatch(authOperations.register({ name, email, password }, history))
-      : //TODO попросить ребят поправить бек, где в запросе на логин непонятно зачем требуется поле нейм
-        dispatch(authOperations.logIn({ email, password }));
+      : dispatch(authOperations.logIn({ email, password }));
   };
 
   const handleClick = () => {
@@ -96,6 +99,7 @@ const AuthForm = () => {
           Или зарегистрироваться с помощью e-mail и пароля:
         </p>
       )}
+ 
 
       <Formik
         initialValues={{ name: "", email: "", password: "" }}
