@@ -15,7 +15,7 @@ const routes = [
     path: "/reports",
     exact: true,
     redirectTo: "/login",
-    component: lazy(() => import("./components/Reports")),
+    component: lazy(() => import("./components/pages/ReportsPage")),
     privated: true,
     restricted: true,
   },
