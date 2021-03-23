@@ -53,6 +53,7 @@
   background: $body-color;
   border: 2px solid $primary-white-color;
   border-radius: 0px 22px 22px 0px;
+  outline: none;
   &-text {
     font-weight: 400;
     font-size: 12px;
@@ -61,20 +62,19 @@
     letter-spacing: 0.02em;
     text-transform: uppercase;
     color: $primary-text-color;
-    &:hover,
-    &:focus {
-      color: $primary-white-color;
-    }
   }
   &:hover,
   &:focus {
+    color: $primary-text-color;
     background-color: $accent-color;
+    .balance_button-text {
+      color: $primary-white-color;
+    }
   }
 }
 .report_page_form {
   display: block;
   text-align: center;
-  // padding-top: 30px;
   padding-bottom: 170px;
   @include for-size(tablet) {
     display: flex;

@@ -13,6 +13,7 @@ const HomePage = () => {
     if (name) {
       dispatch(transactionOperation.getIncomes());
       dispatch(transactionOperation.getMonthIncomes());
+      dispatch(transactionOperation.getMonthCosts());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [name]);
