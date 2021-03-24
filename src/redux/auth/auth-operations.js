@@ -2,7 +2,7 @@ import axios from "axios";
 import authActions from "./auth-actions";
 import transactionsActions from "../transaction/transaction-actions";
 
-axios.defaults.baseURL = "http://kapusta-srv.herokuapp.com";
+axios.defaults.baseURL = "https://kapusta-srv.herokuapp.com";
 
 const axiosToken = {
   set(token) {
@@ -32,7 +32,15 @@ const logIn = (credentials) => async (dispatch) => {
     const { token, user } = response.data;
     const { name, email, avatarURL, isNotVerified } = user;
     axiosToken.set(token);
-    dispatch(authActions.loginSuccess({ name, email, avatarURL, token, isNotVerified }));
+    dispatch(
+      authActions.loginSuccess({
+        name,
+        email,
+        avatarURL,
+        token,
+        isNotVerified,
+      }),
+    );
   } catch (error) {
     dispatch(authActions.loginError(error.message));
   }
