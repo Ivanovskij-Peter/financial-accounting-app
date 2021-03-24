@@ -85,7 +85,8 @@ class AddIncomeCostForm extends Component {
       description: description,
       amount: Number(amount),
     };
-
+      // typeTransaction === "costs" && transactionOperation.getMonthCosts();
+      // typeTransaction === "incomes"&&transactionOperation.getMonthIncomes();
     if (transaction.date && transaction.category && transaction.amount) {
       addTransaction(typeTransaction, transaction);
       this.setState({
@@ -93,9 +94,9 @@ class AddIncomeCostForm extends Component {
         amount: "",
         description: "",
       });
-      typeTransaction === "costs"
-        ? transactionOperation.getMonthCosts()
-        : transactionOperation.getMonthIncomes();
+      transactionOperation.getMonthIncomes();
+    transactionOperation.getMonthCosts();
+      
     } else {
       return;
     }
@@ -119,7 +120,8 @@ class AddIncomeCostForm extends Component {
         <Formik
           initialValues={{ description: "", category: "", amount: "" }}
           onSubmit={(values) => {
-            typeTransaction === "incomes" ? getMonthIncome() : getMonthCost();
+            getMonthIncome();
+            getMonthCost();
             this.handleSubmit(values);
           }}
         >

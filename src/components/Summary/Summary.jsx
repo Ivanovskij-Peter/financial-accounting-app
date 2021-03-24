@@ -12,16 +12,12 @@ const Summary = memo((props) => {
   const { typeTransaction } = props;
   const dispatch = useDispatch();
   useEffect(() => {
-    typeTransaction === "costs" &&
-    allCosts.length >= 0 &&
-    allIncomes.length >= 0
-      ? dispatch(transactionOperation.getMonthCosts())
-      : dispatch(transactionOperation.getMonthIncomes());
+    allCosts.length >= 0 && dispatch(transactionOperation.getMonthCosts())
+    allIncomes.length >= 0 && dispatch(transactionOperation.getMonthIncomes())
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [allIncomes.length, allCosts.length]);
+  }, [allCosts.length, allIncomes.length]);
 
   let data = typeTransaction === "costs" ? costs : incomes;
-
   return (
     <>
       <div className={styles.summary}>

@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import styles from "../CurrentPeriod/CurrentPeriod.module.scss";
 import setDate from "../../redux/calendar/calendarAction";
-import createHistory from "history/createBrowserHistory";
+import {createBrowserHistory} from "history";
 
-const history = createHistory();
+const history = createBrowserHistory();
 
 const months = [
   "ЯНВАРЬ",

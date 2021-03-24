@@ -7,6 +7,8 @@ import "modern-normalize/modern-normalize.css";
 import { BrowserRouter } from "react-router-dom";
 import store from "./redux/store";
 import "./sass/main.scss";
+import './test';
+
 
 ReactDOM.render(
   <React.StrictMode>

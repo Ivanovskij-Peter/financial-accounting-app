@@ -72,14 +72,15 @@ class IncomesList extends Component {
               <td className={styles.tdButton}>
                 <button
                   onClick={
-                    typeTransaction === "costs"
-                      ? () => {
-                          deleteCost(el._id);
-                          getCosts();
-                        }
-                      : () => {
+                    el.category === "Доп.доход" || el.category === "ЗП"
+                      ? 
+                      () => {
                           deleteIncome(el._id);
                           getIncomes();
+                      }
+                      :() => {
+                          deleteCost(el._id);
+                          getCosts();
                         }
                   }
                 >

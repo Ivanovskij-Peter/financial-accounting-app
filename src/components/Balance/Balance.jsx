@@ -12,14 +12,14 @@ export default function Balance() {
   const dispatch = useDispatch();
   const balance = useSelector((state) => state.operations.balance);
   const mobile = window.innerWidth < 768;
-
+  
   const handleOnValueChange = (value) => {
     setValue(value);
   };
   const handleClick = () => {
     dispatch(transactionOperation.setBalance(value));
+    setValue('');
   };
-
   return (
     <>
       <div className="balanceWrapper">
@@ -45,11 +45,15 @@ export default function Balance() {
                 decimalSeparator={"."}
                 decimalScale={2}
                 onValueChange={handleOnValueChange}
+                // onClick={handleClick}
+
               />
               <button
                 type="button"
                 className="balance_button"
                 onClick={handleClick}
+                // onValueChange={handleOnValueChange}
+
               >
                 <span className="balance_button-text">подтвердить</span>
               </button>
