@@ -12,7 +12,9 @@ const Summary = memo((props) => {
   const { typeTransaction } = props;
   const dispatch = useDispatch();
   useEffect(() => {
-    typeTransaction === "costs" && allCosts.length >= 0
+    typeTransaction === "costs" &&
+    allCosts.length >= 0 &&
+    allIncomes.length >= 0
       ? dispatch(transactionOperation.getMonthCosts())
       : dispatch(transactionOperation.getMonthIncomes());
     // eslint-disable-next-line react-hooks/exhaustive-deps

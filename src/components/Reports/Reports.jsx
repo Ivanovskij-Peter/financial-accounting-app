@@ -46,7 +46,6 @@ const Reports = () => {
           className={style.arrowBtnRight}
         ></button>
       </div>
-
       {userReports ? (
         <CategoriesList
           reportName={reportName}
