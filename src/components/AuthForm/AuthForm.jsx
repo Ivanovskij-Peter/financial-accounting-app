@@ -1,16 +1,15 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import Button from "../shared/Button";
 import authOperations from "../../redux/auth/auth-operations";
+import authSelectors from "../../redux/auth/auth-selectors";
+import errorActions from "../../redux/error/error-action";
 import sprite from "../../images/test.svg";
 import styles from "./AuthForm.module.scss";
-
-
-
 
 const RegistrationSchema = Yup.object().shape({
   name: Yup.string()
@@ -45,7 +44,7 @@ const AuthForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
-
+  const authError = useSelector(authSelectors.getError);
 
   const handleSubmit = ({ name, email, password }) => {
     location.pathname === "/register"
@@ -54,6 +53,7 @@ const AuthForm = () => {
   };
 
   const handleClick = () => {
+    dispatch(errorActions.setErrorToNull());
     location.pathname === "/register"
       ? history.push("/login")
       : history.push("/register");
@@ -99,7 +99,6 @@ const AuthForm = () => {
           Или зарегистрироваться с помощью e-mail и пароля:
         </p>
       )}
- 
 
       <Formik
         initialValues={{ name: "", email: "", password: "" }}
@@ -110,7 +109,7 @@ const AuthForm = () => {
           handleSubmit(values);
         }}
       >
-        {({ errors, touched }) => (
+        {({ errors, touched, handleBlur }) => (
           <Form className={styles.Auth__form}>
             {location.pathname === "/register" && (
               <>
@@ -159,6 +158,10 @@ const AuthForm = () => {
                   errors.email &&
                   styles["Auth__input--is-invalid"]
                 }`}
+                onBlur={(e) => {
+                  handleBlur(e);
+                  dispatch(errorActions.setErrorToNull());
+                }}
               />
               <ErrorMessage
                 className={styles.Auth__errorMessage}
@@ -184,12 +187,22 @@ const AuthForm = () => {
                   styles["Auth__input--is-invalid"]
                 }`}
                 placeholder="Пароль"
+                onBlur={(e) => {
+                  handleBlur(e);
+                  dispatch(errorActions.setErrorToNull());
+                }}
               />
               <ErrorMessage
                 className={styles.Auth__errorMessage}
                 name="password"
                 component="p"
               />
+              {authError === "Request failed with status code 404" &&
+                !errors.password && (
+                  <p className={styles.Auth__errorMessage}>
+                    Invalid email or password
+                  </p>
+                )}
             </div>
             <ul>
               <Button type="submit" addStyle={styles["Auth__button--register"]}>

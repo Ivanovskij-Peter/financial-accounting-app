@@ -10,6 +10,8 @@ const error = createReducer(initialState, {
   [authActions.registerRequest]: () => initialState,
   [authActions.loginError]: (_, { payload }) => payload,
   [authActions.loginRequest]: () => initialState,
+  [authActions.loginWithGoogleError]: (_, { payload }) => payload,
+  [authActions.loginWithGoogleRequest]: () => initialState,
   [authActions.logOutError]: (_, { payload }) => payload,
   [authActions.logoutRequest]: () => initialState,
   [errorActions.setError]: () => initialState,
@@ -17,6 +19,7 @@ const error = createReducer(initialState, {
   [transactionsActions.setIncomesError]: (_, { payload }) => payload,
   [transactionsActions.deleteCostsError]: (_, { payload }) => payload,
   [transactionsActions.setCostsError]: (_, { payload }) => payload,
+  [errorActions.setErrorToNull]: () => null,
 });
 
 export default error;
