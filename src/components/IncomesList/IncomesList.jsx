@@ -38,7 +38,7 @@ class IncomesList extends Component {
       const withDataTable = function (el) {
         if (el) {
           return (
-            <tr key={el._id}>
+            <tr key={uuidv4()}>
               <td className={styles.leftCol}>
                 {el.date.split(".").slice(0, 2).reverse().join(".") +
                   "." +
@@ -73,12 +73,11 @@ class IncomesList extends Component {
                 <button
                   onClick={
                     el.category === "Доп.доход" || el.category === "ЗП"
-                      ? 
-                      () => {
+                      ? () => {
                           deleteIncome(el._id);
                           getIncomes();
-                      }
-                      :() => {
+                        }
+                      : () => {
                           deleteCost(el._id);
                           getCosts();
                         }

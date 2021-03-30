@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 import { useSelector } from "react-redux";
 import { authSelectors } from "../../redux/auth/index";
@@ -7,12 +6,10 @@ import { authSelectors } from "../../redux/auth/index";
 import Header from "../header";
 import styles from "./Layout.module.scss";
 
-
 import kapustaTitle from "../../images/kapusta.png";
 
 const Layout = ({ children }) => {
   const token = useSelector(authSelectors.getToken);
-
 
   return (
     <>
@@ -39,13 +36,8 @@ const Layout = ({ children }) => {
           </div>
         </div>
       )}
-
     </>
   );
-};
-
-Layout.propTypes = {
-  children: PropTypes.element.isRequired,
 };
 
 export default Layout;
