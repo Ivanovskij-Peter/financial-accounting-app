@@ -3,6 +3,7 @@ import {
   configureStore,
   getDefaultMiddleware,
 } from "@reduxjs/toolkit";
+// import logger from "redux-logger";
 import storage from "redux-persist/lib/storage";
 import {
   FLUSH,
@@ -26,6 +27,7 @@ const middleware = [
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   }),
+  // logger,
 ];
 
 const authPersistConfig = {

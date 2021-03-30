@@ -17,9 +17,11 @@ function App() {
   const dispatch = useDispatch();
   const emailNotVerified = useSelector(authSelectors.getIsNotVerified);
   const [isMailVerified, setIsMailVerified] = useState(false);
+
   useEffect(() => {
     dispatch(authOperations.getCurrrentUser());
-  }, [dispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (emailNotVerified) {
