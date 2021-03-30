@@ -81,6 +81,7 @@ const getCurrrentUser = () => async (dispatch, getState) => {
     auth: { token: persistedToken },
   } = getState();
   if (!persistedToken) {
+    localStorage.clear();
     return;
   }
   axiosToken.set(persistedToken);
